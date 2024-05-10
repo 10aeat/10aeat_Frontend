@@ -5,6 +5,7 @@ const nextConfig = {
     if (dev) {
       config.devtool = 'eval-source-map'
     }
+    return config
   },
 }
 
