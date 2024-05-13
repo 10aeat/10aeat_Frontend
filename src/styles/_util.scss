@@ -1,1 +1,161 @@
-$body1_sb: 18px;
+$bold: 700;
+$semibold: 600;
+$medium: 500;
+$regular: 400;
+
+// 기본 폰트 종류
+
+// 기본
+.h1_heading {
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: $bold;
+}
+.h2_heading {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: $bold;
+}
+.h3_heading {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: $bold;
+}
+
+.body1_sb {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: $semibold;
+}
+.body1_m {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: $medium;
+}
+.body1_r {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: $regular;
+}
+
+.body2_sb {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: $semibold;
+}
+.body2_m {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: $medium;
+}
+.body2_r {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: $regular;
+}
+
+.body3_r {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: $regular;
+}
+
+// 크게
+.m_h3_heading {
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: $bold;
+}
+
+.m_body1_sb {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: $semibold;
+}
+.m_body1_m {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: $medium;
+}
+.m_body1_r {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: $regular;
+}
+
+.m_body2_sb {
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: $semibold;
+}
+.m_body2_m {
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: $medium;
+}
+.m_body2_r {
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: $regular;
+}
+
+.m_body3_r {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: $regular;
+}
+
+// 더 크게
+
+.l_h3_heading {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: $bold;
+}
+
+.l_body1_sb {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: $semibold;
+}
+.l_body1_m {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: $medium;
+}
+.l_body1_r {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: $regular;
+}
+
+.l_body2_sb {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: $semibold;
+}
+.l_body2_m {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: $medium;
+}
+.l_body2_r {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: $regular;
+}
+
+.l_body3_r {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: $regular;
+}
+
+// Shadow
+.box_shadow {
+  box-shadow: 0px 4px 30px 0px rgba(75, 85, 99, 0.04);
+}
+
+.box_shadow_secondary {
+  box-shadow: 4px 4px 20px 0px rgba(75, 85, 99, 0.24);
+}
