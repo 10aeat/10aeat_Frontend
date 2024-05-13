@@ -22,7 +22,9 @@ export default function BoxStore({
     switch (boxStyle) {
       case BoxStyle.TAG:
         return (
-          <div className={`tag flex  border-solid border-[1px] ${style}`}>
+          <div
+            className={`tag flex border-solid border-[1px] font-Pretendard font-medium leading-5 ${style}`}
+          >
             <div className={`w-2 h-2 rounded-lg ${dotStyle}`} />
             {children}
           </div>
