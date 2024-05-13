@@ -1,4 +1,4 @@
-import BoxStore, { BoxStyle } from '../components/atoms/BoxStore'
+import BoxStore, { BoxStyle } from '@/components/atoms/BoxStore'
 
 export default function Home() {
   return (
