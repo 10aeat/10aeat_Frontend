@@ -1,0 +1,16 @@
+.tag {
+  display: inline-flex;
+  height: 28px;
+  padding: 10px;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
+// .badge {
+//   border: 1px solid transparent;
+//   border-image: linear-gradient(109deg, #c084fc 11.33%, #22c55e 84.05%) 1;
+//   border-image-slice: 1;
+//   border-radius: 30px;
+// }

@@ -12,6 +12,11 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'badge-custom-gradient':
+          'linear-gradient(109deg, #C084FC 11.33%, #22C55E 84.05%)',
+      },
+      fontFamily: {
+        Pretendard: ['Pretendard'],
       },
     },
   },
