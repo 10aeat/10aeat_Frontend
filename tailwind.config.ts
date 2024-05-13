@@ -16,7 +16,7 @@ const config: Config = {
           'linear-gradient(109deg, #C084FC 11.33%, #22C55E 84.05%)',
       },
       fontFamily: {
-        Pretendard: ['Pretendard'],
+        Pretendard: ['Pretendard-Regular'],
       },
     },
   },
