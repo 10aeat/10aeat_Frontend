@@ -1,3 +1,11 @@
+import TagStore, { TagStyle } from '../components/atoms/TagStore'
+
 export default function Home() {
-  return <p>10어먹조</p>
+  return (
+    <>
+      <TagStore tagStyle={TagStyle.WAIT_TAG} />
+      <TagStore tagStyle={TagStyle.PROCEEDING_TAG} />
+      <TagStore tagStyle={TagStyle.DONE_TAG} />
+    </>
+  )
 }
