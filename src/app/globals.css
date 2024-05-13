@@ -4,7 +4,7 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --Gray-Gray-100: #f3f4f6; /* 추가된 변수 */
+  --Gray-Gray-100: #f3f4f6;
 }
 
 @media (prefers-color-scheme: dark) {
