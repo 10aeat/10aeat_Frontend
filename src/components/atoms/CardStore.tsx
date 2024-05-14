@@ -14,6 +14,7 @@ export enum CardStyle {
 
 interface Props {
   cardStyle: CardStyle
+  img_src: string
   title: string
   period: string
   state: string
@@ -25,6 +26,7 @@ interface Props {
 
 export default function CardStore({
   cardStyle,
+  img_src,
   title,
   period,
   state,
@@ -42,7 +44,7 @@ export default function CardStore({
               <img
                 className="relative w-[56px] h-[56px] object-cover rounded-lg"
                 alt="Rectangle"
-                src="https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cMHMTT7DiwDF5-BUGJhrN3YemZfwfckwHeaBMM0phs7pRTiaWZoxT4EYBe3YV5lMRziHY32oMVqrSBwqk4jyc1tXbeLgfTYzEDqa8zSUoqbAe70hocphLaXcw2e2ipKms8A7xnqebRf34U6kb-m-KC96kWDnGZxzW0hLInWAUtCr8gpRH~19ZPEEATiOSCd6tSMR3lGsMCUDmq4YF~Z~jjmM9p54s1VdNoWHEN3wurAxZN6SItiDkQRYMYdybFinnmXYeiVkg826ZCnFs-oNsEHGjEbGfCvVX52cDaN2clOXHTSEdvHUYz3hnQ~bJEBPSDKPVLMcrDhcchuahxNV0w__"
+                src={img_src}
               />
               <div className="inline-flex flex-col items-start gap-[5px] relative flex-[0_0_auto] mr-[-1.00px]">
                 <div className="flex w-[246px] items-start gap-[12px] relative flex-[0_0_auto]">
@@ -55,7 +57,156 @@ export default function CardStore({
                 </div>
 
                 <div className="contents text-gray-600 ">
-                  공사기간 : {period}
+                  진행기간 : {period}
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col items-start relative flex-1 grow">
+              <div className="inline-flex flex-col items-start gap-[8px] relative flex-[0_0_auto]">
+                <div className="inline-flex items-center gap-[10px] relative flex-[0_0_auto]">
+                  <div className="state text-green-500">{state}</div>
+                  <div className="relative w-px h-[16px] bg-[#d9d9d9]" />
+                  <div className="contents relative w-fit  text-gray-500">
+                    {name}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="inline-flex items-end gap-[8px] relative flex-[0_0_auto]">
+              <div className="inline-flex items-center gap-[4px] relative flex-[0_0_auto]">
+                <Image src={eye} alt="image" className="icon" />
+                <div className="contents relative w-fit mt-[-1.00px] text-gray-600 text-right whitespace-nowrap">
+                  {view}
+                </div>
+              </div>
+              <div className="inline-flex items-center gap-[4px] relative flex-[0_0_auto]">
+                {/* <ChatLine className="!relative !w-[20px] !h-[20px]" /> */}
+                <Image src={messages} alt="image" className="icon" />
+                <div className="contents relative w-fit mt-[-1.00px] text-gray-600 text-right whitespace-nowrap">
+                  {comment}
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+
+      case CardStyle.NO_IMG:
+        return (
+          <div className="card">
+            <div className="flex w-[311px] items-center gap-[10px] relative">
+              <div className="inline-flex flex-col items-start gap-[5px] relative flex-[0_0_auto] mr-[-1.00px]">
+                <div className="flex w-[311px] items-start gap-[12px] relative flex-[0_0_auto]">
+                  <div className="title">{title}</div>
+                  <Image
+                    src={star_linear}
+                    alt="image"
+                    className="w-[24px] h-[24px]"
+                  />
+                </div>
+
+                <div className="contents text-gray-600 ">
+                  진행기간 : {period}
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col items-start relative flex-1 grow">
+              <div className="inline-flex flex-col items-start gap-[8px] relative flex-[0_0_auto]">
+                <div className="inline-flex items-center gap-[10px] relative flex-[0_0_auto]">
+                  <div className="state text-green-500">{state}</div>
+                  <div className="relative w-px h-[16px] bg-[#d9d9d9]" />
+                  <div className="contents relative w-fit  text-gray-500">
+                    {name}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="inline-flex items-end gap-[8px] relative flex-[0_0_auto]">
+              <div className="inline-flex items-center gap-[4px] relative flex-[0_0_auto]">
+                <Image src={eye} alt="image" className="icon" />
+                <div className="contents relative w-fit mt-[-1.00px] text-gray-600 text-right whitespace-nowrap">
+                  {view}
+                </div>
+              </div>
+              <div className="inline-flex items-center gap-[4px] relative flex-[0_0_auto]">
+                {/* <ChatLine className="!relative !w-[20px] !h-[20px]" /> */}
+                <Image src={messages} alt="image" className="icon" />
+                <div className="contents relative w-fit mt-[-1.00px] text-gray-600 text-right whitespace-nowrap">
+                  {comment}
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      case CardStyle.NO_PERIOD:
+        return (
+          <div className="card">
+            <div className="flex w-[311px] items-center gap-[10px] relative">
+              <img
+                className="relative w-[56px] h-[56px] object-cover rounded-lg"
+                alt="Rectangle"
+                src={img_src}
+              />
+              <div className="inline-flex flex-col items-start gap-[5px] relative flex-[0_0_auto] mr-[-1.00px]">
+                <div className="flex w-[246px] items-start gap-[12px] relative flex-[0_0_auto]">
+                  <div className="title">{title}</div>
+                  <Image
+                    src={star_linear}
+                    alt="image"
+                    className="w-[24px] h-[24px]"
+                  />
+                </div>
+
+                <div className="contents text-gray-600 whitespace-pre">
+                  {' '}
+                  <p></p>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col items-start relative flex-1 grow">
+              <div className="inline-flex flex-col items-start gap-[8px] relative flex-[0_0_auto]">
+                <div className="inline-flex items-center gap-[10px] relative flex-[0_0_auto]">
+                  <div className="state text-green-500">{state}</div>
+                  <div className="relative w-px h-[16px] bg-[#d9d9d9]" />
+                  <div className="contents relative w-fit  text-gray-500">
+                    {name}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="inline-flex items-end gap-[8px] relative flex-[0_0_auto]">
+              <div className="inline-flex items-center gap-[4px] relative flex-[0_0_auto]">
+                <Image src={eye} alt="image" className="icon" />
+                <div className="contents relative w-fit mt-[-1.00px] text-gray-600 text-right whitespace-nowrap">
+                  {view}
+                </div>
+              </div>
+              <div className="inline-flex items-center gap-[4px] relative flex-[0_0_auto]">
+                {/* <ChatLine className="!relative !w-[20px] !h-[20px]" /> */}
+                <Image src={messages} alt="image" className="icon" />
+                <div className="contents relative w-fit mt-[-1.00px] text-gray-600 text-right whitespace-nowrap">
+                  {comment}
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      case CardStyle.ALL_NO:
+        return (
+          <div className="card">
+            <div className="flex w-[311px] items-center gap-[10px] relative">
+              <div className="inline-flex flex-col items-start gap-[5px] relative flex-[0_0_auto] mr-[-1.00px]">
+                <div className="flex w-[311px] items-start gap-[12px] relative flex-[0_0_auto]">
+                  <div className="title pb-3">{title}</div>
+                  <Image
+                    src={star_linear}
+                    alt="image"
+                    className="w-[24px] h-[24px]"
+                  />
+                </div>
+
+                <div className="contents text-gray-600 whitespace-pre">
+                  {' '}
+                  <p></p>
                 </div>
               </div>
             </div>
