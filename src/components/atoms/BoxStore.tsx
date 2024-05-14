@@ -20,22 +20,22 @@ export default function BoxStore({
     switch (boxStyle) {
       case BoxStyle.WAIT_TAG:
         return (
-          <div className="tag flex border-solid border-[1px] border-gray-500 bg-gray-100  text-gray-700 capitalize leading-[1px]">
-            <div className="w-2 h-2 rounded-lg bg-gray-500 font-Pretendard" />
+          <div className="tag flex border-solid border-[1px] border-gray-500 bg-gray-100  text-gray-700 capitalize leading-[1px] font-Pretendard">
+            <div className="w-2 h-2 rounded-lg bg-gray-500" />
             대기
           </div>
         )
       case BoxStyle.PROCEEDING_TAG:
         return (
-          <div className="tag flex border-solid border-[1px] bg-green-50 border-green-500 text-gray-700 capitalize leading-[1px]">
-            <div className="w-2 h-2 rounded-lg bg-green-500 font-Pretendard" />
+          <div className="tag flex border-solid border-[1px] bg-green-50 border-green-500 text-gray-700 capitalize leading-[1px] font-Pretendard">
+            <div className="w-2 h-2 rounded-lg bg-green-500" />
             진행중
           </div>
         )
       case BoxStyle.DONE_TAG:
         return (
-          <div className="tag flex border-solid border-[1px] bg-blue-50 border-blue-500 text-gray-700 capitalize leading-[1px]">
-            <div className="w-2 h-2 rounded-lg bg-blue-500 font-Pretendard" />
+          <div className="tag flex border-solid border-[1px] bg-blue-50 border-blue-500 text-gray-700 capitalize leading-[1px] font-Pretendard">
+            <div className="w-2 h-2 rounded-lg bg-blue-500" />
             완료
           </div>
         )
