@@ -35,15 +35,19 @@ export default function IssueStore({ issueStyle, title, content }: Props) {
           >
             <div className="flex h-full">
               <div className="flex pr-[8px] items-center font-semibold text-gray-900">
-                <Image
-                  src="/icons/danger_circle.svg"
-                  width={32}
-                  height={32}
-                  alt="danger_circle"
-                  className="mr-[8px]"
-                />
+                <div
+                  className={`flex h-full ${isOpen ? 'items-start' : 'items-center'}`}
+                >
+                  <Image
+                    src="/icons/danger_circle.svg"
+                    width={32}
+                    height={32}
+                    alt="danger_circle"
+                    className="mr-[8px]"
+                  />
+                </div>
                 <span
-                  className={`title ${isOpen ? 'overflow-visible' : 'overflow-hidden'} max-w-[239px]`}
+                  className={`title ${isOpen ? 'overflow-visible whitespace-normal' : 'overflow-hidden whitespace-nowrap'} max-w-[239px]`}
                 >
                   {title}
                 </span>
