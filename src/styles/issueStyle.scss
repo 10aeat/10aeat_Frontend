@@ -1,6 +1,6 @@
 @import './util.scss';
 
-.title {
+.issueTitle {
   @include body1_sb;
   text-overflow: ellipsis;
 }

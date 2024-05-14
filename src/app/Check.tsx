@@ -20,7 +20,7 @@ export default function Check() {
       {/* Issue */}
       <IssueStore
         issueStyle={IssueStyle.ISSUE_TOGGLE}
-        title="이슈 제목 입니다아아ddddddddddddddd"
+        title="이슈 제목 입니다아아하나둘셋넷다섯"
         content="ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ안녕난나아여여영여여여여여여여여여어어어어어어엉어어어어어어어"
       />
     </>

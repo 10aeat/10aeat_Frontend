@@ -47,7 +47,7 @@ export default function IssueStore({ issueStyle, title, content }: Props) {
                   />
                 </div>
                 <span
-                  className={`title ${isOpen ? 'overflow-visible whitespace-normal' : 'overflow-hidden whitespace-nowrap'} max-w-[239px]`}
+                  className={`issueTitle ${isOpen ? 'overflow-visible whitespace-normal' : 'overflow-hidden whitespace-nowrap'} max-w-[239px]`}
                 >
                   {title}
                 </span>
