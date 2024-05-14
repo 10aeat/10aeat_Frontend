@@ -52,14 +52,18 @@ export default function IssueStore({ issueStyle, title, content }: Props) {
                   {title}
                 </span>
               </div>
-              <Image
-                src={`${isOpen ? '/icons/arrow_up_large.svg' : '/icons/arrow_down_large.svg'}`}
-                width={24}
-                height={24}
-                alt="arrow_down_large"
-                className="cursor-pointer"
-                onClick={() => setIsOpen(!isOpen)}
-              />
+              <div
+                className={`flex h-full ${isOpen ? 'items-start' : 'items-center'} `}
+              >
+                <Image
+                  src={`${isOpen ? '/icons/arrow_up_large.svg' : '/icons/arrow_down_large.svg'}`}
+                  width={24}
+                  height={24}
+                  alt="arrow_down_large"
+                  className="cursor-pointer"
+                  onClick={() => setIsOpen(!isOpen)}
+                />
+              </div>
             </div>
             {isOpen && (
               <>
