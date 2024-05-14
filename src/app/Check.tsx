@@ -3,6 +3,7 @@
 import BoxStore, { BoxStyle } from '@/components/atoms/BoxStore'
 import IssueStore, { IssueStyle } from '@/components/atoms/IssueStore'
 import NavBar from '@/components/atoms/NavBar'
+import TooltipStore, { TooltipStyle } from '@/components/atoms/TooltipStore'
 
 export default function Check() {
   return (
@@ -30,6 +31,11 @@ export default function Check() {
         title="이슈 사항 제목"
         content="ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ안녕난나아여여영여여여여여여여여여어어어어어어엉어어어어어어어"
       />
+      <br />
+
+      {/* Tooltips */}
+      <TooltipStore tooltipStyle={TooltipStyle.COUNT} count={10} />
+      <TooltipStore tooltipStyle={TooltipStyle.TEXT_CHANGE} />
     </>
   )
 }
