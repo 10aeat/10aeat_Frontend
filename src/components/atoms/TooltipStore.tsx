@@ -43,6 +43,7 @@ export default function TooltipStore({ tooltipStyle, count }: Props) {
                 </span>
               </div>
               <div className="flex justify-between items-center w-full px-[20px]">
+                {/*ButtonStore 만들어지면 변경해야함. 그 후, onClick에 폰트 변경 로직 넣기 */}
                 <button
                   type="button"
                   className="w-[80px] h-[40px] p=[10px] gap-[2px] rounded-[8px] bg-gray-300 text-gray-700 text-base"
