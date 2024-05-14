@@ -1,8 +1,12 @@
 @import './util.scss';
 
-.issueTitle {
+.issueTitle1 {
   @include body1_sb;
   text-overflow: ellipsis;
+}
+
+.issueTitle2 {
+  @include h2_heading;
 }
 
 .content {

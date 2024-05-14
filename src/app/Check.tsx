@@ -16,11 +16,18 @@ export default function Check() {
 
       {/* NavBar */}
       <NavBar>타이틀입니다.</NavBar>
+      <br />
 
       {/* Issue */}
       <IssueStore
         issueStyle={IssueStyle.ISSUE_TOGGLE}
         title="이슈 제목 입니다아아하나둘셋넷다섯"
+        content="ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ안녕난나아여여영여여여여여여여여여어어어어어어엉어어어어어어어"
+      />
+      <br />
+      <IssueStore
+        issueStyle={IssueStyle.ISSUE_ALERT}
+        title="이슈 사항 제목"
         content="ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ안녕난나아여여영여여여여여여여여여어어어어어어엉어어어어어어어"
       />
     </>

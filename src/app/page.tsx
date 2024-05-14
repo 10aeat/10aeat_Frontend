@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <Check />
-
+      <br />
       <CardStore
         cardStyle={CardStyle.ALL}
         title="2층 우수관 하자발ㅇㅇㅇ생 조치보다많ㅇ다"
