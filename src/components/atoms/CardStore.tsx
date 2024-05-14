@@ -2,6 +2,8 @@ import Image from 'next/image'
 import '../../styles/cardStyle.scss'
 import eye from '../../../public/icons/eye.svg'
 import messages from '../../../public/icons/messages.svg'
+import star_fill from '../../../public/icons/star_fill.svg'
+import star_linear from '../../../public/icons/star_linear.svg'
 
 export enum CardStyle {
   ALL = 'ALL',
@@ -45,7 +47,13 @@ export default function CardStore({
               <div className="inline-flex flex-col items-start gap-[5px] relative flex-[0_0_auto] mr-[-1.00px]">
                 <div className="flex w-[246px] items-start gap-[12px] relative flex-[0_0_auto]">
                   <div className="title">{title}</div>
+                  <Image
+                    src={star_linear}
+                    alt="image"
+                    className="w-[24px] h-[24px]"
+                  />
                 </div>
+
                 <div className="contents text-gray-600 ">
                   공사기간 : {period}
                 </div>
