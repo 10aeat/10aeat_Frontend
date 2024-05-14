@@ -1,0 +1,14 @@
+@import './util.scss';
+
+.count,
+.text_change_content {
+  @include body3_r;
+}
+
+.text_change_tooltip {
+  @include box_shadow_secondary;
+}
+
+.text_change_title {
+  @include body2_sb;
+}

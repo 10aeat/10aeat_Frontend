@@ -47,19 +47,23 @@ export default function IssueStore({ issueStyle, title, content }: Props) {
                   />
                 </div>
                 <span
-                  className={`title ${isOpen ? 'overflow-visible whitespace-normal' : 'overflow-hidden whitespace-nowrap'} max-w-[239px]`}
+                  className={`issueTitle1 ${isOpen ? 'overflow-visible whitespace-normal' : 'overflow-hidden whitespace-nowrap'} max-w-[239px]`}
                 >
                   {title}
                 </span>
               </div>
-              <Image
-                src={`${isOpen ? '/icons/arrow_up_large.svg' : '/icons/arrow_down_large.svg'}`}
-                width={24}
-                height={24}
-                alt="arrow_down_large"
-                className="cursor-pointer"
-                onClick={() => setIsOpen(!isOpen)}
-              />
+              <div
+                className={`flex h-full ${isOpen ? 'items-start' : 'items-center'} `}
+              >
+                <Image
+                  src={`${isOpen ? '/icons/arrow_up_large.svg' : '/icons/arrow_down_large.svg'}`}
+                  width={24}
+                  height={24}
+                  alt="arrow_down_large"
+                  className="cursor-pointer"
+                  onClick={() => setIsOpen(!isOpen)}
+                />
+              </div>
             </div>
             {isOpen && (
               <>
@@ -89,7 +93,39 @@ export default function IssueStore({ issueStyle, title, content }: Props) {
             )}
           </div>
         )
+      case IssueStyle.ISSUE_ALERT:
+        return (
+          <div className="w-[343px] h-auto p-[16px] flex-col shrink-0 justify-between items-center font-Pretendard rounded-[16px] bg-white px-[16px]">
+            <div className="flex h-full">
+              <div className="flex pr-[8px] items-center font-semibold text-red-500">
+                <div className="flex h-full items-center">
+                  <Image
+                    src="/icons/danger_circle.svg"
+                    width={32}
+                    height={32}
+                    alt="danger_circle"
+                    className="mr-[8px]"
+                  />
+                </div>
+                확인해야 할 사항이 있어요!
+              </div>
+            </div>
+            <>
+              <div className="content my-[16px] px-[24px] py-[16px] justify-center items-center gap-[8px] rounded-[16px] bg-gray-100 h-auto font-Pretendard text-gray-900">
+                <div className="issueTitle2 mb-[8px]">{title}</div>
+                {content}
+              </div>
 
+              {/* ButtonStore에서 생기면 버튼 가져오기 */}
+              <button
+                type="button"
+                className="w-[311px] bg-blue-600 rounded-[16px] text-white p-[14px]"
+              >
+                확인했어요
+              </button>
+            </>
+          </div>
+        )
       default:
         return null
     }
