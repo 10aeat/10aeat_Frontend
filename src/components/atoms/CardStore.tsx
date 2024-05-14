@@ -57,7 +57,7 @@ export default function CardStore({
                 </div>
 
                 <div className="contents text-gray-600 ">
-                  공사기간 : {period}
+                  진행기간 : {period}
                 </div>
               </div>
             </div>
@@ -105,7 +105,7 @@ export default function CardStore({
                 </div>
 
                 <div className="contents text-gray-600 ">
-                  공사기간 : {period}
+                  진행기간 : {period}
                 </div>
               </div>
             </div>
