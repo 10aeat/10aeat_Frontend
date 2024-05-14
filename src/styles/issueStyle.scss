@@ -1,0 +1,8 @@
+@import './util.scss';
+
+.title {
+  @include body1_sb;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
