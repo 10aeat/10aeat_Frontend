@@ -21,7 +21,7 @@ export default function ButtonStore({
         return (
           <button
             type="button"
-            className="textChange flex justify-center items-center w-[65px] h-6 p-2 gap-2 rounded-[100px] bg-gray-200 shrink-0 font-Pretendard font-medium text-gray-700 capitalize"
+            className="textChange flex justify-center items-center w-[65px] h-6 p-2 gap-2 rounded-[100px] bg-gray-200 shrink-0 font-Pretendard font-medium text-gray-700 capitalize cursor-pointer"
             onClick={onClickFunction}
           >
             {children}
