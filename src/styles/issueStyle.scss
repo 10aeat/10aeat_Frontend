@@ -6,3 +6,11 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.content {
+  @include body2_r;
+}
+
+.button {
+  @include body3_r;
+}

@@ -3,6 +3,7 @@
 import '../../styles/issueStyle.scss'
 import Image from 'next/image'
 import React, { useState } from 'react'
+import { useIssueStore } from '../store/IssueStore'
 
 export enum IssueStyle {
   ISSUE_TOGGLE = 'ISSUE_TOGGLE',
@@ -16,14 +17,21 @@ interface Props {
 }
 
 export default function IssueStore({ issueStyle, title, content }: Props) {
+  const { isVisible, setIsVisible } = useIssueStore()
   const [isOpen, setIsOpen] = useState(false)
 
+  const hideComponent = () => {
+    setIsVisible(false)
+  }
+
   const selectIssue = () => {
+    if (!isVisible) return null
+
     switch (issueStyle) {
       case IssueStyle.ISSUE_TOGGLE:
         return (
           <div
-            className={`w-[343px] ${isOpen ? 'h-auto p-[16px]' : 'h-[64px]'} flex-col shirnk-0 justify-between items-center font-Pretendard rounded-[16px] bg-white px-[16px] `}
+            className={`w-[343px] ${isOpen ? 'h-auto p-[16px]' : 'h-[64px]'} flex-col shrink-0 justify-between items-center font-Pretendard rounded-[16px] bg-white px-[16px] `}
           >
             <div className="flex h-full">
               <div className="flex pr-[8px] items-center font-semibold text-gray-900">
@@ -41,7 +49,7 @@ export default function IssueStore({ issueStyle, title, content }: Props) {
                 </span>
               </div>
               <Image
-                src="/icons/arrow_down_large.svg"
+                src={`${isOpen ? '/icons/arrow_up_large.svg' : '/icons/arrow_down_large.svg'}`}
                 width={24}
                 height={24}
                 alt="arrow_down_large"
@@ -51,14 +59,25 @@ export default function IssueStore({ issueStyle, title, content }: Props) {
             </div>
             {isOpen && (
               <>
-                <div className="my-[16px] px-[24px] py-[16px] justify-center items-center gap-[8px] rounded-[16px] bg-gray-100 h-auto font-Pretendard">
+                <div className="content my-[16px] px-[24px] py-[16px] justify-center items-center gap-[8px] rounded-[16px] bg-gray-100 h-auto font-Pretendard text-gray-900">
                   {content}
                 </div>
-                <div className="flex justify-between">
-                  <button type="button" className="bg-green-100 w-[150px]">
+                <div
+                  className="flex justify-between text-gray-700
+                "
+                >
+                  <button
+                    type="button"
+                    className="button w-[150px]"
+                    onClick={hideComponent}
+                  >
                     다시 보지 않음
                   </button>
-                  <button type="button" className="bg-green-100 w-[150px]">
+                  <button
+                    type="button"
+                    className="button w-[150px]"
+                    onClick={() => setIsOpen(!isOpen)}
+                  >
                     접어 두기
                   </button>
                 </div>
