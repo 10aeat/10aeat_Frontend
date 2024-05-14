@@ -1,0 +1,14 @@
+@import './util.scss';
+
+.title {
+  @include body1_sb;
+  text-overflow: ellipsis;
+}
+
+.content {
+  @include body2_r;
+}
+
+.button {
+  @include body3_r;
+}

@@ -1,4 +1,7 @@
 {
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "prettier"],
   "extends": [
     "next/core-web-vitals",
     "airbnb",
@@ -9,10 +12,12 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "import/extensions": "off",
     "react/style-prop-object": "off",
     "react/require-default-props": "off",
     "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+    "import/prefer-default-export": "off"
   },
   "ignorePatterns": ["next.config.mjs"]
 }
