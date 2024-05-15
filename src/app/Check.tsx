@@ -9,6 +9,7 @@ import TooltipStore, { TooltipStyle } from '@/components/atoms/TooltipStore'
 export default function Check() {
   return (
     <>
+      {/* 혜원 */}
       {/* Tag */}
       <BoxStore boxStyle={BoxStyle.WAIT_TAG} />
       <BoxStore boxStyle={BoxStyle.PROCEEDING_TAG} />
@@ -17,7 +18,10 @@ export default function Check() {
       <BoxStore boxStyle={BoxStyle.BADGE} />
 
       {/* NavBar */}
-      <NavBar>타이틀입니다.</NavBar>
+      <NavBar isTextChange={true} isTitle={false}></NavBar>
+      <NavBar isTextChange={false} isTitle={true}>
+        법정 시설물 유지관리 점검 현황
+      </NavBar>
       <br />
 
       {/* Issue */}
@@ -38,6 +42,7 @@ export default function Check() {
       <TooltipStore tooltipStyle={TooltipStyle.COUNT} count={10} />
       <TooltipStore tooltipStyle={TooltipStyle.TEXT_CHANGE} />
 
+      {/* 예림 */}
       {/* Card */}
       <CardStore
         cardStyle={CardStyle.ALL}
