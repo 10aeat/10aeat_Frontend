@@ -14,9 +14,12 @@ export default function Check() {
       <BoxStore boxStyle={BoxStyle.DEFAULT_TAG}>설치</BoxStore>
       <BoxStore boxStyle={BoxStyle.DEFAULT_TAG}>보수</BoxStore>
       <BoxStore boxStyle={BoxStyle.DEFAULT_TAG}>교체</BoxStore>
-      <BoxStore boxStyle={BoxStyle.WAIT_TAG} />
+      {/* <BoxStore boxStyle={BoxStyle.WAIT_TAG} />
       <BoxStore boxStyle={BoxStyle.PROCEEDING_TAG} />
-      <BoxStore boxStyle={BoxStyle.DONE_TAG} />
+      <BoxStore boxStyle={BoxStyle.DONE_TAG} /> */}
+      <BoxStore boxStyle={BoxStyle.TAG} progress={'PENDING'} />
+      <BoxStore boxStyle={BoxStyle.TAG} progress={'INPROGRESS'} />
+      <BoxStore boxStyle={BoxStyle.TAG} progress={'COMPLETE'} />
       {/* Badge */}
       <BoxStore boxStyle={BoxStyle.BADGE} />
 
