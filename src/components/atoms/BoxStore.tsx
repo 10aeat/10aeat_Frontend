@@ -1,6 +1,7 @@
 import '../../styles/boxStyle.scss'
 
 export enum BoxStyle {
+  DEFAULT_TAG = 'DEFAULT_TAG',
   WAIT_TAG = 'WAIT_TAG',
   PROCEEDING_TAG = 'PROCEEDING_TAG',
   DONE_TAG = 'DONE_TAG',
@@ -18,9 +19,15 @@ export default function BoxStore({
 }: Props) {
   const selectBox = () => {
     switch (boxStyle) {
+      case BoxStyle.DEFAULT_TAG:
+        return (
+          <div className="tag flex border-solid border-[1px] border-gray-300 bg-gray-50 text-gray-700 capitalize leading-[1px] font-Pretendard">
+            설치
+          </div>
+        )
       case BoxStyle.WAIT_TAG:
         return (
-          <div className="tag flex border-solid border-[1px] border-gray-500 bg-gray-100  text-gray-700 capitalize leading-[1px] font-Pretendard">
+          <div className="tag flex border-solid border-[1px] border-gray-500 bg-gray-100 text-gray-700 capitalize leading-[1px] font-Pretendard">
             <div className="w-2 h-2 rounded-lg bg-gray-500" />
             대기
           </div>

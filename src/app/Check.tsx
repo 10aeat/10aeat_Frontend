@@ -11,6 +11,7 @@ export default function Check() {
     <>
       {/* 혜원 */}
       {/* Tag */}
+      <BoxStore boxStyle={BoxStyle.DEFAULT_TAG} />
       <BoxStore boxStyle={BoxStyle.WAIT_TAG} />
       <BoxStore boxStyle={BoxStyle.PROCEEDING_TAG} />
       <BoxStore boxStyle={BoxStyle.DONE_TAG} />
@@ -40,7 +41,6 @@ export default function Check() {
 
       {/* Tooltips */}
       <TooltipStore tooltipStyle={TooltipStyle.COUNT} count={10} />
-      <TooltipStore tooltipStyle={TooltipStyle.TEXT_CHANGE} />
 
       {/* 예림 */}
       {/* Card */}

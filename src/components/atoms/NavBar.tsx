@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import ButtonStore, { ButtonStyle } from './ButtonStore'
-import TooltipStore from './TooltipStore'
+import TooltipStore, { TooltipStyle } from './TooltipStore'
 
 interface Props {
   children?: React.ReactNode
@@ -14,11 +14,7 @@ interface Props {
 
 export default function NavBar({ children, isTitle, isTextChange }: Props) {
   const router = useRouter()
-  const [isTextChangeVisible, setIsTextChangeVisible] = useState(false)
-
-  const toggleTextChange = () => {
-    setIsTextChangeVisible(!isTextChangeVisible)
-  }
+  const [isTooltipVisible, setIsTooltipVisible] = useState(false)
 
   return (
     <div className="relative flex items-center justify-between w-[375px] h-11 font-Pretendard font-bold text-gray-900 text-lg capitalize px-[16px]">
@@ -37,16 +33,23 @@ export default function NavBar({ children, isTitle, isTextChange }: Props) {
           {children}
         </div>
       )}
-      <div className="flex justify-end z-10">
-        {isTextChange ? (
+      {isTextChange && (
+        <div className="relative flex justify-end z-10">
           <ButtonStore
             buttonStyle={ButtonStyle.TEXT_CHANGE}
-            onClickFunction={toggleTextChange}
+            onClickFunction={() => {
+              setIsTooltipVisible(!isTooltipVisible)
+            }}
           >
             글자크기
           </ButtonStore>
-        ) : null}
-      </div>
+          {isTooltipVisible && (
+            <div className="absolute mt-5">
+              <TooltipStore tooltipStyle={TooltipStyle.TEXT_CHANGE} />
+            </div>
+          )}
+        </div>
+      )}
     </div>
   )
 }
