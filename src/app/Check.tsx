@@ -11,7 +11,9 @@ export default function Check() {
     <>
       {/* 혜원 */}
       {/* Tag */}
-      <BoxStore boxStyle={BoxStyle.DEFAULT_TAG} />
+      <BoxStore boxStyle={BoxStyle.DEFAULT_TAG}>설치</BoxStore>
+      <BoxStore boxStyle={BoxStyle.DEFAULT_TAG}>보수</BoxStore>
+      <BoxStore boxStyle={BoxStyle.DEFAULT_TAG}>교체</BoxStore>
       <BoxStore boxStyle={BoxStyle.WAIT_TAG} />
       <BoxStore boxStyle={BoxStyle.PROCEEDING_TAG} />
       <BoxStore boxStyle={BoxStyle.DONE_TAG} />

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import '../../styles/boxStyle.scss'
 
 export enum BoxStyle {
@@ -10,19 +11,16 @@ export enum BoxStyle {
 
 interface Props {
   boxStyle: BoxStyle
-  // children?: React.ReactNode
+  children?: React.ReactNode
 }
 
-export default function BoxStore({
-  boxStyle,
-  // children,
-}: Props) {
+export default function BoxStore({ boxStyle, children }: Props) {
   const selectBox = () => {
     switch (boxStyle) {
       case BoxStyle.DEFAULT_TAG:
         return (
           <div className="tag flex border-solid border-[1px] border-gray-300 bg-gray-50 text-gray-700 capitalize leading-[1px] font-Pretendard">
-            설치
+            {children}
           </div>
         )
       case BoxStyle.WAIT_TAG:
