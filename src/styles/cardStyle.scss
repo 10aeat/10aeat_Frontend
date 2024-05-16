@@ -1,4 +1,4 @@
-@use '../styles/util';
+@import './util.scss';
 
 .card {
   display: flex;
@@ -12,26 +12,25 @@
   flex-wrap: wrap;
   border-radius: 18px;
   background: #fff;
-  // @include box_shadow;
+  @include box_shadow;
 }
 
 .title {
-  @include util.body1_sb;
+  @include body2_sb;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-family: Pretendard;
-  font-weight: 700;
-  line-height: 150%; /* 27px */
-  letter-spacing: -0.342px;
+  // font-weight: 700;
+  // line-height: 150%; /* 27px */
+  // letter-spacing: -0.342px;
 }
 
 .contents {
-  @include util.body3_r;
+  @include body3_r;
 }
 
 .state {
-  @include util.body2_sb;
+  @include body2_sb;
 }
 
 .icon {
