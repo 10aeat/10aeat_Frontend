@@ -1,0 +1,24 @@
+@import './util.scss';
+
+.box {
+  display: flex;
+  width: 343px;
+  height: 52px;
+  padding: 16px;
+  align-items: flex-end;
+  align-content: flex-end;
+  gap: 10px 8px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  border-radius: 18px;
+  background: #fff;
+}
+
+.content {
+  @include body3_r;
+  text-align: center;
+}
+
+.bold {
+  font-weight: 700;
+}

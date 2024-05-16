@@ -4,6 +4,7 @@ import BoxStore, { BoxStyle } from '@/components/atoms/BoxStore'
 import CardStore, { CardStyle } from '@/components/atoms/CardStore'
 import IssueStore, { IssueStyle } from '@/components/atoms/IssueStore'
 import NavBar from '@/components/atoms/NavBar'
+import ShareBtn from '@/components/atoms/ShareBtn'
 import TooltipStore, { TooltipStyle } from '@/components/atoms/TooltipStore'
 
 export default function Check() {
@@ -79,6 +80,8 @@ export default function Check() {
         view={0}
         comment={0}
       />
+
+      <ShareBtn />
     </>
   )
 }
