@@ -14,9 +14,10 @@
   background: #fff;
 }
 
-.content {
+.share-content {
   @include body3_r;
   text-align: center;
+  line-height: 24px;
 }
 
 .bold {
