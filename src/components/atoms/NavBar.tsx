@@ -3,8 +3,8 @@
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
-import ButtonStore, { ButtonStyle } from './ButtonStore'
-import TooltipStore, { TooltipStyle } from './TooltipStore'
+import ButtonStore, { ButtonStyle } from './Button'
+import TooltipStore, { TooltipStyle } from './Tooltip'
 
 interface Props {
   children?: React.ReactNode

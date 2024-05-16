@@ -1,10 +1,10 @@
 'use client'
 
-import BoxStore, { BoxStyle } from '@/components/atoms/BoxStore'
-import CardStore, { CardStyle } from '@/components/atoms/CardStore'
-import IssueStore, { IssueStyle } from '@/components/atoms/IssueStore'
+import BoxStore, { BoxStyle } from '@/components/atoms/TagBadge'
+import CardStore, { CardStyle } from '@/components/atoms/Card'
+import IssueStore, { IssueStyle } from '@/components/atoms/Issue'
 import NavBar from '@/components/atoms/NavBar'
-import TooltipStore, { TooltipStyle } from '@/components/atoms/TooltipStore'
+import TooltipStore, { TooltipStyle } from '@/components/atoms/Tooltip'
 
 export default function Check() {
   return (
@@ -14,9 +14,7 @@ export default function Check() {
       <BoxStore boxStyle={BoxStyle.DEFAULT_TAG}>설치</BoxStore>
       <BoxStore boxStyle={BoxStyle.DEFAULT_TAG}>보수</BoxStore>
       <BoxStore boxStyle={BoxStyle.DEFAULT_TAG}>교체</BoxStore>
-      {/* <BoxStore boxStyle={BoxStyle.WAIT_TAG} />
-      <BoxStore boxStyle={BoxStyle.PROCEEDING_TAG} />
-      <BoxStore boxStyle={BoxStyle.DONE_TAG} /> */}
+
       <BoxStore boxStyle={BoxStyle.TAG} progress={'PENDING'} />
       <BoxStore boxStyle={BoxStyle.TAG} progress={'INPROGRESS'} />
       <BoxStore boxStyle={BoxStyle.TAG} progress={'COMPLETE'} />

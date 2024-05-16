@@ -1,5 +1,4 @@
 import React from 'react'
-import '../../styles/boxStyle.scss'
 
 export enum BoxStyle {
   DEFAULT_TAG = 'DEFAULT_TAG',
@@ -18,13 +17,13 @@ export default function BoxStore({ boxStyle, children, progress }: Props) {
     switch (boxStyle) {
       case BoxStyle.DEFAULT_TAG:
         return (
-          <div className="tag flex border-solid border-[1px] border-gray-300 bg-gray-50 text-gray-700 capitalize leading-[1px] font-Pretendard">
+          <div className="text-sm font-medium inline-flex h-[18px] p-[10px] items-center gap-[6px] shrink-0 rounded-[8px] border-solid border-[1px] border-gray-300 bg-gray-50 text-gray-700 capitalize leading-[1px] font-Pretendard">
             {children}
           </div>
         )
       case BoxStyle.TAG:
         let tagClass =
-          'tag flex border-solid border-[1px] text-gray-700 capitalize leading-[1px] font-Pretendard'
+          'text-sm font-medium inline-flex h-[18px] p-[10px] items-center gap-[6px] shrink-0 rounded-[8px] flex border-solid border-[1px] text-gray-700 capitalize leading-[1px] font-Pretendard'
         let progressText = ''
         let dotClass = 'w-2 h-2 rounded-lg'
         switch (progress) {
@@ -54,7 +53,7 @@ export default function BoxStore({ boxStyle, children, progress }: Props) {
         )
       case BoxStyle.BADGE:
         return (
-          <div className="badge w-[58px] h-[28px] flex shrink-0 justify-center items-center text-blue-500 rounded-[30px]">
+          <div className="text-sm font-medium w-[58px] h-[28px] flex shrink-0 justify-center items-center text-blue-500 rounded-[30px] bg-badge-gradient">
             <div className="w-[56px] h-[26px] flex shrink-0 justify-center items-center rounded-[30px] bg-white leading-[1px] font-Pretendard font-semibold">
               NEW
             </div>
