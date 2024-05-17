@@ -117,6 +117,9 @@ export default function Check() {
       <ButtonStore buttonStyle={ButtonStyle.MONTLY_SELECT}></ButtonStore>
       <ButtonStore buttonStyle={ButtonStyle.SAVE}></ButtonStore>
       <ButtonStore buttonStyle={ButtonStyle.SAVE_SELECT}></ButtonStore>
+      <ButtonStore buttonStyle={ButtonStyle.HUG}></ButtonStore>
+      <ButtonStore buttonStyle={ButtonStyle.HUG_BLUE}></ButtonStore>
+      <ButtonStore buttonStyle={ButtonStyle.PLUS_BUTTON}></ButtonStore>
       </>
   )
 }

@@ -16,7 +16,10 @@ export enum ButtonStyle {
   MONTLY = 'MONTLY',
   MONTLY_SELECT = 'MONTLY_SELECT',
   SAVE = 'SAVE',
-  SAVE_SELECT = 'SAVE_SELECT'
+  SAVE_SELECT = 'SAVE_SELECT',
+  HUG = 'HUG',
+  HUG_BLUE = 'HUG_BLUE',
+  PLUS_BUTTON = 'PLUS_BUTTON'
 }
 
 interface Props {
@@ -206,6 +209,37 @@ export default function ButtonStore({
               height={24}
               alt="star_fill_blue"
             />
+          </button>
+        )
+        case ButtonStyle.HUG:
+        return (
+          <button
+            type="button"
+            className="flex px-[20px] py-[12px] justify-center items-center gap-[4px] rounded-[16px] bg-gray-200 text-gray-700 text-center text-base font-normal font-Pretendard"
+            onClick={onClickFunction}
+          >
+            전체
+          </button>
+        )       
+        case ButtonStyle.HUG_BLUE:
+        return (
+          <button
+            type="button"
+            className="flex px-[20px] py-[12px] justify-center items-center gap-[4px] rounded-[16px] bg-blue-50 border border-blue-500 text-blue-600 text-center text-base font-normal font-Pretendard"
+            onClick={onClickFunction}
+          >
+            전체 00
+          </button>
+        )
+        case ButtonStyle.PLUS_BUTTON:
+        return (
+          <button
+            type="button"
+            className="flex p-[14px] justify-center items-center gap-[8px] rounded-[12px] bg-blue-600 text-white text-center text-xl font-semibold font-Pretendard"
+            onClick={onClickFunction}
+          >
+            <p className="w-[24px] h-[24px]">+</p>
+            <p>버튼</p>
           </button>
         )
       default:
