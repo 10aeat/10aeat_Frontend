@@ -1,6 +1,5 @@
 'use client'
 
-import '../../styles/issueStyle.scss'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { useIssueStore } from '../store/IssueStore'
@@ -47,7 +46,7 @@ export default function IssueStore({ issueStyle, title, content }: Props) {
                   />
                 </div>
                 <span
-                  className={`issueTitle1 ${isOpen ? 'overflow-visible whitespace-normal' : 'overflow-hidden whitespace-nowrap'} max-w-[239px]`}
+                  className={`${isOpen ? 'overflow-visible whitespace-normal' : 'text-ellipsis overflow-hidden whitespace-nowrap'} max-w-[239px] text-lg font-bold`}
                 >
                   {title}
                 </span>
@@ -67,7 +66,7 @@ export default function IssueStore({ issueStyle, title, content }: Props) {
             </div>
             {isOpen && (
               <>
-                <div className="content my-[16px] px-[24px] py-[16px] justify-center items-center gap-[8px] rounded-[16px] bg-gray-100 h-auto font-Pretendard text-gray-900">
+                <div className="my-[16px] px-[24px] py-[16px] justify-center items-center gap-[8px] rounded-[16px] bg-gray-100 h-auto font-Pretendard text-gray-900 text-base">
                   {content}
                 </div>
                 <div
@@ -76,14 +75,14 @@ export default function IssueStore({ issueStyle, title, content }: Props) {
                 >
                   <button
                     type="button"
-                    className="button w-[150px]"
+                    className="text-sm w-[150px]"
                     onClick={hideComponent}
                   >
                     다시 보지 않음
                   </button>
                   <button
                     type="button"
-                    className="button w-[150px]"
+                    className="text-sm w-[150px]"
                     onClick={() => setIsOpen(!isOpen)}
                   >
                     접어 두기
@@ -111,8 +110,8 @@ export default function IssueStore({ issueStyle, title, content }: Props) {
               </div>
             </div>
             <>
-              <div className="content my-[16px] px-[24px] py-[16px] justify-center items-center gap-[8px] rounded-[16px] bg-gray-100 h-auto font-Pretendard text-gray-900">
-                <div className="issueTitle2 mb-[8px]">{title}</div>
+              <div className="text-base my-[16px] px-[24px] py-[16px] justify-center items-center gap-[8px] rounded-[16px] bg-gray-100 h-auto font-Pretendard text-gray-900">
+                <div className="text-2xl font-bold mb-[8px]">{title}</div>
                 {content}
               </div>
 

@@ -1,24 +1,32 @@
 'use client'
 
-import BoxStore, { BoxStyle } from '@/components/atoms/BoxStore'
-import CardStore, { CardStyle } from '@/components/atoms/CardStore'
-import IssueStore, { IssueStyle } from '@/components/atoms/IssueStore'
+import BoxStore, { BoxStyle } from '@/components/atoms/TagBadge'
+import CardStore, { CardStyle } from '@/components/atoms/Card'
+import IssueStore, { IssueStyle } from '@/components/atoms/Issue'
 import NavBar from '@/components/atoms/NavBar'
+import TooltipStore, { TooltipStyle } from '@/components/atoms/Tooltip'
 import NoBox from '@/components/atoms/NoBox'
 import ShareBtn from '@/components/atoms/ShareBtn'
-import TooltipStore, { TooltipStyle } from '@/components/atoms/TooltipStore'
 
 export default function Check() {
   return (
     <>
+      {/* 혜원 */}
       {/* Tag */}
-      <BoxStore boxStyle={BoxStyle.WAIT_TAG} />
-      <BoxStore boxStyle={BoxStyle.PROCEEDING_TAG} />
-      <BoxStore boxStyle={BoxStyle.DONE_TAG} />
+      <BoxStore boxStyle={BoxStyle.DEFAULT_TAG}>설치</BoxStore>
+      <BoxStore boxStyle={BoxStyle.DEFAULT_TAG}>보수</BoxStore>
+      <BoxStore boxStyle={BoxStyle.DEFAULT_TAG}>교체</BoxStore>
+
+      <BoxStore boxStyle={BoxStyle.TAG} progress={'PENDING'} />
+      <BoxStore boxStyle={BoxStyle.TAG} progress={'INPROGRESS'} />
+      <BoxStore boxStyle={BoxStyle.TAG} progress={'COMPLETE'} />
       {/* Badge */}
       <BoxStore boxStyle={BoxStyle.BADGE} />
       {/* NavBar */}
-      <NavBar>타이틀입니다.</NavBar>
+      <NavBar isTextChange={true} isTitle={false}></NavBar>
+      <NavBar isTextChange={false} isTitle={true}>
+        법정 시설물 유지관리 점검 현황
+      </NavBar>
       <br />
       {/* Issue */}
       <IssueStore
@@ -35,8 +43,8 @@ export default function Check() {
       <br />
       {/* Tooltips */}
       <TooltipStore tooltipStyle={TooltipStyle.COUNT} count={10} />
-      <TooltipStore tooltipStyle={TooltipStyle.TEXT_CHANGE} />
-      <br />
+
+      {/* 예림 */}
       {/* Card */}
       <CardStore
         cardStyle={CardStyle.ALL}

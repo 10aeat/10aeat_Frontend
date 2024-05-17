@@ -1,4 +1,3 @@
-import '../../styles/tooltipStyle.scss'
 import Image from 'next/image'
 
 export enum TooltipStyle {
@@ -18,7 +17,7 @@ export default function TooltipStore({ tooltipStyle, count }: Props) {
         return (
           <div className="inline-flex flex-col items-center">
             <Image src="/icons/polygon3.svg" width={8} height={6} alt="tip" />
-            <div className="count flex-1 h-[24px] min-w-[38px] px-[4px] items-center justify-center gap-[8px] rounded-[4px] bg-gray-600 font-Pretendard text-white">
+            <div className="flex-1 h-[24px] min-w-[38px] px-[4px] items-center justify-center gap-[8px] rounded-[4px] bg-gray-600 font-Pretendard text-sm text-white">
               {count}회
             </div>
           </div>
@@ -32,13 +31,15 @@ export default function TooltipStore({ tooltipStyle, count }: Props) {
                 width={16}
                 height={8}
                 alt="tip"
-                className="mr-[20px] text_change_tooltip z-10"
+                className="mr-[20px] shadow-secondary z-10"
               />
             </div>
-            <div className="text_change_tooltip flex-col shrink-0 h-[146px] w-[304px] px-[4px] items-start justify-center gap-[8px] rounded-[18px] bg-white font-Pretendard">
+            <div className="shadow-secondary flex-col shrink-0 h-[146px] w-[304px] px-[4px] items-start justify-center gap-[8px] rounded-[18px] bg-white font-Pretendard">
               <div className="flex-col w-[256px] py-[20px] pl-[20px]">
-                <p className="text_change_title leading-6">글자 크기 설정</p>
-                <span className="text_change_content leading-6">
+                <p className="text-base font-semibold leading-6">
+                  글자 크기 설정
+                </p>
+                <span className="text-sm">
                   보기 편한 글자 크기로 변경해보세요!
                 </span>
               </div>
