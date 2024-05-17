@@ -5,10 +5,11 @@ interface Props {
   type: string
 }
 
+// 댓글 or 진행 내용 없을 때 카드
 export default function NoBox({ type }: Props) {
   const noBox = () => {
     return (
-      <div className="no-card justify-center font-Pretendard">
+      <button className="no-card justify-center font-Pretendard">
         <div className="flex h-[48px] flex-col items-center gap-2">
           {type === '댓글' ? (
             <>
@@ -48,7 +49,7 @@ export default function NoBox({ type }: Props) {
             </>
           ) : null}
         </div>
-      </div>
+      </button>
     )
   }
   return <>{noBox()}</>
