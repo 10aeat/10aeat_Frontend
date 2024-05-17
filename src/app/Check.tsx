@@ -7,6 +7,7 @@ import NavBar from '@/components/atoms/NavBar'
 import TooltipStore, { TooltipStyle } from '@/components/atoms/Tooltip'
 import NoBox from '@/components/atoms/NoBox'
 import ShareBtn from '@/components/atoms/ShareBtn'
+import ButtonStore, {ButtonStyle} from '@/components/atoms/Button'
 
 export default function Check() {
   return (
@@ -99,6 +100,23 @@ export default function Check() {
       <br />
       <NoBox type="진행 내용" />
       <br />
-    </>
+
+      {/* 인배 */}
+      <ButtonStore buttonStyle={ButtonStyle.BASE}></ButtonStore>
+      <ButtonStore buttonStyle={ButtonStyle.LARGE}></ButtonStore>
+      <ButtonStore buttonStyle={ButtonStyle.XLARGE}></ButtonStore>
+      <ButtonStore buttonStyle={ButtonStyle.BASE_SELECT}></ButtonStore>
+      <ButtonStore buttonStyle={ButtonStyle.LARGE_SELECT}></ButtonStore>
+      <ButtonStore buttonStyle={ButtonStyle.XLARGE_SELECT}></ButtonStore>
+      <ButtonStore buttonStyle={ButtonStyle.FONT_SIZE}></ButtonStore>
+      <ButtonStore buttonStyle={ButtonStyle.READ_MORE}></ButtonStore>
+      <ButtonStore buttonStyle={ButtonStyle.FILTER_SELECT}></ButtonStore>
+      <ButtonStore buttonStyle={ButtonStyle.FILTER}></ButtonStore>
+      <ButtonStore buttonStyle={ButtonStyle.MONTLY_NONE}></ButtonStore>
+      <ButtonStore buttonStyle={ButtonStyle.MONTLY}></ButtonStore>
+      <ButtonStore buttonStyle={ButtonStyle.MONTLY_SELECT}></ButtonStore>
+      <ButtonStore buttonStyle={ButtonStyle.SAVE}></ButtonStore>
+      <ButtonStore buttonStyle={ButtonStyle.SAVE_SELECT}></ButtonStore>
+      </>
   )
 }
