@@ -1,5 +1,5 @@
 import Image from 'next/image'
-// import '../../styles/cardStyle.scss'
+
 import eye from '../../../public/icons/eye.svg'
 import messages from '../../../public/icons/messages.svg'
 import star_fill from '../../../public/icons/star_fill.svg'

@@ -7,7 +7,7 @@ import NavBar from '@/components/atoms/NavBar'
 import TooltipStore, { TooltipStyle } from '@/components/atoms/Tooltip'
 import NoBox from '@/components/atoms/NoBox'
 import ShareBtn from '@/components/atoms/ShareBtn'
-import ButtonStore, {ButtonStyle} from '@/components/atoms/Button'
+import ButtonStore, { ButtonStyle } from '@/components/atoms/Button'
 
 export default function Check() {
   return (
@@ -57,7 +57,6 @@ export default function Check() {
         view={0}
         comment={0}
       />
-      <br />
       <CardStore
         cardStyle={CardStyle.NO_IMG}
         img_src=""
@@ -68,7 +67,6 @@ export default function Check() {
         view={0}
         comment={0}
       />
-      <br />
       <CardStore
         cardStyle={CardStyle.NO_PERIOD}
         img_src="https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cMHMTT7DiwDF5-BUGJhrN3YemZfwfckwHeaBMM0phs7pRTiaWZoxT4EYBe3YV5lMRziHY32oMVqrSBwqk4jyc1tXbeLgfTYzEDqa8zSUoqbAe70hocphLaXcw2e2ipKms8A7xnqebRf34U6kb-m-KC96kWDnGZxzW0hLInWAUtCr8gpRH~19ZPEEATiOSCd6tSMR3lGsMCUDmq4YF~Z~jjmM9p54s1VdNoWHEN3wurAxZN6SItiDkQRYMYdybFinnmXYeiVkg826ZCnFs-oNsEHGjEbGfCvVX52cDaN2clOXHTSEdvHUYz3hnQ~bJEBPSDKPVLMcrDhcchuahxNV0w__"
@@ -79,7 +77,6 @@ export default function Check() {
         view={0}
         comment={0}
       />
-      <br />
       <CardStore
         cardStyle={CardStyle.ALL_NO}
         img_src="https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cMHMTT7DiwDF5-BUGJhrN3YemZfwfckwHeaBMM0phs7pRTiaWZoxT4EYBe3YV5lMRziHY32oMVqrSBwqk4jyc1tXbeLgfTYzEDqa8zSUoqbAe70hocphLaXcw2e2ipKms8A7xnqebRf34U6kb-m-KC96kWDnGZxzW0hLInWAUtCr8gpRH~19ZPEEATiOSCd6tSMR3lGsMCUDmq4YF~Z~jjmM9p54s1VdNoWHEN3wurAxZN6SItiDkQRYMYdybFinnmXYeiVkg826ZCnFs-oNsEHGjEbGfCvVX52cDaN2clOXHTSEdvHUYz3hnQ~bJEBPSDKPVLMcrDhcchuahxNV0w__"
@@ -90,11 +87,8 @@ export default function Check() {
         view={0}
         comment={0}
       />
-      <br />
       {/* Share */}
       <ShareBtn />
-      <br />
-
       {/* NoBox */}
       <NoBox type="댓글" />
       <br />
@@ -120,6 +114,6 @@ export default function Check() {
       <ButtonStore buttonStyle={ButtonStyle.HUG}></ButtonStore>
       <ButtonStore buttonStyle={ButtonStyle.HUG_BLUE}></ButtonStore>
       <ButtonStore buttonStyle={ButtonStyle.PLUS_BUTTON}></ButtonStore>
-      </>
+    </>
   )
 }
