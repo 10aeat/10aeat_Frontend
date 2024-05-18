@@ -38,8 +38,8 @@ export default function CardStore({
     switch (cardStyle) {
       case CardStyle.ALL:
         return (
-          <div className="inline-flex flex-col items-start gap-[8px] relative shadow-boxshadow">
-            <div className="flex flex-wrap w-[343px] h-[124px] items-end gap-[8px_10px] p-[16px] bg-[#ffffff] rounded-[18px] relative shadow-boxshadow">
+          <div className="inline-flex flex-col items-start gap-[8px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
+            <div className="flex flex-wrap w-[343px] h-[124px] items-end gap-[8px_10px] p-[16px] bg-[#ffffff] rounded-[18px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
               <div className="flex w-[311px] items-center gap-[10px] relative">
                 <img
                   className="relative w-[56px] h-[56px] object-cover rounded-lg"
@@ -105,8 +105,8 @@ export default function CardStore({
 
       case CardStyle.NO_IMG:
         return (
-          <div className="inline-flex flex-col items-start gap-[8px] relative shadow-boxshadow">
-            <div className="flex flex-wrap w-[343px] h-[124px] items-end gap-[8px_10px] p-[16px] bg-[#ffffff] rounded-[18px] relative shadow-boxshadow">
+          <div className="inline-flex flex-col items-start gap-[8px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
+            <div className="flex flex-wrap w-[343px] h-[124px] items-end gap-[8px_10px] p-[16px] bg-[#ffffff] rounded-[18px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
               <div className="flex w-[311px] items-center gap-[10px] relative">
                 <div className="flex flex-col items-start gap-[5px] relative ">
                   <div className="flex w-[311px] items-start gap-[12px] relative flex-[0_0_auto]">
@@ -166,8 +166,8 @@ export default function CardStore({
         )
       case CardStyle.NO_PERIOD:
         return (
-          <div className="inline-flex flex-col items-start gap-[8px] relative shadow-boxshadow">
-            <div className="flex flex-wrap w-[343px] h-[124px] items-end gap-[8px_10px] p-[16px] bg-[#ffffff] rounded-[18px] relative shadow-boxshadow">
+          <div className="inline-flex flex-col items-start gap-[8px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
+            <div className="flex flex-wrap w-[343px] h-[124px] items-end gap-[8px_10px] p-[16px] bg-[#ffffff] rounded-[18px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
               <div className="inline-flex items-end gap-[8px] relative flex-[0_0_auto]">
                 <div className="flex w-[275px] h-[56px] items-center gap-[8px] relative">
                   <div className="relative flex-1 h-[27px] mt-[-1.00px] font-Pretendard font-bold text-[18px] tracking-[-0.34px] leading-[27px] whitespace-nowrap overflow-hidden text-ellipsis">
@@ -226,8 +226,8 @@ export default function CardStore({
         )
       case CardStyle.ALL_NO:
         return (
-          <div className="inline-flex flex-col items-start gap-[8px] relative shadow-boxshadow">
-            <div className="flex flex-wrap w-[343px] h-[124px] items-end gap-[8px_10px] p-[16px] bg-[#ffffff] rounded-[18px] relative shadow-boxshadow">
+          <div className="inline-flex flex-col items-start gap-[8px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
+            <div className="flex flex-wrap w-[343px] h-[124px] items-end gap-[8px_10px] p-[16px] bg-[#ffffff] rounded-[18px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
               <div className="inline-flex items-end gap-[8px] relative flex-[0_0_auto]">
                 <div className="flex w-[275px] h-[56px] items-center gap-[8px] relative">
                   <img

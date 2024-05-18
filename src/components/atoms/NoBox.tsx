@@ -8,7 +8,7 @@ interface Props {
 export default function NoBox({ type }: Props) {
   const noBox = () => {
     return (
-      <button className="w-[343px] h-[110px] bg-white rounded-[18px] shadow-boxshadow">
+      <button className="w-[343px] h-[110px] bg-white rounded-[18px] shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
         <div className="flex flex-col w-[206px] h-[48px] items-center gap-[4px] relative left-[68px]">
           {type === '댓글' ? (
             <>
