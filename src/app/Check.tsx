@@ -9,6 +9,7 @@ import NoBox from '@/components/atoms/NoBox'
 import ShareBtn from '@/components/atoms/ShareBtn'
 import ButtonStore, { ButtonStyle } from '@/components/atoms/Button'
 import AdminCard from '@/components/atoms/AdminCard'
+import ResponsibleCompanyCard from '@/components/atoms/ResponsibleCompanyCard'
 
 export default function Check() {
   return (
@@ -95,6 +96,8 @@ export default function Check() {
       <br />
       {/* AdminCard */}
       <AdminCard name="김주은" mail="abc@abc.com" phone="01012345678" />
+      <ResponsibleCompanyCard name="이노 인테리어" site="naver.com" />
+
       {/* 인배 */}
       <ButtonStore buttonStyle={ButtonStyle.BASE}></ButtonStore>
       <ButtonStore buttonStyle={ButtonStyle.LARGE}></ButtonStore>
