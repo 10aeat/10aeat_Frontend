@@ -21,11 +21,9 @@ export default function Home() {
   return (
     <div className="relative w-[375px] bg-gray-100">
       {/* NavBar */}
-      <div className="absolute w-[375px] h-[44px] top-[44px] left-0">
-        <NavBar isTextChange={false} isTitle={true}>
-          건물 유지보수 사안
-        </NavBar>
-      </div>
+      <NavBar isTextChange={false} isTitle={true}>
+        건물 유지보수 사안
+      </NavBar>
       {/* 상태 버튼 */}
       <div className="gap-[14px] absolute top-[108px] left-[16px] inline-flex items-start">
         <Button
