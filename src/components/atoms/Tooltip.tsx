@@ -1,4 +1,6 @@
 import Image from 'next/image'
+import Button, { ButtonStyle } from './Button'
+import { useState } from 'react'
 
 export enum TooltipStyle {
   COUNT = 'COUNT',
@@ -11,6 +13,33 @@ interface Props {
 }
 
 export default function Tooltip({ tooltipStyle, count }: Props) {
+  const [activeButton, setActiveButton] = useState<ButtonStyle | null>(
+    ButtonStyle.BASE,
+  )
+
+  const handleButtonClick = (buttonStyle: ButtonStyle) => {
+    setActiveButton(buttonStyle)
+    changeFontSize(buttonStyle)
+  }
+
+  const changeFontSize = (buttonStyle: ButtonStyle) => {
+    let fontSize
+    switch (buttonStyle) {
+      case ButtonStyle.BASE:
+        fontSize = '1rem'
+        break
+      case ButtonStyle.LARGE:
+        fontSize = '1.125rem' // 크게
+        break
+      case ButtonStyle.XLARGE:
+        fontSize = '1.25rem' // 더크게
+        break
+      default:
+        fontSize = '1rem'
+    }
+    document.body.style.fontSize = fontSize
+  }
+
   const selectTooltip = () => {
     switch (tooltipStyle) {
       case TooltipStyle.COUNT:
@@ -44,25 +73,21 @@ export default function Tooltip({ tooltipStyle, count }: Props) {
                 </span>
               </div>
               <div className="flex justify-between items-center w-full px-[20px]">
-                {/*ButtonStore 만들어지면 변경해야함. 그 후, onClick에 폰트 변경 로직 넣기 */}
-                <button
-                  type="button"
-                  className="flex items-center justify-center w-[80px] h-[40px] p-[10px] gap-[2px] rounded-[8px] bg-gray-300 text-gray-700 text-base"
-                >
-                  기본
-                </button>
-                <button
-                  type="button"
-                  className="flex items-center justify-center w-[80px] h-[40px] p-[10px] gap-[2px] rounded-[8px] bg-gray-100 text-gray-600 text-lg"
-                >
-                  크게
-                </button>
-                <button
-                  type="button"
-                  className="flex items-center justify-center w-[80px] h-[40px] p-[10px] gap-[2px] rounded-[8px] bg-gray-100 text-gray-600 text-xl"
-                >
-                  더크게
-                </button>
+                <Button
+                  buttonStyle={ButtonStyle.BASE}
+                  style={`${activeButton === ButtonStyle.BASE ? 'bg-gray-300 text-gray-700' : 'bg-gray-100 text-gray-600'}`}
+                  onClickFunction={() => handleButtonClick(ButtonStyle.BASE)}
+                />
+                <Button
+                  buttonStyle={ButtonStyle.LARGE}
+                  style={`${activeButton === ButtonStyle.LARGE ? 'bg-gray-300 text-gray-700' : 'bg-gray-100 text-gray-600'}`}
+                  onClickFunction={() => handleButtonClick(ButtonStyle.LARGE)}
+                />
+                <Button
+                  buttonStyle={ButtonStyle.XLARGE}
+                  style={`${activeButton === ButtonStyle.XLARGE ? 'bg-gray-300 text-gray-700' : 'bg-gray-100 text-gray-600'}`}
+                  onClickFunction={() => handleButtonClick(ButtonStyle.XLARGE)}
+                />
               </div>
             </div>
           </div>
