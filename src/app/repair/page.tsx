@@ -7,6 +7,17 @@ import { useState } from 'react'
 
 // 뱃지 넣어야함
 export default function Home() {
+  const [selectedStatus, setSelectedStatus] = useState('전체')
+  const [selectedCategory, setSelectedCategory] = useState('전체')
+
+  const handleStatusClick = (status: string) => {
+    setSelectedStatus(status)
+  }
+
+  const handleCategoryClick = (category: string) => {
+    setSelectedCategory(category)
+  }
+
   return (
     <div className="relative w-[375px] bg-gray-100">
       {/* NavBar */}
@@ -19,19 +30,22 @@ export default function Home() {
       <div className="gap-[14px] absolute top-[108px] left-[16px] inline-flex items-start">
         <Button
           buttonStyle={ButtonStyle.FILTER}
-          isSelect={true}
+          isSelect={selectedStatus === '전체'}
+          onClickFunction={() => handleStatusClick('전체')}
           text="전체"
           total={22}
         />
         <Button
           buttonStyle={ButtonStyle.FILTER}
-          isSelect={false}
+          isSelect={selectedStatus === '진행중/대기'}
+          onClickFunction={() => handleStatusClick('진행중/대기')}
           text="진행중/대기"
           total={6}
         />
         <Button
           buttonStyle={ButtonStyle.FILTER}
-          isSelect={false}
+          isSelect={selectedStatus === '완료'}
+          onClickFunction={() => handleStatusClick('완료')}
           text="완료"
           total={16}
         />
@@ -42,10 +56,30 @@ export default function Home() {
           어떤 사항을 확인해보시겠어요?
         </div>
         <div className="inline-flex items-start gap-[12px] relative">
-          <Button buttonStyle={ButtonStyle.HUG} isSelect={true} text="전체" />
-          <Button buttonStyle={ButtonStyle.HUG} isSelect={false} text="설치" />
-          <Button buttonStyle={ButtonStyle.HUG} isSelect={false} text="보수" />
-          <Button buttonStyle={ButtonStyle.HUG} isSelect={false} text="교체" />
+          <Button
+            buttonStyle={ButtonStyle.HUG}
+            isSelect={selectedCategory === '전체'}
+            onClickFunction={() => handleCategoryClick('전체')}
+            text="전체"
+          />
+          <Button
+            buttonStyle={ButtonStyle.HUG}
+            isSelect={selectedCategory === '설치'}
+            onClickFunction={() => handleCategoryClick('설치')}
+            text="설치"
+          />
+          <Button
+            buttonStyle={ButtonStyle.HUG}
+            isSelect={selectedCategory === '보수'}
+            onClickFunction={() => handleCategoryClick('보수')}
+            text="보수"
+          />
+          <Button
+            buttonStyle={ButtonStyle.HUG}
+            isSelect={selectedCategory === '교체'}
+            onClickFunction={() => handleCategoryClick('교체')}
+            text="교체"
+          />
         </div>
         <div className="inline-flex flex-col top-[18px] items-start gap-[18px] relative">
           <Card

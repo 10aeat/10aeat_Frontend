@@ -2,8 +2,6 @@ import Image from 'next/image'
 
 import eye from '../../../public/icons/eye.svg'
 import messages from '../../../public/icons/messages.svg'
-import star_fill from '../../../public/icons/star_fill.svg'
-import star_linear from '../../../public/icons/star_linear.svg'
 import { useState } from 'react'
 
 export enum CardStyle {
