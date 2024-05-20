@@ -8,6 +8,8 @@ import TooltipStore, { TooltipStyle } from '@/components/atoms/Tooltip'
 import NoBox from '@/components/atoms/NoBox'
 import ShareBtn from '@/components/atoms/ShareBtn'
 import ButtonStore, { ButtonStyle } from '@/components/atoms/Button'
+import AdminCard from '@/components/atoms/AdminCard'
+import ResponsibleCompanyCard from '@/components/atoms/ResponsibleCompanyCard'
 
 export default function Check() {
   return (
@@ -17,7 +19,6 @@ export default function Check() {
       <BoxStore boxStyle={BoxStyle.DEFAULT_TAG}>설치</BoxStore>
       <BoxStore boxStyle={BoxStyle.DEFAULT_TAG}>보수</BoxStore>
       <BoxStore boxStyle={BoxStyle.DEFAULT_TAG}>교체</BoxStore>
-
       <BoxStore boxStyle={BoxStyle.TAG} progress={'PENDING'} />
       <BoxStore boxStyle={BoxStyle.TAG} progress={'INPROGRESS'} />
       <BoxStore boxStyle={BoxStyle.TAG} progress={'COMPLETE'} />
@@ -44,7 +45,6 @@ export default function Check() {
       <br />
       {/* Tooltips */}
       <TooltipStore tooltipStyle={TooltipStyle.COUNT} count={10} />
-
       {/* 예림 */}
       {/* Card */}
       <CardStore
@@ -94,6 +94,9 @@ export default function Check() {
       <br />
       <NoBox type="진행 내용" />
       <br />
+      {/* AdminCard */}
+      <AdminCard name="김주은" mail="abc@abc.com" phone="01012345678" />
+      <ResponsibleCompanyCard name="이노 인테리어" site="naver.com" />
 
       {/* 인배 */}
       <ButtonStore buttonStyle={ButtonStyle.BASE}></ButtonStore>
