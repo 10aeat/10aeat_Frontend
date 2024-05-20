@@ -1,27 +1,27 @@
 import React from 'react'
 
-export enum BoxStyle {
+export enum TagBadgeStyle {
   DEFAULT_TAG = 'DEFAULT_TAG',
   TAG = 'TAG',
   BADGE = 'BADGE',
 }
 
 interface Props {
-  boxStyle: BoxStyle
+  tagBadgeStyle: TagBadgeStyle
   children?: React.ReactNode
-  progress?: 'PENDING' | 'INPROGRESS' | 'COMPLETE'
+  progress?: string
 }
 
-export default function BoxStore({ boxStyle, children, progress }: Props) {
-  const selectBox = () => {
-    switch (boxStyle) {
-      case BoxStyle.DEFAULT_TAG:
+export default function TagBadge({ tagBadgeStyle, children, progress }: Props) {
+  const selectTagBadge = () => {
+    switch (tagBadgeStyle) {
+      case TagBadgeStyle.DEFAULT_TAG:
         return (
           <div className="text-sm font-medium inline-flex h-[18px] p-[10px] items-center gap-[6px] shrink-0 rounded-[8px] border-solid border-[1px] border-gray-300 bg-gray-50 text-gray-700 capitalize leading-[1px] font-Pretendard">
             {children}
           </div>
         )
-      case BoxStyle.TAG:
+      case TagBadgeStyle.TAG:
         let tagClass =
           'text-sm font-medium inline-flex h-[18px] p-[10px] items-center gap-[6px] shrink-0 rounded-[8px] flex border-solid border-[1px] text-gray-700 capitalize leading-[1px] font-Pretendard'
         let progressText = ''
@@ -51,7 +51,7 @@ export default function BoxStore({ boxStyle, children, progress }: Props) {
             {progressText}
           </div>
         )
-      case BoxStyle.BADGE:
+      case TagBadgeStyle.BADGE:
         return (
           <div className="text-sm font-medium w-[58px] h-[28px] flex shrink-0 justify-center items-center text-blue-500 rounded-[30px] bg-badge-gradient">
             <div className="w-[56px] h-[26px] flex shrink-0 justify-center items-center rounded-[30px] bg-white leading-[1px] font-Pretendard font-semibold">
@@ -64,5 +64,5 @@ export default function BoxStore({ boxStyle, children, progress }: Props) {
     }
   }
 
-  return <>{selectBox()}</>
+  return <>{selectTagBadge()}</>
 }

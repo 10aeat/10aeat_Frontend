@@ -15,7 +15,7 @@ interface Props {
   content: string
 }
 
-export default function IssueStore({ issueStyle, title, content }: Props) {
+export default function Issue({ issueStyle, title, content }: Props) {
   const { isVisible, setIsVisible } = useIssueStore()
   const [isOpen, setIsOpen] = useState(false)
 
@@ -30,7 +30,7 @@ export default function IssueStore({ issueStyle, title, content }: Props) {
       case IssueStyle.ISSUE_TOGGLE:
         return (
           <div
-            className={`w-[343px] ${isOpen ? 'h-auto p-[16px]' : 'h-[64px]'} flex-col shrink-0 justify-between items-center font-Pretendard rounded-[16px] bg-white px-[16px] `}
+            className={`w-[343px] ${isOpen ? 'h-auto p-[16px]' : 'h-[64px]'} flex-col shrink-0 justify-between items-center font-Pretendard rounded-[16px] bg-white px-[16px]`}
           >
             <div className="flex h-full">
               <div className="flex pr-[8px] items-center font-semibold text-gray-900">

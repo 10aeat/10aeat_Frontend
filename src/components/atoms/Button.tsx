@@ -28,7 +28,7 @@ interface Props {
   onClickFunction?: () => Promise<void> | void
 }
 
-export default function ButtonStore({
+export default function Button({
   buttonStyle,
   onClickFunction,
   children,
