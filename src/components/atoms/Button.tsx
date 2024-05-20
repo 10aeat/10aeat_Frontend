@@ -8,28 +8,27 @@ export enum ButtonStyle {
   BASE_SELECT = 'BASE_SELECT',
   LARGE_SELECT = 'LARGE_SELECT',
   XLARGE_SELECT = 'XLARGE_SELECT',
-  FONT_SIZE = 'FONT_SIZE',
   READ_MORE = 'READ_MORE',
   FILTER_SELECT = 'FILTER_SELECT',
   FILTER = 'FILTER',
   MONTLY_NONE = 'MONTLY_NONE',
   MONTLY = 'MONTLY',
   MONTLY_SELECT = 'MONTLY_SELECT',
-  SAVE = 'SAVE',
-  SAVE_SELECT = 'SAVE_SELECT',
   HUG = 'HUG',
   HUG_BLUE = 'HUG_BLUE',
-  PLUS_BUTTON = 'PLUS_BUTTON'
+  PLUS_BUTTON = 'PLUS_BUTTON',
 }
 
 interface Props {
   buttonStyle: ButtonStyle
+  style?: string
   children?: React.ReactNode
   onClickFunction?: () => Promise<void> | void
 }
 
 export default function Button({
   buttonStyle,
+  style,
   onClickFunction,
   children,
 }: Props) {
@@ -49,89 +48,50 @@ export default function Button({
         return (
           <button
             type="button"
-            className="flex w-20 h-10 p-2.5 justify-center items-center gap-0.5 rounded-lg bg-gray-100 text-gray-600 text-center text-base font-medium font-Pretendard"
+            className={`flex w-20 h-10 p-2.5 justify-center items-center gap-0.5 rounded-lg text-center text-base font-medium font-Pretendard ${style}`}
             onClick={onClickFunction}
           >
             기본
           </button>
         )
-        case ButtonStyle.LARGE:
+      case ButtonStyle.LARGE:
         return (
           <button
             type="button"
-            className="flex w-20 h-10 p-2.5 justify-center items-center gap-0.5 rounded-lg bg-gray-100 text-gray-600 text-center text-lg font-medium font-Pretendard"
+            className={`flex w-20 h-10 p-2.5 justify-center items-center gap-0.5 rounded-lg text-center text-lg font-medium font-Pretendard ${style}`}
             onClick={onClickFunction}
           >
             크게
           </button>
         )
-        case ButtonStyle.XLARGE:
+      case ButtonStyle.XLARGE:
         return (
           <button
             type="button"
-            className="flex w-20 h-10 p-2.5 justify-center items-center gap-0.5 rounded-lg bg-gray-100 text-gray-600 text-center text-xl font-medium font-Pretendard"
+            className={`flex w-20 h-10 p-2.5 justify-center items-center gap-0.5 rounded-lg text-center text-xl font-medium font-Pretendard ${style}`}
             onClick={onClickFunction}
           >
             더크게
           </button>
         )
-        case ButtonStyle.BASE_SELECT:
-        return (
-          <button
-            type="button"
-            className="flex w-20 h-10 p-2.5 justify-center items-center gap-0.5 rounded-lg bg-gray-300 text-gray-700 text-center text-base font-medium font-Pretendard"
-            onClick={onClickFunction}
-          >
-            기본
-          </button>
-        )
-        case ButtonStyle.LARGE_SELECT:
-        return (
-          <button
-            type="button"
-            className="flex w-20 h-10 p-2.5 justify-center items-center gap-0.5 rounded-lg bg-gray-300 text-gray-700 text-center text-lg font-medium font-Pretendard"
-            onClick={onClickFunction}
-          >
-            크게
-          </button>
-        )
-        case ButtonStyle.XLARGE_SELECT:
-        return (
-          <button
-            type="button"
-            className="flex w-20 h-10 p-2.5 justify-center items-center gap-0.5 rounded-lg bg-gray-300 text-gray-700 text-center text-xl font-medium font-Pretendard"
-            onClick={onClickFunction}
-          >
-            더크게
-          </button>
-        )
-        case ButtonStyle.FONT_SIZE:
-        return (
-          <button
-            type="button"
-            className="flex h-[24px] p-[8px] justify-center items-center gap-[8px] rounded-[100px] bg-gray-200 text-gray-700 text-center text-sm font-normal font-Pretendard"
-            onClick={onClickFunction}
-          >
-            글자크기
-          </button>
-        )
-        case ButtonStyle.READ_MORE:
+
+      case ButtonStyle.READ_MORE:
         return (
           <button
             type="button"
             className="flex w-[88px] h-[24px] justify-between items-center text-gray-600 text-center text-sm font-normal font-Pretendard"
             onClick={onClickFunction}
-          >            
+          >
             자세히보기
-            <Image 
-              src="/icons/arrow_right_small.svg" 
+            <Image
+              src="/icons/arrow_right_small.svg"
               width={24}
               height={24}
               alt="arrow_right_small"
             />
           </button>
         )
-        case ButtonStyle.FILTER_SELECT:
+      case ButtonStyle.FILTER_SELECT:
         return (
           <button
             type="button"
@@ -142,7 +102,7 @@ export default function Button({
             <p className="text-xl font-bold ">N개</p>
           </button>
         )
-        case ButtonStyle.FILTER:
+      case ButtonStyle.FILTER:
         return (
           <button
             type="button"
@@ -153,7 +113,7 @@ export default function Button({
             <p className="text-xl font-bold ">N개</p>
           </button>
         )
-        case ButtonStyle.MONTLY_NONE:
+      case ButtonStyle.MONTLY_NONE:
         return (
           <button
             type="button"
@@ -163,7 +123,7 @@ export default function Button({
             Btn
           </button>
         )
-        case ButtonStyle.MONTLY:
+      case ButtonStyle.MONTLY:
         return (
           <button
             type="button"
@@ -173,7 +133,7 @@ export default function Button({
             Btn
           </button>
         )
-        case ButtonStyle.MONTLY_SELECT:
+      case ButtonStyle.MONTLY_SELECT:
         return (
           <button
             type="button"
@@ -183,35 +143,7 @@ export default function Button({
             Btn
           </button>
         )
-        case ButtonStyle.SAVE:
-        return (
-          <button
-            type="button"            
-            onClick={onClickFunction}
-          >
-            <Image
-              src="/icons/star_linear.svg" 
-             width={24}
-              height={24}
-              alt="star_linear"
-            />
-          </button>
-        )
-        case ButtonStyle.SAVE_SELECT:
-        return (
-          <button
-            type="button"         
-            onClick={onClickFunction}
-          >
-            <Image
-              src="/icons/star_fill_blue.svg" 
-             width={24}
-              height={24}
-              alt="star_fill_blue"
-            />
-          </button>
-        )
-        case ButtonStyle.HUG:
+      case ButtonStyle.HUG:
         return (
           <button
             type="button"
@@ -220,8 +152,8 @@ export default function Button({
           >
             전체
           </button>
-        )       
-        case ButtonStyle.HUG_BLUE:
+        )
+      case ButtonStyle.HUG_BLUE:
         return (
           <button
             type="button"
@@ -231,7 +163,7 @@ export default function Button({
             전체 00
           </button>
         )
-        case ButtonStyle.PLUS_BUTTON:
+      case ButtonStyle.PLUS_BUTTON:
         return (
           <button
             type="button"
