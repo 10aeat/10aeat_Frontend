@@ -16,9 +16,9 @@ export enum CardStyle {
 interface Props {
   cardStyle: CardStyle
   isSave: boolean
-  img_src: string
+  img_src?: string
   title: string
-  period: string
+  period?: string
   state: string
   name: string
   view: number
@@ -26,7 +26,7 @@ interface Props {
   // children?: string
 }
 
-export default function CardStore({
+export default function Card({
   cardStyle,
   isSave,
   img_src,
@@ -192,7 +192,7 @@ export default function CardStore({
             </div>
           </div>
         )
-      case CardStyle.NO_PERIOD:
+      case CardStyle.ALL_NO:
         return (
           <div className="inline-flex flex-col items-start gap-[8px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
             <div className="flex flex-wrap w-[343px] h-[124px] items-end gap-[8px_10px] p-[16px] bg-[#ffffff] rounded-[18px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
@@ -263,7 +263,7 @@ export default function CardStore({
             </div>
           </div>
         )
-      case CardStyle.ALL_NO:
+      case CardStyle.NO_PERIOD:
         return (
           <div className="inline-flex flex-col items-start gap-[8px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
             <div className="flex flex-wrap w-[343px] h-[124px] items-end gap-[8px_10px] p-[16px] bg-[#ffffff] rounded-[18px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
