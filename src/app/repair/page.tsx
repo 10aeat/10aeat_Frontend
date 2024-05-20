@@ -61,24 +61,28 @@ export default function Home() {
             isSelect={selectedCategory === '전체'}
             onClickFunction={() => handleCategoryClick('전체')}
             text="전체"
+            total={7}
           />
           <Button
             buttonStyle={ButtonStyle.HUG}
             isSelect={selectedCategory === '설치'}
             onClickFunction={() => handleCategoryClick('설치')}
             text="설치"
+            total={7}
           />
           <Button
             buttonStyle={ButtonStyle.HUG}
             isSelect={selectedCategory === '보수'}
             onClickFunction={() => handleCategoryClick('보수')}
             text="보수"
+            total={7}
           />
           <Button
             buttonStyle={ButtonStyle.HUG}
             isSelect={selectedCategory === '교체'}
             onClickFunction={() => handleCategoryClick('교체')}
             text="교체"
+            total={7}
           />
         </div>
         <div className="inline-flex flex-col top-[18px] items-start gap-[18px] relative">

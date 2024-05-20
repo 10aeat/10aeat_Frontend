@@ -146,15 +146,28 @@ export default function Button({
         return (
           <button
             type="button"
-            className={
-              isSelect
-                ? 'flex px-[20px] py-[12px] justify-center items-center gap-[4px] rounded-[16px] bg-blue-50 border border-blue-500 text-blue-600 text-center text-base font-normal font-Pretendard'
-                : 'flex px-[20px] py-[12px] justify-center items-center gap-[4px] rounded-[16px] bg-gray-200 text-gray-700 text-center text-base font-normal font-Pretendard'
-            }
-            // className="flex px-[20px] py-[12px] justify-center items-center gap-[4px] rounded-[16px] bg-gray-200 text-gray-700 text-center text-base font-normal font-Pretendard"
             onClick={onClickFunction}
+            className="inline-flex items-start relative"
           >
-            {text}
+            <div
+              className={`inline-flex items-center gap-[4px] flex-[0_0_auto] px-[20px] py-[12px] overflow-hidden rounded-[16px] justify-center relative ${isSelect === true ? 'border border-solid border-blue-500 bg-blue-50' : 'border border-transparent bg-gray-200'}`}
+            >
+              <div className="inline-flex items-center flex-[0_0_auto] relative">
+                <div className="w-px h-[16px] relative" />
+                <div
+                  className={`w-fit mt-[-1.00px] tracking-[0] text-[16px] text-center whitespace-nowrap leading-[16px] relative font-Pretendard ${isSelect ? 'font-semibold text-blue-600' : 'font-normal text-gray-700'}`}
+                >
+                  {/* {text} {total} */}
+                  {isSelect ? (
+                    <>
+                      {text} {total}
+                    </>
+                  ) : (
+                    <>{text}</>
+                  )}
+                </div>
+              </div>
+            </div>
           </button>
         )
       // case ButtonStyle.HUG_BLUE:
