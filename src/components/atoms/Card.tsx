@@ -4,6 +4,7 @@ import eye from '../../../public/icons/eye.svg'
 import messages from '../../../public/icons/messages.svg'
 import star_fill from '../../../public/icons/star_fill.svg'
 import star_linear from '../../../public/icons/star_linear.svg'
+import { useState } from 'react'
 
 export enum CardStyle {
   ALL = 'ALL',
@@ -14,6 +15,7 @@ export enum CardStyle {
 
 interface Props {
   cardStyle: CardStyle
+  isSave: boolean
   img_src: string
   title: string
   period: string
@@ -26,6 +28,7 @@ interface Props {
 
 export default function CardStore({
   cardStyle,
+  isSave,
   img_src,
   title,
   period,
@@ -35,6 +38,7 @@ export default function CardStore({
   comment,
 }: Props) {
   const selectCard = () => {
+    const [saveState, setSaveState] = useState(isSave)
     switch (cardStyle) {
       case CardStyle.ALL:
         return (
@@ -52,7 +56,10 @@ export default function CardStore({
                       {title}
                     </div>
                     <Image
-                      src={star_linear}
+                      src={`${saveState ? '/icons/star_fill.svg' : '/icons/star_linear.svg'}`}
+                      onClick={() => setSaveState(!saveState)}
+                      width={28}
+                      height={28}
                       alt="image"
                       className="!relative !w-[24px] !h-[24px]"
                     />
@@ -91,6 +98,8 @@ export default function CardStore({
                   {/* <ChatLine className="!relative !w-[20px] !h-[20px]" /> */}
                   <Image
                     src={messages}
+                    width={28}
+                    height={28}
                     alt="image"
                     className="!relative !w-[20px] !h-[20px]"
                   />
@@ -114,7 +123,10 @@ export default function CardStore({
                       {title}
                     </div>
                     <Image
-                      src={star_linear}
+                      src={`${saveState ? '/icons/star_fill.svg' : '/icons/star_linear.svg'}`}
+                      onClick={() => setSaveState(!saveState)}
+                      width={28}
+                      height={28}
                       alt="image"
                       className="!relative !w-[24px] !h-[24px]"
                     />
@@ -177,7 +189,10 @@ export default function CardStore({
 
                 <div className="flex flex-col w-[24px] items-start gap-[8px] relative self-stretch">
                   <Image
-                    src={star_linear}
+                    src={`${saveState ? '/icons/star_fill.svg' : '/icons/star_linear.svg'}`}
+                    onClick={() => setSaveState(!saveState)}
+                    width={28}
+                    height={28}
                     alt="image"
                     className="!relative !w-[24px] !h-[24px]"
                   />
@@ -241,7 +256,10 @@ export default function CardStore({
                 </div>
                 <div className="flex flex-col w-[24px] items-start gap-[8px] relative self-stretch">
                   <Image
-                    src={star_linear}
+                    src={`${saveState ? '/icons/star_fill.svg' : '/icons/star_linear.svg'}`}
+                    onClick={() => setSaveState(!saveState)}
+                    width={28}
+                    height={28}
                     alt="image"
                     className="!relative !w-[24px] !h-[24px]"
                   />
