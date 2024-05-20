@@ -10,6 +10,8 @@ import Issue, { IssueStyle } from '@/components/atoms/Issue'
 import AgendaContent from '@/components/molecules/AgendaContent'
 import { useSaveStore } from '@/components/store/SaveStore'
 import ButtonStore, { ButtonStyle } from '@/components/atoms/Button'
+import AdminCard from '@/components/atoms/AdminCard'
+import ResponsibleCompanyCard from '@/components/atoms/ResponsibleCompanyCard'
 
 export default function Check() {
   const { isSave } = useSaveStore()
@@ -100,6 +102,9 @@ export default function Check() {
       <br />
       <NoBox type="진행 내용" />
       <br />
+      {/* AdminCard */}
+      <AdminCard name="김주은" mail="abc@abc.com" phone="01012345678" />
+      <ResponsibleCompanyCard name="이노 인테리어" site="naver.com" />
 
       {/* 인배 */}
       <ButtonStore buttonStyle={ButtonStyle.BASE}></ButtonStore>
