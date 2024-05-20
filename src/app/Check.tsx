@@ -118,8 +118,14 @@ export default function Check() {
       <ButtonStore buttonStyle={ButtonStyle.LARGE_SELECT}></ButtonStore>
       <ButtonStore buttonStyle={ButtonStyle.XLARGE_SELECT}></ButtonStore>
       <ButtonStore buttonStyle={ButtonStyle.READ_MORE}></ButtonStore>
-      <ButtonStore buttonStyle={ButtonStyle.FILTER_SELECT}></ButtonStore>
-      <ButtonStore buttonStyle={ButtonStyle.FILTER}></ButtonStore>
+      <ButtonStore
+        buttonStyle={ButtonStyle.FILTER}
+        isSelect={true}
+      ></ButtonStore>
+      <ButtonStore
+        buttonStyle={ButtonStyle.FILTER}
+        isSelect={false}
+      ></ButtonStore>
       <ButtonStore buttonStyle={ButtonStyle.MONTLY_NONE}></ButtonStore>
       <ButtonStore buttonStyle={ButtonStyle.MONTLY}></ButtonStore>
       <ButtonStore buttonStyle={ButtonStyle.MONTLY_SELECT}></ButtonStore>
