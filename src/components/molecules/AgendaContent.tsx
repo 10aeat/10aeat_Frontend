@@ -3,7 +3,7 @@ import Box, { BoxStyle } from '../atoms/Box'
 import TagBadge, { TagBadgeStyle } from '../atoms/TagBadge'
 import { useSaveStore } from '../store/SaveStore'
 
-export default function AgendaContentStatus({
+export default function AgendaContent({
   category,
   progress,
   isSave,
@@ -39,17 +39,15 @@ export default function AgendaContentStatus({
             className="cursor-pointer"
           />
         </div>
-        <div className="text-gray-900 ">
-          <div className="text-lg font-bold capitalize">{title}</div>
-          <div className="text-gray-500 text-sm tracking-[-0.266px]">
-            수정일: {updatedAt} / {adminName}
+        <div className="flex flex-col text-gray-900 gap-y-3">
+          <div>
+            <div className="text-lg font-bold capitalize">{title}</div>
+            <div className="text-gray-500 text-sm tracking-[-0.266px]">
+              수정일: {updatedAt} / {adminName}
+            </div>
           </div>
           {/* 작업 기간 여부 같은 것도 확인 필요. 어떻게 받아오고, 작업 시작 및 종료는 애초에 입력받을 때 부터 선택적인건지 확인 필요 */}
           <div className="capitlaize leading-6">
-            {/* 게시물 내용 및 이미지 들어가는 코드 
-              - image랑 글 배치 어떻게 할 지 생각해봐야할 듯
-              - y-12px > 마지막 하단은 x
-            */}
             금년 겨울 혹한기에 실내보온이 약해서 추위로 환경의 질이 떨어진 점과
             철도소음으로 일부 입주사들이 불편사항을 호소하였습니다. 추위와
             소음문제는 단일창으로 설계된 건물의 구조적 문제와 역세권에 위치한
