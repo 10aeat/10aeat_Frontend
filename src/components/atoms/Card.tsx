@@ -73,7 +73,15 @@ export default function CardStore({
               <div className="flex flex-col items-start relative flex-1 grow">
                 <div className="inline-flex flex-col items-start gap-[8px] relative flex-[0_0_auto]">
                   <div className="inline-flex items-center gap-[10px] relative flex-[0_0_auto]">
-                    <div className="text-base font-semibold text-green-500 font-Pretendard">
+                    <div
+                      className={`text-base font-semibold font-Pretendard ${
+                        state === '진행중'
+                          ? 'text-green-500'
+                          : state === '대기'
+                            ? 'text-gray-500'
+                            : 'text-blue-500'
+                      }`}
+                    >
                       {state}
                     </div>
                     <div className="relative w-px h-[16px] bg-[#d9d9d9]" />
@@ -140,7 +148,15 @@ export default function CardStore({
               <div className="flex flex-col items-start relative flex-1 grow">
                 <div className="inline-flex flex-col items-start gap-[8px] relative flex-[0_0_auto]">
                   <div className="inline-flex items-center gap-[10px] relative flex-[0_0_auto]">
-                    <div className="text-base font-semibold text-green-500 font-Pretendard">
+                    <div
+                      className={`text-base font-semibold font-Pretendard ${
+                        state === '진행중'
+                          ? 'text-green-500'
+                          : state === '대기'
+                            ? 'text-gray-500'
+                            : 'text-blue-500'
+                      }`}
+                    >
                       {state}
                     </div>
                     <div className="relative w-px h-[16px] bg-[#d9d9d9]" />
@@ -202,7 +218,15 @@ export default function CardStore({
                 <div className="flex items-center relative flex-1 grow">
                   <div className="inline-flex flex-col items-start gap-[8px] relative flex-[0_0_auto]">
                     <div className="inline-flex items-center gap-[10px] relative flex-[0_0_auto]">
-                      <div className="text-base font-semibold text-green-500 font-Pretendard">
+                      <div
+                        className={`text-base font-semibold font-Pretendard ${
+                          state === '진행중'
+                            ? 'text-green-500'
+                            : state === '대기'
+                              ? 'text-gray-500'
+                              : 'text-blue-500'
+                        }`}
+                      >
                         {state}
                       </div>
                       <div className="relative w-px h-[16px] bg-[#d9d9d9]" />
@@ -269,7 +293,15 @@ export default function CardStore({
                 <div className="flex items-center relative flex-1 grow">
                   <div className="inline-flex flex-col itmes-start gap-[8px] relative flex-[0_0_auto]">
                     <div className="inline-flex items-center gap-[10px] relative flex-[0_0_auto]">
-                      <div className="text-base font-semibold text-green-500 font-Pretendard">
+                      <div
+                        className={`text-base font-semibold font-Pretendard ${
+                          state === '진행중'
+                            ? 'text-green-500'
+                            : state === '대기'
+                              ? 'text-gray-500'
+                              : 'text-blue-500'
+                        }`}
+                      >
                         {state}
                       </div>
                       <div className="relative w-px h-[16px] bg-[#d9d9d9]" />
