@@ -22,6 +22,8 @@ interface Props {
   buttonStyle: ButtonStyle
   style?: string
   isSelect?: boolean
+  text?: string
+  total?: number
   children?: React.ReactNode
   onClickFunction?: () => Promise<void> | void
 }
@@ -30,6 +32,8 @@ export default function Button({
   buttonStyle,
   style,
   isSelect,
+  text,
+  total,
   onClickFunction,
   children,
 }: Props) {
@@ -104,8 +108,8 @@ export default function Button({
             // className="flex w-[105px] h-[86px] px-[14px] py-[16px] justify-center flex-col items-center gap-[2px] rounded-[18px] border bg-gray-50 text-gray-900 border-gray-300 text-center font-Pretendard"
             onClick={onClickFunction}
           >
-            <p className="text-base font-medium ">종류</p>
-            <p className="text-xl font-bold ">N개</p>
+            <p className="text-base font-medium font-Pretendard">{text}</p>
+            <p className="text-xl font-bold font-Pretendard">{total}개</p>
           </button>
         )
       case ButtonStyle.MONTLY_NONE:
@@ -142,22 +146,27 @@ export default function Button({
         return (
           <button
             type="button"
-            className="flex px-[20px] py-[12px] justify-center items-center gap-[4px] rounded-[16px] bg-gray-200 text-gray-700 text-center text-base font-normal font-Pretendard"
+            className={
+              isSelect
+                ? 'flex px-[20px] py-[12px] justify-center items-center gap-[4px] rounded-[16px] bg-blue-50 border border-blue-500 text-blue-600 text-center text-base font-normal font-Pretendard'
+                : 'flex px-[20px] py-[12px] justify-center items-center gap-[4px] rounded-[16px] bg-gray-200 text-gray-700 text-center text-base font-normal font-Pretendard'
+            }
+            // className="flex px-[20px] py-[12px] justify-center items-center gap-[4px] rounded-[16px] bg-gray-200 text-gray-700 text-center text-base font-normal font-Pretendard"
             onClick={onClickFunction}
           >
-            전체
+            {text}
           </button>
         )
-      case ButtonStyle.HUG_BLUE:
-        return (
-          <button
-            type="button"
-            className="flex px-[20px] py-[12px] justify-center items-center gap-[4px] rounded-[16px] bg-blue-50 border border-blue-500 text-blue-600 text-center text-base font-normal font-Pretendard"
-            onClick={onClickFunction}
-          >
-            전체 00
-          </button>
-        )
+      // case ButtonStyle.HUG_BLUE:
+      //   return (
+      //     <button
+      //       type="button"
+      //       className="flex px-[20px] py-[12px] justify-center items-center gap-[4px] rounded-[16px] bg-blue-50 border border-blue-500 text-blue-600 text-center text-base font-normal font-Pretendard"
+      //       onClick={onClickFunction}
+      //     >
+      //       전체 00
+      //     </button>
+      //   )
       case ButtonStyle.PLUS_BUTTON:
         return (
           <button
