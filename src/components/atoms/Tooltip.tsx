@@ -10,7 +10,7 @@ interface Props {
   count?: number
 }
 
-export default function TooltipStore({ tooltipStyle, count }: Props) {
+export default function Tooltip({ tooltipStyle, count }: Props) {
   const selectTooltip = () => {
     switch (tooltipStyle) {
       case TooltipStyle.COUNT:
