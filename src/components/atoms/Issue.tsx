@@ -13,9 +13,15 @@ interface Props {
   issueStyle: IssueStyle
   title: string
   content: string
+  onConfirm?: () => void
 }
 
-export default function Issue({ issueStyle, title, content }: Props) {
+export default function Issue({
+  issueStyle,
+  title,
+  content,
+  onConfirm,
+}: Props) {
   const { isVisible, setIsVisible } = useIssueStore()
   const [isOpen, setIsOpen] = useState(false)
 
@@ -30,9 +36,9 @@ export default function Issue({ issueStyle, title, content }: Props) {
       case IssueStyle.ISSUE_TOGGLE:
         return (
           <div
-            className={`w-[343px] ${isOpen ? 'h-auto p-[16px]' : 'h-[64px]'} flex-col shrink-0 justify-between items-center font-Pretendard rounded-[16px] bg-white px-[16px]`}
+            className={`w-[343px] ${isOpen ? 'h-auto p-4' : 'h-[64px]'} flex-col shrink-0 justify-between items-center font-Pretendard rounded-[16px] bg-white px-4 mb-8`}
           >
-            <div className="flex h-full">
+            <div className="flex h-full justify-between items-center">
               <div className="flex pr-[8px] items-center font-semibold text-gray-900">
                 <div
                   className={`flex h-full ${isOpen ? 'items-start' : 'items-center'}`}
@@ -119,6 +125,7 @@ export default function Issue({ issueStyle, title, content }: Props) {
               <button
                 type="button"
                 className="w-[311px] bg-blue-600 rounded-[16px] text-white p-[14px]"
+                onClick={onConfirm}
               >
                 확인했어요
               </button>

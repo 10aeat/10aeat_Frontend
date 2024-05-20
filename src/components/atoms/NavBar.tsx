@@ -17,8 +17,8 @@ export default function NavBar({ children, isTitle, isTextChange }: Props) {
   const [isTooltipVisible, setIsTooltipVisible] = useState(false)
 
   return (
-    <div className="relative flex items-center justify-between w-[375px] h-11 font-Pretendard font-bold text-gray-900 text-lg capitalize px-[16px]">
-      <div className="flex justify-start z-10">
+    <div className="relative flex items-center justify-between w-[375px] h-11 font-Pretendard font-bold text-gray-900 text-lg capitalize px-4 mb-4">
+      <div className="flex justify-start">
         <Image
           src="/icons/arrow_left_large_gray900.svg"
           width={24}
@@ -34,7 +34,7 @@ export default function NavBar({ children, isTitle, isTextChange }: Props) {
         </div>
       )}
       {isTextChange && (
-        <div className="relative flex justify-end z-10">
+        <div className="relative flex justify-end">
           <ButtonStore
             buttonStyle={ButtonStyle.TEXT_CHANGE}
             onClickFunction={() => {
