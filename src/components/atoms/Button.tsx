@@ -9,7 +9,6 @@ export enum ButtonStyle {
   LARGE_SELECT = 'LARGE_SELECT',
   XLARGE_SELECT = 'XLARGE_SELECT',
   READ_MORE = 'READ_MORE',
-  FILTER_SELECT = 'FILTER_SELECT',
   FILTER = 'FILTER',
   MONTLY_NONE = 'MONTLY_NONE',
   MONTLY = 'MONTLY',
@@ -22,6 +21,7 @@ export enum ButtonStyle {
 interface Props {
   buttonStyle: ButtonStyle
   style?: string
+  isSelect?: boolean
   children?: React.ReactNode
   onClickFunction?: () => Promise<void> | void
 }
@@ -29,6 +29,7 @@ interface Props {
 export default function Button({
   buttonStyle,
   style,
+  isSelect,
   onClickFunction,
   children,
 }: Props) {
@@ -91,22 +92,16 @@ export default function Button({
             />
           </button>
         )
-      case ButtonStyle.FILTER_SELECT:
-        return (
-          <button
-            type="button"
-            className="flex w-[105px] h-[86px] px-[14px] py-[16px] justify-center flex-col items-center gap-[2px] rounded-[18px] bg-blue-900 text-white text-center font-Pretendard"
-            onClick={onClickFunction}
-          >
-            <p className="text-base font-medium ">종류</p>
-            <p className="text-xl font-bold ">N개</p>
-          </button>
-        )
       case ButtonStyle.FILTER:
         return (
           <button
             type="button"
-            className="flex w-[105px] h-[86px] px-[14px] py-[16px] justify-center flex-col items-center gap-[2px] rounded-[18px] border bg-gray-50 text-gray-900 border-gray-300 text-center font-Pretendard"
+            className={
+              isSelect
+                ? 'flex w-[105px] h-[86px] px-[14px] py-[16px] justify-center flex-col items-center gap-[2px] rounded-[18px] bg-blue-900 text-white text-center font-Pretendard'
+                : 'flex w-[105px] h-[86px] px-[14px] py-[16px] justify-center flex-col items-center gap-[2px] rounded-[18px] border bg-gray-50 text-gray-900 border-gray-300 text-center font-Pretendard'
+            }
+            // className="flex w-[105px] h-[86px] px-[14px] py-[16px] justify-center flex-col items-center gap-[2px] rounded-[18px] border bg-gray-50 text-gray-900 border-gray-300 text-center font-Pretendard"
             onClick={onClickFunction}
           >
             <p className="text-base font-medium ">종류</p>
