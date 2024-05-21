@@ -24,7 +24,7 @@ export default function Box({ boxStyle, children, style }: Props) {
       case BoxStyle.BOX_WHITE_CONTENT:
         return (
           <div
-            className={`flex flex-col w-[343px] h-auto px-[18px] py-6 items-start gap-5 rounded-[18px] bg-white shadow-primary font-Pretendard ${style}`}
+            className={`flex flex-col w-[343px] h-auto px-[18px] py-6 items-start rounded-[18px] bg-white shadow-primary font-Pretendard ${style}`}
           >
             {children}
           </div>
