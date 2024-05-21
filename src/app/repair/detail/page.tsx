@@ -5,6 +5,7 @@ import Issue, { IssueStyle } from '@/components/atoms/Issue'
 import NavBar from '@/components/atoms/NavBar'
 import NoBox from '@/components/atoms/NoBox'
 import ShareBtn from '@/components/atoms/ShareBtn'
+import TrackingProgress from '@/components/atoms/TrackingProgress'
 import AgendaContent from '@/components/molecules/AgendaContent'
 import { useSaveStore } from '@/components/store/SaveStore'
 import { useState, useEffect } from 'react'
@@ -75,7 +76,7 @@ export default function RepairDetail({ issueCheck }: RepairDetailProps) {
       </div>
       <div className="px-4 mt-8 w-full mb-[15px]">
         <div className="font-bold text-lg font-Pretendard mb-3">진행 현황</div>
-        {/* 진행 현황 컴포넌트 들어갈 부분 */}
+        <TrackingProgress />
       </div>
       <ShareBtn />
       <div className="px-4 w-full mt-8">
