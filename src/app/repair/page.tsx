@@ -59,7 +59,6 @@ export default function Home() {
             isSelect={selectedCategory === '전체'}
             onClickFunction={() => handleCategoryClick('전체')}
             text="전체"
-            total={7}
           />
           <Button
             buttonStyle={ButtonStyle.HUG}
