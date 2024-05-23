@@ -14,7 +14,7 @@ export default function ManageDetail() {
         <div className="font-bold text-lg font-Pretendard mb-[5px] text-[24px] text-left leading-[32px] capitalize">
           승강기 자체점검
         </div>
-        <div className="inline-flex flex-col items-start gap-[8px] relative ">
+        <div className="inline-flex flex-col items-start gap-[8px] relative">
           <div className="flex space-x-2">
             <TagBadge tagBadgeStyle={TagBadgeStyle.TAG} progress="INPROGRESS" />
             <TagBadge tagBadgeStyle={TagBadgeStyle.DEFAULT_TAG}>
@@ -41,7 +41,7 @@ export default function ManageDetail() {
         <div className="font-bold text-lg font-Pretendard mb-3">상세 내역</div>
       </div>
       <div className="px-4 mt-8 w-full mb-[15px]">
-        <div className="font-bold text-lg font-Pretendard mb-3">비고</div>
+        <div className="font-bold text-lg font-Pretendard mb-3">법정 계획</div>
         <InspectionPlan
           legalBasis="소방시설 설치 및 관리에 관한 법률 제22조"
           target="전층 소방시설"
@@ -49,7 +49,7 @@ export default function ManageDetail() {
         />
       </div>
       <div className="px-4 mt-8 w-full mb-[100px]">
-        <div className="font-bold text-lg font-Pretendard mb-3">법정 계획</div>
+        <div className="font-bold text-lg font-Pretendard mb-3">비고</div>
         <Note />
       </div>
     </div>
