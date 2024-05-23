@@ -20,7 +20,8 @@ export default function Home() {
   }
 
   return (
-    <div className="absolute w-[375px] bg-gray-100 pb-[80px]">
+    // <div className="absolute w-[375px] bg-gray-100 pb-[80px]">
+    <div className="flex flex-col w-full items-center ">
       {/* NavBar */}
       <NavBar isTextChange={false} isTitle={true}>
         건물 유지보수 사안
