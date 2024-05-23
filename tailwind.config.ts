@@ -21,6 +21,7 @@ const config: Config = {
       boxShadow: {
         primary: '0px 4px 30px 0px rgba(75, 85, 99, 0.04)',
         secondary: '4px 4px 20px 0px rgba(75, 85, 99, 0.24)',
+        profile: '0px 4px 4px 0px rgba(30, 78, 216, 0.08)'
       },
     },
   },
