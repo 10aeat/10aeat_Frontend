@@ -56,7 +56,7 @@ export default function TrackingProgress2({
             )}
           </div>
           <div
-            className={`absolute w-[64px] top-[5px] right-2 ${totalChecksTextColor} text-right leading-[18px] font-Pretendard font-medium text-[14px]`}
+            className={`absolute w-[64px] top-[5px] right-[15px] ${totalChecksTextColor} text-right leading-[18px] font-Pretendard font-medium text-[14px]`}
           >
             총 {totalChecks}회
           </div>
