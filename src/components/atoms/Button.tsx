@@ -108,8 +108,10 @@ export default function Button({
             // className="flex w-[105px] h-[86px] px-[14px] py-[16px] justify-center flex-col items-center gap-[2px] rounded-[18px] border bg-gray-50 text-gray-900 border-gray-300 text-center font-Pretendard"
             onClick={onClickFunction}
           >
-            <p className="text-base font-medium font-Pretendard">{text}</p>
-            <p className="text-xl font-bold font-Pretendard">{total}개</p>
+            <span className="text-base font-medium font-Pretendard">
+              {text}
+            </span>
+            <span className="text-xl font-bold font-Pretendard">{total}개</span>
           </button>
         )
       case ButtonStyle.MONTLY_NONE:

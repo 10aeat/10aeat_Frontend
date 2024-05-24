@@ -3,6 +3,7 @@
 import Button, { ButtonStyle } from '@/components/atoms/Button'
 import Card, { CardStyle } from '@/components/atoms/Card'
 import NavBar from '@/components/atoms/NavBar'
+import Pagination from '@/components/atoms/Pagination'
 import { useState } from 'react'
 
 // 뱃지 넣어야함
@@ -19,13 +20,14 @@ export default function Home() {
   }
 
   return (
-    <div className="relative w-[375px] bg-gray-100">
+    // <div className="absolute w-[375px] bg-gray-100 pb-[80px]">
+    <div className="flex flex-col w-full items-center ">
       {/* NavBar */}
       <NavBar isTextChange={false} isTitle={true}>
         건물 유지보수 사안
       </NavBar>
       {/* 상태 버튼 */}
-      <div className="gap-[14px] absolute top-[108px] left-[16px] inline-flex items-start">
+      <div className="gap-[14px] relative left-[16px] inline-flex items-start">
         <Button
           buttonStyle={ButtonStyle.FILTER}
           isSelect={selectedStatus === '전체'}
@@ -49,7 +51,7 @@ export default function Home() {
         />
       </div>
       {/* Card 영역 */}
-      <div className="gap-[12px] absolute top-[226px] left-[16px] inline-flex flex-col items-start">
+      <div className="gap-[12px] top-[28px] relative left-[16px] inline-flex flex-col items-start">
         <div className="relative w-fit mt-[-1.00px] font-Pretendard font-bold text-gray-900 text-[18px] tracking-[0] leading-[24px] whitespace-nowrap">
           어떤 사항을 확인해보시겠어요?
         </div>
@@ -59,7 +61,6 @@ export default function Home() {
             isSelect={selectedCategory === '전체'}
             onClickFunction={() => handleCategoryClick('전체')}
             text="전체"
-            total={7}
           />
           <Button
             buttonStyle={ButtonStyle.HUG}
@@ -157,6 +158,9 @@ export default function Home() {
             view={0}
             comment={0}
           />
+        </div>
+        <div className=" w-full  mt-8 !flex justify-center ">
+          <Pagination totalItems={270} />
         </div>
       </div>
       {/* Pagination */}
