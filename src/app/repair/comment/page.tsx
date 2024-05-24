@@ -24,7 +24,19 @@ export default function Comment() {
         </div>
         <div className="ml-[8px] text-sm text-gray-900 font-bold">답글달기</div>
       </div>
-      
+      <div className="ml-[56px] mt-[14px] flex text-sm items-center text-[#216FD6]">
+        <div className="font-medium">답글&nbsp;</div>
+        <div className="font-bold">2</div>
+        <button className="ml-[5px]"><Image src="/icons/arrow_up_small.svg" width={24} height={24} alt="arrow_up_small" /></button>
+      </div>
+      <div className="flex items-center fixed bottom-0 w-[375px] h-[50px] shrink-0 border-t border-gray-300">
+        <div className="w-[291px] h-[36px] my-[7px] ml-[20px] mr-[12px] shrink-0 rounded-[8px] bg-gray-100"></div>
+        <Image src="/icons/able_base.svg" width={32} height={32} alt="able_base" />
+      </div>
+      <div className="w-[375px] mt-[40px] text-center">
+        <div className="text-lg text-gray-900 font-bold">아직 댓글이 없어요</div>
+        <div className="text-sm text-gray-500 font-normal">사안에 대해 가장 먼저 댓글을 남겨보세요!</div>
+      </div>
     </div>
   )
 }
