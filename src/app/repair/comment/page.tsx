@@ -30,7 +30,7 @@ export default function Comment() {
         <button className="ml-[5px]"><Image src="/icons/arrow_up_small.svg" width={24} height={24} alt="arrow_up_small" /></button>
       </div>
       <div className="flex items-center fixed bottom-0 w-[375px] h-[50px] shrink-0 border-t border-gray-300">
-        <div className="w-[291px] h-[36px] my-[7px] ml-[20px] mr-[12px] shrink-0 rounded-[8px] bg-gray-100"></div>
+        <input className="w-[291px] h-[36px] my-[7px] ml-[20px] mr-[12px] shrink-0 rounded-[8px] pl-[14px] bg-gray-100" type="text"></input>
         <Image src="/icons/able_base.svg" width={32} height={32} alt="able_base" />
       </div>
       <div className="w-[375px] mt-[40px] text-center">
