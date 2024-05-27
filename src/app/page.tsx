@@ -1,6 +1,9 @@
 'use client'
 
 import Logo from '@/components/atoms/Logo'
+import ManageStatus from '@/components/atoms/ManageStatus'
+import MonthlyPlan from '@/components/atoms/MonthlyPlan'
+import RepairStatus from '@/components/atoms/RepairStatus'
 import TagBadge, { TagBadgeStyle } from '@/components/atoms/TagBadge'
 import Image from 'next/image'
 
@@ -51,6 +54,31 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="relative  w-[345px]  h-[140px]">
+        <div className=" mt-[34px]">
+          <div className="absolute  font-Pretendard font-bold text-gray-900 text-[18px] leading-[24px] whitespace-nowrap">
+            2024 건물 유지보수 사안
+          </div>
+          <Image
+            src="/icons/arrow_right_large.svg"
+            width={24}
+            height={24}
+            alt="arrow_right_large"
+            className="!absolute !w-[24px] !h-[24px] !left-[187px]"
+          />
+        </div>
+        <RepairStatus total={22} pending={6} finish={16} />
+      </div>
+      <div className="mt-[32px] w-[345px]  h-[140px]">
+        <div className="relative mt-[32px]">
+          <div className="absolute  font-Pretendard font-bold text-gray-900 text-[18px] leading-[24px] whitespace-nowrap">
+            2024 법정 시설물 유지관리 점검 현황
+          </div>
+        </div>
+        <ManageStatus />
+        <div className="mt-[16px]" />
+        <MonthlyPlan />
       </div>
     </div>
   )
