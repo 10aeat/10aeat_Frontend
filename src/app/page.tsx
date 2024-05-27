@@ -6,8 +6,13 @@ import MonthlyPlan from '@/components/atoms/MonthlyPlan'
 import RepairStatus from '@/components/atoms/RepairStatus'
 import TagBadge, { TagBadgeStyle } from '@/components/atoms/TagBadge'
 import Image from 'next/image'
+import { useState } from 'react'
 
 export default function Home() {
+  const [selectedMonth, setSelectedMonth] = useState<number | null>(null)
+  const handleSelectMonth = (month: number) => {
+    setSelectedMonth(month)
+  }
   return (
     <div className="flex flex-col w-full items-center bg-gray-100">
       <div className="relative w-[375px] h-[50px]">
@@ -78,7 +83,7 @@ export default function Home() {
         </div>
         <ManageStatus />
         <div className="mt-[16px]" />
-        <MonthlyPlan />
+        <MonthlyPlan onSelectMonth={handleSelectMonth} />
       </div>
     </div>
   )

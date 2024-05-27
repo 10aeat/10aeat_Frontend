@@ -61,7 +61,7 @@ export default function ManageStatus() {
           },
           legends: {
             text: {
-              fontSize: '14px',
+              fontSize: '13px',
               fontFamily: 'Pretendard',
               // fill: '#4B5563',
               fontWeight: 600,
