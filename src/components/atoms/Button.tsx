@@ -10,9 +10,9 @@ export enum ButtonStyle {
   XLARGE_SELECT = 'XLARGE_SELECT',
   READ_MORE = 'READ_MORE',
   FILTER = 'FILTER',
-  MONTLY_NONE = 'MONTLY_NONE',
-  MONTLY = 'MONTLY',
-  MONTLY_SELECT = 'MONTLY_SELECT',
+  MONTHLY_NONE = 'MONTHLY_NONE',
+  MONTHLY = 'MONTHLY',
+  MONTHLY_SELECT = 'MONTHLY_SELECT',
   HUG = 'HUG',
   HUG_BLUE = 'HUG_BLUE',
   PLUS_BUTTON = 'PLUS_BUTTON',
@@ -113,34 +113,24 @@ export default function Button({
             <span className="text-xl font-bold font-Pretendard">{total}개</span>
           </button>
         )
-      case ButtonStyle.MONTLY_NONE:
+      case ButtonStyle.MONTHLY_NONE:
         return (
           <button
             type="button"
             className="flex w-[45px] h-[40px] p-[8px] justify-center flex-col items-center gap-[8px] shrink-0 rounded-[6px] bg-gray-200 text-gray-400 text-center text-base font-normal font-Pretendard"
             onClick={onClickFunction}
           >
-            Btn
+            {children}
           </button>
         )
-      case ButtonStyle.MONTLY:
+      case ButtonStyle.MONTHLY:
         return (
           <button
             type="button"
-            className="flex w-[45px] h-[40px] p-[8px] justify-center flex-col items-center gap-[8px] shrink-0 rounded-[6px] border bg-white border-gray-400 text-gray-700 text-center text-base font-normal font-Pretendard"
+            className={`flex w-[45px] h-[40px] justify-center flex-col items-center shrink-0 rounded-[6px] border bg-white ${isSelect ? 'border-blue-600 text-blue-600' : 'border-gray-400 text-gray-700'} text-center text-base font-normal font-Pretendard`}
             onClick={onClickFunction}
           >
-            Btn
-          </button>
-        )
-      case ButtonStyle.MONTLY_SELECT:
-        return (
-          <button
-            type="button"
-            className="flex w-[45px] h-[40px] p-[8px] justify-center flex-col items-center gap-[8px] shrink-0 rounded-[6px] border bg-white border-blue-600 text-blue-600 text-center text-base font-normal font-Pretendard"
-            onClick={onClickFunction}
-          >
-            Btn
+            {children}
           </button>
         )
       case ButtonStyle.HUG:
