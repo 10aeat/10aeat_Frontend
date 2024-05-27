@@ -105,7 +105,6 @@ export default function Button({
                 ? 'flex w-[105px] h-[86px] px-[14px] py-[16px] justify-center flex-col items-center gap-[2px] rounded-[18px] bg-blue-900 text-white text-center font-Pretendard'
                 : 'flex w-[105px] h-[86px] px-[14px] py-[16px] justify-center flex-col items-center gap-[2px] rounded-[18px] border bg-gray-50 text-gray-900 border-gray-300 text-center font-Pretendard'
             }
-            // className="flex w-[105px] h-[86px] px-[14px] py-[16px] justify-center flex-col items-center gap-[2px] rounded-[18px] border bg-gray-50 text-gray-900 border-gray-300 text-center font-Pretendard"
             onClick={onClickFunction}
           >
             <span className="text-base font-medium font-Pretendard">
