@@ -16,6 +16,7 @@ export default function ManageCard({
       <Box
         boxStyle={BoxStyle.BOX_WHITE_CARD}
         style="flex-col gap-y-[30px] justify-end"
+        issueCheck={issueCheck}
       >
         <div className="flex w-full gap-x-2 justify-start items-center">
           <TagBadge tagBadgeStyle={TagBadgeStyle.DEFAULT_TAG}>

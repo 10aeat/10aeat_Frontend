@@ -13,7 +13,7 @@ export default function Pagination({ totalItems }: Props) {
 
   useEffect(() => {
     setTotalPages(Math.ceil(totalItems / 20))
-  }, [totalItems, 20])
+  }, [totalItems])
 
   useEffect(() => {
     updatePageNumbers(currentPage)
@@ -64,7 +64,7 @@ export default function Pagination({ totalItems }: Props) {
   const pagination = () => {
     return (
       <div className="inline-flex items-start gap-[4px] relative mt-6 justify-center">
-        {((totalItems > 20 && currentPage > 1) || currentPage === 1) && (
+        {totalPages > 1 && (
           <Image
             src="/icons/arrow_left_large.svg"
             onClick={handlePreviousClick}
@@ -75,18 +75,18 @@ export default function Pagination({ totalItems }: Props) {
           />
         )}
 
-        {pageNumbers.map((page) => (
-          <Page
-            key={page}
-            status={page === currentPage ? 'current' : 'default'}
-            onClick={() => handlePageClick(page)}
-          >
-            {page}
-          </Page>
-        ))}
+        {totalItems > 20 &&
+          pageNumbers.map((page) => (
+            <Page
+              key={page}
+              status={page === currentPage ? 'current' : 'default'}
+              onClick={() => handlePageClick(page)}
+            >
+              {page}
+            </Page>
+          ))}
 
-        {((totalItems > 20 && currentPage < totalPages) ||
-          currentPage === totalPages) && (
+        {totalPages > 1 && (
           <Image
             src="/icons/arrow_right_large.svg"
             onClick={handleNextClick}
