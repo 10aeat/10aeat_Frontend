@@ -10,7 +10,6 @@ export default function SelectMonth({ onSelectMonth }: Props) {
   const months = Array.from({ length: 12 }, (_, i) => `${i + 1}월`)
   const firstRowMonths = months.slice(0, 6)
   const secondRowMonths = months.slice(6, 12)
-
   const [selectedMonth, setSelectedMonth] = useState<number | null>(null)
 
   const handleMonthClick = (index: number) => {
@@ -33,6 +32,7 @@ export default function SelectMonth({ onSelectMonth }: Props) {
         <span className="font-Pretendard font-semibold capitalize text-gray-900">
           월별 계획
         </span>
+
         <div className="flex flex-col my-2">
           <div className="flex flex-wrap gap-2">
             {firstRowMonths.map((month, index) => (
@@ -61,6 +61,7 @@ export default function SelectMonth({ onSelectMonth }: Props) {
             ))}
           </div>
         </div>
+
         <div className="flex gap-2 font-Pretendard text-gray-600 text-sm">
           <div className="flex gap-1">
             <Image
