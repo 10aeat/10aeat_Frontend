@@ -24,7 +24,7 @@ export default function NavBar({ children, isTitle, isTextChange }: Props) {
           width={24}
           height={24}
           alt="arrow_left_large_gray900"
-          className="cursor-pointer"
+          className="cursor-pointer z-10"
           onClick={() => router.back()}
         />
       </div>
