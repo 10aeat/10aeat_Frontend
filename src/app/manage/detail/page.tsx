@@ -1,5 +1,6 @@
 'use client'
 
+import Details from '@/components/atoms/Details'
 import InspectionPlan from '@/components/atoms/InspectionPlan'
 import NavBar from '@/components/atoms/NavBar'
 import Note from '@/components/atoms/Note'
@@ -39,6 +40,7 @@ export default function ManageDetail() {
       </div>
       <div className="px-4 mt-8 w-full mb-[15px]">
         <div className="font-bold text-lg font-Pretendard mb-3">상세 내역</div>
+        <Details />
       </div>
       <div className="px-4 mt-8 w-full mb-[15px]">
         <div className="font-bold text-lg font-Pretendard mb-3">법정 계획</div>
