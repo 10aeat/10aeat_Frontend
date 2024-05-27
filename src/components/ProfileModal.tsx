@@ -40,7 +40,7 @@ export default function ProfileModal({ isOpen, onClose }: ModalProps) {
 
   return (
     <div
-      className={`${isOpen ? 'translate-y-[150px]' : 'translate-y-full'} fixed transition-transform duration-500 top-0 justify-center w-[375px] h-[736px] pt-[24px] shrink-0 rounded-t-[24px] bg-white font-Pretendard`}
+      className={`${isOpen ? 'translate-y-[150px]' : 'translate-y-full'} fixed z-10 transition-transform duration-500 top-0 justify-center w-[375px] h-[736px] pt-[24px] shrink-0 rounded-t-[24px] bg-white font-Pretendard`}
       onClick={(e) => e.stopPropagation()}
     >
       <div className="inline-flex items-start gap-[264px] w-[375px] h-[24px] px-[20px] shrink-0 bg-white">
