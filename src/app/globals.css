@@ -36,3 +36,26 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+
+@layer components {
+  .custom-scrollbar {
+    @apply overflow-auto;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 22px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #FFF;
+    border-radius: 10px;
+
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #D1D5DB;
+    border-radius: 100px;
+    border: 8px solid transparent;
+    background-clip: padding-box;
+  }
+}
