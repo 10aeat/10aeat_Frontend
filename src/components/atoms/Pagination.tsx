@@ -63,7 +63,7 @@ export default function Pagination({ totalItems }: Props) {
 
   const pagination = () => {
     return (
-      <div className="inline-flex items-start gap-[4px] relative mt-6 justify-center">
+      <div className="inline-flex items-start gap-[4px] relative mt-6 justify-center mb-[100px]">
         {totalPages > 1 && (
           <Image
             src="/icons/arrow_left_large.svg"
