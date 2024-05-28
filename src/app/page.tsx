@@ -1,5 +1,6 @@
 'use client'
 
+import BottomNav from '@/components/atoms/BottomNav'
 import Logo from '@/components/atoms/Logo'
 import ManageStatus from '@/components/atoms/ManageStatus'
 import MonthlyPlan from '@/components/atoms/MonthlyPlan'
