@@ -32,7 +32,7 @@ export default function Details() {
           alt="calendar"
           className=""
         />
-        <div className="font-Pretendard text-[16px] font-medium leading-[24px] capitalize">
+        <div className="fontchange font-Pretendard text-[16px] font-medium leading-[24px] capitalize">
           진행 일정을 확인해보세요.
         </div>
       </div>
@@ -63,7 +63,7 @@ export default function Details() {
               </TimelineSeparator>
               <TimelineContent style={{ padding: 5, height: '10px' }}>
                 <span
-                  className={`font-Pretendard font-medium text-[16px] leading-[24px] capitalize`}
+                  className={`fontchange font-Pretendard font-medium text-[16px] leading-[24px] capitalize`}
                 >
                   {item.date.replaceAll('-', '.')}
                 </span>
