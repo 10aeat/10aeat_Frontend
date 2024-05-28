@@ -16,7 +16,7 @@ interface RepairDetailProps {
 
 export default function RepairDetail({ issueCheck }: RepairDetailProps) {
   const { isSave } = useSaveStore()
-  issueCheck = true
+  // issueCheck = true
   const [isVisible, setIsVisible] = useState(issueCheck)
 
   useEffect(() => {

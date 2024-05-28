@@ -1,5 +1,6 @@
 'use client'
 
+import BottomNav from '@/components/atoms/BottomNav'
 import Logo from '@/components/atoms/Logo'
 import ManageStatus from '@/components/atoms/ManageStatus'
 import MonthlyPlan from '@/components/atoms/MonthlyPlan'
@@ -12,6 +13,13 @@ export default function Home() {
   const [selectedMonth, setSelectedMonth] = useState<number | null>(null)
   const handleSelectMonth = (month: number) => {
     setSelectedMonth(month)
+  }
+
+  // GET /repair/articles/summary 유지보수 사안 요약
+  const repairStatus = {
+    all: 18,
+    inprogressAndpending: 2,
+    complete: 2,
   }
   return (
     <div className="flex flex-col w-full items-center bg-gray-100">
@@ -73,7 +81,11 @@ export default function Home() {
             className="!absolute !w-[24px] !h-[24px] !left-[187px]"
           />
         </div>
-        <RepairStatus total={22} pending={6} finish={16} />
+        <RepairStatus
+          all={repairStatus.all}
+          inprogressAndpending={repairStatus.inprogressAndpending}
+          complete={repairStatus.complete}
+        />
       </div>
       <div className="mt-[32px] w-[345px]  h-[140px]">
         <div className="relative mt-[32px]">
