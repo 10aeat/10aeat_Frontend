@@ -39,10 +39,12 @@ export default function AgendaContent({
             className="cursor-pointer"
           />
         </div>
-        <div className="flex flex-col text-gray-900 gap-y-3 mt-5">
+        <div className="fontchange flex flex-col text-gray-900 gap-y-3 mt-5">
           <div>
-            <div className="text-lg font-bold capitalize">{title}</div>
-            <div className="text-gray-500 text-sm tracking-[-0.266px]">
+            <div className="fontchange text-lg font-bold capitalize">
+              {title}
+            </div>
+            <div className="fontchange text-gray-500 text-sm tracking-[-0.266px]">
               수정일: {updatedAt} / {adminName}
             </div>
           </div>

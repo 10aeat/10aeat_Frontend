@@ -14,30 +14,30 @@ export default function AdminCard({ name, mail, phone }: Props) {
         <div className="absolute top-[31px] left-[89px] text-sm font-normal text-black whitespace-nowrap font-Pretendard">
           관리자
         </div>
-        <div className="absolute top-[53px] left-[88px] font-Pretendard font-bold text-[18px] tracking-[0] leading-[24px] whitespace-nowrap">
+        <div className="fontchange absolute top-[53px] left-[88px] font-Pretendard font-bold text-[18px] tracking-[0] leading-[24px] whitespace-nowrap">
           {name}
         </div>
-        <div className="inline-flex flex-col items-start gap-[4px] px-[12px] py-0 absolute top-[32px] left-[221px]">
+        <div className="inline-flex flex-col items-center gap-[4px] px-[12px] py-0 absolute top-[32px] left-[221px]">
           <Image
             src="/icons/messages.svg"
             width={32}
             height={32}
             alt="messages"
-            className="mr-[8px] w-[24px] h-[24px]"
+            className="ml-[1px] w-[24px] h-[24px]"
           />
-          <div className="font-Pretendard relative w-fit text-sm font-medium text-gray-900 whitespace-nowrap">
+          <div className="fontchange font-Pretendard relative w-fit text-sm font-medium text-gray-900 whitespace-nowrap">
             메일
           </div>
         </div>
-        <div className="inline-flex flex-col items-start gap-[4px] px-[12px] py-0 absolute top-[32px] left-[274px]">
+        <div className="inline-flex flex-col items-center gap-[4px] px-[12px] py-0 absolute top-[32px] left-[274px]">
           <Image
             src="/icons/phone.svg"
             width={32}
             height={32}
             alt="phone"
-            className="mr-[8px] w-[24px] h-[24px]"
+            className="ml-[1px] w-[24px] h-[24px]"
           />
-          <div className="font-Pretendard relative w-fit text-sm font-medium text-gray-900 whitespace-nowrap">
+          <div className="fontchange font-Pretendard relative w-fit text-sm font-medium text-gray-900 whitespace-nowrap">
             전화
           </div>
         </div>

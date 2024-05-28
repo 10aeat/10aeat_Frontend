@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Button, { ButtonStyle } from './Button'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export enum TooltipStyle {
   COUNT = 'COUNT',
@@ -16,6 +16,16 @@ export default function Tooltip({ tooltipStyle, count }: Props) {
   const [activeButton, setActiveButton] = useState<ButtonStyle | null>(
     ButtonStyle.BASE,
   )
+  const originalFontSizes = useRef<Map<HTMLElement, number>>(new Map())
+
+  useEffect(() => {
+    // 페이지 로드 시 각 요소의 초기 폰트 사이즈를 저장
+    const elements = document.querySelectorAll<HTMLElement>('.fontchange')
+    elements.forEach((element) => {
+      const fontSize = window.getComputedStyle(element).fontSize
+      originalFontSizes.current.set(element, parseFloat(fontSize))
+    })
+  }, [])
 
   const handleButtonClick = (buttonStyle: ButtonStyle) => {
     setActiveButton(buttonStyle)
@@ -23,21 +33,27 @@ export default function Tooltip({ tooltipStyle, count }: Props) {
   }
 
   const changeFontSize = (buttonStyle: ButtonStyle) => {
-    let fontSize
-    switch (buttonStyle) {
-      case ButtonStyle.BASE:
-        fontSize = '1rem'
-        break
-      case ButtonStyle.LARGE:
-        fontSize = '1.125rem' // 크게
-        break
-      case ButtonStyle.XLARGE:
-        fontSize = '1.25rem' // 더크게
-        break
-      default:
-        fontSize = '1rem'
-    }
-    document.body.style.fontSize = fontSize
+    const elements = document.querySelectorAll<HTMLElement>('.fontchange')
+    elements.forEach((element) => {
+      const originalFontSize = originalFontSizes.current.get(element)
+      if (originalFontSize !== undefined) {
+        let newFontSize
+        switch (buttonStyle) {
+          case ButtonStyle.BASE:
+            newFontSize = originalFontSize + 'px'
+            break
+          case ButtonStyle.LARGE:
+            newFontSize = originalFontSize + 2 + 'px'
+            break
+          case ButtonStyle.XLARGE:
+            newFontSize = originalFontSize + 4 + 'px'
+            break
+          default:
+            newFontSize = originalFontSize + 'px'
+        }
+        element.style.fontSize = newFontSize
+      }
+    })
   }
 
   const selectTooltip = () => {
