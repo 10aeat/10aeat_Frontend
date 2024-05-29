@@ -21,13 +21,13 @@ const config: Config = {
       boxShadow: {
         primary: '0px 4px 30px 0px rgba(75, 85, 99, 0.04)',
         secondary: '4px 4px 20px 0px rgba(75, 85, 99, 0.24)',
-        profile: '0px 4px 4px 0px rgba(30, 78, 216, 0.08)'
+        profile: '0px 4px 4px 0px rgba(30, 78, 216, 0.08)',
       },
       animation: {
         pulse: 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
     },
   },
-  plugins: [require("tailwind-scrollbar-hide")],
+  plugins: [require('tailwind-scrollbar-hide')],
 }
 export default config
