@@ -17,7 +17,7 @@ export default function ChangeYear({
     <>
       <div className="flex justify-center items-center mt-[10px] mb-4">
         <Image
-          src="icons/lastyear.svg"
+          src="/icons/lastyear.svg"
           width={10}
           height={10}
           alt="이전"
@@ -28,7 +28,7 @@ export default function ChangeYear({
           {selectedYear}
         </span>
         <Image
-          src="icons/nextyear.svg"
+          src="/icons/nextyear.svg"
           width={10}
           height={10}
           alt="다음"

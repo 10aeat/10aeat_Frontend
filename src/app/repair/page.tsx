@@ -8,6 +8,45 @@ import { useState } from 'react'
 
 // 뱃지 넣어야함
 export default function Home() {
+  // GET /repair/articles/summary 유지보수 사안 요약
+  const repairStatus = {
+    all: 18,
+    inprogressAndpending: 2,
+    complete: 2,
+  }
+  // GET /repair/articles/list 유지보수 게시글 전체조회
+  const repairArticle = [
+    {
+      id: 1,
+      category: 'INSTALL', // 보수 종류
+      managerName: '김관리', // 관리자 이름
+      progress: 'INPROGRESS', // 진행 상황
+      title: '2층 우수관 하자발생 조치',
+      startConstruction: '2024-11-08T11:44:30.327959', // 공사 시작
+      endConstruction: '2024-12-08T11:44:30.327959', // 공사 종료
+      commentCount: 5, // 댓글 개수
+      viewCount: 150, // 조회수
+      isSave: false, // 사용자가 해당 게시글을 저장했는지 여부(별 표시)
+      issueCheck: false, // 사용자가 이슈를 확인했는지(사용자가 이슈를 확인하면 true로 변환)
+      isNewArticle: true, // 게시글 작성 시점으로부터 24시간이 지났는지 여부
+      imageUrl: '이미지 url',
+    },
+    {
+      id: 2,
+      category: 'REPLACE',
+      managerName: '김관리',
+      progress: 'COMPLETE',
+      title: '이중창문 설치 진행',
+      startConstruction: '2024-11-08T11:44:30.327959',
+      endConstruction: '2024-12-08T11:44:30.327959',
+      commentCount: 2,
+      viewCount: 40,
+      isSave: true,
+      issueCheck: false,
+      isNewArticle: true,
+      imageUrl: '이미지 url',
+    },
+  ]
   const [selectedStatus, setSelectedStatus] = useState('전체')
   const [selectedCategory, setSelectedCategory] = useState('전체')
 
@@ -33,21 +72,21 @@ export default function Home() {
           isSelect={selectedStatus === '전체'}
           onClickFunction={() => handleStatusClick('전체')}
           text="전체"
-          total={22}
+          total={repairStatus.all}
         />
         <Button
           buttonStyle={ButtonStyle.FILTER}
           isSelect={selectedStatus === '진행중/대기'}
           onClickFunction={() => handleStatusClick('진행중/대기')}
           text="진행중/대기"
-          total={6}
+          total={repairStatus.inprogressAndpending}
         />
         <Button
           buttonStyle={ButtonStyle.FILTER}
           isSelect={selectedStatus === '완료'}
           onClickFunction={() => handleStatusClick('완료')}
           text="완료"
-          total={16}
+          total={repairStatus.complete}
         />
       </div>
       {/* Card 영역 */}

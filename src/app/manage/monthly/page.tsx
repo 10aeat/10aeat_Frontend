@@ -1,11 +1,11 @@
 'use client'
 
-import Button, { ButtonStyle } from '@/components/atoms/Button'
 import ChangeYear from '@/components/atoms/ChangeYear'
 import NavBar from '@/components/atoms/NavBar'
 import NoData from '@/components/atoms/NoData'
 import Pagination from '@/components/atoms/Pagination'
 import ManageCard from '@/components/molecules/ManageCard'
+import SelectMonth from '@/components/molecules/SelectMonth'
 import { useState } from 'react'
 
 const exampleData: MANAGE_ARTICLE_LIST[] = [
@@ -29,13 +29,9 @@ const exampleData: MANAGE_ARTICLE_LIST[] = [
   // },
 ]
 
-export default function ManageList() {
-  const [selectedStatus, setSelectedStatus] = useState('전체')
+export default function ManageMonthly() {
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear())
-
-  const handleStatusClick = (status: string) => {
-    setSelectedStatus(status)
-  }
+  const [selectedMonth, setSelectedMonth] = useState<number | null>(null)
 
   const handlePreviousYear = () => {
     setSelectedYear((prevYear) => prevYear - 1)
@@ -44,6 +40,16 @@ export default function ManageList() {
   const handleNextYear = () => {
     setSelectedYear((prevYear) => prevYear + 1)
   }
+
+  const handleSelectMonth = (month: number) => {
+    setSelectedMonth(month)
+  }
+
+  // 선택된 월에 따라 데이터를 필터링하는 로직
+  const filteredData = exampleData.filter((item) => {
+    // TODO: item 데이터 내에서 월을 비교하는 로직을 구현해야 합니다.
+    // 예시: return item.month === selectedMonth;
+  })
 
   return (
     <>
@@ -58,35 +64,13 @@ export default function ManageList() {
         onNextYear={handleNextYear}
       />
 
-      {/* 전체 필터링 */}
-      <div className="flex w-full items-start gap-[14px] px-4 mb-4">
-        <Button
-          buttonStyle={ButtonStyle.FILTER}
-          isSelect={selectedStatus === '전체'}
-          onClickFunction={() => handleStatusClick('전체')}
-          text="전체"
-          total={22}
-        />
-        <Button
-          buttonStyle={ButtonStyle.FILTER}
-          isSelect={selectedStatus === '진행중/대기'}
-          onClickFunction={() => handleStatusClick('진행중/대기')}
-          text="진행중/대기"
-          total={6}
-        />
-        <Button
-          buttonStyle={ButtonStyle.FILTER}
-          isSelect={selectedStatus === '완료'}
-          onClickFunction={() => handleStatusClick('완료')}
-          text="완료"
-          total={16}
-        />
-      </div>
+      {/* 월별 필터링 */}
+      <SelectMonth onSelectMonth={handleSelectMonth} />
 
       {/* 카드들 */}
-      {exampleData.length > 0 ? (
+      {filteredData.length > 0 ? (
         <div className="flex flex-col items-center gap-3 min-h-[400px]">
-          {exampleData.map((item, index) => (
+          {filteredData.map((item, index) => (
             <ManageCard
               key={index}
               id={item.id}
@@ -103,7 +87,7 @@ export default function ManageList() {
         <NoData />
       )}
 
-      <Pagination totalItems={exampleData.length} />
+      <Pagination totalItems={filteredData.length} />
     </>
   )
 }

@@ -16,7 +16,7 @@ interface RepairDetailProps {
 
 export default function RepairDetail({ issueCheck }: RepairDetailProps) {
   const { isSave } = useSaveStore()
-  issueCheck = true
+  // issueCheck = true
   const [isVisible, setIsVisible] = useState(issueCheck)
 
   useEffect(() => {
@@ -54,6 +54,12 @@ export default function RepairDetail({ issueCheck }: RepairDetailProps) {
           progress="INPROGRESS"
           isSave={isSave}
           title="2층 우수관 하자 발생 조치"
+          content="금년 겨울 혹한기에 실내보온이 약해서 추위로 환경의 질이 떨어진 점과
+            철도소음으로 일부 입주사들이 불편사항을 호소하였습니다. 추위와
+            소음문제는 단일창으로 설계된 건물의 구조적 문제와 역세권에 위치한
+            문제에서 파생하였고, 해결방안으로 이중창문을 설치하는 것이 유일한
+            대안이라고 판단하였습니다. 한 호실당 설치 비용은 250만원으로
+            예상됩니다. 5.6 삼성중공업에 설치요구 공문을 발송하였습니다."
           updatedAt="2024.05.06"
           adminName="김주은"
         />

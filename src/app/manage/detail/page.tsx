@@ -8,12 +8,37 @@ import TagBadge, { TagBadgeStyle } from '@/components/atoms/TagBadge'
 import TrackingProgress2 from '@/components/atoms/TrackingProcess2'
 
 export default function ManageDetail() {
+  const data = {
+    period: 'YEAR',
+    peroidCount: 1,
+    title: '승강기 자체점검',
+    issue: true,
+    progress: 'INPROGRESS',
+    lagelBasis: '승강기 안전 관리법 제32조', //법적근거
+    target: '총 10대', //사용내역/검사 대상
+    manager: '승강기 점검 업체', //점검담당
+    note: '비고비고',
+    manageSchedule: [
+      {
+        manageScheduleId: 1,
+        isComplete: false,
+        scheduleStart: '2024-10-08T11:44:30.327959',
+        scheduleEnd: '2024-10-10T11:44:30.327959',
+      },
+      {
+        manageScheduleId: 2,
+        isComplete: true,
+        scheduleStart: '2024-10-08T11:44:30.327959',
+        scheduleEnd: '2024-10-10T11:44:30.327959',
+      },
+    ],
+  }
   return (
     <div className="flex flex-col w-full items-center ">
       <NavBar isTextChange={true} isTitle={false} />
       <div className="inline-flex flex-col items-start px-4 w-full mb-[15px]">
         <div className="font-bold text-lg font-Pretendard mb-[5px] text-[24px] text-left leading-[32px] capitalize">
-          승강기 자체점검
+          {data.title}
         </div>
         <div className="inline-flex flex-col items-start gap-[8px] relative">
           <div className="flex space-x-2">
@@ -45,9 +70,9 @@ export default function ManageDetail() {
       <div className="px-4 mt-8 w-full mb-[15px]">
         <div className="font-bold text-lg font-Pretendard mb-3">법정 계획</div>
         <InspectionPlan
-          legalBasis="소방시설 설치 및 관리에 관한 법률 제22조"
-          target="전층 소방시설"
-          manager="소방안전관리자 박소방"
+          legalBasis={data.lagelBasis}
+          target={data.target}
+          manager={data.manager}
         />
       </div>
       <div className="px-4 mt-8 w-full mb-[100px]">

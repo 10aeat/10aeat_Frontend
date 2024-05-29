@@ -17,7 +17,7 @@ export default function NavBar({ children, isTitle, isTextChange }: Props) {
   const [isTooltipVisible, setIsTooltipVisible] = useState(false)
 
   return (
-    <div className="relative flex items-center justify-between w-[375px] h-11 mt-[44px] font-Pretendard font-bold text-gray-900 text-lg capitalize px-4 z-1">
+    <div className="relative flex items-center justify-between w-[375px] h-11 mt-[44px] font-Pretendard font-bold text-gray-900 text-lg capitalize px-4 z-10">
       <div className="flex justify-start">
         <Image
           src="/icons/arrow_left_large_gray900.svg"

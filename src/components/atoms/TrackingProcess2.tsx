@@ -36,7 +36,7 @@ export default function TrackingProgress2({
         >
           {progressPercentage.toFixed(0)}%
         </div>
-        <div className="relative w-[280px] text-gray-500 text-center leading-[20px] font-medium capitalize font-Pretendard text-[14px]">
+        <div className="fontchange relative w-[280px] text-gray-500 text-center leading-[20px] font-medium capitalize font-Pretendard text-[14px]">
           {statusText}
         </div>
       </div>
