@@ -1,9 +1,13 @@
-import CalendarPicker from '@/components/atoms/CalendarPicker'
+import DatePicker from '@/components/atoms/DatePicker'
+import Dropdown from '@/components/atoms/Dropdown'
 
 export default function Home() {
   return (
     <div>
-      <CalendarPicker isDisabled={false} />
+      <DatePicker isDisabled={false} />
+      <Dropdown size="md" isDisabled={false} />
+      <Dropdown size="sm" isDisabled={false} />
+      <Dropdown size="sm" isDisabled={true} />
     </div>
   )
 }

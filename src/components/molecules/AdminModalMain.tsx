@@ -1,4 +1,4 @@
-import CalendarPicker from '../atoms/CalendarPicker'
+import DatePicker from '../atoms/DatePicker'
 
 export default function AdminModalMain() {
   return (
@@ -11,7 +11,7 @@ export default function AdminModalMain() {
         <div className="flex flex-col items-start gap-[8px] self-stretch">
           <span className="text-blue-600 font-semibold">1. 진행 일자</span>
           <div className="flex w-[200px] h-[48px]">
-            <CalendarPicker isDisabled={false} />
+            <DatePicker isDisabled={false} />
           </div>
         </div>
         <div>
