@@ -18,6 +18,9 @@ interface Props {
   onClickFunction?: () => Promise<void> | void
 }
 
+// 페이지 폴더 내부에 _components 폴더를 하면 해당 페이지에서만 사용가능한 컴포넌트
+// @apply 적용하기
+
 export default function AdminButton({
   buttonStyle,
   buttonSize,
