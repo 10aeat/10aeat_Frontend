@@ -5,6 +5,7 @@ import AdminCard from '@/components/atoms/AdminCard'
 import { useState } from 'react'
 import ProfileModal from '@/components/ProfileModal';
 import CommentsModal from '@/components/CommentsModal'
+import TextArea from '@/components/atoms/TextArea';
 
 export default function TestModal() {
  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
