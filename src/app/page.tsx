@@ -98,6 +98,5 @@ export default function Home() {
         <MonthlyPlan onSelectMonth={handleSelectMonth} />
       </div>
     </div>
-    
   )
 }

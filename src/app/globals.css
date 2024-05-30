@@ -47,9 +47,7 @@ body {
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: #FFF;
-    border-radius: 10px;
-
+    display: none;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
