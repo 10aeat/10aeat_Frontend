@@ -21,7 +21,7 @@ export default function TextArea({ count = 10 }) {
   }
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === 'Enter' && count < 40) {
-      event.preventDefault(); // Enter 키 입력 무시
+      event.preventDefault();
     }
   };
 
