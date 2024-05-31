@@ -39,7 +39,7 @@ export default function Dropdown({ options, isDisabled, size }: Props) {
 
   return (
     <div
-      className={`flex flex-col items-start ${size === 'md' ? 'w-[200px]' : 'w-[178px]'} ${isDisabled ? 'opacity-40' : ''}`}
+      className={`flex flex-col z-10 items-start ${size === 'md' ? 'w-[200px]' : 'w-[178px]'} ${isDisabled ? 'opacity-40' : ''}`}
     >
       <button
         className={`flex ${size === 'md' ? 'w-[200px] h-[48px] px-[16px] py-[12px]' : 'w-[178px] h-[36px] px-[10px] py-[0px] justify-between'} items-center rounded-[8px] border-[1px] border-solid ${isOptionSelected ? 'border-gray-400' : 'border-gray-300'} bg-white hover:bg-gray-50 group cursor-pointer`}

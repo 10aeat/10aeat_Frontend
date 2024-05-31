@@ -35,13 +35,13 @@ export default function AdminButton({
     let sizeStyle = ''
     switch (buttonSize) {
       case 'sm':
-        sizeStyle = 'rounded-lg text-sm p-2.5' //gap-0.5
+        sizeStyle = 'rounded-lg text-sm p-2.5 gap-0.5'
         break
       case 'md':
-        sizeStyle = 'rounded-[10px] text-base p-3.5' //gap-1
+        sizeStyle = 'rounded-[10px] text-base p-3.5 gap-1'
         break
       case 'lg':
-        sizeStyle = 'rounded-xl text-xl p-3.5' //gap-2
+        sizeStyle = 'rounded-xl text-xl p-3.5 gap-2'
         break
       default:
         sizeStyle = ''
