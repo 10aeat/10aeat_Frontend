@@ -1,13 +1,13 @@
 import { useState } from 'react'
 
 interface TextAreaProps {
-  count: number;
+  count?: number;
   placeholder: string;
-  width: string;
-  text: string;
+  width?: string;
+  text?: string;
 }
 
-export default function TextArea({ count = 10, placeholder = "내용을 입력하세요", width = "421px", text = "16px" }: TextAreaProps) {
+export default function TextArea({ count = 0, placeholder = "내용을 입력하세요", width = "421px", text = "16px" }: TextAreaProps) {
   const [inputValue, setInputValue] = useState('')
   const [textLength, setTextLength] = useState<number>(0)
 

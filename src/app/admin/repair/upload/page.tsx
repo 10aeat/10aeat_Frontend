@@ -4,6 +4,7 @@ import Dropdown from '@/components/atoms/Dropdown'
 import TextArea from '@/components/atoms/TextArea'
 import TextEditor from '@/components/atoms/TextEditor'
 import CalenderSelect from '@/components/atoms/CalendarSelect'
+import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton'
 import Image from 'next/image'
 import { useState } from 'react'
 
@@ -43,7 +44,10 @@ export default function RepairUpload() {
           <div className="text-blue-600">*</div>
         </div>
         <div>
-          <TextArea count={0} placeholder="제목을 입력해주세요." width="840px" />
+          <TextArea
+            placeholder="제목을 입력해주세요."
+            width="840px"
+          />
         </div>
       </div>
       <div className="flex items-center mx-[24px] py-[8px]">
@@ -59,24 +63,28 @@ export default function RepairUpload() {
         <div className="w-[100px] ml-[16px] mr-[8px] text-[16px] leading-[24px] font-semibold capitalize">
           <div className="text-gray-900">담당 업체&nbsp;</div>
         </div>
-        <div className="grid gap-[16px] text-[14px] font-medium leading-[14px]">
+        <div className="flex flex-col gap-[16px] text-[14px] font-medium leading-[14px]">
           <TextArea
-            count={0}
             placeholder="업체명을 작성해주세요."
             width="178px"
             text="14px"
           />
-          <TextArea
-            count={0}
+          <TextArea            
             placeholder="해당 업체의 웹사이트 링크를 첨부해주세요."
             width="292px"
             text="14px"
           />
         </div>
       </div>
-      <div className="flex w-[1024px] justify-end p-[24px]">
-      <button className="flex p-[14px] rounded-[12px] bg-blue-600 text-[20px] font-semibold leading-[20px] text-white">등록하기</button>
-      </div>
+      <div className='flex'>
+      <AdminButton
+        buttonStyle={ButtonStyle.NEUTRAL}
+        isDisabled={false}
+        buttonSize={'lg'}
+      >
+        등록
+      </AdminButton>
+    </div>
     </div>
   )
 }
