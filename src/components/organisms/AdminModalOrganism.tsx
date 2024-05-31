@@ -3,7 +3,11 @@ import AdminModalMain from '../molecules/AdminModalMain'
 import AdminModalBottom, { BottomStyle } from '../atoms/AdminModalBottom'
 import { useState } from 'react'
 
-export default function AdminModalOrganism() {
+interface Props {
+  children: React.ReactNode
+}
+
+export default function AdminModalOrganism({ children }: Props) {
   const [isVisible, setIsVisible] = useState(true)
 
   const handleCancel = () => {
@@ -18,7 +22,7 @@ export default function AdminModalOrganism() {
         >
           <div className="flex flex-col w-[487px] min-h-[280px] items-start font-Pretendard">
             <AdminModalTop title="진행 현황 추가" />
-            <AdminModalMain />
+            <AdminModalMain>{children}</AdminModalMain>
             <AdminModalBottom
               bottomStyle={BottomStyle.CANCEL_DONE}
               text="추가하기"
