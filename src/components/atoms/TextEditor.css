@@ -5,12 +5,14 @@
 
 .text-editor:focus-within .ql-container{
   border-color: #2563EB;
-  box-shadow: 0px 2px 0px 2px rgba(37, 99, 235, 0.10);
+  box-shadow:-2px 0px 0px 0px rgba(37, 99, 235, 0.10), 2px 0px 0px 0px rgba(37, 99, 235, 0.10),
+  0px 2px 0px 0px rgba(37, 99, 235, 0.10);
 }
 .text-editor:focus-within .ql-toolbar{
   border-color: #2563EB;
   border-bottom-color: #D1D5DB;
-  box-shadow: 0px -2px 0px 2px rgba(37, 99, 235, 0.10);
+  box-shadow: 2px 0px 0px 0px rgba(37, 99, 235, 0.10), -2px 0px 0px 0px rgba(37, 99, 235, 0.10),
+  0px -2px 0px 0px rgba(37, 99, 235, 0.10);
 }
 
 .text-editor .ql-toolbar {
@@ -40,6 +42,13 @@
   background-clip: padding-box;
 }
 
+.text-editor .ql-editor.ql-blank::before{
+  font-size: 16px;
+  font-style: normal;
+  font-family: "Pretendard-Regular";
+  color: #9CA3AF
+}
+
 /* .text-editor .ql-container.ql-snow {
   border-radius: 0 0 8px 8px;
   padding: 0px
@@ -49,10 +58,3 @@
   border-radius: 8px 8px 0 0;
   border-bottom: 1px solid #D1D5DB;
 } */
-
-.text-editor .ql-editor.ql-blank::before{
-  font-size: 16px;
-  font-style: normal;
-  font-family: "Pretendard-Regular";
-  color: #9CA3AF
-}
