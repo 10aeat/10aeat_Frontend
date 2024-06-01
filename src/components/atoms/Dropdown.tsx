@@ -63,7 +63,7 @@ export default function Dropdown({ isDisabled, size }: Props) {
       </button>
       {open && (
         <div
-          className={`flex flex-col items-start self-stretch rounded-[8px] border-[1px] border-solid border-gray-300 boxshadow-secondary bg-white`}
+          className={`flex flex-col relative items-start self-stretch rounded-[8px] border-[1px] border-solid border-gray-300 boxshadow-secondary bg-white`}
         >
           {options.map((option, index) => {
             return (
