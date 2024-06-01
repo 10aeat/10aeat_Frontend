@@ -35,7 +35,7 @@ export default function ProfileModal({ isOpen, onClose }: ModalProps) {
   }
 
   if (!profileData) {
-    // return null;
+    return null;
   }
 
   return (
@@ -88,12 +88,12 @@ export default function ProfileModal({ isOpen, onClose }: ModalProps) {
       </div>
       <div className="flex pt-[48px] justify-center gap-[10px] text-base font-medium">
         <button className="flex items-center justify-center gap-[4px] w-[166px] h-[52px] rounded-[16px] shrink-0 bg-white border border-blue-500 text-blue-700" onClick={() => copyToClipboard(profileData?.email)}>
-          <IconMessages color="#1D4ED8" width="20" height="20"></IconMessages>{' '}
+          <IconMessages color="#1D4ED8" width="20" height="20"></IconMessages>{" "}
           메일보내기
         </button>
         <button className="flex items-center justify-center gap-[4px] w-[166px] h-[52px] rounded-[16px] shrink-0 bg-blue-700 text-white">
           <a href={`tel:${profileData?.phoneNumber}`}></a>
-          <IconPhone color="#FFFFFF" width="20" height="20"></IconPhone>{' '}
+          <IconPhone color="#FFFFFF" width="20" height="20"></IconPhone>{" "}
           전화걸기
         </button>
       </div>

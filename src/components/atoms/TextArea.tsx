@@ -1,8 +1,16 @@
 import { useState } from 'react'
 
-export default function TextArea({ count = 10 }) {
+interface TextAreaProps {
+  count: number;
+  placeholder: string;
+  width: string;
+  text: string;
+}
+
+export default function TextArea({ count = 10, placeholder = "내용을 입력하세요", width = "421px", text = "16px" }: TextAreaProps) {
   const [inputValue, setInputValue] = useState('')
-  const [textLength, setTextLength] = useState<number>()
+  const [textLength, setTextLength] = useState<number>(0)
+
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = event.target.value
     let length = 0
@@ -15,28 +23,30 @@ export default function TextArea({ count = 10 }) {
       }
     }
     if (length <= count) {
-      setInputValue(value);
-      setTextLength(length);
+      setInputValue(value)
+      setTextLength(length)
     }
   }
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === 'Enter' && count < 40) {
-      event.preventDefault();
+      event.preventDefault()
     }
-  };
+  }
 
   return (
-    <div className="flex flex-col gap-[4px] w-[421px] h-auto font-Pretendard text-gray-700 text-base font-normal">
+    <div className={`flex flex-col gap-[4px] h-auto font-Pretendard text-gray-700 text-[${text}] leading-[24px] font-normal`} style={{width}}>
       <textarea
         className={`custom-scrollbar flex items-center w-[100%] ${count >= 40 ? 'h-[142px]' : 'h-[48px]'} py-[12px] gap-[10px] pl-[16px] pr-[0px] border rounded-[10px] focus:outline-none focus:shadow-inputFocus focus:border-blue-600 placeholder-gray-400 disabled:gray-100 border-gray-300 resize-none ${count >= 40 ? '' : 'scrollbar-hide'}`}
-        placeholder="내용을 입력하세요"
+        placeholder={placeholder}
         value={inputValue}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
       />
-      <div className="self-stretch text-right text-[12px] leading-[18px] text-gray-400">
-        {textLength}/{count}
-      </div>
+      {count ? (
+        <div className="self-stretch text-right text-[12px] leading-[18px] text-gray-400">
+          {textLength}/{count}
+        </div>
+      ) : null}
     </div>
   )
 }
