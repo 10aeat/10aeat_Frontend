@@ -37,6 +37,7 @@ export default function RepairUpload() {
           </div>
         </div>
         <CalenderSelect />
+        {/* <DatePicker1 isDisabled={false} /> */}
       </div>
       <div className="flex items-center mx-[24px] py-[8px]">
         <div className="flex w-[100px] ml-[16px] mr-[8px] text-[16px] leading-[24px] font-semibold capitalize">
