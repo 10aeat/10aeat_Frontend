@@ -1,37 +1,40 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 interface TextAreaProps {
   count?: number;
   placeholder: string;
   width?: string;
   text?: string;
+  onChange: (value: string) => void;
 }
 
-export default function TextArea({ count = 0, placeholder = "내용을 입력하세요", width = "421px", text = "16px" }: TextAreaProps) {
-  const [inputValue, setInputValue] = useState('')
-  const [textLength, setTextLength] = useState<number>(0)
+export default function TextArea({ count = 0, placeholder = "내용을 입력하세요", width = "421px", text = "16px", onChange }: TextAreaProps) {
+  const [inputValue, setInputValue] = useState('');
+  const [textLength, setTextLength] = useState<number>(0);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const value = event.target.value
-    let length = 0
+    const value = event.target.value;
+    let length = 0;
     for (let i = 0; i < value.length; i++) {
-      const charCode = value.charCodeAt(i)
+      const charCode = value.charCodeAt(i);
       if (charCode >= 0 && charCode <= 128) {
-        length += 1
+        length += 1;
       } else {
-        length += 3
+        length += 3;
       }
     }
     if (length <= count) {
-      setInputValue(value)
-      setTextLength(length)
+      setInputValue(value);
+      setTextLength(length);
+      onChange(value);
     }
-  }
+  };
+
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === 'Enter' && count < 40) {
-      event.preventDefault()
+      event.preventDefault();
     }
-  }
+  };
 
   return (
     <div className={`flex flex-col gap-[4px] h-auto font-Pretendard text-gray-700 text-[${text}] leading-[24px] font-normal`} style={{width}}>
@@ -48,5 +51,5 @@ export default function TextArea({ count = 0, placeholder = "내용을 입력하
         </div>
       ) : null}
     </div>
-  )
+  );
 }
