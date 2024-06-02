@@ -1,13 +1,13 @@
 import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton'
 import AdminFilterBtn from '@/components/atoms/AdminFilterBtn'
 import AdminInput from '@/components/atoms/AdminInput'
-import AdminListTable from '@/components/atoms/AdminListTable'
+import AdminListTable from '@/components/atoms/AdminRepairTable'
 import AdminLogo from '@/components/atoms/AdminLogo'
 import Dropdown from '@/components/atoms/Dropdown'
 
 export default function page() {
   return (
-    <div className="relative w-[1280px] bg-white">
+    <div className="relative w-full bg-white">
       <AdminLogo />
       <div className="flex flex-col w-[232px] h-[822px] items-center gap-[16px] bg-gray-100">
         사이드바
