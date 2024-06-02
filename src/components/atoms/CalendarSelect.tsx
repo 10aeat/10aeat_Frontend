@@ -45,7 +45,8 @@ export default function CalendarSelect() {
           onClick={handleButtonClick}
           disabled={!isChecked}
         >
-          <IconCalendar color={isChecked ? "#9CA3AF" : "#D1D5DB"} /> 기간을 선택해주세요.
+          <IconCalendar color={isChecked ? '#9CA3AF' : '#D1D5DB'} /> 기간을
+          선택해주세요.
         </button>
       </div>
       {isCalendarVisible && (

@@ -5,12 +5,19 @@ import React, { useState } from 'react'
 
 interface Props {
   isDisabled: boolean
+  placeholder?: string
   size: string
+  options?: Array<string>
 }
 
-export default function Dropdown({ isDisabled, size }: Props) {
+export default function Dropdown({
+  isDisabled,
+  size,
+  placeholder = '선택',
+  options = ['선택 1', '선택 2', '선택 3'],
+}: Props) {
   const [open, setOpen] = useState(false)
-  const [selectedOption, setSelectedOption] = useState('선택')
+  const [selectedOption, setSelectedOption] = useState(placeholder)
 
   let sizeStyle = ''
 
@@ -34,7 +41,7 @@ export default function Dropdown({ isDisabled, size }: Props) {
     }
   }
 
-  const options = ['선택 1', '선택 2', '선택 3']
+  // const options = ['선택 1', '선택 2', '선택 3']
 
   const isOptionSelected = options.includes(selectedOption)
 

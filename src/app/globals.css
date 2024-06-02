@@ -51,7 +51,7 @@ body {
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background-color: #D1D5DB;
+    background-color: #d1d5db;
     border-radius: 100px;
     border: 8px solid transparent;
     background-clip: padding-box;
