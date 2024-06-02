@@ -113,7 +113,7 @@ export default function AdminManageTable() {
             </td>
             <td className="flex min-w-[62px] px-[24px] py-[12px] justify-center items-center gap-[12px] self-stretch">
               <div className="font-Pretendard text-[16px] font-normal leading-[24px] capitalize text-gray-900 whitespace-nowrap">
-                3 / 6
+                <span className="font-bold">3</span> / 6
               </div>
             </td>
             <td className="flex min-w-[108px] px-[24px] py-[12px] justify-center items-center gap-[12px] self-stretch whitespace-nowrap">

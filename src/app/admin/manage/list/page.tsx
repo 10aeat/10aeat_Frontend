@@ -2,6 +2,8 @@ import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton'
 import AdminInput from '@/components/atoms/AdminInput'
 import AdminLogo from '@/components/atoms/AdminLogo'
 import AdminManageTable from '@/components/atoms/AdminManageTable'
+import AdminMonthPicker from '@/components/atoms/AdminMonthPicker'
+import AdminYearPicker from '@/components/atoms/AdminYearPicker'
 
 export default function page() {
   return (
@@ -37,6 +39,10 @@ export default function page() {
         </div>
         <div className="relative top-[24px] font-Pretendard text-[18px] font-semibold leading-[24px] capitalize text-gray-900">
           시행 예정 일자 년도 / 월별 보기
+        </div>
+        <div className="relative flex top-[24px] gap-[12px] ">
+          <AdminYearPicker />
+          <AdminMonthPicker />
         </div>
         {/* 여기 달력 드롭다운 새로 만들기 */}
         <div className=" justify-between relative flex py-[12px] mt-[24px] items-center gap-[695px]">
