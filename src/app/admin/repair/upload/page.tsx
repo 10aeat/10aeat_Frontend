@@ -1,32 +1,30 @@
 'use client'
 
-import { useState } from 'react'
-import Dropdown from '@/components/atoms/Dropdown'
-import TextArea from '@/components/atoms/TextArea'
-import TextEditor from '@/components/atoms/TextEditor'
-import CalenderSelect from '@/components/atoms/CalendarSelect'
-import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton'
-import Image from 'next/image'
-import axios from 'axios'
+import { useState } from 'react';
+import axios from 'axios';
+import Dropdown from '@/components/atoms/Dropdown';
+import TextArea from '@/components/atoms/TextArea';
+import TextEditor from '@/components/atoms/TextEditor';
+import CalenderSelect from '@/components/atoms/CalendarSelect';
+import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton';
+import Image from 'next/image';
 
 export default function RepairUpload() {
-  const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
-  const [repairCompany, setRepairCompany] = useState('')
-  const [repairCompanyWebsite, setRepairCompanyWebsite] = useState('')
-  const [constructionStart, setConstructionStart] = useState(null)
-  const [constructionEnd, setConstructionEnd] = useState(null)
-  const [images, setImages] = useState<string[]>([])
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [repairCompany, setRepairCompany] = useState('');
+  const [repairCompanyWebsite, setRepairCompanyWebsite] = useState('');
+  const [constructionStart, setConstructionStart] = useState(null);
+  const [constructionEnd, setConstructionEnd] = useState(null);
+  const [images, setImages] = useState<string[]>([]);
 
-  const handleTitleChange = (value: string) => setTitle(value)
-  const handleContentChange = (value: string) => setContent(value)
-  const handleRepairCompanyChange = (value: string) => setRepairCompany(value)
-  const handleRepairCompanyWebsiteChange = (value: string) =>
-    setRepairCompanyWebsite(value)
-  const handleConstructionStartChange = (date: any) =>
-    setConstructionStart(date)
-  const handleConstructionEndChange = (date: any) => setConstructionEnd(date)
-  const handleImagesChange = (value: string[]) => setImages(value)
+  const handleTitleChange = (value: string) => setTitle(value);
+  const handleContentChange = (value: string) => setContent(value);
+  const handleRepairCompanyChange = (value: string) => setRepairCompany(value);
+  const handleRepairCompanyWebsiteChange = (value: string) => setRepairCompanyWebsite(value);
+  const handleConstructionStartChange = (date: any) => setConstructionStart(date);
+  const handleConstructionEndChange = (date: any) => setConstructionEnd(date);
+  const handleImagesChange = (value: string[]) => setImages(value);
 
   const handleSubmit = async () => {
     const payload = {
@@ -39,9 +37,9 @@ export default function RepairUpload() {
       repairCompany,
       repairCompanyWebsite,
       images,
-    }
+    };
 
-  const accessToken = localStorage.getItem('accessToken'); // 로컬 스토리지에서 토큰 읽어오기
+    const accessToken = localStorage.getItem('accessToken'); // 로컬 스토리지에서 토큰 읽어오기
 
     if (!accessToken) {
       console.error('Access token is missing');
@@ -98,11 +96,12 @@ export default function RepairUpload() {
           <TextArea
             placeholder="제목을 입력해주세요."
             width="840px"
+            value={title}
             onChange={handleTitleChange}
           />
         </div>
       </div>
-      <div className="flex items-center  py-[8px]">
+      <div className="flex items-center py-[8px]">
         <div className="flex w-[124px] ml-[16px] text-[16px] leading-[24px] font-semibold capitalize">
           <div className="text-gray-900">안건 내용&nbsp;</div>
           <div className="text-blue-600">*</div>
@@ -110,7 +109,8 @@ export default function RepairUpload() {
         <div>
           <TextEditor
             placeholder="내용을 입력해주세요."
-            onChange={handleContentChange}
+            value={content} // Pass value prop
+            onChange={handleContentChange} // Pass onChange prop
           />
         </div>
       </div>
@@ -123,27 +123,27 @@ export default function RepairUpload() {
             placeholder="업체명을 작성해주세요."
             width="178px"
             text="14px"
-            onChange={handleRepairCompanyChange}
+            value={repairCompany} // Pass value prop
+            onChange={handleRepairCompanyChange} // Pass onChange prop
           />
           <TextArea
             placeholder="해당 업체의 웹사이트 링크를 첨부해주세요."
             width="292px"
             text="14px"
-            onChange={handleRepairCompanyWebsiteChange}
+            value={repairCompanyWebsite} // Pass value prop
+            onChange={handleRepairCompanyWebsiteChange} // Pass onChange prop
           />
         </div>
       </div>
       <div className="flex place-content-end">
-        <button onClick={handleSubmit}>
         <AdminButton
           buttonStyle={ButtonStyle.PRIMARY}
           buttonSize={'lg'}
-          
+          onClick={handleSubmit}
         >
           등록하기
         </AdminButton>
-        </button>
       </div>
     </div>
-  )
+  );
 }
