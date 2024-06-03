@@ -178,8 +178,8 @@ export default function Button({
             className="flex p-[14px] justify-center items-center gap-[8px] rounded-[12px] bg-blue-600 text-white text-center text-xl font-semibold font-Pretendard"
             onClick={onClickFunction}
           >
-            <p className="w-[24px] h-[24px]">+</p>
-            <p>버튼</p>
+            {/* <p className="w-[24px] h-[24px]">+</p> */}
+            <p>{text}</p>
           </button>
         )
       default:
