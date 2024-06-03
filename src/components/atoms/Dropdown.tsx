@@ -4,7 +4,7 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 
 interface Props {
-  isDisabled: boolean
+  isDisabled?: boolean
   placeholder?: string
   size: string
   options?: Array<string>

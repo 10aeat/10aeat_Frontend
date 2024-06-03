@@ -30,7 +30,7 @@ export default function AdminButton({
 }: Props) {
   const selectButton = () => {
     const defaultStyle =
-      'flex justify-center items-center font-Pretendard font-medium capitalize cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed'
+      'flex justify-center items-center font-Pretendard font-medium capitalize cursor-pointer disabled:opacity-40 disabled:cursor-default'
 
     let sizeStyle = ''
     switch (buttonSize) {

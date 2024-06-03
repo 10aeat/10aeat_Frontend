@@ -3,7 +3,7 @@
 import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton'
 import Dropdown from '@/components/atoms/Dropdown'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 
 interface Column {
   title: string
@@ -34,6 +34,42 @@ export default function Table({
   handleSelectAll,
   handleSelectItem,
 }: Props) {
+  const [disabledItems, setDisabledItems] = useState<string[]>([])
+
+  const onStatusChange = (value: string, index: number) => {
+    if (handleStatusChange) {
+      handleStatusChange(value, index)
+    }
+    const itemKey = data[index].title
+    if (value === '완료') {
+      setDisabledItems([...disabledItems, itemKey])
+    } else {
+      setDisabledItems(disabledItems.filter((key) => key !== itemKey))
+    }
+  }
+
+  const onSelectAll = (isSelected: boolean) => {
+    if (handleSelectAll) {
+      handleSelectAll(isSelected)
+    }
+    if (isSelected) {
+      setSelectedItems(data.map((item) => item.title))
+    } else {
+      setSelectedItems([])
+    }
+  }
+
+  const onSelectItem = (isSelected: boolean, item: ITEM) => {
+    if (handleSelectItem) {
+      handleSelectItem(isSelected, item)
+    }
+    if (isSelected) {
+      setSelectedItems([...selectedItems, item.title])
+    } else {
+      setSelectedItems(selectedItems.filter((title) => title !== item.title))
+    }
+  }
+
   return (
     <table className="table-auto w-full font-Pretendard font-medium rounded-t-lg mt-4">
       <thead className="bg-gray-100 text-gray-500 h-[48px]">
@@ -41,9 +77,7 @@ export default function Table({
           <th className="px-6 py-3 flex justify-between items-center w-fit whitespace-nowrap">
             <input
               type="checkbox"
-              onChange={(e) =>
-                handleSelectAll && handleSelectAll(e.target.checked)
-              }
+              onChange={(e) => onSelectAll(e.target.checked)}
               checked={selectedItems.length === data.length}
               className="mr-3"
             />
@@ -75,11 +109,9 @@ export default function Table({
               <td className="px-6 py-3 whitespace-nowrap">
                 <input
                   type="checkbox"
-                  onChange={(e) =>
-                    handleSelectItem && handleSelectItem(e.target.checked, item)
-                  }
-                  checked={selectedItems.includes(item.date)}
-                  disabled={item.disabled}
+                  onChange={(e) => onSelectItem(e.target.checked, item)}
+                  checked={selectedItems.includes(item.title)}
+                  disabled={disabledItems.includes(item.title)}
                   className="mr-3"
                 />
                 {index + 1}
@@ -98,6 +130,7 @@ export default function Table({
                 <AdminButton
                   buttonStyle={ButtonStyle.SECONDARY_BLUE}
                   buttonSize={'lg'}
+                  isDisabled={item.disabled}
                 >
                   <Image
                     src={'/icons/pen2.svg'}
@@ -114,7 +147,6 @@ export default function Table({
                   className="px-6 py-3 w-fit items-center"
                 >
                   <Dropdown
-                    isDisabled={item.disabled}
                     size="md"
                     placeholder={
                       item[statusColumn.dataIndex] === 'true'
@@ -122,9 +154,7 @@ export default function Table({
                         : '미완료'
                     }
                     options={['완료', '미완료']}
-                    onChange={(value) =>
-                      handleStatusChange && handleStatusChange(value, index)
-                    }
+                    onChange={(value) => onStatusChange(value, index)}
                   />
                 </td>
               )}
