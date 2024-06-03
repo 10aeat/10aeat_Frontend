@@ -1,18 +1,23 @@
+'use client'
+
 import Image from 'next/image'
 import Page from './Page'
 import { useEffect, useState } from 'react'
 
 interface Props {
   totalItems: number
+  itemsPerPage: number
 }
 
-export default function Pagination({ totalItems }: Props) {
+export default function Pagination({ totalItems, itemsPerPage }: Props) {
   const [currentPage, setCurrentPage] = useState(1)
-  const [totalPages, setTotalPages] = useState(Math.ceil(totalItems / 20))
+  const [totalPages, setTotalPages] = useState(
+    Math.ceil(totalItems / itemsPerPage),
+  )
   const [pageNumbers, setPageNumbers] = useState<number[]>([])
 
   useEffect(() => {
-    setTotalPages(Math.ceil(totalItems / 20))
+    setTotalPages(Math.ceil(totalItems / itemsPerPage))
   }, [totalItems])
 
   useEffect(() => {
