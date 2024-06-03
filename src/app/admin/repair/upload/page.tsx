@@ -6,6 +6,7 @@ import TextEditor from '@/components/atoms/TextEditor'
 import CalenderSelect from '@/components/atoms/CalendarSelect'
 import Image from 'next/image'
 import { useState } from 'react'
+import DatePicker1 from '@/components/atoms/DatePicker'
 
 export default function RepairUpload() {
   return (
@@ -31,11 +32,12 @@ export default function RepairUpload() {
             <div className="text-blue-600">*</div>
           </div>
           <div className="flex gap-[12px]">
-            <Dropdown size="md" />
-            <Dropdown size="md" />
+            <Dropdown isDisabled={false} size="md" />
+            <Dropdown isDisabled={false} size="md" />
           </div>
         </div>
         <CalenderSelect />
+        {/* <DatePicker1 isDisabled={false} /> */}
       </div>
       <div className="flex items-center mx-[24px] py-[8px]">
         <div className="flex w-[100px] ml-[16px] mr-[8px] text-[16px] leading-[24px] font-semibold capitalize">
@@ -43,7 +45,12 @@ export default function RepairUpload() {
           <div className="text-blue-600">*</div>
         </div>
         <div>
-          <TextArea count={0} placeholder="제목을 입력해주세요." width="840px" />
+          <TextArea
+            text=""
+            count={0}
+            placeholder="제목을 입력해주세요."
+            width="840px"
+          />
         </div>
       </div>
       <div className="flex items-center mx-[24px] py-[8px]">
@@ -75,7 +82,9 @@ export default function RepairUpload() {
         </div>
       </div>
       <div className="flex w-[1024px] justify-end p-[24px]">
-      <button className="flex p-[14px] rounded-[12px] bg-blue-600 text-[20px] font-semibold leading-[20px] text-white">등록하기</button>
+        <button className="flex p-[14px] rounded-[12px] bg-blue-600 text-[20px] font-semibold leading-[20px] text-white">
+          등록하기
+        </button>
       </div>
     </div>
   )
