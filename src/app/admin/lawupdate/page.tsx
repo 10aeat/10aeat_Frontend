@@ -19,6 +19,12 @@ export default function ItemUpdate() {
       title: '이슈는 제목이 공백 포함 30자 글자 제한입니다.',
       isDone: true,
     },
+    {
+      startDate: '24.05.25',
+      endDate: '24.05.26',
+      title: '이슈는 제목이 공백 포함 30자 글자 제한',
+      isDone: true,
+    },
   ]
 
   const manageColumns = [

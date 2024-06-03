@@ -19,6 +19,8 @@ export default function RepairDetail({ issueCheck }: RepairDetailProps) {
   // issueCheck = true
   const [isVisible, setIsVisible] = useState(issueCheck)
 
+  // const
+
   useEffect(() => {
     setIsVisible(issueCheck)
   }, [issueCheck])

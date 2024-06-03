@@ -8,7 +8,7 @@ import React, { useState } from 'react'
 interface Column {
   title: string
   dataIndex: string
-  render?: (text: string, record: any, index: number) => React.ReactNode
+  render?: (text: string, record: ITEM, index: number) => React.ReactNode
 }
 
 interface Props {
@@ -53,7 +53,11 @@ export default function Table({
       handleSelectAll(isSelected)
     }
     if (isSelected) {
-      setSelectedItems(data.map((item) => item.title))
+      setSelectedItems(
+        data
+          .filter((item) => !disabledItems.includes(item.title))
+          .map((item) => item.title),
+      )
     } else {
       setSelectedItems([])
     }
@@ -72,13 +76,17 @@ export default function Table({
 
   return (
     <table className="table-auto w-full font-Pretendard font-medium rounded-t-lg mt-4">
-      <thead className="bg-gray-100 text-gray-500 h-[48px]">
+      <thead className="bg-gray-100 text-gray-500 h-[48px] border-b">
         <tr>
           <th className="px-6 py-3 flex justify-between items-center w-fit whitespace-nowrap">
             <input
               type="checkbox"
               onChange={(e) => onSelectAll(e.target.checked)}
-              checked={selectedItems.length === data.length}
+              checked={
+                selectedItems.length ===
+                data.filter((item) => !disabledItems.includes(item.title))
+                  .length
+              }
               className="mr-3"
             />
             No.
@@ -105,8 +113,10 @@ export default function Table({
       <tbody>
         {data.length > 0 ? (
           data.map((item, index) => (
-            <tr key={index}>
-              <td className="px-6 py-3 whitespace-nowrap">
+            <tr key={index} className="border-b">
+              <td
+                className={`px-6 py-3 whitespace-nowrap ${disabledItems.includes(item.title) ? 'text-gray-400' : ''}`}
+              >
                 <input
                   type="checkbox"
                   onChange={(e) => onSelectItem(e.target.checked, item)}
@@ -119,7 +129,7 @@ export default function Table({
               {columns.map((col) => (
                 <td
                   key={col.dataIndex}
-                  className="px-6 py-3 w-fit items-center"
+                  className={`px-6 py-3 w-fit items-center ${disabledItems.includes(item.title) ? 'text-gray-400' : ''}`}
                 >
                   {col.render
                     ? col.render(item[col.dataIndex], item, index)
