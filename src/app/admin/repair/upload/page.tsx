@@ -94,10 +94,10 @@ export default function RepairUpload() {
         </div>
         <div>
           <TextArea
-            text=""
-            count={0}
             placeholder="제목을 입력해주세요."
             width="840px"
+            value={title}
+            onChange={handleTitleChange}
           />
         </div>
       </div>
@@ -109,8 +109,8 @@ export default function RepairUpload() {
         <div>
           <TextEditor
             placeholder="내용을 입력해주세요."
-            value={content} // Pass value prop
-            onChange={handleContentChange} // Pass onChange prop
+            value={content}
+            onChange={handleContentChange}
           />
         </div>
       </div>
@@ -123,15 +123,15 @@ export default function RepairUpload() {
             placeholder="업체명을 작성해주세요."
             width="178px"
             text="14px"
-            value={repairCompany} // Pass value prop
-            onChange={handleRepairCompanyChange} // Pass onChange prop
+            value={repairCompany}
+            onChange={handleRepairCompanyChange}
           />
           <TextArea
             placeholder="해당 업체의 웹사이트 링크를 첨부해주세요."
             width="292px"
             text="14px"
-            value={repairCompanyWebsite} // Pass value prop
-            onChange={handleRepairCompanyWebsiteChange} // Pass onChange prop
+            value={repairCompanyWebsite}
+            onChange={handleRepairCompanyWebsiteChange}
           />
         </div>
       </div>
