@@ -21,7 +21,7 @@ export default function AdminModalOrganism({ children }: Props) {
           className={`fixed inset-0 z-10 flex items-center justify-center bg-[rgba(0,0,0,0.72)] ${isVisible ? 'flex' : 'hidden'}`}
         >
           <div className="flex flex-col w-[487px] min-h-[280px] items-start font-Pretendard">
-            <AdminModalTop title="진행 현황 추가" />
+            <AdminModalTop title="진행 현황 추가" onCancel={handleCancel} />
             <AdminModalMain>{children}</AdminModalMain>
             <AdminModalBottom
               bottomStyle={BottomStyle.CANCEL_DONE}

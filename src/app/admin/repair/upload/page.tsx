@@ -1,13 +1,12 @@
 'use client'
 
-import { useState } from 'react';
-import axios from 'axios';
-import Dropdown from '@/components/atoms/Dropdown';
-import TextArea from '@/components/atoms/TextArea';
-import TextEditor from '@/components/atoms/TextEditor';
-import CalenderSelect from '@/components/atoms/CalendarSelect';
-import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton';
-import Image from 'next/image';
+import Dropdown from '@/components/atoms/Dropdown'
+import TextArea from '@/components/atoms/TextArea'
+import TextEditor from '@/components/atoms/TextEditor'
+import CalenderSelect from '@/components/atoms/CalendarSelect'
+import Image from 'next/image'
+import { useState } from 'react'
+import DatePicker1 from '@/components/atoms/DatePicker'
 
 export default function RepairUpload() {
   const [title, setTitle] = useState('');
@@ -81,11 +80,12 @@ export default function RepairUpload() {
             <div className="text-blue-600">*</div>
           </div>
           <div className="flex gap-[12px]">
-            <Dropdown size="md" />
-            <Dropdown size="md" />
+            <Dropdown isDisabled={false} size="md" />
+            <Dropdown isDisabled={false} size="md" />
           </div>
         </div>
-        <CalenderSelect onDateChange={handleConstructionStartChange} />
+        <CalenderSelect />
+        {/* <DatePicker1 isDisabled={false} /> */}
       </div>
       <div className="flex items-center py-[8px]">
         <div className="flex w-[124px] ml-[16px] text-[16px] leading-[24px] font-semibold capitalize">
@@ -94,10 +94,10 @@ export default function RepairUpload() {
         </div>
         <div>
           <TextArea
+            text=""
+            count={0}
             placeholder="제목을 입력해주세요."
             width="840px"
-            value={title}
-            onChange={handleTitleChange}
           />
         </div>
       </div>
@@ -135,14 +135,10 @@ export default function RepairUpload() {
           />
         </div>
       </div>
-      <div className="flex place-content-end">
-        <AdminButton
-          buttonStyle={ButtonStyle.PRIMARY}
-          buttonSize={'lg'}
-          onClick={handleSubmit}
-        >
+      <div className="flex w-[1024px] justify-end p-[24px]">
+        <button className="flex p-[14px] rounded-[12px] bg-blue-600 text-[20px] font-semibold leading-[20px] text-white">
           등록하기
-        </AdminButton>
+        </button>
       </div>
     </div>
   );

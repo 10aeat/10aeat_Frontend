@@ -97,6 +97,7 @@ export default function Home() {
         <div className="mt-[16px]" />
         <MonthlyPlan onSelectMonth={handleSelectMonth} />
       </div>
+      <BottomNav />
     </div>
   )
 }
