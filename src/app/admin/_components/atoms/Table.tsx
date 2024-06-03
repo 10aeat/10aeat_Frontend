@@ -140,7 +140,7 @@ export default function Table({
                 <AdminButton
                   buttonStyle={ButtonStyle.SECONDARY_BLUE}
                   buttonSize={'lg'}
-                  isDisabled={item.disabled}
+                  isDisabled={disabledItems.includes(item.title)}
                 >
                   <Image
                     src={'/icons/pen2.svg'}

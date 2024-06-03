@@ -90,7 +90,7 @@ export default function ItemUpdate() {
   ]
 
   return (
-    <div className="bg-white overflow-y-auto">
+    <div className="bg-white overflow-y-auto pb-[45px]">
       <div className="px-6 gap-y-4">
         <NavBar
           title="법정 시설물 유지관리 점검 사항 업데이트"

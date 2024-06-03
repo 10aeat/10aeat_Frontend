@@ -59,7 +59,13 @@ export default function Dropdown({
         >
           <div className="flex items-start gap-[60px] flex-[1_0_0%] ">
             <span
-              className={`font-Pretendard ${size === 'md' ? 'text-[16px] leading-[16px]' : 'text-[14px] leading-[20px] tracking-[-0.14px]'} font-medium capitalize ${isOptionSelected ? 'text-gray-500' : 'text-gray-400'} group-hover:text-gray-500 `}
+              className={`font-Pretendard ${size === 'md' ? 'text-[16px] leading-[16px]' : 'text-[14px] leading-[20px] tracking-[-0.14px]'} font-medium capitalize ${
+                selectedOption === '완료'
+                  ? 'text-blue-600'
+                  : isOptionSelected
+                    ? 'text-gray-500'
+                    : 'text-gray-400'
+              } group-hover:text-gray-500`}
             >
               {selectedOption}
             </span>
