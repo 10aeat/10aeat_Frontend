@@ -1,9 +1,9 @@
-// Table.tsx
 'use client'
 
 import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton'
+import Dropdown from '@/components/atoms/Dropdown'
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 interface Column {
   title: string
@@ -17,6 +17,10 @@ interface Props {
   noDataText: string
   selectedItems: string[]
   setSelectedItems: (items: string[]) => void
+  statusColumn?: Column
+  handleStatusChange?: (value: string, index: number) => void
+  handleSelectAll?: (isSelected: boolean) => void
+  handleSelectItem?: (isSelected: boolean, item: any) => void
 }
 
 export default function Table({
@@ -25,37 +29,11 @@ export default function Table({
   noDataText,
   selectedItems,
   setSelectedItems,
+  statusColumn,
+  handleStatusChange,
+  handleSelectAll,
+  handleSelectItem,
 }: Props) {
-  const [adjustedColumns, setAdjustedColumns] = useState(
-    columns.filter((col) => col.title !== '완료여부'),
-  )
-  const [statusColumn, setStatusColumn] = useState(
-    columns.find((col) => col.title === '완료여부'),
-  )
-
-  useEffect(() => {
-    // '완료 여부' 컬럼을 제외한 나머지 컬럼들
-    setAdjustedColumns(columns.filter((col) => col.title !== '완료 여부'))
-    // '완료 여부' 컬럼
-    setStatusColumn(columns.find((col) => col.title === '완료 여부'))
-  }, [columns]) // columns가 변경될 때마다 이 로직을 실행
-
-  const handleSelectAll = (isSelected: boolean) => {
-    if (isSelected) {
-      setSelectedItems(data.map((item) => item.date)) // 예시로 date를 사용
-    } else {
-      setSelectedItems([])
-    }
-  }
-
-  const handleSelectItem = (isSelected: boolean, item: any) => {
-    if (isSelected) {
-      setSelectedItems([...selectedItems, item.date]) // 예시로 date를 사용
-    } else {
-      setSelectedItems(selectedItems.filter((id) => id !== item.date))
-    }
-  }
-
   return (
     <table className="table-auto w-full font-Pretendard font-medium rounded-t-lg mt-4">
       <thead className="bg-gray-100 text-gray-500 h-[48px]">
@@ -63,13 +41,15 @@ export default function Table({
           <th className="px-6 py-3 flex justify-between items-center w-fit whitespace-nowrap">
             <input
               type="checkbox"
-              onChange={(e) => handleSelectAll(e.target.checked)}
+              onChange={(e) =>
+                handleSelectAll && handleSelectAll(e.target.checked)
+              }
               checked={selectedItems.length === data.length}
               className="mr-3"
             />
             No.
           </th>
-          {adjustedColumns.map((col) => (
+          {columns.map((col) => (
             <th
               key={col.dataIndex}
               className="px-6 py-3 whitespace-nowrap text-start"
@@ -78,7 +58,7 @@ export default function Table({
             </th>
           ))}
           <th className="px-6 py-3"></th>
-          {statusColumn && ( // '완료 여부' 컬럼 렌더링
+          {statusColumn && (
             <th
               key={statusColumn.dataIndex}
               className="px-6 py-3 whitespace-nowrap text-start"
@@ -95,13 +75,16 @@ export default function Table({
               <td className="px-6 py-3 whitespace-nowrap">
                 <input
                   type="checkbox"
-                  onChange={(e) => handleSelectItem(e.target.checked, item)}
+                  onChange={(e) =>
+                    handleSelectItem && handleSelectItem(e.target.checked, item)
+                  }
                   checked={selectedItems.includes(item.date)}
+                  disabled={item.disabled}
                   className="mr-3"
                 />
                 {index + 1}
               </td>
-              {adjustedColumns.map((col) => (
+              {columns.map((col) => (
                 <td
                   key={col.dataIndex}
                   className="px-6 py-3 w-fit items-center"
@@ -125,18 +108,24 @@ export default function Table({
                   수정
                 </AdminButton>
               </td>
-              {statusColumn && ( // '완료 여부' 데이터 렌더링
+              {statusColumn && (
                 <td
                   key={statusColumn.dataIndex}
                   className="px-6 py-3 w-fit items-center"
                 >
-                  {statusColumn.render
-                    ? statusColumn.render(
-                        item[statusColumn.dataIndex],
-                        item,
-                        index,
-                      )
-                    : item[statusColumn.dataIndex]}
+                  <Dropdown
+                    isDisabled={item.disabled}
+                    size="md"
+                    placeholder={
+                      item[statusColumn.dataIndex] === 'true'
+                        ? '완료'
+                        : '미완료'
+                    }
+                    options={['완료', '미완료']}
+                    onChange={(value) =>
+                      handleStatusChange && handleStatusChange(value, index)
+                    }
+                  />
                 </td>
               )}
             </tr>

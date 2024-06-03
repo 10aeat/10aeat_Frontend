@@ -8,6 +8,7 @@ interface Props {
   placeholder?: string
   size: string
   options?: Array<string>
+  onChange?: (selected: string) => void
 }
 
 export default function Dropdown({
@@ -15,6 +16,7 @@ export default function Dropdown({
   size,
   placeholder = '선택',
   options = ['선택 1', '선택 2', '선택 3'],
+  onChange,
 }: Props) {
   const [open, setOpen] = useState(false)
   const [selectedOption, setSelectedOption] = useState(placeholder)
@@ -38,6 +40,7 @@ export default function Dropdown({
     if (!isDisabled) {
       setSelectedOption(option)
       setOpen(false) // 옵션 선택 후 드롭다운 닫기
+      onChange && onChange(option)
     }
   }
 
