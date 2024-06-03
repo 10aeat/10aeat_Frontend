@@ -1,6 +1,6 @@
 'use client'
 
-import DatePicker from '@/components/atoms/DatePicker'
+import DatePicker1 from '@/components/atoms/DatePicker'
 import AdminModalOrganism from '@/components/organisms/AdminModalOrganism'
 
 export default function Test() {
@@ -15,7 +15,7 @@ export default function Test() {
           <div className="flex flex-col items-start gap-[8px] self-stretch">
             <span className="text-blue-600 font-semibold">1. 진행 일자</span>
             <div className="flex w-[200px] h-[48px]">
-              <DatePicker isDisabled={false} />
+              <DatePicker1 isDisabled={false} />
             </div>
           </div>
           <div>
