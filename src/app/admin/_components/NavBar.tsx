@@ -5,9 +5,10 @@ import { useRouter } from 'next/navigation'
 
 interface Props {
   title: string
+  star?: string
 }
 
-export default function NavBar({ title }: Props) {
+export default function NavBar({ title, star }: Props) {
   const router = useRouter()
   return (
     <div className="font-Pretendard w-full pt-6 pb-2 items-center">
@@ -22,8 +23,11 @@ export default function NavBar({ title }: Props) {
             onClick={() => router.back()}
           />
         </div>
-        <div className="text-2xl font-bold capitalize text-gray-900">
+        <div className="text-2xl font-bold capitalize text-gray-900 flex">
           {title}
+          <span className="text-blue-600 text-sm font-medium ml-2 flex items-center">
+            {star}
+          </span>
         </div>
       </div>
     </div>

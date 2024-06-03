@@ -87,6 +87,7 @@ export default function AdminButton({
           <button
             type="button"
             className={`${defaultStyle} ${sizeStyle} text-gray-500 bg-gray-100 enabled:hover:bg-gray-200 enabled:active:bg-gray-300`}
+            disabled={isDisabled}
             onClick={onClickFunction}
           >
             {children}
@@ -97,6 +98,7 @@ export default function AdminButton({
           <button
             type="button"
             className={`${defaultStyle} ${sizeStyle} text-blue-600 bg-blue-50 enabled:hover:bg-blue-100 enabled:active:bg-blue-200`}
+            disabled={isDisabled}
             onClick={onClickFunction}
           >
             {children}
@@ -107,6 +109,7 @@ export default function AdminButton({
           <button
             type="button"
             className={`${defaultStyle} ${sizeStyle} text-white bg-red-500 enabled:hover:bg-red-600 enabled:active:bg-red-700`}
+            disabled={isDisabled}
             onClick={onClickFunction}
           >
             {children}
@@ -117,6 +120,7 @@ export default function AdminButton({
           <button
             type="button"
             className={`${defaultStyle} ${sizeStyle} text-red-500 bg-red-50 enabled:hover:bg-red-100 enabled:active:bg-red-200`}
+            disabled={isDisabled}
             onClick={onClickFunction}
           >
             {children}
@@ -127,6 +131,7 @@ export default function AdminButton({
           <button
             type="button"
             className={`${defaultStyle} ${sizeStyle} text-blue-600 bg-white enabled:hover:bg-blue-50 enabled:hover:text-blue-700 enabled:active:bg-blue-100 enabled:active:text-blue-700`}
+            disabled={isDisabled}
             onClick={onClickFunction}
           >
             {children}
@@ -137,6 +142,7 @@ export default function AdminButton({
           <button
             type="button"
             className={`${defaultStyle} ${sizeStyle} text-gray-500 bg-white enabled:hover:bg-gray-50 enabled:hover:text-gray-600 enabled:active:bg-gray-100 enabled:active:text-gray-700`}
+            disabled={isDisabled}
             onClick={onClickFunction}
           >
             {children}

@@ -6,11 +6,12 @@ import TableHead from '../_components/TableHead'
 import Table from '../_components/Table'
 import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton'
 import { useState } from 'react'
-
+import AdminTag, { TagStyle } from '../_components/AdminTag'
 interface Item {
   date: string
   title: string
   content?: string
+  isIssue?: boolean
 }
 
 export default function ItemUpdate() {
@@ -51,10 +52,12 @@ export default function ItemUpdate() {
     {
       date: '24.08.11',
       title: '이슈는 제목이 공백 포함 30자 글자 제한입니다.',
+      isIssue: true,
     },
     {
       date: '24.07.11',
       title: '이슈 이슈',
+      isIssue: false,
     },
   ]
 
@@ -62,6 +65,12 @@ export default function ItemUpdate() {
     {
       title: '이슈사항',
       dataIndex: 'title',
+      render: (text: string, record: any) => (
+        <>
+          {text}
+          {record.isIssue && <AdminTag tagStyle={TagStyle.ISSUE_TAG} />}
+        </>
+      ),
     },
     {
       title: '게시일자',
@@ -94,6 +103,7 @@ export default function ItemUpdate() {
               <Table
                 columns={progressColumns}
                 data={progressData}
+                noDataText="유지보수 사안이 어디까지 진행되었는지 작성해 주세요."
                 selectedItems={selectedProgressItems}
                 setSelectedItems={setSelectedProgressItems}
               />
@@ -108,6 +118,7 @@ export default function ItemUpdate() {
               <Table
                 columns={issueColumns}
                 data={issueData}
+                noDataText="유지보수 사안과 관련한 이슈 사항이 있다면 작성해 주세요."
                 selectedItems={selectedIssueItems}
                 setSelectedItems={setSelectedIssueItems}
               />

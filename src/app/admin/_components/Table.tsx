@@ -3,19 +3,18 @@
 
 import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-// 데이터 타입 정의
 interface Column {
   title: string
   dataIndex: string
   render?: (text: string, record: any, index: number) => React.ReactNode
 }
 
-// Props 타입 정의
 interface Props {
   columns: Column[]
   data: any[]
+  noDataText: string
   selectedItems: string[]
   setSelectedItems: (items: string[]) => void
 }
@@ -23,9 +22,24 @@ interface Props {
 export default function Table({
   columns,
   data,
+  noDataText,
   selectedItems,
   setSelectedItems,
 }: Props) {
+  const [adjustedColumns, setAdjustedColumns] = useState(
+    columns.filter((col) => col.title !== '완료여부'),
+  )
+  const [statusColumn, setStatusColumn] = useState(
+    columns.find((col) => col.title === '완료여부'),
+  )
+
+  useEffect(() => {
+    // '완료 여부' 컬럼을 제외한 나머지 컬럼들
+    setAdjustedColumns(columns.filter((col) => col.title !== '완료 여부'))
+    // '완료 여부' 컬럼
+    setStatusColumn(columns.find((col) => col.title === '완료 여부'))
+  }, [columns]) // columns가 변경될 때마다 이 로직을 실행
+
   const handleSelectAll = (isSelected: boolean) => {
     if (isSelected) {
       setSelectedItems(data.map((item) => item.date)) // 예시로 date를 사용
@@ -55,7 +69,7 @@ export default function Table({
             />
             No.
           </th>
-          {columns.map((col) => (
+          {adjustedColumns.map((col) => (
             <th
               key={col.dataIndex}
               className="px-6 py-3 whitespace-nowrap text-start"
@@ -64,6 +78,14 @@ export default function Table({
             </th>
           ))}
           <th className="px-6 py-3"></th>
+          {statusColumn && ( // '완료 여부' 컬럼 렌더링
+            <th
+              key={statusColumn.dataIndex}
+              className="px-6 py-3 whitespace-nowrap text-start"
+            >
+              {statusColumn.title}
+            </th>
+          )}
         </tr>
       </thead>
       <tbody>
@@ -79,8 +101,11 @@ export default function Table({
                 />
                 {index + 1}
               </td>
-              {columns.map((col) => (
-                <td key={col.dataIndex} className="px-6 py-3 w-fit">
+              {adjustedColumns.map((col) => (
+                <td
+                  key={col.dataIndex}
+                  className="px-6 py-3 w-fit items-center"
+                >
                   {col.render
                     ? col.render(item[col.dataIndex], item, index)
                     : item[col.dataIndex]}
@@ -100,12 +125,26 @@ export default function Table({
                   수정
                 </AdminButton>
               </td>
+              {statusColumn && ( // '완료 여부' 데이터 렌더링
+                <td
+                  key={statusColumn.dataIndex}
+                  className="px-6 py-3 w-fit items-center"
+                >
+                  {statusColumn.render
+                    ? statusColumn.render(
+                        item[statusColumn.dataIndex],
+                        item,
+                        index,
+                      )
+                    : item[statusColumn.dataIndex]}
+                </td>
+              )}
             </tr>
           ))
         ) : (
           <tr>
             <td colSpan={columns.length + 2} className="text-center px-6 py-3">
-              유지보수 사안이 어디까지 진행되었는지 작성해 주세요.
+              {noDataText}
             </td>
           </tr>
         )}
