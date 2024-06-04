@@ -4,6 +4,8 @@ import { useState } from 'react'
 import Table from '../atoms/Table'
 import TableHead from '../atoms/TableHead'
 import AdminModalOrganism from './AdminModalOrganism'
+import { BottomStyle } from '../atoms/AdminModalBottom'
+import HandOffModal from './HandOffModal'
 
 // 추가된 props 타입 정의
 interface Column {
@@ -31,7 +33,10 @@ export default function IssueHistoryOrganism({
   selectedItems,
   setSelectedItems,
 }: Props) {
-  const [isModalOpen, setIsModalOpen] = useState(false) // 모달 상태 추가
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isHandOffModalOpen, setIsHandOffModalOpen] = useState(false)
+  const [modalMode, setModalMode] = useState<'add' | 'edit'>()
+  const [currentItem, setCurrentItem] = useState<ITEM | null>(null)
 
   const handleSelectAll = (isSelected: boolean) => {
     if (isSelected) {
@@ -50,11 +55,27 @@ export default function IssueHistoryOrganism({
   }
 
   const handleAddIssue = () => {
-    setIsModalOpen(true) // 모달 열기
+    setModalMode('add')
+    setCurrentItem(null)
+    setIsModalOpen(true)
+  }
+
+  const handleEdit = () => {
+    setModalMode('edit')
+    setIsModalOpen(true)
   }
 
   const handleCloseModal = () => {
-    setIsModalOpen(false) // 모달 닫기
+    setIsModalOpen(false)
+    setCurrentItem(null)
+  }
+
+  const handleDelete = () => {
+    setIsHandOffModalOpen(true) // HandOffModal 열기
+  }
+
+  const handleCloseHandOffModal = () => {
+    setIsHandOffModalOpen(false) // HandOffModal 닫기
   }
 
   return (
@@ -65,6 +86,8 @@ export default function IssueHistoryOrganism({
         warn={'*점검 관련 이슈를 등록하면 소유주에게 공지됩니다.'}
         btnText={'이슈 등록하기'}
         handleAddItem={handleAddIssue}
+        handleDelete={handleDelete}
+        selectedItems={selectedItems}
       />
       <Table
         columns={columns}
@@ -74,15 +97,40 @@ export default function IssueHistoryOrganism({
         setSelectedItems={setSelectedItems}
         handleSelectAll={handleSelectAll}
         handleSelectItem={handleSelectItem}
+        handleEdit={handleEdit}
       />
       {isModalOpen && (
         <AdminModalOrganism
-          title={'이슈 등록'}
+          title={modalMode === 'add' ? '이슈 등록' : '이슈 수정'}
           onClose={handleCloseModal}
-          btntext={'추가하기'}
+          btntext={modalMode === 'add' ? '등록하기' : '수정하기'}
+          bottomStyle={BottomStyle.CANCEL_DONE}
         >
-          <div></div>
+          <div className="flex flex-col gap-y-6 items-start">
+            <span className="text-gray-400">
+              유지보수 사안과 관련된 이슈가 있을 시 작성해주세요.
+              <br />
+              이슈 등록이 되면 해당 이슈는 소유자에게 공지됩니다.
+            </span>
+            <div className="flex flex-col items-start gap-[8px] self-stretch">
+              <div className="text-blue-600 font-semibold">제목</div>
+              {/* input */}
+              <input type="text" defaultValue={currentItem?.title || ''} />
+            </div>
+            <div>
+              <div className="text-blue-600 font-semibold">상세 내용</div>
+              {/* input */}
+              <textarea defaultValue={currentItem?.content || ''}></textarea>
+            </div>
+          </div>
         </AdminModalOrganism>
+      )}
+      {isHandOffModalOpen && (
+        <HandOffModal
+          handleCloseModal={handleCloseHandOffModal}
+          subTitle="이슈 공지 히스토리"
+          count={selectedItems.length}
+        />
       )}
     </div>
   )

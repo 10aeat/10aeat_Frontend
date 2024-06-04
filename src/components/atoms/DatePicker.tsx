@@ -11,6 +11,7 @@ import dayjs from 'dayjs'
 
 interface Props {
   isDisabled: boolean
+  defaultValue?: string
 }
 
 export default function DatePicker1({ isDisabled }: Props) {

@@ -5,6 +5,7 @@ import { useState } from 'react'
 
 interface Props {
   title: string
+  bottomStyle: BottomStyle
   btntext: string
   children: React.ReactNode
   onClose: () => void
@@ -14,6 +15,7 @@ export default function AdminModalOrganism({
   title,
   btntext,
   children,
+  bottomStyle,
   onClose,
 }: Props) {
   const handleClose = () => {
@@ -28,7 +30,7 @@ export default function AdminModalOrganism({
         <AdminModalTop title={title} onClose={handleClose} />
         <AdminModalMain>{children}</AdminModalMain>
         <AdminModalBottom
-          bottomStyle={BottomStyle.CANCEL_DONE}
+          bottomStyle={bottomStyle}
           text={btntext}
           onClose={handleClose}
         />
