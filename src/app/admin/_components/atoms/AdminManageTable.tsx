@@ -139,6 +139,7 @@
 
 import React, { useState } from 'react'
 import AdminButton, { ButtonStyle } from './AdminButton'
+import StatusBar from './StatusBar'
 
 interface ManageDataItem {
   id: number
@@ -313,7 +314,9 @@ export default function AdminManageTable() {
                 </div>
               </td>
               <td className="flex min-w-[208px] px-[16px] py-[12px] justify-center items-center gap-[12px] self-stretch">
-                <div className="font-Pretendard text-[16px] font-normal leading-[24px] capitalize text-gray-900 whitespace-nowrap"></div>
+                <div className="font-Pretendard text-[16px] font-normal leading-[24px] capitalize text-gray-900 whitespace-nowrap">
+                  <StatusBar completedChecks={4} totalChecks={6} />
+                </div>
               </td>
               <td className="flex min-w-[62px] px-[24px] py-[12px] justify-center items-center gap-[12px] self-stretch">
                 <div className="font-Pretendard text-[16px] font-normal leading-[24px] capitalize text-gray-900 whitespace-nowrap">

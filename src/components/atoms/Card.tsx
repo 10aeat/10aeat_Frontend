@@ -1,6 +1,5 @@
 import Image from 'next/image'
 
-import eye from '../../../public/icons/eye.svg'
 import chat_line from '../../../public/icons/chat_line.svg'
 import { useState } from 'react'
 
@@ -92,7 +91,9 @@ export default function Card({
               <div className="inline-flex items-end gap-[8px] relative flex-[0_0_auto]">
                 <div className="inline-flex items-start gap-[4px] relative flex-[0_0_auto]">
                   <Image
-                    src={eye}
+                    src="/icons/eye.svg"
+                    width={20}
+                    height={20}
                     alt="image"
                     className="!relative !w-[20px] !h-[20px]"
                   />
@@ -103,9 +104,9 @@ export default function Card({
                 <div className="inline-flex items-start gap-[4px] relative flex-[0_0_auto]">
                   {/* <ChatLine className="!relative !w-[20px] !h-[20px]" /> */}
                   <Image
-                    src={chat_line}
-                    width={28}
-                    height={28}
+                    src="/icons/chat_line.svg"
+                    width={20}
+                    height={20}
                     alt="image"
                     className="!relative !w-[20px] !h-[20px]"
                   />
@@ -167,7 +168,9 @@ export default function Card({
               <div className="inline-flex items-end gap-[8px] relative flex-[0_0_auto]">
                 <div className="inline-flex items-start gap-[4px] relative flex-[0_0_auto]">
                   <Image
-                    src={eye}
+                    src="/icons/eye.svg"
+                    width={20}
+                    height={20}
                     alt="image"
                     className="!relative !w-[20px] !h-[20px]"
                   />
@@ -178,7 +181,9 @@ export default function Card({
                 <div className="inline-flex items-start gap-[4px] relative flex-[0_0_auto]">
                   {/* <ChatLine className="!relative !w-[20px] !h-[20px]" /> */}
                   <Image
-                    src={chat_line}
+                    src="/icons/chat_line.svg"
+                    width={20}
+                    height={20}
                     alt="image"
                     className="!relative !w-[20px] !h-[20px]"
                   />
@@ -237,7 +242,9 @@ export default function Card({
                 <div className="inline-flex items-end gap-[8px] relative flex-[0_0_auto]">
                   <div className="inline-flex items-start gap-[4px] relative flex-[0_0_auto]">
                     <Image
-                      src={eye}
+                      src="/icons/eye.svg"
+                      width={20}
+                      height={20}
                       alt="image"
                       className="!relative !w-[20px] !h-[20px]"
                     />
@@ -248,7 +255,9 @@ export default function Card({
                   <div className="inline-flex items-start gap-[4px] relative flex-[0_0_auto]">
                     {/* <ChatLine className="!relative !w-[20px] !h-[20px]" /> */}
                     <Image
-                      src={chat_line}
+                      src="/icons/chat_line.svg"
+                      width={20}
+                      height={20}
                       alt="image"
                       className="!relative !w-[20px] !h-[20px]"
                     />
@@ -312,7 +321,9 @@ export default function Card({
                 <div className="inline-flex items-end gap-[8px] relative flex-[0_0_auto]">
                   <div className="inline-flex items-start gap-[4px] relative flex-[0_0_auto]">
                     <Image
-                      src={eye}
+                      src="/icons/eye.svg"
+                      width={20}
+                      height={20}
                       alt="image"
                       className="!relative !w-[20px] !h-[20px]"
                     />
@@ -323,7 +334,9 @@ export default function Card({
                   <div className="inline-flex items-start gap-[4px] relative flex-[0_0_auto]">
                     {/* <ChatLine className="!relative !w-[20px] !h-[20px]" /> */}
                     <Image
-                      src={chat_line}
+                      src="/icons/chat_line.svg"
+                      width={20}
+                      height={20}
                       alt="image"
                       className="!relative !w-[20px] !h-[20px]"
                     />
