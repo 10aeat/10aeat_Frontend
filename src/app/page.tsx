@@ -49,7 +49,7 @@ export default function Home() {
             추천검색어
           </div>
           <div className="absolute w-[343px] h-[50px]">
-            <div className="relative w-[345px] h-[52px]">
+            <div className="relative w-[345px] h-[52px] border-b border-gray-800">
               <div className="absolute w-[185px] h-[26px] top-[13px] left-[6px]">
                 <input
                   className="left-[30px] font-Pretendard font-normal text-gray-400 bg-gray-100 text-[20px] leading-[26px] absolute "
@@ -63,7 +63,7 @@ export default function Home() {
                   alt="search"
                 />
               </div>
-              <div className="absolute w-[345px] h-[52px] border-b border-gray-800"></div>
+              {/* <div className="absolute w-[345px] h-[52px] border-b border-gray-800"></div> */}
             </div>
           </div>
         </div>
