@@ -5,8 +5,6 @@ import Dropdown from '@/components/atoms/Dropdown'
 import TextArea from '@/components/atoms/TextArea'
 import TextEditor from '@/components/atoms/TextEditor'
 import Image from 'next/image'
-import { useState } from 'react'
-import DatePicker1 from '@/components/atoms/DatePicker'
 
 export default function RepairUpload() {
   const [title, setTitle] = useState('');

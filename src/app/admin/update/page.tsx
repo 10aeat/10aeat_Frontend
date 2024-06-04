@@ -1,18 +1,12 @@
 'use client'
 
 import Dropdown from '@/components/atoms/Dropdown'
-import NavBar from '../_components/NavBar'
-import TableHead from '../_components/TableHead'
-import Table from '../_components/Table'
-import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton'
+import NavBar from '../_components/atoms/NavBar'
 import { useState } from 'react'
-import AdminTag, { TagStyle } from '../_components/AdminTag'
-interface Item {
-  date: string
-  title: string
-  content?: string
-  isIssue?: boolean
-}
+import AdminTag, { TagStyle } from '../_components/atoms/AdminTag'
+import IssueHistoryOrganism from '../_components/organisms/IssueHistory'
+import ProgressScheduleOrganism from '../_components/organisms/ProgressSchedule'
+import AdminButton, { ButtonStyle } from '../_components/atoms/AdminButton'
 
 export default function ItemUpdate() {
   const [selectedProgressItems, setSelectedProgressItems] = useState<string[]>(
@@ -20,7 +14,7 @@ export default function ItemUpdate() {
   )
   const [selectedIssueItems, setSelectedIssueItems] = useState<string[]>([])
 
-  const progressData: Item[] = [
+  const progressData: ITEM[] = [
     {
       date: '24.08.11',
       title: '제목은 공백 포함 20자 글자 수 제한',
@@ -48,7 +42,7 @@ export default function ItemUpdate() {
     },
   ]
 
-  const issueData: Item[] = [
+  const issueData: ITEM[] = [
     {
       date: '24.08.11',
       title: '이슈는 제목이 공백 포함 30자 글자 제한입니다.',
@@ -65,7 +59,7 @@ export default function ItemUpdate() {
     {
       title: '이슈사항',
       dataIndex: 'title',
-      render: (text: string, record: any) => (
+      render: (text: string, record: ITEM) => (
         <>
           {text}
           {record.isIssue && <AdminTag tagStyle={TagStyle.ISSUE_TAG} />}
@@ -79,7 +73,7 @@ export default function ItemUpdate() {
   ]
 
   return (
-    <div className="bg-white overflow-y-auto">
+    <div className="bg-white overflow-y-auto pb-[45px]">
       <div className="px-6 gap-y-4">
         <NavBar title="진행 현황 / 이슈 사항 업데이트" />
         <div className="grid min-h-[736px] gap-y-[80px] w-full">
@@ -94,35 +88,20 @@ export default function ItemUpdate() {
             />
           </div>
           <div className="grid gap-y-[72px]">
-            <div>
-              <TableHead
-                imgSrc={'/icons/checklist_minimalistic.svg'}
-                title={'사안 진행 현황'}
-                btnText={'진행 현황 추가'}
-              />
-              <Table
-                columns={progressColumns}
-                data={progressData}
-                noDataText="유지보수 사안이 어디까지 진행되었는지 작성해 주세요."
-                selectedItems={selectedProgressItems}
-                setSelectedItems={setSelectedProgressItems}
-              />
-            </div>
-            <div>
-              <TableHead
-                imgSrc={'/icons/volume.svg'}
-                title={'이슈 공지 히스토리'}
-                warn={'*유지 보수 관련 이슈를 등록하면 소유주에게 공지됩니다.'}
-                btnText={'이슈 등록하기'}
-              />
-              <Table
-                columns={issueColumns}
-                data={issueData}
-                noDataText="유지보수 사안과 관련한 이슈 사항이 있다면 작성해 주세요."
-                selectedItems={selectedIssueItems}
-                setSelectedItems={setSelectedIssueItems}
-              />
-            </div>
+            <ProgressScheduleOrganism
+              columns={progressColumns}
+              data={progressData}
+              noDataText="유지보수 사안이 어디까지 진행되었는지 작성해 주세요."
+              selectedItems={selectedProgressItems}
+              setSelectedItems={setSelectedProgressItems}
+            />
+            <IssueHistoryOrganism
+              columns={issueColumns}
+              data={issueData}
+              noDataText="유지보수 사안과 관련한 이슈 사항이 있다면 작성해 주세요."
+              selectedItems={selectedIssueItems}
+              setSelectedItems={setSelectedIssueItems}
+            />
           </div>
           <div className="flex justify-end">
             <AdminButton buttonStyle={ButtonStyle.PRIMARY} buttonSize={'md'}>

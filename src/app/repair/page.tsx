@@ -199,7 +199,7 @@ export default function Home() {
           />
         </div>
         <div className=" w-full  mt-8 !flex justify-center ">
-          <Pagination totalItems={270} />
+          <Pagination totalItems={270} itemsPerPage={20} />
         </div>
       </div>
       {/* Pagination */}

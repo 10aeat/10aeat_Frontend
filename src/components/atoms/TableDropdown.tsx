@@ -4,32 +4,18 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 
 interface Props {
-  isDisabled?: boolean
+  isDisabled: boolean
   placeholder?: string
-  size: string
   options?: Array<string>
-  onChange?: (selected: string) => void
 }
 
 export default function Dropdown({
   isDisabled,
-  size,
   placeholder = '선택',
   options = ['선택 1', '선택 2', '선택 3'],
-  onChange,
 }: Props) {
   const [open, setOpen] = useState(false)
   const [selectedOption, setSelectedOption] = useState(placeholder)
-
-  let sizeStyle = ''
-
-  switch (size) {
-    case 'sm':
-      sizeStyle = 'gap-0.5 rounded-[8px] text-sm p-2.5'
-      break
-    case 'md':
-      sizeStyle = 'gap-1 rounded-[10px] text-base p-3.5'
-  }
 
   const handleToggle = () => {
     if (!isDisabled) {
@@ -40,7 +26,6 @@ export default function Dropdown({
     if (!isDisabled) {
       setSelectedOption(option)
       setOpen(false) // 옵션 선택 후 드롭다운 닫기
-      onChange && onChange(option)
     }
   }
 
@@ -49,23 +34,17 @@ export default function Dropdown({
   const isOptionSelected = options.includes(selectedOption)
 
   return (
-    <div className="flex w-[200px] h-[48px]">
+    <div className="flex w-[100px] h-[48px]">
       <div
-        className={`flex flex-col items-start z-5  ${size === 'md' ? 'w-[200px]' : 'w-[178px]'} ${isDisabled ? 'opacity-40' : ''}`}
+        className={`flex flex-col items-start z-5 w-[178px] ${isDisabled ? 'opacity-40' : ''}`}
       >
         <button
-          className={`flex ${size === 'md' ? 'w-[200px] h-[48px] px-[16px] py-[12px]' : 'w-[178px] h-[36px] px-[10px] py-[8px] justify-between'} items-center rounded-[8px] border-[1px] border-solid ${isOptionSelected ? 'border-gray-400' : 'border-gray-300'} bg-white hover:bg-gray-50 group cursor-pointer`}
+          className={`flex w-[60px] h-[36px] py-[8px] justify-between items-center rounded-[8px] ${isOptionSelected ? 'border-gray-400' : 'border-gray-300'} bg-white hover:bg-gray-50 group cursor-pointer`}
           onClick={handleToggle}
         >
           <div className="flex items-start gap-[60px] flex-[1_0_0%] ">
             <span
-              className={`font-Pretendard ${size === 'md' ? 'text-[16px] leading-[16px]' : 'text-[14px] leading-[20px] tracking-[-0.14px]'} font-medium capitalize ${
-                selectedOption === '완료'
-                  ? 'text-blue-600'
-                  : isOptionSelected
-                    ? 'text-gray-500'
-                    : 'text-gray-400'
-              } group-hover:text-gray-500`}
+              className={`font-Pretendard text-[14px] leading-[20px] tracking-[-0.14px] font-medium capitalize ${isOptionSelected ? 'text-gray-500' : 'text-gray-400'} group-hover:text-gray-500 `}
             >
               {selectedOption}
             </span>
@@ -75,7 +54,7 @@ export default function Dropdown({
             width={24}
             height={24}
             alt="arrow_down"
-            className={`relative ${size === 'md' ? '!w-[24px] !h-[24px]' : '!w-[16px] !h-[16px]'} !left-[6px]`}
+            className={`relative!w-[16px] !h-[16px] !left-[6px]`}
           />
         </button>
         {open && (
@@ -90,7 +69,7 @@ export default function Dropdown({
                   onClick={() => handleOptionClick(option)}
                 >
                   <div
-                    className={`font-Pretendard font-normal ${size === 'md' ? 'text-[16px] leading-[24px]' : 'text-[14px] leading-[20px] tracking-[-0.14px]'} text-gray-400 group-hover:text-blue-600`}
+                    className={`font-Pretendard font-normal text-[14px] leading-[20px] tracking-[-0.14px] text-gray-400 group-hover:text-blue-600`}
                   >
                     {option}
                   </div>

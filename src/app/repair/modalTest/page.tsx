@@ -1,21 +1,21 @@
-"use client"
+'use client'
 
-import NoBox from '@/components/atoms/NoBox';
-import AdminCard from '@/components/atoms/AdminCard'
+import NoBox from '@/components/atoms/NoBox'
+import AdminCard from '@/app/admin/_components/atoms/AdminCard'
 import { useState } from 'react'
-import ProfileModal from '@/components/ProfileModal';
+import ProfileModal from '@/components/ProfileModal'
 import CommentsModal from '@/components/CommentsModal'
-import TextArea from '@/components/atoms/TextArea';
+import TextArea from '@/components/atoms/TextArea'
 
 export default function TestModal() {
- const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
- const [isCommentsModalOpen, setIsCommentsModalOpen] = useState(false);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false)
+  const [isCommentsModalOpen, setIsCommentsModalOpen] = useState(false)
 
- const openProfileModal = () => setIsProfileModalOpen(true);
- const closeProfileModal = () => setIsProfileModalOpen(false);
+  const openProfileModal = () => setIsProfileModalOpen(true)
+  const closeProfileModal = () => setIsProfileModalOpen(false)
 
- const openCommentsModal = () => setIsCommentsModalOpen(true);
- const closeCommentsModal = () => setIsCommentsModalOpen(false);
+  const openCommentsModal = () => setIsCommentsModalOpen(true)
+  const closeCommentsModal = () => setIsCommentsModalOpen(false)
 
   return (
     <>
@@ -29,7 +29,10 @@ export default function TestModal() {
         <div className="font-bold text-lg font-Pretendard mb-3">댓글</div>
         <NoBox type="댓글" />
       </div>
-      <CommentsModal isOpen={isCommentsModalOpen} onClose={closeCommentsModal} />
+      <CommentsModal
+        isOpen={isCommentsModalOpen}
+        onClose={closeCommentsModal}
+      />
     </>
   )
 }

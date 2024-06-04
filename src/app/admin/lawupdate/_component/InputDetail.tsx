@@ -1,6 +1,4 @@
 import Dropdown from '@/components/atoms/Dropdown'
-import TextArea from '@/components/atoms/TextArea'
-
 export default function InputDetail() {
   return (
     <div className="flex flex-col gap-y-2 font-Pretendard">

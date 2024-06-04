@@ -1,13 +1,16 @@
-import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton'
-import AdminInput from '@/components/atoms/AdminInput'
-import AdminLogo from '@/components/atoms/AdminLogo'
-import AdminManageTable from '@/components/atoms/AdminManageTable'
-import AdminMonthPicker from '@/components/atoms/AdminMonthPicker'
-import AdminYearPicker from '@/components/atoms/AdminYearPicker'
+import AdminButton, {
+  ButtonStyle,
+} from '@/app/admin/_components/atoms/AdminButton'
+import AdminInput from '@/app/admin/_components/atoms/AdminInput'
+import AdminLogo from '@/app/admin/_components/atoms/AdminLogo'
+import AdminManageTable from '@/app/admin/_components//atoms/AdminManageTable'
+import AdminMonthPicker from '@/app/admin/_components/atoms/AdminMonthPicker'
+import AdminYearPicker from '@/app/admin/_components/atoms/AdminYearPicker'
+import Pagination from '@/components/atoms/Pagination'
 
 export default function page() {
   return (
-    <div className="relative w-full bg-white">
+    <div className="relative w-full bg-white overflow-y-auto">
       <AdminLogo />
       <div className="flex flex-col w-[232px] h-[822px] items-center gap-[16px] bg-gray-100">
         사이드바
@@ -62,6 +65,9 @@ export default function page() {
         </div>
         <div className="mt-[-12px]">
           <AdminManageTable />
+        </div>
+        <div className="relative flex w-[1000px] justify-end items-center gap-[4px] pb-[100px]">
+          <Pagination totalItems={100} itemsPerPage={5} />
         </div>
       </div>
     </div>

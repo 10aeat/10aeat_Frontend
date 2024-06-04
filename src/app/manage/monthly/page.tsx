@@ -87,7 +87,7 @@ export default function ManageMonthly() {
         <NoData />
       )}
 
-      <Pagination totalItems={filteredData.length} />
+      <Pagination totalItems={filteredData.length} itemsPerPage={0} />
     </>
   )
 }
