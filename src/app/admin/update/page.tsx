@@ -2,13 +2,11 @@
 
 import Dropdown from '@/components/atoms/Dropdown'
 import NavBar from '../_components/atoms/NavBar'
-import TableHead from '../_components/atoms/TableHead'
-import Table from '../_components/atoms/Table'
-import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton'
 import { useState } from 'react'
 import AdminTag, { TagStyle } from '../_components/atoms/AdminTag'
 import IssueHistoryOrganism from '../_components/organisms/IssueHistory'
 import ProgressScheduleOrganism from '../_components/organisms/ProgressSchedule'
+import AdminButton, { ButtonStyle } from '../_components/atoms/AdminButton'
 
 export default function ItemUpdate() {
   const [selectedProgressItems, setSelectedProgressItems] = useState<string[]>(

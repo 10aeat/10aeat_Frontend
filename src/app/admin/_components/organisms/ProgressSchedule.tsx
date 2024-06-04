@@ -43,12 +43,15 @@ export default function ProgressScheduleOrganism({
     }
   }
 
+  const handleAddProgress = () => {}
+
   return (
     <div>
       <TableHead
         imgSrc={'/icons/checklist_minimalistic.svg'}
         title={'사안 진행 현황'}
         btnText={'진행 현황 추가'}
+        handleAddItem={handleAddProgress}
       />
       <Table
         columns={columns}

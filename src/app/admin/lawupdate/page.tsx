@@ -1,12 +1,12 @@
 'use client'
 
 import NavBar from '../_components/atoms/NavBar'
-import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton'
 import { useState } from 'react'
 import AdminTag, { TagStyle } from '../_components/atoms/AdminTag'
 import InputDetail from './_component/InputDetail'
 import ExecuteScheduleOrganism from '../_components/organisms/ExecuteSchedule'
 import IssueHistoryOrganism from '../_components/organisms/IssueHistory'
+import AdminButton, { ButtonStyle } from '../_components/atoms/AdminButton'
 
 export default function ItemUpdate() {
   const [selectedManageItems, setSelectedManageItems] = useState<string[]>([])

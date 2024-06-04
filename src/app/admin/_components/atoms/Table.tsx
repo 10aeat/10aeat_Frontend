@@ -1,6 +1,6 @@
 'use client'
 
-import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton'
+import AdminButton, { ButtonStyle } from './AdminButton'
 import Dropdown from '@/components/atoms/Dropdown'
 import Image from 'next/image'
 import React, { useState } from 'react'
