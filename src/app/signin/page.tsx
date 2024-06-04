@@ -48,6 +48,7 @@ export default function page() {
           className={`relative top-[12px] flex w-[343px] h-[48px] px-[16px] py-[12px] gap-[8px] rounded-[10px] border-solid border-[1px] border-gray-300 bg-white`}
         >
           <input
+            type="password"
             className="flex items-center gap-[8px] flex-[1_0_0%] opacity-[0.4] font-Pretendard text-[16px] font-normal leading-[24px] text-gray-700"
             placeholder="영문, 숫자, 특수기호 포함 8-16자입니다."
           />
@@ -67,7 +68,7 @@ export default function page() {
           /> */}
         </div>
       </div>
-      <div className="absolute top-[388px] flex flex-col w-[343px] p-[14px] gap-[16px]">
+      <div className="absolute top-[388px] flex flex-col w-[343px] gap-[16px]">
         <AdminButton
           buttonSize="md"
           buttonStyle={ButtonStyle.PRIMARY}
