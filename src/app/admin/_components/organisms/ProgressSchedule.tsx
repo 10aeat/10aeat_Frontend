@@ -1,5 +1,9 @@
+'use client'
+
+import { useState } from 'react'
 import Table from '../atoms/Table'
 import TableHead from '../atoms/TableHead'
+import AdminModalOrganism from './AdminModalOrganism'
 
 // 추가된 props 타입 정의
 interface Column {
@@ -14,10 +18,6 @@ interface Props {
   noDataText: string
   selectedItems: string[]
   setSelectedItems: (items: string[]) => void
-  statusColumn?: Column // statusColumn 추가
-  handleStatusChange?: (value: string, index: number) => void // handleStatusChange 추가
-  handleSelectAll?: (isSelected: boolean) => void // handleSelectAll 추가
-  handleSelectItem?: (isSelected: boolean, item: any) => void // handleSelectItem 추가
 }
 
 export default function ProgressScheduleOrganism({
@@ -27,6 +27,8 @@ export default function ProgressScheduleOrganism({
   selectedItems,
   setSelectedItems,
 }: Props) {
+  const [isModalOpen, setIsModalOpen] = useState(false) // 모달 상태 추가
+
   const handleSelectAll = (isSelected: boolean) => {
     if (isSelected) {
       setSelectedItems(data.map((item) => item.title))
@@ -43,7 +45,13 @@ export default function ProgressScheduleOrganism({
     }
   }
 
-  const handleAddProgress = () => {}
+  const handleAddProgress = () => {
+    setIsModalOpen(true) // 모달 열기
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false) // 모달 닫기
+  }
 
   return (
     <div>
@@ -62,6 +70,15 @@ export default function ProgressScheduleOrganism({
         handleSelectAll={handleSelectAll}
         handleSelectItem={handleSelectItem}
       />
+      {isModalOpen && (
+        <AdminModalOrganism
+          title={'진행 현황 추가'}
+          onClose={handleCloseModal}
+          btntext={'등록하기'}
+        >
+          <div></div>
+        </AdminModalOrganism>
+      )}
     </div>
   )
 }

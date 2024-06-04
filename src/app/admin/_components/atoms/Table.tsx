@@ -35,6 +35,10 @@ export default function Table({
   handleSelectItem,
 }: Props) {
   const [disabledItems, setDisabledItems] = useState<string[]>([])
+  // 모든 항목이 disabled 상태인지 확인
+  const isEveryItemDisabled = data.every((item) =>
+    disabledItems.includes(item.title),
+  )
 
   const onStatusChange = (value: string, index: number) => {
     if (handleStatusChange) {
@@ -84,8 +88,8 @@ export default function Table({
               onChange={(e) => onSelectAll(e.target.checked)}
               checked={
                 selectedItems.length ===
-                data.filter((item) => !disabledItems.includes(item.title))
-                  .length
+                  data.filter((item) => !disabledItems.includes(item.title))
+                    .length && !isEveryItemDisabled
               }
               className="mr-3"
             />

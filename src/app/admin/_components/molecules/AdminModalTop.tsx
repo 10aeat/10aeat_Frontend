@@ -2,10 +2,10 @@ import Image from 'next/image'
 
 interface Props {
   title: string
-  onCancel: () => void
+  onClose: () => void
 }
 
-export default function AdminModalTop({ title, onCancel }: Props) {
+export default function AdminModalTop({ title, onClose }: Props) {
   return (
     <div className="w-full pt-6 pr-5 pb-1 pl-6 gap-3 rounded-t-[16px] flex justify-between items-center bg-white">
       <span className="font-bold text-2xl">{title}</span>
@@ -14,7 +14,7 @@ export default function AdminModalTop({ title, onCancel }: Props) {
         width={24}
         height={24}
         alt="close"
-        onClick={onCancel}
+        onClick={onClose}
         className="cursor-pointer"
       />
     </div>

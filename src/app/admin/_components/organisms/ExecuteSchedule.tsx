@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Table from '../atoms/Table'
 import TableHead from '../atoms/TableHead'
+import AdminModalOrganism from './AdminModalOrganism'
 
 interface Column {
   title: string
@@ -23,6 +24,7 @@ export default function ExecuteScheduleOrganism({
   selectedItems,
   setSelectedItems,
 }: Props) {
+  const [isModalOpen, setIsModalOpen] = useState(false) // 모달 상태 추가
   const [data, setData] = useState(initialData)
   const [adjustedColumns, setAdjustedColumns] = useState(
     columns.filter((col) => col.title !== '완료 여부'),
@@ -64,6 +66,14 @@ export default function ExecuteScheduleOrganism({
     }
   }
 
+  const handleAddSchedule = () => {
+    setIsModalOpen(true) // 모달 열기
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false) // 모달 닫기
+  }
+
   return (
     <div>
       <TableHead
@@ -71,6 +81,7 @@ export default function ExecuteScheduleOrganism({
         title={'시행 일정'}
         star={'*'}
         btnText={'점검 일정 추가'}
+        handleAddItem={handleAddSchedule}
       />
       <Table
         columns={adjustedColumns}
@@ -83,6 +94,15 @@ export default function ExecuteScheduleOrganism({
         handleSelectAll={handleSelectAll}
         handleSelectItem={handleSelectItem}
       />
+      {isModalOpen && (
+        <AdminModalOrganism
+          title={'진행 현황 추가'}
+          onClose={handleCloseModal}
+          btntext={'등록하기'}
+        >
+          <div></div>
+        </AdminModalOrganism>
+      )}
     </div>
   )
 }

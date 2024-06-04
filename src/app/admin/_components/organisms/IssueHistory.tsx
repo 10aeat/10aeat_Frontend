@@ -1,5 +1,9 @@
+'use client'
+
+import { useState } from 'react'
 import Table from '../atoms/Table'
 import TableHead from '../atoms/TableHead'
+import AdminModalOrganism from './AdminModalOrganism'
 
 // 추가된 props 타입 정의
 interface Column {
@@ -27,6 +31,8 @@ export default function IssueHistoryOrganism({
   selectedItems,
   setSelectedItems,
 }: Props) {
+  const [isModalOpen, setIsModalOpen] = useState(false) // 모달 상태 추가
+
   const handleSelectAll = (isSelected: boolean) => {
     if (isSelected) {
       setSelectedItems(data.map((item) => item.title))
@@ -43,6 +49,14 @@ export default function IssueHistoryOrganism({
     }
   }
 
+  const handleAddIssue = () => {
+    setIsModalOpen(true) // 모달 열기
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false) // 모달 닫기
+  }
+
   return (
     <div>
       <TableHead
@@ -50,6 +64,7 @@ export default function IssueHistoryOrganism({
         title={'이슈 공지 히스토리'}
         warn={'*점검 관련 이슈를 등록하면 소유주에게 공지됩니다.'}
         btnText={'이슈 등록하기'}
+        handleAddItem={handleAddIssue}
       />
       <Table
         columns={columns}
@@ -60,6 +75,15 @@ export default function IssueHistoryOrganism({
         handleSelectAll={handleSelectAll}
         handleSelectItem={handleSelectItem}
       />
+      {isModalOpen && (
+        <AdminModalOrganism
+          title={'이슈 등록'}
+          onClose={handleCloseModal}
+          btntext={'추가하기'}
+        >
+          <div></div>
+        </AdminModalOrganism>
+      )}
     </div>
   )
 }

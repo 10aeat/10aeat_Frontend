@@ -17,13 +17,13 @@ export default function ItemUpdate() {
   const progressData: ITEM[] = [
     {
       date: '24.08.11',
-      title: '제목은 공백 포함 20자 글자 수 제한',
+      title: '제목은 공백 포함 20자',
       content: '진행사항 내용은 공백 포함 40글자 수 제한입니다',
     },
     {
       date: '24.07.11',
       title: '제목은 공백 포함 20자 글자 수 제한',
-      content: '진행사항 내용은 공백 포함 40글자 수 제한입니다',
+      content: '진행사항 내용은 공백 포함 40글자',
     },
   ]
 

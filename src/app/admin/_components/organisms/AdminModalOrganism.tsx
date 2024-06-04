@@ -5,33 +5,34 @@ import { useState } from 'react'
 
 interface Props {
   title: string
+  btntext: string
   children: React.ReactNode
+  onClose: () => void
 }
 
-export default function AdminModalOrganism({ title, children }: Props) {
-  const [isVisible, setIsVisible] = useState(true)
-
-  const handleCancel = () => {
-    setIsVisible(false)
+export default function AdminModalOrganism({
+  title,
+  btntext,
+  children,
+  onClose,
+}: Props) {
+  const handleClose = () => {
+    onClose() // 부모 컴포넌트에서 전달받은 onClose 호출
   }
 
   return (
-    <>
-      {isVisible && (
-        <div
-          className={`fixed inset-0 z-10 flex items-center justify-center bg-[rgba(0,0,0,0.72)] ${isVisible ? 'flex' : 'hidden'}`}
-        >
-          <div className="flex flex-col w-[487px] min-h-[280px] items-start font-Pretendard">
-            <AdminModalTop title={title} onCancel={handleCancel} />
-            <AdminModalMain>{children}</AdminModalMain>
-            <AdminModalBottom
-              bottomStyle={BottomStyle.CANCEL_DONE}
-              text="추가하기"
-              onCancel={handleCancel}
-            />
-          </div>
-        </div>
-      )}
-    </>
+    <div
+      className={`fixed inset-0 z-10 flex items-center justify-center bg-[rgba(0,0,0,0.72)]`}
+    >
+      <div className="flex flex-col w-[487px] min-h-[280px] items-start font-Pretendard">
+        <AdminModalTop title={title} onClose={handleClose} />
+        <AdminModalMain>{children}</AdminModalMain>
+        <AdminModalBottom
+          bottomStyle={BottomStyle.CANCEL_DONE}
+          text={btntext}
+          onClose={handleClose}
+        />
+      </div>
+    </div>
   )
 }

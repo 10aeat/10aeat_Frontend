@@ -10,13 +10,13 @@ export enum BottomStyle {
 interface Props {
   bottomStyle: BottomStyle
   text: string
-  onCancel: () => void
+  onClose: () => void
 }
 
 export default function AdminModalBottom({
   bottomStyle,
   text,
-  onCancel,
+  onClose,
 }: Props) {
   const selectModalBottom = () => {
     switch (bottomStyle) {
@@ -27,7 +27,7 @@ export default function AdminModalBottom({
               buttonStyle={ButtonStyle.NEUTRAL}
               isDisabled={false}
               buttonSize={'lg'}
-              onClickFunction={onCancel}
+              onClickFunction={onClose}
             >
               취소
             </AdminButton>
@@ -48,7 +48,7 @@ export default function AdminModalBottom({
               buttonStyle={ButtonStyle.NEUTRAL}
               isDisabled={false}
               buttonSize={'lg'}
-              onClickFunction={onCancel}
+              onClickFunction={onClose}
             >
               취소
             </AdminButton>
