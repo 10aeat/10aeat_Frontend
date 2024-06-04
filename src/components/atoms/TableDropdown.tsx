@@ -34,7 +34,7 @@ export default function Dropdown({
   const isOptionSelected = options.includes(selectedOption)
 
   return (
-    <div className="flex w-[200px] h-[48px]">
+    <div className="flex w-[100px] h-[48px]">
       <div
         className={`flex flex-col items-start z-5 w-[178px] ${isDisabled ? 'opacity-40' : ''}`}
       >
