@@ -3,13 +3,13 @@ import AdminButton, { ButtonStyle } from './AdminButton'
 export enum BottomStyle {
   CANCEL_DONE = 'CANCEL_DONE',
   OK = 'OK',
-  CANCLE_DELETE = 'CANCEL_DELETE',
+  CANCEL_DELETE = 'CANCEL_DELETE',
   DELETE_DONE = 'DELETE_DONE',
 }
 
 interface Props {
   bottomStyle: BottomStyle
-  text: string
+  text?: string
   onClose: () => void
 }
 
@@ -33,7 +33,7 @@ export default function AdminModalBottom({
             </AdminButton>
             <AdminButton
               buttonStyle={ButtonStyle.PRIMARY}
-              isDisabled={true}
+              isDisabled={false}
               buttonSize={'lg'}
             >
               {text}
@@ -41,7 +41,7 @@ export default function AdminModalBottom({
           </div>
         )
 
-      case BottomStyle.CANCEL_DONE:
+      case BottomStyle.OK:
         return (
           <div className="w-full rounded-b-[16px] pt-3 pr-6 pb-6 pl-6 flex justify-end gap-3 bg-white">
             <AdminButton
@@ -54,10 +54,30 @@ export default function AdminModalBottom({
             </AdminButton>
             <AdminButton
               buttonStyle={ButtonStyle.ERROR}
-              isDisabled={true}
+              isDisabled={false}
               buttonSize={'lg'}
             >
               {text}
+            </AdminButton>
+          </div>
+        )
+      case BottomStyle.CANCEL_DELETE:
+        return (
+          <div className="w-full rounded-b-[16px] pt-3 pr-6 pb-6 pl-6 flex justify-end gap-3 bg-white">
+            <AdminButton
+              buttonStyle={ButtonStyle.NEUTRAL}
+              isDisabled={false}
+              buttonSize={'lg'}
+              onClickFunction={onClose}
+            >
+              취소
+            </AdminButton>
+            <AdminButton
+              buttonStyle={ButtonStyle.ERROR}
+              isDisabled={false}
+              buttonSize={'lg'}
+            >
+              삭제하기
             </AdminButton>
           </div>
         )

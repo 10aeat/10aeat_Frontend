@@ -21,6 +21,7 @@ interface Props {
   handleStatusChange?: (value: string, index: number) => void
   handleSelectAll?: (isSelected: boolean) => void
   handleSelectItem?: (isSelected: boolean, item: any) => void
+  handleEdit?: () => void
 }
 
 export default function Table({
@@ -33,6 +34,7 @@ export default function Table({
   handleStatusChange,
   handleSelectAll,
   handleSelectItem,
+  handleEdit,
 }: Props) {
   const [disabledItems, setDisabledItems] = useState<string[]>([])
   // 모든 항목이 disabled 상태인지 확인
@@ -145,6 +147,7 @@ export default function Table({
                   buttonStyle={ButtonStyle.SECONDARY_BLUE}
                   buttonSize={'lg'}
                   isDisabled={disabledItems.includes(item.title)}
+                  onClickFunction={handleEdit}
                 >
                   <Image
                     src={'/icons/pen2.svg'}

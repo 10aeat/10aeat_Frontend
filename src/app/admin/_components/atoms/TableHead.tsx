@@ -7,7 +7,9 @@ interface Props {
   star?: string
   warn?: string
   btnText: string
+  selectedItems: string[]
   handleAddItem: () => void
+  handleDelete: () => void
 }
 
 export default function TableHead({
@@ -16,7 +18,9 @@ export default function TableHead({
   star,
   warn,
   btnText,
+  selectedItems,
   handleAddItem,
+  handleDelete,
 }: Props) {
   return (
     <div className="w-full flex justify-between items-end">
@@ -43,7 +47,12 @@ export default function TableHead({
           />
           {btnText}
         </AdminButton>
-        <AdminButton buttonStyle={ButtonStyle.WARNING} buttonSize={'md'}>
+        <AdminButton
+          buttonStyle={ButtonStyle.WARNING}
+          buttonSize={'md'}
+          onClickFunction={handleDelete}
+          isDisabled={selectedItems.length === 0}
+        >
           삭제
         </AdminButton>
       </div>
