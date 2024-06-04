@@ -4,7 +4,6 @@ import Image from 'next/image'
 import TagBadge, { TagBadgeStyle } from '@/components/atoms/TagBadge'
 import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton'
 import PenIcon from '/public/icons/pen_with_line.svg'
-import { useState } from 'react'
 import AdminComments from '@/components/atoms/AdminComments'
 
 export default function RepairPost() {
