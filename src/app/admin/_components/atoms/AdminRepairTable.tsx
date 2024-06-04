@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
-import Dropdown from './Dropdown'
+import Dropdown from '@/components/atoms/Dropdown'
 import AdminButton, { ButtonStyle } from './AdminButton'
-import TableDropdown from './TableDropdown'
+import TableDropdown from '@/components/atoms/TableDropdown'
 
 interface DataItem {
   id: number
