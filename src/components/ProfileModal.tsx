@@ -62,7 +62,7 @@ export default function ProfileModal({ isOpen, onClose }: ModalProps) {
       <div className="flex mt-[8px] justify-center  text-[18px] leading-[24px] font-medium">
         점심시간 {profileData?.lunchBreakStart} ~ {profileData?.lunchBreakEnd}
       </div>
-      <div className="grid mt-[24px] mx-[auto] justify-center w-[311px] h-[222px] shrink-0 rounded-[24px] gap-[8px] px-[32px] py-[24px] bg-gray-100 shadow-primary text-base ">
+      <div className="flex flex-col mt-[24px] mx-[auto] justify-center w-[311px] h-[222px] shrink-0 rounded-[24px] gap-[8px] px-[32px] py-[24px] bg-gray-100 shadow-primary text-base ">
         <div className="flex gap-[8px]">
           <div className="font-bold">소속</div>
           <div className="font-medium">{profileData?.affiliation}</div>

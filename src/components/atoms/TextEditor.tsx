@@ -1,19 +1,24 @@
+'use client'
+
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
-import './TextEditor.css'
+import './TextEditor.css';
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 interface TextEditorProps {
   placeholder: string;
+  value: string; // value prop 추가
+  onChange: (value: string) => void;
 }
 
-export default function TextEditor({ placeholder }: TextEditorProps) {
-  const [editorValue, setEditorValue] = useState('');
+export default function TextEditor({ placeholder, value, onChange }: TextEditorProps) {
+  const [editorValue, setEditorValue] = useState(value);
 
   const handleChange = (value: string) => {
     setEditorValue(value);
+    onChange(value);
   };
 
   return (
