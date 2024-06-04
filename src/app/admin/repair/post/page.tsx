@@ -5,6 +5,7 @@ import TagBadge, { TagBadgeStyle } from '@/components/atoms/TagBadge'
 import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton'
 import PenIcon from '/public/icons/pen_with_line.svg'
 import { useState } from 'react'
+import AdminComments from '@/components/atoms/AdminComments'
 
 export default function RepairPost() {
   return (
@@ -71,9 +72,10 @@ export default function RepairPost() {
           누수가 발생했습니다. 한양 하자팀 / 이노 인테리어 업체를 불러서 하자 <br/>
           공사를 할 예정입니다.
         </div>
+        
       </div>
-      <div className="h-[8px] bg-gray-50 shadow-post"/>
-      <div>댓글창</div>
+      <div className="h-[8px] my-[40px] bg-gray-50 shadow-post"/>
+        <AdminComments />
     </div>
   )
 }

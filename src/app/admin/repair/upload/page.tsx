@@ -1,9 +1,9 @@
 'use client'
 
+import axios from 'axios'
 import Dropdown from '@/components/atoms/Dropdown'
 import TextArea from '@/components/atoms/TextArea'
 import TextEditor from '@/components/atoms/TextEditor'
-import CalenderSelect from '@/components/atoms/CalendarSelect'
 import Image from 'next/image'
 import { useState } from 'react'
 import DatePicker1 from '@/components/atoms/DatePicker'
@@ -26,38 +26,37 @@ export default function RepairUpload() {
   const handleImagesChange = (value: string[]) => setImages(value);
 
   const handleSubmit = async () => {
-    const payload = {
-      category: 'INSTALL',
-      progress: 'COMPLETE',
+    const postData = {
+      category: "REPAIR",
+      progress: "PENDING",
       title,
       content,
-      constructionStart,
-      constructionEnd,
+      constructionStart: [2024, 6, 3, 15, 4, 4, 538122438],
+      constructionEnd: [2024, 6, 8, 15, 4, 4, 538131825],
       repairCompany,
       repairCompanyWebsite,
       images,
     };
 
-    const accessToken = localStorage.getItem('accessToken'); // 로컬 스토리지에서 토큰 읽어오기
-
-    if (!accessToken) {
-      console.error('Access token is missing');
-      return;
-    }
-
     try {
-      const response = await axios.post('/api/repair', payload, {
+      const response = await axios.post('http://10aeat.com/managers/repair/articles', postData, {
         headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
+          'Content-Type': 'application/json'
+        }        
       });
-      console.log(response.data);
+      console.log(response.status);
+
+      if (response.status === 200) {
+        console.log('Post created successfully:', response.data);
+      }
     } catch (error) {
-      console.error(error);
+      console.error('Error creating post:', error);
     }
+    
   };
 
   return (
+    <form onSubmit={handleSubmit}>
     <div className="w-[1024px] mx-[24px] bg-white font-Pretendard">
       <div className="flex items-center py-[24px] my-[16px] border-b border-gray-300">
         <Image
@@ -84,8 +83,7 @@ export default function RepairUpload() {
             <Dropdown isDisabled={false} size="md" />
           </div>
         </div>
-        <CalenderSelect />
-        {/* <DatePicker1 isDisabled={false} /> */}
+        <DatePicker1 isDisabled={false} />
       </div>
       <div className="flex items-center py-[8px]">
         <div className="flex w-[124px] ml-[16px] text-[16px] leading-[24px] font-semibold capitalize">
@@ -136,10 +134,11 @@ export default function RepairUpload() {
         </div>
       </div>
       <div className="flex w-[1024px] justify-end p-[24px]">
-        <button className="flex p-[14px] rounded-[12px] bg-blue-600 text-[20px] font-semibold leading-[20px] text-white">
+        <button className="flex p-[14px] rounded-[12px] bg-blue-600 text-[20px] font-semibold leading-[20px] text-white" type="submit">
           등록하기
         </button>
       </div>
     </div>
+    </form>
   );
 }
