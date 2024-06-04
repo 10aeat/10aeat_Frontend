@@ -4,14 +4,14 @@ import { useState } from 'react';
 
 interface TextAreaProps {
   count?: number;
-  placeholder: string;
+  placeholder?: string;
   width?: string;
   text?: string;
-  value: string;
-  onChange: (value: string) => void;
+  value?: string;
+  onChange?: (value: string) => void;
 }
 
-export default function TextArea({ count = 0, placeholder = "내용을 입력하세요", width = "421px", text = "16px", value, onChange }: TextAreaProps) {
+export default function TextArea({ count = 0, placeholder = "내용을 입력하세요.", width = "421px", text = "16px", value, onChange }: TextAreaProps) {
   const [textLength, setTextLength] = useState<number>(0);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
