@@ -1,5 +1,7 @@
-import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton'
 import Image from 'next/image'
+import AdminButton, {
+  ButtonStyle,
+} from '../admin/_components/atoms/AdminButton'
 
 export default function page() {
   return (

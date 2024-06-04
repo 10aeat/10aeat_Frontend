@@ -1,8 +1,10 @@
-import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton'
-import AdminFilterBtn from '@/components/atoms/AdminFilterBtn'
-import AdminInput from '@/components/atoms/AdminInput'
-import AdminListTable from '@/components/atoms/AdminRepairTable'
-import AdminLogo from '@/components/atoms/AdminLogo'
+import AdminButton, {
+  ButtonStyle,
+} from '@/app/admin/_components/atoms/AdminButton'
+import AdminFilterBtn from '@/app/admin/_components/atoms/AdminFilterBtn'
+import AdminInput from '@/app/admin/_components/atoms/AdminInput'
+import AdminListTable from '@/app/admin/_components/atoms/AdminRepairTable'
+import AdminLogo from '@/app/admin/_components/atoms/AdminLogo'
 import Dropdown from '@/components/atoms/Dropdown'
 import Pagination from '@/components/atoms/Pagination'
 

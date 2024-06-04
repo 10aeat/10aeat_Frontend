@@ -1,4 +1,4 @@
-import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton'
+import AdminButton, { ButtonStyle } from './AdminButton'
 import Image from 'next/image'
 
 interface Props {
@@ -7,6 +7,7 @@ interface Props {
   star?: string
   warn?: string
   btnText: string
+  handleAddItem: () => void
 }
 
 export default function TableHead({
@@ -15,6 +16,7 @@ export default function TableHead({
   star,
   warn,
   btnText,
+  handleAddItem,
 }: Props) {
   return (
     <div className="w-full flex justify-between items-end">
@@ -27,7 +29,11 @@ export default function TableHead({
         <span className="text-gray-400 text-sm font-medium">{warn}</span>
       </div>
       <div className="flex gap-x-2">
-        <AdminButton buttonStyle={ButtonStyle.ACCENT} buttonSize={'md'}>
+        <AdminButton
+          buttonStyle={ButtonStyle.ACCENT}
+          buttonSize={'md'}
+          onClickFunction={handleAddItem}
+        >
           <Image
             src={'/icons/plus.svg'}
             alt="+"

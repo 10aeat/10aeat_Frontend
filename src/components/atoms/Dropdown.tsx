@@ -4,10 +4,11 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 
 interface Props {
-  isDisabled: boolean
+  isDisabled?: boolean
   placeholder?: string
   size: string
   options?: Array<string>
+  onChange?: (selected: string) => void
 }
 
 export default function Dropdown({
@@ -15,6 +16,7 @@ export default function Dropdown({
   size,
   placeholder = '선택',
   options = ['선택 1', '선택 2', '선택 3'],
+  onChange,
 }: Props) {
   const [open, setOpen] = useState(false)
   const [selectedOption, setSelectedOption] = useState(placeholder)
@@ -38,6 +40,7 @@ export default function Dropdown({
     if (!isDisabled) {
       setSelectedOption(option)
       setOpen(false) // 옵션 선택 후 드롭다운 닫기
+      onChange && onChange(option)
     }
   }
 
@@ -56,7 +59,13 @@ export default function Dropdown({
         >
           <div className="flex items-start gap-[60px] flex-[1_0_0%] ">
             <span
-              className={`font-Pretendard ${size === 'md' ? 'text-[16px] leading-[16px]' : 'text-[14px] leading-[20px] tracking-[-0.14px]'} font-medium capitalize ${isOptionSelected ? 'text-gray-500' : 'text-gray-400'} group-hover:text-gray-500 `}
+              className={`font-Pretendard ${size === 'md' ? 'text-[16px] leading-[16px]' : 'text-[14px] leading-[20px] tracking-[-0.14px]'} font-medium capitalize ${
+                selectedOption === '완료'
+                  ? 'text-blue-600'
+                  : isOptionSelected
+                    ? 'text-gray-500'
+                    : 'text-gray-400'
+              } group-hover:text-gray-500`}
             >
               {selectedOption}
             </span>

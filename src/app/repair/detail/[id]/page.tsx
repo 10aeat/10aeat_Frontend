@@ -1,6 +1,6 @@
 'use client'
 
-import AdminCard from '@/components/atoms/AdminCard'
+import AdminCard from '@/app/admin/_components/atoms/AdminCard'
 import Issue, { IssueStyle } from '@/components/atoms/Issue'
 import NavBar from '@/components/atoms/NavBar'
 import NoBox from '@/components/atoms/NoBox'
@@ -18,6 +18,8 @@ export default function RepairDetail({ issueCheck }: RepairDetailProps) {
   const { isSave } = useSaveStore()
   // issueCheck = true
   const [isVisible, setIsVisible] = useState(issueCheck)
+
+  // const
 
   useEffect(() => {
     setIsVisible(issueCheck)

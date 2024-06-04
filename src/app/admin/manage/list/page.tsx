@@ -1,9 +1,11 @@
-import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton'
-import AdminInput from '@/components/atoms/AdminInput'
-import AdminLogo from '@/components/atoms/AdminLogo'
-import AdminManageTable from '@/components/atoms/AdminManageTable'
-import AdminMonthPicker from '@/components/atoms/AdminMonthPicker'
-import AdminYearPicker from '@/components/atoms/AdminYearPicker'
+import AdminButton, {
+  ButtonStyle,
+} from '@/app/admin/_components/atoms/AdminButton'
+import AdminInput from '@/app/admin/_components/atoms/AdminInput'
+import AdminLogo from '@/app/admin/_components/atoms/AdminLogo'
+import AdminManageTable from '@/app/admin/_components//atoms/AdminManageTable'
+import AdminMonthPicker from '@/app/admin/_components/atoms/AdminMonthPicker'
+import AdminYearPicker from '@/app/admin/_components/atoms/AdminYearPicker'
 import Pagination from '@/components/atoms/Pagination'
 
 export default function page() {

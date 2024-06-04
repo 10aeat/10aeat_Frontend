@@ -1,6 +1,7 @@
-import AdminButton, { ButtonStyle } from '@/components/atoms/AdminButton'
+import AdminButton, {
+  ButtonStyle,
+} from '@/app/admin/_components/atoms/AdminButton'
 import NavBar from '@/components/atoms/NavBar'
-import Image from 'next/image'
 
 export default function page() {
   return (

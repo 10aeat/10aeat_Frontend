@@ -5,3 +5,16 @@ interface ADMIN_INFO {
   email: string
   // 소속, 관리실 위치는 전달 못받아서 논의 후 추가 예정
 }
+
+interface ITEM {
+  id?: number
+  date?: string
+  issueDate?: string
+  startDate?: string
+  endDate?: string
+  title: string
+  content?: string
+  issueSort?: string
+  isDone?: boolean
+  isIssue?: boolean
+}
