@@ -159,10 +159,10 @@ export default function Page() {
           )}
           <Image
             onClick={togglePasswordVisibility}
-            src={isPasswordVisible ? '/icons/eye_close.svg' : '/icons/eye.svg'}
+            src={isPasswordVisible ? '/icons/eye.svg' : '/icons/eye_close.svg'}
             width={24}
             height={24}
-            alt={isPasswordVisible ? 'eye_close' : 'eye'}
+            alt={isPasswordVisible ? 'eye' : 'eye_close'}
             className="w-[24px] h-[24px] cursor-pointer"
           />
         </div>
@@ -177,6 +177,7 @@ export default function Page() {
           buttonSize="md"
           buttonStyle={ButtonStyle.PRIMARY}
           onClickFunction={handleLogin}
+          isDisabled={email && password && isEmailValid ? false : true}
         >
           로그인
         </AdminButton>
