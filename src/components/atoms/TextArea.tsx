@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 'use client'
 
 import { useState } from 'react'
@@ -22,7 +23,7 @@ export default function TextArea({
   const [textLength, setTextLength] = useState<number>(0)
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const value = event.target.value
+    const { value } = event.target
     let length = 0
     for (let i = 0; i < value.length; i++) {
       const charCode = value.charCodeAt(i)

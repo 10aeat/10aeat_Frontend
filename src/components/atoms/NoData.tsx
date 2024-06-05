@@ -4,7 +4,7 @@ export default function NoData() {
   return (
     <div className="flex flex-col justify-center items-center min-h-[450px]">
       <Image
-        src={'/icons/clipboard_check.svg'}
+        src="/icons/clipboard_check.svg"
         width={80}
         height={80}
         alt="no-data"

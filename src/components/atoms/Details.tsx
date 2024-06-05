@@ -62,9 +62,7 @@ export default function Details() {
                 )}
               </TimelineSeparator>
               <TimelineContent style={{ padding: 5, height: '10px' }}>
-                <span
-                  className={`fontchange font-Pretendard font-medium text-[16px] leading-[24px] capitalize`}
-                >
+                <span className="fontchange font-Pretendard font-medium text-[16px] leading-[24px] capitalize">
                   {item.date.replaceAll('-', '.')}
                 </span>
               </TimelineContent>

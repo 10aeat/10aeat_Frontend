@@ -1,7 +1,8 @@
+/* eslint-disable react/no-array-index-key */
 import { useState } from 'react'
+import Image from 'next/image'
 import SelectMonth from '../molecules/SelectMonth'
 import Button, { ButtonStyle } from './Button'
-import Image from 'next/image'
 
 interface Props {
   onSelectMonth: (month: number) => void
@@ -63,7 +64,7 @@ export default function MonthlyPlan({ onSelectMonth }: Props) {
             <div className="flex gap-2 font-Pretendard text-gray-600 text-sm">
               <div className="flex gap-1">
                 <Image
-                  src={'/icons/hasSchedule.svg'}
+                  src="/icons/hasSchedule.svg"
                   width={16}
                   height={16}
                   alt="hasSchedule"
@@ -72,7 +73,7 @@ export default function MonthlyPlan({ onSelectMonth }: Props) {
               </div>
               <div className="flex gap-1">
                 <Image
-                  src={'/icons/noSchedule.svg'}
+                  src="/icons/noSchedule.svg"
                   width={16}
                   height={16}
                   alt="noSchedule"

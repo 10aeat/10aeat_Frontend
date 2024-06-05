@@ -1,3 +1,5 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable eqeqeq */
 interface Props {
   status: 'current' | 'default'
   children: number

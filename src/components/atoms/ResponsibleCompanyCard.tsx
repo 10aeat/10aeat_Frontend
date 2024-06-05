@@ -1,4 +1,5 @@
-import Image from 'next/image'
+/* eslint-disable react/button-has-type */
+/* eslint-disable @next/next/no-img-element */
 
 interface Props {
   name: string

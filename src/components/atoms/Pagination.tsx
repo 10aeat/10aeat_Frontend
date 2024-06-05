@@ -1,8 +1,11 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable @typescript-eslint/no-use-before-define */
+
 'use client'
 
 import Image from 'next/image'
-import Page from './Page'
 import { useEffect, useState } from 'react'
+import Page from './Page'
 
 interface Props {
   totalItems: number
