@@ -1,13 +1,15 @@
+/* eslint-disable react/jsx-no-useless-fragment */
+
 'use client'
 
-import NavBar from '../_components/atoms/NavBar'
 import { useState } from 'react'
+import TextArea from '@/components/atoms/TextArea'
+import NavBar from '../_components/atoms/NavBar'
 import AdminTag, { TagStyle } from '../_components/atoms/AdminTag'
 import InputDetail from './_component/InputDetail'
 import ExecuteScheduleOrganism from '../_components/organisms/ExecuteSchedule'
 import IssueHistoryOrganism from '../_components/organisms/IssueHistory'
 import AdminButton, { ButtonStyle } from '../_components/atoms/AdminButton'
-import TextArea from '@/components/atoms/TextArea'
 
 export default function ItemUpdate() {
   const [selectedManageItems, setSelectedManageItems] = useState<string[]>([])
@@ -124,7 +126,7 @@ export default function ItemUpdate() {
             />
           </div>
           <div className="flex justify-end">
-            <AdminButton buttonStyle={ButtonStyle.PRIMARY} buttonSize={'md'}>
+            <AdminButton buttonStyle={ButtonStyle.PRIMARY} buttonSize="md">
               등록하기
             </AdminButton>
           </div>

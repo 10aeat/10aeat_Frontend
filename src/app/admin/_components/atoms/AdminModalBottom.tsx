@@ -18,7 +18,9 @@ export default function AdminModalBottom({
   text,
   onClose,
 }: Props) {
+  // eslint-disable-next-line consistent-return
   const selectModalBottom = () => {
+    // eslint-disable-next-line default-case
     switch (bottomStyle) {
       case BottomStyle.CANCEL_DONE:
         return (
@@ -26,7 +28,7 @@ export default function AdminModalBottom({
             <AdminButton
               buttonStyle={ButtonStyle.NEUTRAL}
               isDisabled={false}
-              buttonSize={'lg'}
+              buttonSize="lg"
               onClickFunction={onClose}
             >
               취소
@@ -34,7 +36,7 @@ export default function AdminModalBottom({
             <AdminButton
               buttonStyle={ButtonStyle.PRIMARY}
               isDisabled={false}
-              buttonSize={'lg'}
+              buttonSize="lg"
             >
               {text}
             </AdminButton>
@@ -47,7 +49,7 @@ export default function AdminModalBottom({
             <AdminButton
               buttonStyle={ButtonStyle.NEUTRAL}
               isDisabled={false}
-              buttonSize={'lg'}
+              buttonSize="lg"
               onClickFunction={onClose}
             >
               취소
@@ -55,7 +57,7 @@ export default function AdminModalBottom({
             <AdminButton
               buttonStyle={ButtonStyle.ERROR}
               isDisabled={false}
-              buttonSize={'lg'}
+              buttonSize="lg"
             >
               {text}
             </AdminButton>
@@ -67,7 +69,7 @@ export default function AdminModalBottom({
             <AdminButton
               buttonStyle={ButtonStyle.NEUTRAL}
               isDisabled={false}
-              buttonSize={'lg'}
+              buttonSize="lg"
               onClickFunction={onClose}
             >
               취소
@@ -75,7 +77,7 @@ export default function AdminModalBottom({
             <AdminButton
               buttonStyle={ButtonStyle.ERROR}
               isDisabled={false}
-              buttonSize={'lg'}
+              buttonSize="lg"
             >
               삭제하기
             </AdminButton>

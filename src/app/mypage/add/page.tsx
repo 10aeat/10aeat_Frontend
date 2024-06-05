@@ -11,7 +11,7 @@ export default function AddOffice() {
 
   return (
     <div className="flex flex-col w-[375px] h-[812px] bg-gray-100 font-Pretendard">
-      <NavBar isTextChange={false} isTitle={true}>
+      <NavBar isTextChange={false} isTitle>
         호실 추가
       </NavBar>
       <div className="flex flex-col pt-[40px] px-[32px] gap-[40px] text-[18px] font-bold leading-[24px]">
@@ -44,7 +44,13 @@ export default function AddOffice() {
         </div>
         <div className="flex flex-col gap-[20px]">
           <div className="flex gap-[16px] items-center">
-            <TextArea width="168px" placeholder="" value={dong} onChange={setDong}/> 동
+            <TextArea
+              width="168px"
+              placeholder=""
+              value={dong}
+              onChange={setDong}
+            />{' '}
+            동
           </div>
           <div className="flex gap-[16px] items-center">
             <TextArea width="168px" placeholder="" value={ho} /> 호
@@ -55,10 +61,10 @@ export default function AddOffice() {
         type="submit"
         className={
           dong.trim() === ''
-            ? "flex justify-center mt-auto mb-[68px] mx-auto w-[343px] p-[14px] rounded-[12px] bg-blue-600 opacity-40 text-[20px] font-semibold leading-[20px] text-white"
-            : "flex justify-center mt-auto mb-[68px] mx-auto w-[343px] p-[14px] rounded-[12px] bg-blue-600 text-[20px] font-semibold leading-[20px] text-white"
+            ? 'flex justify-center mt-auto mb-[68px] mx-auto w-[343px] p-[14px] rounded-[12px] bg-blue-600 opacity-40 text-[20px] font-semibold leading-[20px] text-white'
+            : 'flex justify-center mt-auto mb-[68px] mx-auto w-[343px] p-[14px] rounded-[12px] bg-blue-600 text-[20px] font-semibold leading-[20px] text-white'
         }
-        disabled={dong.trim() === '' ? true : false}
+        disabled={dong.trim() === ''}
       >
         추가하기
       </button>

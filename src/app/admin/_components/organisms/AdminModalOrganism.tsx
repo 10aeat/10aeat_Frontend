@@ -1,7 +1,7 @@
+import { useState } from 'react'
 import AdminModalTop from '../molecules/AdminModalTop'
 import AdminModalMain from '../molecules/AdminModalMain'
 import AdminModalBottom, { BottomStyle } from '../atoms/AdminModalBottom'
-import { useState } from 'react'
 
 interface Props {
   title: string
@@ -23,9 +23,7 @@ export default function AdminModalOrganism({
   }
 
   return (
-    <div
-      className={`fixed inset-0 z-10 flex items-center justify-center bg-[rgba(0,0,0,0.72)]`}
-    >
+    <div className="fixed inset-0 z-10 flex items-center justify-center bg-[rgba(0,0,0,0.72)]">
       <div className="flex flex-col w-[487px] min-h-[280px] items-start font-Pretendard">
         <AdminModalTop title={title} onClose={handleClose} />
         <AdminModalMain>{children}</AdminModalMain>

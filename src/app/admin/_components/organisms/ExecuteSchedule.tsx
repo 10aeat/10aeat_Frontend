@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import DatePicker1 from '@/components/atoms/DatePicker'
 import Table from '../atoms/Table'
 import TableHead from '../atoms/TableHead'
 import AdminModalOrganism from './AdminModalOrganism'
-import DatePicker1 from '@/components/atoms/DatePicker'
 import { BottomStyle } from '../atoms/AdminModalBottom'
 import HandOffModal from './HandOffModal'
 
@@ -100,10 +100,10 @@ export default function ExecuteScheduleOrganism({
   return (
     <div>
       <TableHead
-        imgSrc={'/icons/calendar-dark.svg'}
-        title={'시행 일정'}
-        star={'*'}
-        btnText={'점검 일정 추가'}
+        imgSrc="/icons/calendar-dark.svg"
+        title="시행 일정"
+        star="*"
+        btnText="점검 일정 추가"
         handleAddItem={handleAddSchedule}
         handleDelete={handleDelete}
         selectedItems={selectedItems}
@@ -158,7 +158,7 @@ export default function ExecuteScheduleOrganism({
                 <span>제목</span>
                 <input type="text" defaultValue={currentItem?.title || ''} />
                 <span>상세 내용</span>
-                <textarea defaultValue={currentItem?.content || ''}></textarea>
+                <textarea defaultValue={currentItem?.content || ''} />
               </div>
             </div>
           </div>

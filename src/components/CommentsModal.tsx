@@ -1,20 +1,20 @@
-"use client"
+'use client'
 
 import Image from 'next/image'
 import IconProfile from '@/components/icons/profile'
 import { useState, useRef, useEffect } from 'react'
 
 interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
+  isOpen: boolean
+  onClose: () => void
 }
 
 interface Comments {
-  parentCommentId: number;
-  writer: string;
-  updatedAt: string;
-  content: string;
-  replies: Comments[];
+  parentCommentId: number
+  writer: string
+  updatedAt: string
+  content: string
+  replies: Comments[]
 }
 
 export default function CommentsComponent({ isOpen, onClose }: ModalProps) {
@@ -29,7 +29,10 @@ export default function CommentsComponent({ isOpen, onClose }: ModalProps) {
     setNewComment(e.target.value)
   }
 
-  const handleReplyChange = (parentCommentId: number, e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleReplyChange = (
+    parentCommentId: number,
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     setNewReply((prev) => ({
       ...prev,
       [parentCommentId]: e.target.value,
@@ -93,7 +96,9 @@ export default function CommentsComponent({ isOpen, onClose }: ModalProps) {
   }
 
   const toggleReplyInput = (parentCommentId: number) => {
-    setShowReplyInput((prev) => (prev === parentCommentId ? null : parentCommentId))
+    setShowReplyInput((prev) =>
+      prev === parentCommentId ? null : parentCommentId,
+    )
   }
 
   useEffect(() => {
@@ -103,7 +108,10 @@ export default function CommentsComponent({ isOpen, onClose }: ModalProps) {
   }, [showReplyInput])
 
   return (
-    <div className={`${isOpen ? 'translate-y-[0px]' : 'translate-y-full'} fixed transition-transform z-10 duration-500 top-0 justify-center w-[375px] h-[736px] pt-[27.85px] shrink-0 rounded-t-[24px] bg-white font-Pretendard`} onClick={(e) => e.stopPropagation()}>
+    <div
+      className={`${isOpen ? 'translate-y-[0px]' : 'translate-y-full'} fixed transition-transform z-10 duration-500 top-0 justify-center w-[375px] h-[736px] pt-[27.85px] shrink-0 rounded-t-[24px] bg-white font-Pretendard`}
+      onClick={(e) => e.stopPropagation()}
+    >
       <div className="inline-flex items-start gap-[264px] w-[375px] h-[24px] px-[20px] shrink-0 bg-white">
         <div className="w-[47px] h-[24px] align-text-top text-gray-900 text-[18px] leading-6 font-bold">
           댓글
@@ -113,13 +121,17 @@ export default function CommentsComponent({ isOpen, onClose }: ModalProps) {
         </button>
       </div>
       <div className="h-[17.03px] border-b border-gray-300"></div>
-      
+
       <div className="overflow-hidden h-[calc(100%-100px)]">
         <div className="overflow-y-auto max-h-full scrollbar-hide">
           {comments.length === 0 ? (
             <div className="w-[375px] mt-[40px] text-center">
-              <div className="text-lg text-gray-900 font-bold">아직 댓글이 없어요</div>
-              <div className="text-sm text-gray-500 font-normal">사안에 대해 가장 먼저 댓글을 남겨보세요!</div>
+              <div className="text-lg text-gray-900 font-bold">
+                아직 댓글이 없어요
+              </div>
+              <div className="text-sm text-gray-500 font-normal">
+                사안에 대해 가장 먼저 댓글을 남겨보세요!
+              </div>
             </div>
           ) : (
             comments.map((comment) => (
@@ -139,8 +151,13 @@ export default function CommentsComponent({ isOpen, onClose }: ModalProps) {
                   <div className="m-[8px] text-base text-gray-900 font-normal">
                     {comment.content}
                   </div>
-                  <button className="ml-[8px] h-[20px] text-sm text-gray-900 font-bold" onClick={() => toggleReplyInput(comment.parentCommentId)}>
-                    {showReplyInput === comment.parentCommentId ? "답글달기 취소" : "답글달기"}
+                  <button
+                    className="ml-[8px] h-[20px] text-sm text-gray-900 font-bold"
+                    onClick={() => toggleReplyInput(comment.parentCommentId)}
+                  >
+                    {showReplyInput === comment.parentCommentId
+                      ? '답글달기 취소'
+                      : '답글달기'}
                   </button>
 
                   {showReplyInput === comment.parentCommentId && (
@@ -149,12 +166,23 @@ export default function CommentsComponent({ isOpen, onClose }: ModalProps) {
                         className="w-[291px] h-[36px] my-[7px] ml-[20px] mr-[12px] shrink-0 rounded-[8px] pl-[14px] bg-gray-100 outline-none"
                         type="text"
                         value={newReply[comment.parentCommentId] || ''}
-                        onChange={(e) => handleReplyChange(comment.parentCommentId, e)}
-                        ref={(el) => (replyInputRefs.current[comment.parentCommentId] = el)}
+                        onChange={(e) =>
+                          handleReplyChange(comment.parentCommentId, e)
+                        }
+                        ref={(el) =>
+                          (replyInputRefs.current[comment.parentCommentId] = el)
+                        }
                       />
-                      <button onClick={() => handleAddReply(comment.parentCommentId)} disabled={!newReply[comment.parentCommentId]?.trim()}>
+                      <button
+                        onClick={() => handleAddReply(comment.parentCommentId)}
+                        disabled={!newReply[comment.parentCommentId]?.trim()}
+                      >
                         <Image
-                          src={newReply[comment.parentCommentId]?.trim() ? '/icons/able_blue.svg' : '/icons/able_base.svg'}
+                          src={
+                            newReply[comment.parentCommentId]?.trim()
+                              ? '/icons/able_blue.svg'
+                              : '/icons/able_base.svg'
+                          }
                           width={32}
                           height={32}
                           alt="able_base"
@@ -168,12 +196,23 @@ export default function CommentsComponent({ isOpen, onClose }: ModalProps) {
                   <div className="ml-[56px] mt-[14px] flex text-sm items-center text-[#216FD6]">
                     <div className="font-medium">답글&nbsp;</div>
                     <div className="font-bold">{comment.replies.length}</div>
-                    <button className="ml-[5px]" onClick={() => toggleReplies(comment.parentCommentId)}>
+                    <button
+                      className="ml-[5px]"
+                      onClick={() => toggleReplies(comment.parentCommentId)}
+                    >
                       <Image
-                        src={showReplies[comment.parentCommentId] ? '/icons/arrow_down_small.svg' : '/icons/arrow_up_small.svg'}
+                        src={
+                          showReplies[comment.parentCommentId]
+                            ? '/icons/arrow_down_small.svg'
+                            : '/icons/arrow_up_small.svg'
+                        }
                         width={24}
                         height={24}
-                        alt={showReplies[comment.parentCommentId] ? 'arrow_down_small' : 'arrow_up_small'}
+                        alt={
+                          showReplies[comment.parentCommentId]
+                            ? 'arrow_down_small'
+                            : 'arrow_up_small'
+                        }
                       />
                     </button>
                   </div>
@@ -181,7 +220,10 @@ export default function CommentsComponent({ isOpen, onClose }: ModalProps) {
 
                 {showReplies[comment.parentCommentId] &&
                   comment.replies.map((reply) => (
-                    <div className="pt-[20px] pl-[56px] pr-[20px]" key={reply.parentCommentId}>
+                    <div
+                      className="pt-[20px] pl-[56px] pr-[20px]"
+                      key={reply.parentCommentId}
+                    >
                       <div className="flex items-center">
                         <div className="w-[32px] h-[32px]">
                           <IconProfile width="32px" height="32px" />
@@ -216,7 +258,11 @@ export default function CommentsComponent({ isOpen, onClose }: ModalProps) {
         />
         <button onClick={handleAddComment} disabled={!newComment.trim()}>
           <Image
-            src={newComment.trim() ? '/icons/able_blue.svg' : '/icons/able_base.svg'}
+            src={
+              newComment.trim()
+                ? '/icons/able_blue.svg'
+                : '/icons/able_base.svg'
+            }
             width={32}
             height={32}
             alt="able_base"

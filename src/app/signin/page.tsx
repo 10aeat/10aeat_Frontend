@@ -1,13 +1,16 @@
 'use client'
-import { useState, ChangeEvent } from 'react'
+
 import AdminButton, {
   ButtonStyle,
 } from '@/app/admin/_components/atoms/AdminButton'
 import NavBar from '@/components/atoms/NavBar'
+
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
 import { useAccessToken } from '@/components/store/AccessTokenStore'
+import { ChangeEvent, ChangeEventHandler, useState } from 'react'
+
 
 export default function Page() {
   const [email, setEmail] = useState('')
@@ -21,44 +24,40 @@ export default function Page() {
 
   const router = useRouter()
 
-  // 이메일 입력란 값 변경 핸들러
+
+ // 이메일 입력란 값 변경 핸들러
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value)
     setIsEmailFilled(!!event.target.value)
     setIsEmailValid(validateEmail(event.target.value))
   }
-
   // 이메일 유효성 검사 함수
   const validateEmail = (email: string) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return regex.test(email)
   }
-
   // 이메일 입력란 초기화 핸들러
   const handleEmailClear = () => {
     setEmail('')
     setIsEmailFilled(false)
     setIsEmailValid(true)
   }
-
   // 비밀번호 입력란 값 변경 핸들러
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value)
     setIsPasswordFilled(!!event.target.value)
     setIsPasswordValid(true) // Reset password validation
   }
-
   // 비밀번호 입력란 초기화 핸들러
   const handlePasswordClear = () => {
     setPassword('')
     setIsPasswordFilled(false)
   }
-
   // 비밀번호 보이기/숨기기 핸들러
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible)
   }
-
+          
   // 로그인 버튼 클릭 핸들러
   const handleLogin = async () => {
     try {
@@ -77,6 +76,7 @@ export default function Page() {
         // 오류 처리
         // console.error('로그인 실패:', response.statusText)
         setIsPasswordValid(false)
+
       }
     } catch (error) {
       // 네트워크 오류 등을 처리합니다.
@@ -92,7 +92,6 @@ export default function Page() {
           이메일로 로그인
         </div>
       </div>
-
       <div className="absolute top-[140px] w-[343px] h-[84px]">
         <div className="font-Pretendard text-[16px] text-gray-900 font-medium leading-[24px] capitalize ">
           이메일

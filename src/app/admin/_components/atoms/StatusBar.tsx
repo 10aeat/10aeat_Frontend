@@ -1,7 +1,7 @@
 interface Props {
   totalChecks: number
   completedChecks: number
-  barWidth?: number
+  // barWidth?: number
 }
 
 export default function StatusBar({
@@ -21,7 +21,7 @@ export default function StatusBar({
         <div
           className={`h-[10px] top-0 left-0 ${progressBarColor} rounded-[100px]`}
           style={{ width: `${progressFilledWidth}px` }}
-        ></div>
+        />
       </div>
     </div>
   )

@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+
 'use client'
 
 import NoBox from '@/components/atoms/NoBox'
@@ -21,7 +24,7 @@ export default function TestModal() {
     <>
       <div className="px-4 w-full mt-8 mb-[100px]" onClick={openProfileModal}>
         <div className="font-bold text-lg font-Pretendard mb-3">담당자</div>
-        <AdminCard name="김주은" mail="abc@abc.com" phone="01012345678" />
+        <AdminCard managerId={1} />
       </div>
       <ProfileModal isOpen={isProfileModalOpen} onClose={closeProfileModal} />
 

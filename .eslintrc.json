@@ -12,12 +12,21 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "@typescript-eslint/no-shadow": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/no-unused-vars": "off",
     "import/extensions": "off",
     "react/style-prop-object": "off",
     "react/require-default-props": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   },
   "ignorePatterns": ["next.config.mjs"]
 }

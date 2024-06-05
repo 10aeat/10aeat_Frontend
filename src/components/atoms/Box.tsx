@@ -10,18 +10,20 @@ interface Props {
   boxStyle: BoxStyle
   children: React.ReactNode
   style?: string
-  issueCheck?: boolean
+  issueId?: number
 }
 
-export default function Box({ boxStyle, children, style, issueCheck }: Props) {
+export default function Box({ boxStyle, children, style, issueId }: Props) {
+  // eslint-disable-next-line consistent-return
   const selectBox = () => {
+    // eslint-disable-next-line default-case
     switch (boxStyle) {
       case BoxStyle.BOX_WHITE_CARD:
         return (
           <div
             className={`relative flex w-[343px] h-[124px] p-4 items-end content-end gap-x-2.5 gap-y-2 flex-wrap rounded-[18px] bg-white shadow-primary font-Pretendard ${style}`}
           >
-            {issueCheck && (
+            {issueId && (
               <Image
                 src="/icons/issueCheck.svg"
                 width={25}

@@ -1,8 +1,8 @@
 'use client'
 
-import ClipboardIcon from '/public/icons/clipboard_check.svg'
 import Image from 'next/image'
 import { useState } from 'react'
+import ClipboardIcon from '../../../../../../../public/icons/clipboard_check.svg'
 
 export default function SideMenu() {
   const [isOpen, setIsOpen] = useState<Boolean>(true)
@@ -33,12 +33,12 @@ export default function SideMenu() {
       <div className="flex flex-col w-[100%] items-center py-[16px] border-y border-gray-200">
         <div className="flex w-[200px] px-[12px] py-[16px] gap-[12px] items-center justify-between rounded-[6px] bg-gray-100">
           <div className="w-[20px]">
-            <ClipboardIcon color={'#4B5563'} width={20} height={20} />
+            <ClipboardIcon color="#4B5563" width={20} height={20} />
           </div>
           <div className="w-[112px] font-bold text-[16px] leading-[24px]">
             건물 관리 현황
           </div>
-          <button onClick={handleToggleMenu}>
+          <button onClick={handleToggleMenu} type="button">
             <Image
               src={
                 isOpen
@@ -55,7 +55,8 @@ export default function SideMenu() {
           <>
             <div className="flex w-[200px] px-[12px] py-[16px] gap-[12px] items-center rounded-[6px]">
               <button
-                className={`w-[100%] ${selectMenu === 1 ? "font-bold text-blue-700" : "font-medium"} text-left text-[14px] leading-[16px]`}
+                type="button"
+                className={`w-[100%] ${selectMenu === 1 ? 'font-bold text-blue-700' : 'font-medium'} text-left text-[14px] leading-[16px]`}
                 onClick={() => handleSelectMenu(1)}
               >
                 건물 유지보수 사안
@@ -63,7 +64,8 @@ export default function SideMenu() {
             </div>
             <div className="flex w-[200px] px-[12px] py-[16px] gap-[12px] items-center rounded-[6px]">
               <button
-                className={`w-[100%] ${selectMenu === 2 ? "font-bold text-blue-700" : "font-medium"} text-left text-[14px] leading-[16px]`}
+                type="button"
+                className={`w-[100%] ${selectMenu === 2 ? 'font-bold text-blue-700' : 'font-medium'} text-left text-[14px] leading-[16px]`}
                 onClick={() => handleSelectMenu(2)}
               >
                 법정 시설물 유지관리 점검

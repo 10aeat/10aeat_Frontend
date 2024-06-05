@@ -1,8 +1,8 @@
 'use client'
 
 import Dropdown from '@/components/atoms/Dropdown'
-import NavBar from '../_components/atoms/NavBar'
 import { useState } from 'react'
+import NavBar from '../_components/atoms/NavBar'
 import AdminTag, { TagStyle } from '../_components/atoms/AdminTag'
 import IssueHistoryOrganism from '../_components/organisms/IssueHistory'
 import ProgressScheduleOrganism from '../_components/organisms/ProgressSchedule'
@@ -84,7 +84,7 @@ export default function ItemUpdate() {
             <Dropdown
               options={['대기', '진행중', '완료']}
               isDisabled={false}
-              size={'md'}
+              size="md"
             />
           </div>
           <div className="grid gap-y-[72px]">
@@ -104,7 +104,7 @@ export default function ItemUpdate() {
             />
           </div>
           <div className="flex justify-end">
-            <AdminButton buttonStyle={ButtonStyle.PRIMARY} buttonSize={'md'}>
+            <AdminButton buttonStyle={ButtonStyle.PRIMARY} buttonSize="md">
               업데이트하기
             </AdminButton>
           </div>
