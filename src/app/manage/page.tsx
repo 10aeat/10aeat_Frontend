@@ -64,7 +64,7 @@ export default function ManageList() {
       }
     }
     getManageArticlesList()
-  })
+  }, [])
 
   const handleStatusClick = (status: string) => {
     setSelectedStatus(status)
