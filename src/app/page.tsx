@@ -7,7 +7,6 @@ import MonthlyPlan from '@/components/atoms/MonthlyPlan'
 import RepairStatus from '@/components/atoms/RepairStatus'
 import TagBadge, { TagBadgeStyle } from '@/components/atoms/TagBadge'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 export default function Home() {
@@ -15,7 +14,6 @@ export default function Home() {
   const handleSelectMonth = (month: number) => {
     setSelectedMonth(month)
   }
-  const router = useRouter()
 
   // GET /repair/articles/summary 유지보수 사안 요약
   const repairStatus = {
@@ -24,7 +22,7 @@ export default function Home() {
     complete: 2,
   }
   return (
-    <div className="flex flex-col h-[975px] w-full items-center bg-gray-100 ">
+    <div className="flex flex-col w-full items-center bg-gray-100">
       <div className="relative w-[375px] h-[50px]">
         <div className="flex w-[97px] h-[28.462px] justify-center items-center gap-[2.205px] ">
           <div className="relative flex w-[97px] h-[28px] !top-[11px] left-[13px] justify-center items-center gap-[2.205px] ">
@@ -40,7 +38,7 @@ export default function Home() {
         </div>
       </div>
       <div className="relative w-[345px] h-[90px]">
-        <div className=" w-[345px] h-[90px]">
+        <div className="fixed w-[345px] h-[90px]">
           <div className="inline-flex items-start gap-[8px] absolute top-[66px] left-[82px]">
             <TagBadge tagBadgeStyle={TagBadgeStyle.DEFAULT_TAG}>설치</TagBadge>
             <TagBadge tagBadgeStyle={TagBadgeStyle.DEFAULT_TAG}>보수</TagBadge>
@@ -71,7 +69,7 @@ export default function Home() {
         </div>
       </div>
       <div className="relative  w-[345px]  h-[140px]">
-        <button className=" mt-[34px]" onClick={() => router.push('/repair')}>
+        <div className=" mt-[34px]">
           <div className="absolute  font-Pretendard font-bold text-gray-900 text-[18px] leading-[24px] whitespace-nowrap">
             2024 건물 유지보수 사안
           </div>
@@ -82,7 +80,7 @@ export default function Home() {
             alt="arrow_right_large"
             className="!absolute !w-[24px] !h-[24px] !left-[187px]"
           />
-        </button>
+        </div>
         <RepairStatus
           all={repairStatus.all}
           inprogressAndpending={repairStatus.inprogressAndpending}

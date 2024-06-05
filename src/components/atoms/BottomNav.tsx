@@ -39,7 +39,7 @@ import Image from 'next/image'
 
 export default function BottomNav() {
   return (
-    <div className="fixed bottom-0 w-[375px] h-[56px] rounded-t-[18px]  z-10 flex justify-between bg-white">
+    <div className="fixed bottom-0 w-[375px] h-[56px] rounded-t-[18px] bg-white z-10 flex justify-between">
       <button className="flex-1 flex items-center justify-center">
         <div className="relative w-[47px] h-[44px]">
           <Image
