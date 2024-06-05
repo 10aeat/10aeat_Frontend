@@ -7,14 +7,14 @@ import React from 'react'
 export default function page() {
   return (
     <div className="flex flex-col w-full items-center bg-white h-[812px]">
-      <NavBar isTextChange={false} isTitle={true}></NavBar>
+      <NavBar isTextChange={false} isTitle />
       <div className="absolute top-[68px] w-[343px] h-[28px] ">
         <div className="inline-flex items-center gap-[10px]">
-          <div className="w-[10px] h-[10px] rounded-[5px] bg-gray-300"></div>
+          <div className="w-[10px] h-[10px] rounded-[5px] bg-gray-300" />
           <div className="flex w-[28px] h-[28px] bg-blue-600 rounded-[14px] font-Pretendard font-bold text-white text-[14px] leading-[21px] text-center justify-center items-center">
             2
           </div>
-          <div className="w-[10px] h-[10px] rounded-[5px] bg-gray-300"></div>
+          <div className="w-[10px] h-[10px] rounded-[5px] bg-gray-300" />
         </div>
       </div>
       <div className="absolute top-[120px] w-[343px]">
@@ -28,9 +28,7 @@ export default function page() {
         <div className="font-Pretendard text-[16px] text-gray-900 font-medium leading-[24px] capitalize ">
           이름
         </div>
-        <div
-          className={`relative top-[12px] flex w-[343px] h-[48px] px-[16px] py-[12px] gap-[8px] rounded-[10px] border-solid border-[1px] border-gray-300 bg-white`}
-        >
+        <div className="relative top-[12px] flex w-[343px] h-[48px] px-[16px] py-[12px] gap-[8px] rounded-[10px] border-solid border-[1px] border-gray-300 bg-white">
           <input
             className="flex items-center gap-[8px] flex-[1_0_0%] opacity-[0.4] font-Pretendard text-[16px] font-normal leading-[24px] text-gray-700"
             placeholder="이메일 주소를 입력해주세요."
@@ -55,9 +53,7 @@ export default function page() {
         <div className="font-Pretendard text-[16px] text-gray-900 font-medium leading-[24px] capitalize ">
           이메일
         </div>
-        <div
-          className={`relative top-[12px] flex w-[343px] h-[48px] px-[16px] py-[12px] gap-[8px] rounded-[10px] border-solid border-[1px] border-gray-300 bg-white`}
-        >
+        <div className="relative top-[12px] flex w-[343px] h-[48px] px-[16px] py-[12px] gap-[8px] rounded-[10px] border-solid border-[1px] border-gray-300 bg-white">
           <input
             className="flex items-center gap-[8px] flex-[1_0_0%] opacity-[0.4] font-Pretendard text-[16px] font-normal leading-[24px] text-gray-700"
             placeholder="이메일 주소를 입력해주세요."
@@ -82,9 +78,7 @@ export default function page() {
         <div className="font-Pretendard text-[16px] text-gray-900 font-medium leading-[24px] capitalize ">
           비밀번호
         </div>
-        <div
-          className={`relative top-[12px] flex w-[343px] h-[48px] px-[16px] py-[12px] gap-[8px] rounded-[10px] border-solid border-[1px] border-gray-300 bg-white`}
-        >
+        <div className="relative top-[12px] flex w-[343px] h-[48px] px-[16px] py-[12px] gap-[8px] rounded-[10px] border-solid border-[1px] border-gray-300 bg-white">
           <input
             type="password"
             className="flex items-center gap-[8px] flex-[1_0_0%] opacity-[0.4] font-Pretendard text-[16px] font-normal leading-[24px] text-gray-700"
@@ -105,9 +99,7 @@ export default function page() {
             className="w-[24px] h-[24px]"
           /> */}
         </div>
-        <div
-          className={`relative top-[20px] flex w-[343px] h-[48px] px-[16px] py-[12px] gap-[8px] rounded-[10px] border-solid border-[1px] border-gray-300 bg-white`}
-        >
+        <div className="relative top-[20px] flex w-[343px] h-[48px] px-[16px] py-[12px] gap-[8px] rounded-[10px] border-solid border-[1px] border-gray-300 bg-white">
           <input
             type="password"
             className="flex items-center gap-[8px] flex-[1_0_0%] opacity-[0.4] font-Pretendard text-[16px] font-normal leading-[24px] text-gray-700"
@@ -133,7 +125,7 @@ export default function page() {
         <AdminButton
           buttonSize="md"
           buttonStyle={ButtonStyle.PRIMARY}
-          isDisabled={true}
+          isDisabled
         >
           다음
         </AdminButton>

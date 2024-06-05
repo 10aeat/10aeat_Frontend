@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
+
 'use client'
 
-import AdminButton, { ButtonStyle } from './AdminButton'
 import Dropdown from '@/components/atoms/Dropdown'
 import Image from 'next/image'
 import React, { useState } from 'react'
+import AdminButton, { ButtonStyle } from './AdminButton'
 
 interface Column {
   title: string
@@ -105,7 +107,7 @@ export default function Table({
               {col.title}
             </th>
           ))}
-          <th className="px-6 py-3"></th>
+          <th className="px-6 py-3" />
           {statusColumn && (
             <th
               key={statusColumn.dataIndex}
@@ -119,7 +121,7 @@ export default function Table({
       <tbody>
         {data.length > 0 ? (
           data.map((item, index) => (
-            <tr key={index} className="border-b">
+            <tr key={item.id} className="border-b">
               <td
                 className={`px-6 py-3 whitespace-nowrap ${disabledItems.includes(item.title) ? 'text-gray-400' : ''}`}
               >
@@ -145,13 +147,13 @@ export default function Table({
               <td className="px-6 py-3 whitespace-nowrap w-[88px]">
                 <AdminButton
                   buttonStyle={ButtonStyle.SECONDARY_BLUE}
-                  buttonSize={'lg'}
+                  buttonSize="lg"
                   isDisabled={disabledItems.includes(item.title)}
                   onClickFunction={handleEdit}
                 >
                   <Image
-                    src={'/icons/pen2.svg'}
-                    alt={'pen'}
+                    src="/icons/pen2.svg"
+                    alt="pen"
                     width={16}
                     height={16}
                   />

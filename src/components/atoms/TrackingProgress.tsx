@@ -1,5 +1,6 @@
-import React from 'react'
-import Box, { BoxStyle } from './Box'
+// TrackingProgress
+
+import React, { useEffect, useState } from 'react'
 import {
   Timeline,
   TimelineItem as MuiTimelineItem,
@@ -9,43 +10,52 @@ import {
   TimelineDot,
   TimelineOppositeContent,
 } from '@mui/lab'
+import Box, { BoxStyle } from './Box'
 
-// 타입 정의
-interface TimelineItemProps {
-  date: string
-  title: string
-  description?: string
-  isCurrent?: boolean
-}
+export default function TrackingProgress({
+  repairArticleId,
+}: {
+  repairArticleId: number
+}) {
+  const [progressData, setProgressData] = useState<AGENDA_PROGRESS[]>()
+  const accesstoken =
+    'eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoiVEVOQU5UIiwiaWF0IjoxNzE3NTYyMjg4LCJleHAiOjE3MTc1NjQwODh9.pewYiBmFBUkXHq2TBrSangJx5qkEtQbGgOKAT8i9mPs'
 
-// 예제 데이터
-const exampleData: TimelineItemProps[] = [
-  {
-    date: '2024-05-01',
-    title: '안건 발의',
-    description: '',
-  },
-  {
-    date: '2024-05-05',
-    title: '투표 진행',
-    description:
-      '5월 3일~5월 5일까지 해결방안 결정을 위해 소유주 투표를 진행함',
-  },
-  {
-    date: '2024-05-06',
-    title: '긴급회의',
-    description:
-      '긴급 회의 소집 및 해결방안 결정\n삼성중공업에 설치요구 공문 발송하였음',
-    isCurrent: true,
-  },
-].sort((a, b) => b.date.localeCompare(a.date))
+  useEffect(() => {
+    const getProgressData = async () => {
+      try {
+        const getProgressResponse = await fetch(
+          `http://10aeat.com/repair/articles/progress/${repairArticleId}`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${accesstoken}`,
+            },
+          },
+        )
+        let progressData = await getProgressResponse.json()
+        progressData = progressData.sort(
+          (a: AGENDA_PROGRESS, b: AGENDA_PROGRESS) =>
+            b.startSchedule.localeCompare(a.startSchedule),
+        )
+        setProgressData(progressData)
+        console.log(progressData)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    getProgressData()
+  }, [repairArticleId])
 
-export default function TrackingProgress() {
   return (
     <Box boxStyle={BoxStyle.BOX_WHITE_CONTENT}>
       <Timeline style={{ padding: 0 }}>
-        {exampleData.map((item, index) => (
-          <MuiTimelineItem key={index} style={{ minHeight: 0 }}>
+        {progressData?.map((item, index) => (
+          <MuiTimelineItem
+            key={progressData[index].id}
+            style={{ minHeight: 0 }}
+          >
             <TimelineOppositeContent
               style={{
                 flex: 0.1,
@@ -56,9 +66,9 @@ export default function TrackingProgress() {
               }}
             >
               <div
-                className={`text-sm font-Pretendard ${item.isCurrent ? 'text-gray-900 font-semibold' : 'text-gray-500'}`}
+                className={`text-sm font-Pretendard ${item.inProgress ? 'text-gray-900 font-semibold' : 'text-gray-500'}`}
               >
-                {item.date.slice(5).replace('-', '.')}
+                {item.startSchedule.slice(5).replace('-', '.')}
               </div>
             </TimelineOppositeContent>
             <TimelineSeparator
@@ -74,20 +84,24 @@ export default function TrackingProgress() {
             >
               <TimelineDot
                 className={
-                  item.isCurrent ? 'bg-blue-500 animation-pulse' : 'bg-gray-500'
+                  item.inProgress
+                    ? 'bg-blue-500 animation-pulse'
+                    : 'bg-gray-500'
                 }
                 style={{
-                  width: item.isCurrent ? '10px !important' : '8px !important',
-                  height: item.isCurrent ? '10px !important' : '8px !important',
+                  width: item.inProgress ? '10px !important' : '8px !important',
+                  height: item.inProgress
+                    ? '10px !important'
+                    : '8px !important',
                   margin: '7px 0px',
                   justifyContent: 'center',
                   padding: 0,
-                  boxShadow: item.isCurrent
+                  boxShadow: item.inProgress
                     ? '0 0 8px rgba(0, 123, 255, 0.5) !important'
                     : 'none',
                 }}
               />
-              {index < exampleData.length - 1 && (
+              {index < progressData.length - 1 && (
                 <TimelineConnector
                   style={{
                     flexGrow: 1,
@@ -99,15 +113,15 @@ export default function TrackingProgress() {
             </TimelineSeparator>
             <TimelineContent style={{ padding: 0, height: 'auto' }}>
               <span
-                className={`text-base font-Pretendard font-semibold ${item.isCurrent ? 'text-gray-900' : 'text-gray-600'}`}
+                className={`text-base font-Pretendard font-semibold ${item.inProgress ? 'text-gray-900' : 'text-gray-600'}`}
               >
                 {item.title}
               </span>
-              {item.description && (
+              {item.content && (
                 <p
-                  className={`font-Pretendard text-sm ${item.isCurrent ? 'text-gray-900' : 'text-gray-500'} mb-4`}
+                  className={`font-Pretendard text-sm ${item.inProgress ? 'text-gray-900' : 'text-gray-500'} mb-4`}
                 >
-                  {item.description}
+                  {item.content}
                 </p>
               )}
             </TimelineContent>

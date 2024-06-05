@@ -29,7 +29,7 @@ export default function page() {
         <AdminButton buttonSize="md" buttonStyle={ButtonStyle.PRIMARY}>
           법정 시설물 점검 사항 등록
         </AdminButton>
-        <div className="w-full h-[1px] bg-gray-400"></div>
+        <div className="w-full h-[1px] bg-gray-400" />
         <div className="relative top-[12px] font-Pretendard text-[18px] font-semibold leading-[24px] capitalize text-gray-900">
           검색
         </div>
@@ -55,7 +55,7 @@ export default function page() {
           <div className="flex justify-end items-start gap-[4px]">
             <AdminButton
               buttonSize="md"
-              isDisabled={true}
+              isDisabled
               buttonStyle={ButtonStyle.WARNING}
             >
               삭제

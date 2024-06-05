@@ -1,10 +1,9 @@
 'use client'
 
 import React, { useState } from 'react'
-import Image from 'next/image'
-import Dropdown from '@/components/atoms/Dropdown'
-import AdminButton, { ButtonStyle } from './AdminButton'
 import TableDropdown from '@/components/atoms/TableDropdown'
+import Image from 'next/image'
+import AdminButton, { ButtonStyle } from './AdminButton'
 
 interface DataItem {
   id: number
@@ -154,7 +153,7 @@ export default function AdminListTable() {
             </td>
             <td className="flex max-w-[387px] px-[28px] py-[12px] justify-center items-center gap-[12px]">
               <div className="flex justify-center items-center gap-[12px] flex-[1_0_0%]">
-                <img
+                <Image
                   src={item.imageUrl}
                   width={48}
                   height={48}

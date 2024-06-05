@@ -18,14 +18,14 @@ export default function page() {
             cy="39.9998"
             r="33.3333"
             stroke="#E5E7EB"
-            stroke-width="5"
+            strokeWidth="5"
           />
           <path
             d="M28.334 41.6665L35.0007 48.3332L51.6673 31.6665"
             stroke="#2563EB"
-            stroke-width="5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       </div>

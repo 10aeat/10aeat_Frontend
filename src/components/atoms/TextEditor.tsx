@@ -1,42 +1,46 @@
 'use client'
 
-import React, { useState } from 'react';
-import dynamic from 'next/dynamic';
-import 'react-quill/dist/quill.snow.css';
-import './TextEditor.css';
+import React, { useState } from 'react'
+import dynamic from 'next/dynamic'
+import 'react-quill/dist/quill.snow.css'
+import './TextEditor.css'
 
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
 
 interface TextEditorProps {
-  placeholder: string;
-  value: string; // value prop 추가
-  onChange: (value: string) => void;
+  placeholder: string
+  value: string // value prop 추가
+  onChange: (value: string) => void
 }
 
-export default function TextEditor({ placeholder, value, onChange }: TextEditorProps) {
-  const [editorValue, setEditorValue] = useState(value);
+export default function TextEditor({
+  placeholder,
+  value,
+  onChange,
+}: TextEditorProps) {
+  const [editorValue, setEditorValue] = useState(value)
 
   const handleChange = (value: string) => {
-    setEditorValue(value);
-    onChange(value);
-  };
+    setEditorValue(value)
+    onChange(value)
+  }
 
   return (
     <div className="text-editor">
-      <ReactQuill 
-        value={editorValue} 
-        onChange={handleChange} 
-        placeholder={placeholder} 
+      <ReactQuill
+        value={editorValue}
+        onChange={handleChange}
+        placeholder={placeholder}
         modules={{
           toolbar: [
             ['bold', 'underline', 'strike', 'blockquote', 'clean'],
-            [{ 'color': [] }],
-            [{'list': 'ordered'}, {'list': 'bullet'}],
-            ['link', 'image'],            
+            [{ color: [] }],
+            [{ list: 'ordered' }, { list: 'bullet' }],
+            ['link', 'image'],
           ],
         }}
         className="w-[840px]"
       />
     </div>
-  );
+  )
 }

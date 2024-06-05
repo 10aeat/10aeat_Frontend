@@ -1,9 +1,11 @@
-interface ADMIN_INFO {
+interface MANAGER_INFO {
+  email: string
   name: string
+  phoneNumber: string
   lunchBreakStart: string // 점심시간
   lunchBreakEnd: string
-  email: string
-  // 소속, 관리실 위치는 전달 못받아서 논의 후 추가 예정
+  managerOffice: string
+  affiliation: string
 }
 
 interface ITEM {

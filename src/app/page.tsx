@@ -71,7 +71,11 @@ export default function Home() {
         </div>
       </div>
       <div className="relative  w-[345px]  h-[140px]">
-        <button className=" mt-[34px]" onClick={() => router.push('/repair')}>
+        <button
+          type="button"
+          className=" mt-[34px]"
+          onClick={() => router.push('/repair')}
+        >
           <div className="absolute  font-Pretendard font-bold text-gray-900 text-[18px] leading-[24px] whitespace-nowrap">
             2024 건물 유지보수 사안
           </div>
