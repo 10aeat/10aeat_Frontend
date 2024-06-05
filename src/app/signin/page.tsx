@@ -5,6 +5,9 @@ import AdminButton, {
 } from '@/app/admin/_components/atoms/AdminButton'
 import NavBar from '@/components/atoms/NavBar'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import axios from 'axios'
+import { useAccessToken } from '@/components/store/AccessTokenStore'
 
 export default function Page() {
   const [email, setEmail] = useState('')
@@ -14,6 +17,9 @@ export default function Page() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   const [isEmailValid, setIsEmailValid] = useState(true)
   const [isPasswordValid, setIsPasswordValid] = useState(true)
+  const { accessToken, setAccessToken } = useAccessToken()
+
+  const router = useRouter()
 
   // 이메일 입력란 값 변경 핸들러
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -56,21 +62,20 @@ export default function Page() {
   // 로그인 버튼 클릭 핸들러
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://10aeat.com/members/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
+      const response = await axios.post('http://10aeat.com/members/login', {
+        email,
+        password,
       })
-      if (response.ok) {
-        // 성공적으로 요청을 보냈다면 이후의 작업을 수행합니다.
+      if (response) {
         console.log('로그인 성공!')
-        console.log(response)
+        console.log(response.headers.accesstoken)
         alert('로그인 성공')
+        setAccessToken(response.headers.accesstoken)
+        console.log(accessToken)
+        router.push('/repair')
       } else {
         // 오류 처리
-        console.error('로그인 실패:', response.statusText)
+        // console.error('로그인 실패:', response.statusText)
         setIsPasswordValid(false)
       }
     } catch (error) {

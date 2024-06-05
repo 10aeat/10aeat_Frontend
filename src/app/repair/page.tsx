@@ -4,10 +4,59 @@ import Button, { ButtonStyle } from '@/components/atoms/Button'
 import Card, { CardStyle } from '@/components/atoms/Card'
 import NavBar from '@/components/atoms/NavBar'
 import Pagination from '@/components/atoms/Pagination'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useAccessToken } from '@/components/store/AccessTokenStore'
 
 // 뱃지 넣어야함
 export default function Home() {
+  // 유지보수 게시글 요약 조회
+  const [repairSummary, setRepairSummary] = useState([])
+  const { accessToken } = useAccessToken()
+  // 유지보수 게시글 전체 조회
+  const [repairList, setRepairList] = useState([])
+
+  console.log(accessToken)
+  useEffect(() => {
+    const getRepairSummaryData = async () => {
+      try {
+        const getRepairSummaryResponse = await fetch(
+          'http://10aeat.com/repair/articles/summary',
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              AccessToken: `Bearer ${accessToken}`,
+            },
+          },
+        )
+        const repairArticleData = await getRepairSummaryResponse.json()
+        setRepairSummary(repairArticleData)
+        console.log(repairArticleData)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    const getRepairListData = async () => {
+      try {
+        const getRepairSummaryResponse = await fetch(
+          'http://10aeat.com/repair/articles/list?progress=INPROGRESS&progress=PENDING&category=REPAIR&page=0&size=5',
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              // Authorization: `Bearer ${accesstoken}`,
+            },
+          },
+        )
+        const repairArticleData = await getRepairSummaryResponse.json()
+        setRepairList(repairArticleData)
+        console.log(repairArticleData)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    getRepairSummaryData()
+  }, [])
   // GET /repair/articles/summary 유지보수 사안 요약
   const repairStatus = {
     all: 18,
