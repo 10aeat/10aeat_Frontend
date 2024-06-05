@@ -179,7 +179,7 @@ export default function Table({
           ))
         ) : (
           <tr>
-            <td colSpan={columns.length + 2} className="text-center px-6 py-3">
+            <td colSpan={columns.length + 3} className="text-center px-6 py-5">
               {noDataText}
             </td>
           </tr>
