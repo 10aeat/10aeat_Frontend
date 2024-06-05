@@ -1,8 +1,10 @@
+'use client'
+
 import Image from 'next/image'
 import { ResponsivePie } from '@nivo/pie'
-import { Span } from 'next/dist/trace'
-
+import { useRouter } from 'next/navigation'
 export default function ManageStatus() {
+  const router = useRouter()
   const data = [
     {
       id: '완료',
@@ -23,7 +25,10 @@ export default function ManageStatus() {
   const completionPercentage = ((completedValue / totalValue) * 100).toFixed(0)
   return (
     <div className="relative w-[343px] h-[228px] top-[36px] bg-white rounded-[18px] shadow-primary">
-      <div className="inline-flex items-start absolute top-[16px] left-[16px]">
+      <button
+        className="z-10 inline-flex items-start absolute top-[16px] left-[16px]"
+        onClick={() => router.push('/manage')}
+      >
         <div className="relative w-[94px] h-[23px] font-Pretendard text-[16px] font-semibold leading-[24px] ">
           전체 점검 현황
         </div>
@@ -34,7 +39,7 @@ export default function ManageStatus() {
           alt="arrow_right_small"
           className="!relative !w-[24px] !h-[24px]"
         />
-      </div>
+      </button>
       <ResponsivePie
         data={data}
         margin={{ top: 60, right: 90, bottom: 25, left: -30 }}
