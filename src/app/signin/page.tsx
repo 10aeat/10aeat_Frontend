@@ -74,7 +74,7 @@ export default function page() {
           buttonStyle={ButtonStyle.PRIMARY}
           isDisabled={true}
         >
-          로그인
+          로그인.
         </AdminButton>
       </div>
     </div>
