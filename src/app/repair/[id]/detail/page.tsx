@@ -10,11 +10,11 @@ import AgendaContent from '@/components/molecules/AgendaContent'
 import { useSaveStore } from '@/components/store/SaveStore'
 import { useState, useEffect } from 'react'
 
-interface RepairDetailProps {
+interface Props {
   issueCheck: boolean
 }
 
-export default function RepairDetail({ issueCheck }: RepairDetailProps) {
+export default function RepairDetail({ issueCheck }: Props) {
   const { isSave } = useSaveStore()
   // issueCheck = true
   const [isVisible, setIsVisible] = useState(issueCheck)
