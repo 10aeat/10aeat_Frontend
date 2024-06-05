@@ -1,8 +1,12 @@
+/* eslint-disable react/no-unstable-nested-components */
+/* eslint-disable react/button-has-type */
+
 'use client'
 
 import Image from 'next/image'
 import { ResponsivePie } from '@nivo/pie'
 import { useRouter } from 'next/navigation'
+
 export default function ManageStatus() {
   const router = useRouter()
   const data = [

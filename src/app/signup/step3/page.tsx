@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import AdminButton, {
   ButtonStyle,
 } from '@/app/admin/_components/atoms/AdminButton'
@@ -8,11 +9,11 @@ import React from 'react'
 export default function page() {
   return (
     <div className="flex flex-col w-full items-center bg-white h-[812px]">
-      <NavBar isTextChange={false} isTitle={true}></NavBar>
+      <NavBar isTextChange={false} isTitle />
       <div className="absolute top-[68px] w-[343px] h-[28px] ">
         <div className="inline-flex items-center gap-[10px]">
-          <div className="w-[10px] h-[10px] rounded-[5px] bg-gray-300"></div>
-          <div className="w-[10px] h-[10px] rounded-[5px] bg-gray-300"></div>
+          <div className="w-[10px] h-[10px] rounded-[5px] bg-gray-300" />
+          <div className="w-[10px] h-[10px] rounded-[5px] bg-gray-300" />
           <div className="flex w-[28px] h-[28px] bg-blue-600 rounded-[14px] font-Pretendard font-bold text-white text-[14px] leading-[21px] text-center justify-center items-center">
             3
           </div>

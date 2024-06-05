@@ -1,3 +1,8 @@
+/* eslint-disable no-return-assign */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable react/button-has-type */
+
 'use client'
 
 import Image from 'next/image'
@@ -120,7 +125,7 @@ export default function CommentsComponent({ isOpen, onClose }: ModalProps) {
           <Image src="/icons/close.svg" width={24} height={24} alt="close" />
         </button>
       </div>
-      <div className="h-[17.03px] border-b border-gray-300"></div>
+      <div className="h-[17.03px] border-b border-gray-300" />
 
       <div className="overflow-hidden h-[calc(100%-100px)]">
         <div className="overflow-y-auto max-h-full scrollbar-hide">

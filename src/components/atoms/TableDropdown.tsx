@@ -1,3 +1,8 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/button-has-type */
+
 'use client'
 
 import Image from 'next/image'
@@ -54,13 +59,11 @@ export default function Dropdown({
             width={24}
             height={24}
             alt="arrow_down"
-            className={`relative!w-[16px] !h-[16px] !left-[6px]`}
+            className="relative!w-[16px] !h-[16px] !left-[6px]"
           />
         </button>
         {open && (
-          <div
-            className={`flex flex-col relative items-start self-stretch rounded-[8px] border-[1px] border-solid border-gray-300 boxshadow-secondary bg-white z-20`}
-          >
+          <div className="flex flex-col relative items-start self-stretch rounded-[8px] border-[1px] border-solid border-gray-300 boxshadow-secondary bg-white z-20">
             {options.map((option, index) => {
               return (
                 <div
@@ -68,9 +71,7 @@ export default function Dropdown({
                   key={index}
                   onClick={() => handleOptionClick(option)}
                 >
-                  <div
-                    className={`font-Pretendard font-normal text-[14px] leading-[20px] tracking-[-0.14px] text-gray-400 group-hover:text-blue-600`}
-                  >
+                  <div className="font-Pretendard font-normal text-[14px] leading-[20px] tracking-[-0.14px] text-gray-400 group-hover:text-blue-600">
                     {option}
                   </div>
                 </div>

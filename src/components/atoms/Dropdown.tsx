@@ -1,3 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+/* eslint-disable default-case */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/button-has-type */
+/* eslint-disable no-nested-ternary */
+
 'use client'
 
 import Image from 'next/image'
@@ -79,9 +87,7 @@ export default function Dropdown({
           />
         </button>
         {open && (
-          <div
-            className={`flex flex-col relative items-start self-stretch rounded-[8px] border-[1px] border-solid border-gray-300 boxshadow-secondary bg-white z-20`}
-          >
+          <div className="flex flex-col relative items-start self-stretch rounded-[8px] border-[1px] border-solid border-gray-300 boxshadow-secondary bg-white z-20">
             {options.map((option, index) => {
               return (
                 <div

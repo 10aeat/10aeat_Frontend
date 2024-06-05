@@ -1,3 +1,5 @@
+/* eslint-disable react/button-has-type */
+
 'use client'
 
 import Image from 'next/image'

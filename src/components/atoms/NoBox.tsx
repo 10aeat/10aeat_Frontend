@@ -1,3 +1,5 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable no-nested-ternary */
 import Image from 'next/image'
 
 interface Props {

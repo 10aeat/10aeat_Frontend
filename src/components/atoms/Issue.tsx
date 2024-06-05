@@ -115,21 +115,19 @@ export default function Issue({
                 확인해야 할 사항이 있어요!
               </div>
             </div>
-            <>
-              <div className="text-base my-[16px] px-[24px] py-[16px] justify-center items-center gap-[8px] rounded-[16px] bg-gray-100 h-auto font-Pretendard text-gray-900">
-                <div className="text-2xl font-bold mb-[8px]">{title}</div>
-                {content}
-              </div>
+            <div className="text-base my-[16px] px-[24px] py-[16px] justify-center items-center gap-[8px] rounded-[16px] bg-gray-100 h-auto font-Pretendard text-gray-900">
+              <div className="text-2xl font-bold mb-[8px]">{title}</div>
+              {content}
+            </div>
 
-              {/* ButtonStore에서 생기면 버튼 가져오기 */}
-              <button
-                type="button"
-                className="w-[311px] bg-blue-600 rounded-[16px] text-white p-[14px]"
-                onClick={onConfirm}
-              >
-                확인했어요
-              </button>
-            </>
+            {/* ButtonStore에서 생기면 버튼 가져오기 */}
+            <button
+              type="button"
+              className="w-[311px] bg-blue-600 rounded-[16px] text-white p-[14px]"
+              onClick={onConfirm}
+            >
+              확인했어요
+            </button>
           </div>
         )
       default:

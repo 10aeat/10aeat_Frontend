@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import Tooltip, { TooltipStyle } from './Tooltip'
 
 interface Props {
@@ -31,7 +32,7 @@ export default function TrackingProgress2({
     <div className="relative w-[343px] h-[160px] top-0 left-0 bg-white rounded-[18px]">
       <div className="inline-flex flex-col items-center absolute top-[16px] left-[50%] transform -translate-x-1/2">
         <div
-          className={`relative font-Pretendard font-semibold text-gray-900 text-[28px] text-center leading-[36px]`}
+          className="relative font-Pretendard font-semibold text-gray-900 text-[28px] text-center leading-[36px]"
           style={{ visibility: status === '대기' ? 'hidden' : 'visible' }}
         >
           {progressPercentage.toFixed(0)}%

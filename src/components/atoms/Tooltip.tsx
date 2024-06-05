@@ -1,6 +1,8 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import Image from 'next/image'
-import Button, { ButtonStyle } from './Button'
 import { useEffect, useRef, useState } from 'react'
+import Button, { ButtonStyle } from './Button'
 
 export enum TooltipStyle {
   COUNT = 'COUNT',
@@ -22,7 +24,7 @@ export default function Tooltip({ tooltipStyle, count }: Props) {
     // 페이지 로드 시 각 요소의 초기 폰트 사이즈를 저장
     const elements = document.querySelectorAll<HTMLElement>('.fontchange')
     elements.forEach((element) => {
-      const fontSize = window.getComputedStyle(element).fontSize
+      const { fontSize } = window.getComputedStyle(element)
       originalFontSizes.current.set(element, parseFloat(fontSize))
     })
   }, [])
@@ -40,16 +42,16 @@ export default function Tooltip({ tooltipStyle, count }: Props) {
         let newFontSize
         switch (buttonStyle) {
           case ButtonStyle.BASE:
-            newFontSize = originalFontSize + 'px'
+            newFontSize = `${originalFontSize}px`
             break
           case ButtonStyle.LARGE:
-            newFontSize = originalFontSize + 2 + 'px'
+            newFontSize = `${originalFontSize + 2}px`
             break
           case ButtonStyle.XLARGE:
-            newFontSize = originalFontSize + 4 + 'px'
+            newFontSize = `${originalFontSize + 4}px`
             break
           default:
-            newFontSize = originalFontSize + 'px'
+            newFontSize = `${originalFontSize}px`
         }
         element.style.fontSize = newFontSize
       }

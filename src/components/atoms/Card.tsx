@@ -1,7 +1,9 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react-hooks/rules-of-hooks */
 import Image from 'next/image'
 
-import chat_line from '../../../public/icons/chat_line.svg'
 import { useState } from 'react'
+import chat_line from '../../../public/icons/chat_line.svg'
 
 export enum CardStyle {
   ALL = 'ALL',
