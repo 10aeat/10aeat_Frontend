@@ -7,24 +7,25 @@ import InputDetail from './_component/InputDetail'
 import ExecuteScheduleOrganism from '../_components/organisms/ExecuteSchedule'
 import IssueHistoryOrganism from '../_components/organisms/IssueHistory'
 import AdminButton, { ButtonStyle } from '../_components/atoms/AdminButton'
+import TextArea from '@/components/atoms/TextArea'
 
 export default function ItemUpdate() {
   const [selectedManageItems, setSelectedManageItems] = useState<string[]>([])
   const [selectedIssueItems, setSelectedIssueItems] = useState<string[]>([])
 
   const manageData: ITEM[] = [
-    {
-      startDate: '24.05.23',
-      endDate: '24.05.24',
-      title: '이슈는 제목이 공백 포함 30자 글자 제한입니다.',
-      isDone: true,
-    },
-    {
-      startDate: '24.05.25',
-      endDate: '24.05.26',
-      title: '이슈는 제목이 공백 포함 30자 글자 제한',
-      isDone: true,
-    },
+    // {
+    //   startDate: '24.05.23',
+    //   endDate: '24.05.24',
+    //   title: '이슈는 제목이 공백 포함 30자 글자 제한입니다.',
+    //   isDone: true,
+    // },
+    // {
+    //   startDate: '24.05.25',
+    //   endDate: '24.05.26',
+    //   title: '이슈는 제목이 공백 포함 30자 글자 제한',
+    //   isDone: true,
+    // },
   ]
 
   const manageColumns = [
@@ -105,15 +106,22 @@ export default function ItemUpdate() {
             selectedItems={selectedManageItems}
             setSelectedItems={setSelectedManageItems}
           />
-          <IssueHistoryOrganism
-            columns={issueColumns}
-            data={issueData}
-            noDataText="법정 시설물 유지관리 점검 사항과 관련한 이슈 사항이 있다면 작성해 주세요."
-            selectedItems={selectedIssueItems}
-            setSelectedItems={setSelectedIssueItems}
-          />
-          <div className="font-Pretendard">
-            비고<div></div>
+          {manageData.length > 0 && (
+            <IssueHistoryOrganism
+              columns={issueColumns}
+              data={issueData}
+              noDataText="법정 시설물 유지관리 점검 사항과 관련한 이슈 사항이 있다면 작성해 주세요."
+              selectedItems={selectedIssueItems}
+              setSelectedItems={setSelectedIssueItems}
+            />
+          )}
+          <div className="font-Pretendard flex gap-x-[50px] items-center">
+            비고
+            <TextArea
+              placeholder="내용을 입력하세요."
+              width="480px"
+              text="16px"
+            />
           </div>
           <div className="flex justify-end">
             <AdminButton buttonStyle={ButtonStyle.PRIMARY} buttonSize={'md'}>
