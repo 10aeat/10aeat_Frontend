@@ -18,10 +18,10 @@ export default function page() {
           이메일
         </div>
         <div
-          className={`relative top-[12px] flex w-[343px] h-[48px] px-[16px] py-[12px] gap-[8px] rounded-[10px] border-solid border-[1px] border-gray-300 bg-white`}
+          className={`relative top-[12px] flex w-[343px] h-[48px] px-[16px] py-[12px] gap-[8px] rounded-[10px] border-solid border-[1px] border-gray-300 bg-white focus-within:border-blue-600`}
         >
           <input
-            className="flex items-center gap-[8px] flex-[1_0_0%] opacity-[0.4] font-Pretendard text-[16px] font-normal leading-[24px] text-gray-700"
+            className="flex items-center gap-[8px] flex-[1_0_0%] opacity-[0.4] font-Pretendard text-[16px] font-normal leading-[24px] text-gray-700 focus:opacity-100 focus:outline-none"
             placeholder="이메일 주소를 입력해주세요."
           />
           {/* <Image
@@ -45,11 +45,11 @@ export default function page() {
           비밀번호
         </div>
         <div
-          className={`relative top-[12px] flex w-[343px] h-[48px] px-[16px] py-[12px] gap-[8px] rounded-[10px] border-solid border-[1px] border-gray-300 bg-white`}
+          className={`relative top-[12px] flex w-[343px] h-[48px] px-[16px] py-[12px] gap-[8px] rounded-[10px] border-solid border-[1px] border-gray-300 bg-white focus-within:border-blue-600`}
         >
           <input
             type="password"
-            className="flex items-center gap-[8px] flex-[1_0_0%] opacity-[0.4] font-Pretendard text-[16px] font-normal leading-[24px] text-gray-700"
+            className="flex items-center gap-[8px] flex-[1_0_0%] opacity-[0.4] font-Pretendard text-[16px] font-normal leading-[24px] text-gray-700 focus:opacity-100 focus:outline-none"
             placeholder="영문, 숫자, 특수기호 포함 8-16자입니다."
           />
           {/* <Image
@@ -62,7 +62,7 @@ export default function page() {
           <Image
             src="/icons/eye_close.svg"
             width={24}
-            height={24}
+            height={24]
             alt="eye_close"
             className="w-[24px] h-[24px]"
           /> */}
@@ -74,7 +74,7 @@ export default function page() {
           buttonStyle={ButtonStyle.PRIMARY}
           isDisabled={true}
         >
-          로그인
+          로그인.
         </AdminButton>
       </div>
     </div>
