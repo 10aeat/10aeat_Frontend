@@ -14,7 +14,7 @@ export default function page() {
             <div className="font-Pretendard text-[24px] font-bold text-gray-900 leading-[32px] ml-[-4px]">
               님
             </div>
-            <div className="w-[1px] h-[16px] bg-gray-300"></div>
+            <div className="w-[1px] h-[16px] bg-gray-300" />
             <div className="font-Pretendard font-normal text-[16px] text-gray-700 leading-[24px] capitalize">
               소유자
             </div>
@@ -123,7 +123,10 @@ export default function page() {
               </div>
             </div>
           </div>
-          <button className="flex flex-col items-start border-b-[1px] border-solid border-gray-300">
+          <button
+            type="button"
+            className="flex flex-col items-start border-b-[1px] border-solid border-gray-300"
+          >
             <div className="w-[49px]  text-gray-500 font-Pretendard text-[14px] font-normal leading-[20px] capitalize ">
               로그아웃
             </div>

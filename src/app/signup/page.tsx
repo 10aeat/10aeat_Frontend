@@ -1,12 +1,14 @@
 'use client'
+
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import AdminButton, {
   ButtonStyle,
 } from '../admin/_components/atoms/AdminButton'
-import { useRouter } from 'next/navigation'
 
-export default function page() {
+export default function Page() {
   const router = useRouter()
+
   return (
     <div className="flex flex-col w-full items-center bg-white h-[812px]">
       <div className="absolute flex w-[193px] h-[56px] top-[193px] justify-center items-center gap-[4px]">

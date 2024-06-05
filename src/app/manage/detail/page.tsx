@@ -14,9 +14,9 @@ export default function ManageDetail() {
     title: '승강기 자체점검',
     issue: true,
     progress: 'INPROGRESS',
-    lagelBasis: '승강기 안전 관리법 제32조', //법적근거
-    target: '총 10대', //사용내역/검사 대상
-    manager: '승강기 점검 업체', //점검담당
+    lagelBasis: '승강기 안전 관리법 제32조', // 법적근거
+    target: '총 10대', // 사용내역/검사 대상
+    manager: '승강기 점검 업체', // 점검담당
     note: '비고비고',
     manageSchedule: [
       {
@@ -35,7 +35,7 @@ export default function ManageDetail() {
   }
   return (
     <div className="flex flex-col w-full items-center ">
-      <NavBar isTextChange={true} isTitle={false} />
+      <NavBar isTextChange isTitle={false} />
       <div className="inline-flex flex-col items-start px-4 w-full mb-[15px]">
         <div className="font-bold text-lg font-Pretendard mb-[5px] text-[24px] text-left leading-[32px] capitalize">
           {data.title}

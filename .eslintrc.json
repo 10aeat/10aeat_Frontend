@@ -12,6 +12,9 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "@typescript-eslint/no-shadow": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/no-unused-vars": "off",
     "import/extensions": "off",
     "react/style-prop-object": "off",
     "react/require-default-props": "off",

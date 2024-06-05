@@ -62,7 +62,7 @@ export default function Home() {
     // <div className="absolute w-[375px] bg-gray-100 pb-[80px]">
     <div className="flex flex-col w-full items-center ">
       {/* NavBar */}
-      <NavBar isTextChange={false} isTitle={true}>
+      <NavBar isTextChange={false} isTitle>
         건물 유지보수 사안
       </NavBar>
       {/* 상태 버튼 */}
@@ -126,7 +126,7 @@ export default function Home() {
         <div className="inline-flex flex-col top-[18px] items-start gap-[18px] relative">
           <Card
             cardStyle={CardStyle.ALL_NO}
-            isSave={true}
+            isSave
             title="서쪽 계단 F타입 부식 부분 보수"
             state="진행중"
             name="김주은"
@@ -135,7 +135,7 @@ export default function Home() {
           />
           <Card
             cardStyle={CardStyle.ALL_NO}
-            isSave={true}
+            isSave
             title="서쪽 계단 F타입 부식 부분 보수"
             state="대기"
             name="김주은"
@@ -144,7 +144,7 @@ export default function Home() {
           />
           <Card
             cardStyle={CardStyle.ALL}
-            isSave={true}
+            isSave
             img_src="https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cMHMTT7DiwDF5-BUGJhrN3YemZfwfckwHeaBMM0phs7pRTiaWZoxT4EYBe3YV5lMRziHY32oMVqrSBwqk4jyc1tXbeLgfTYzEDqa8zSUoqbAe70hocphLaXcw2e2ipKms8A7xnqebRf34U6kb-m-KC96kWDnGZxzW0hLInWAUtCr8gpRH~19ZPEEATiOSCd6tSMR3lGsMCUDmq4YF~Z~jjmM9p54s1VdNoWHEN3wurAxZN6SItiDkQRYMYdybFinnmXYeiVkg826ZCnFs-oNsEHGjEbGfCvVX52cDaN2clOXHTSEdvHUYz3hnQ~bJEBPSDKPVLMcrDhcchuahxNV0w__"
             title="2층 우수관 하자발ㅇㅇㅇ생 조치보다많ㅇ다"
             period="24.04.30 ~24.05.02"
@@ -155,7 +155,7 @@ export default function Home() {
           />
           <Card
             cardStyle={CardStyle.ALL}
-            isSave={true}
+            isSave
             img_src="https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cMHMTT7DiwDF5-BUGJhrN3YemZfwfckwHeaBMM0phs7pRTiaWZoxT4EYBe3YV5lMRziHY32oMVqrSBwqk4jyc1tXbeLgfTYzEDqa8zSUoqbAe70hocphLaXcw2e2ipKms8A7xnqebRf34U6kb-m-KC96kWDnGZxzW0hLInWAUtCr8gpRH~19ZPEEATiOSCd6tSMR3lGsMCUDmq4YF~Z~jjmM9p54s1VdNoWHEN3wurAxZN6SItiDkQRYMYdybFinnmXYeiVkg826ZCnFs-oNsEHGjEbGfCvVX52cDaN2clOXHTSEdvHUYz3hnQ~bJEBPSDKPVLMcrDhcchuahxNV0w__"
             title="2층 우수관 하자발ㅇㅇㅇ생 조치보다많ㅇ다"
             period="24.04.30 ~24.05.02"
@@ -166,7 +166,7 @@ export default function Home() {
           />
           <Card
             cardStyle={CardStyle.NO_IMG}
-            isSave={true}
+            isSave
             img_src=""
             title="2층 우수관 하자발ㅇㅇㅇ생 조치보다많ㅇ다"
             period="24.04.30 ~24.05.02"
@@ -188,7 +188,7 @@ export default function Home() {
           />
           <Card
             cardStyle={CardStyle.ALL_NO}
-            isSave={true}
+            isSave
             img_src="https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cMHMTT7DiwDF5-BUGJhrN3YemZfwfckwHeaBMM0phs7pRTiaWZoxT4EYBe3YV5lMRziHY32oMVqrSBwqk4jyc1tXbeLgfTYzEDqa8zSUoqbAe70hocphLaXcw2e2ipKms8A7xnqebRf34U6kb-m-KC96kWDnGZxzW0hLInWAUtCr8gpRH~19ZPEEATiOSCd6tSMR3lGsMCUDmq4YF~Z~jjmM9p54s1VdNoWHEN3wurAxZN6SItiDkQRYMYdybFinnmXYeiVkg826ZCnFs-oNsEHGjEbGfCvVX52cDaN2clOXHTSEdvHUYz3hnQ~bJEBPSDKPVLMcrDhcchuahxNV0w__"
             title="2층 우수관 하자발ㅇㅇㅇ생 조치보다많ㅇ다"
             period="24.04.30 ~24.05.02"

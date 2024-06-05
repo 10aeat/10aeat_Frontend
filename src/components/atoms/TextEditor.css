@@ -1,23 +1,27 @@
 .text-editor .ql-container {
-  border: 1px solid #D1D5DB;
+  border: 1px solid #d1d5db;
   border-radius: 0 0 8px 8px;
 }
 
-.text-editor:focus-within .ql-container{
-  border-color: #2563EB;
-  box-shadow:-2px 0px 0px 0px rgba(37, 99, 235, 0.10), 2px 0px 0px 0px rgba(37, 99, 235, 0.10),
-  0px 2px 0px 0px rgba(37, 99, 235, 0.10);
+.text-editor:focus-within .ql-container {
+  border-color: #2563eb;
+  box-shadow:
+    -2px 0px 0px 0px rgba(37, 99, 235, 0.1),
+    2px 0px 0px 0px rgba(37, 99, 235, 0.1),
+    0px 2px 0px 0px rgba(37, 99, 235, 0.1);
 }
-.text-editor:focus-within .ql-toolbar{
-  border-color: #2563EB;
-  border-bottom-color: #D1D5DB;
-  box-shadow: 2px 0px 0px 0px rgba(37, 99, 235, 0.10), -2px 0px 0px 0px rgba(37, 99, 235, 0.10),
-  0px -2px 0px 0px rgba(37, 99, 235, 0.10);
+.text-editor:focus-within .ql-toolbar {
+  border-color: #2563eb;
+  border-bottom-color: #d1d5db;
+  box-shadow:
+    2px 0px 0px 0px rgba(37, 99, 235, 0.1),
+    -2px 0px 0px 0px rgba(37, 99, 235, 0.1),
+    0px -2px 0px 0px rgba(37, 99, 235, 0.1);
 }
 
 .text-editor .ql-toolbar {
-  border: 1px solid #D1D5DB;
-  border-bottom: 1px solid #D1D5DB;
+  border: 1px solid #d1d5db;
+  border-bottom: 1px solid #d1d5db;
   border-radius: 8px 8px 0 0;
 }
 
@@ -36,17 +40,17 @@
 }
 
 .text-editor .ql-editor::-webkit-scrollbar-thumb {
-  background-color: #D1D5DB;
+  background-color: #d1d5db;
   border-radius: 100px;
   border: 8px solid transparent;
   background-clip: padding-box;
 }
 
-.text-editor .ql-editor.ql-blank::before{
+.text-editor .ql-editor.ql-blank::before {
   font-size: 16px;
   font-style: normal;
-  font-family: "Pretendard-Regular";
-  color: #9CA3AF
+  font-family: 'Pretendard-Regular';
+  color: #9ca3af;
 }
 
 /* .text-editor .ql-container.ql-snow {

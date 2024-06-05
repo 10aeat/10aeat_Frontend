@@ -8,6 +8,7 @@ export default function AdminFilterBtn() {
   return (
     <>
       <button
+        type="button"
         onClick={() => setIsSelect('전체')}
         className={`flex px-[12px] py-[4px] justify-center items-center gap-[8px] rounded-[100px] ${isSelect === '전체' ? 'bg-blue-600' : 'bg-white border-solid border-[1px] border-gray-300'}`}
       >
@@ -18,6 +19,7 @@ export default function AdminFilterBtn() {
         </span>
       </button>
       <button
+        type="button"
         onClick={() => setIsSelect('대기')}
         className={`flex px-[12px] py-[4px] justify-center items-center gap-[8px] rounded-[100px] ${isSelect === '대기' ? 'bg-blue-600' : 'bg-white border-solid border-[1px] border-gray-300'}`}
       >
@@ -28,6 +30,7 @@ export default function AdminFilterBtn() {
         </span>
       </button>
       <button
+        type="button"
         onClick={() => setIsSelect('진행중')}
         className={`flex px-[12px] py-[4px] justify-center items-center gap-[8px] rounded-[100px] ${isSelect === '진행중' ? 'bg-blue-600' : 'bg-white border-solid border-[1px] border-gray-300'}`}
       >
@@ -38,6 +41,7 @@ export default function AdminFilterBtn() {
         </span>
       </button>
       <button
+        type="button"
         onClick={() => setIsSelect('완료')}
         className={`flex px-[12px] py-[4px] justify-center items-center gap-[8px] rounded-[100px] ${isSelect === '완료' ? 'bg-blue-600' : 'bg-white border-solid border-[1px] border-gray-300'}`}
       >

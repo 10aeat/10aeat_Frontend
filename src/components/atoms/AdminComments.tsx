@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 'use client'
 
 import Image from 'next/image'
@@ -133,12 +134,13 @@ export default function AdminComments() {
                   </div>
                   <div className="pl-[40px] m-[8px] text-base text-gray-900 font-normal">
                     {comment.content}
-                  </div>                  
+                  </div>
                   {comment.replies.length > 0 && (
                     <div className="ml-[40px] mt-[14px] flex text-sm items-center text-[#216FD6]">
                       <div className="font-medium">답글&nbsp;</div>
                       <div className="font-bold">{comment.replies.length}</div>
                       <button
+                        type="button"
                         className="ml-[5px]"
                         onClick={() => toggleReplies(comment.parentCommentId)}
                       >
@@ -196,6 +198,7 @@ export default function AdminComments() {
                       }
                     />
                     <button
+                      type="button"
                       onClick={() => handleAddReply(comment.parentCommentId)}
                       disabled={!newReply[comment.parentCommentId]?.trim()}
                     >
@@ -231,7 +234,11 @@ export default function AdminComments() {
           value={newComment}
           onChange={handleCommentChange}
         />
-        <button onClick={handleAddComment} disabled={!newComment.trim()}>
+        <button
+          type="button"
+          onClick={handleAddComment}
+          disabled={!newComment.trim()}
+        >
           <Image
             src={
               newComment.trim()

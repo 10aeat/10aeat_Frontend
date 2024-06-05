@@ -1,4 +1,7 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+
 'use client'
+
 import AdminButton, {
   ButtonStyle,
 } from '@/app/admin/_components/atoms/AdminButton'
@@ -44,7 +47,7 @@ export default function page() {
 
   return (
     <div className="flex flex-col w-full items-center bg-white h-[812px]">
-      <NavBar isTextChange={false} isTitle={true}></NavBar>
+      <NavBar isTextChange={false} isTitle />
       <div className="absolute top-[68px] w-[343px]">
         <div className="font-Pretendard text-[24px] font-bold text-gray-900 leading-[32px] capitalize text-left">
           이메일로 로그인
@@ -55,9 +58,7 @@ export default function page() {
         <div className=" font-Pretendard text-[16px] text-gray-900 font-medium leading-[24px] capitalize ">
           이메일
         </div>
-        <div
-          className={`relative top-[12px] flex w-[343px] h-[48px] px-[16px] py-[12px] gap-[8px] rounded-[10px] border-solid border-[1px] border-gray-300 bg-white focus-within:border-blue-600`}
-        >
+        <div className="relative top-[12px] flex w-[343px] h-[48px] px-[16px] py-[12px] gap-[8px] rounded-[10px] border-solid border-[1px] border-gray-300 bg-white focus-within:border-blue-600">
           <input
             onChange={handleEmailChange}
             value={email}
@@ -84,9 +85,7 @@ export default function page() {
         <div className="font-Pretendard text-[16px] text-gray-900 font-medium leading-[24px] capitalize ">
           비밀번호
         </div>
-        <div
-          className={`relative top-[12px] flex w-[343px] h-[48px] px-[16px] py-[12px] gap-[8px] rounded-[10px] border-solid border-[1px] border-gray-300 bg-white focus-within:border-blue-600`}
-        >
+        <div className="relative top-[12px] flex w-[343px] h-[48px] px-[16px] py-[12px] gap-[8px] rounded-[10px] border-solid border-[1px] border-gray-300 bg-white focus-within:border-blue-600">
           <input
             type="password"
             value={password}

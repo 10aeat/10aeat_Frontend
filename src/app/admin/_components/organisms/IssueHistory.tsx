@@ -20,10 +20,10 @@ interface Props {
   noDataText: string
   selectedItems: string[]
   setSelectedItems: (items: string[]) => void
-  statusColumn?: Column // statusColumn 추가
-  handleStatusChange?: (value: string, index: number) => void // handleStatusChange 추가
-  handleSelectAll?: (isSelected: boolean) => void // handleSelectAll 추가
-  handleSelectItem?: (isSelected: boolean, item: any) => void // handleSelectItem 추가
+  // statusColumn?: Column // statusColumn 추가
+  // handleStatusChange?: (value: string, index: number) => void // handleStatusChange 추가
+  // handleSelectAll?: (isSelected: boolean) => void // handleSelectAll 추가
+  // handleSelectItem?: (isSelected: boolean, item: any) => void // handleSelectItem 추가
 }
 
 export default function IssueHistoryOrganism({
@@ -81,10 +81,10 @@ export default function IssueHistoryOrganism({
   return (
     <div>
       <TableHead
-        imgSrc={'/icons/volume.svg'}
-        title={'이슈 공지 히스토리'}
-        warn={'*점검 관련 이슈를 등록하면 소유주에게 공지됩니다.'}
-        btnText={'이슈 등록하기'}
+        imgSrc="/icons/volume.svg"
+        title="이슈 공지 히스토리"
+        warn="*점검 관련 이슈를 등록하면 소유주에게 공지됩니다."
+        btnText="이슈 등록하기"
         handleAddItem={handleAddIssue}
         handleDelete={handleDelete}
         selectedItems={selectedItems}
@@ -120,7 +120,7 @@ export default function IssueHistoryOrganism({
             <div>
               <div className="text-blue-600 font-semibold">상세 내용</div>
               {/* input */}
-              <textarea defaultValue={currentItem?.content || ''}></textarea>
+              <textarea defaultValue={currentItem?.content || ''} />
             </div>
           </div>
         </AdminModalOrganism>

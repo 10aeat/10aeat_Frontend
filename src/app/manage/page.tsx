@@ -6,7 +6,7 @@ import NavBar from '@/components/atoms/NavBar'
 import NoData from '@/components/atoms/NoData'
 import Pagination from '@/components/atoms/Pagination'
 import ManageCard from '@/components/molecules/ManageCard'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const exampleData: MANAGE_ARTICLE_LIST[] = [
   // {
@@ -32,6 +32,39 @@ const exampleData: MANAGE_ARTICLE_LIST[] = [
 export default function ManageList() {
   const [selectedStatus, setSelectedStatus] = useState('전체')
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear())
+  const [articleList, setArticleList] = useState<MANAGE_ARTICLE_LIST[]>()
+  const accesstoken =
+    'eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoiVEVOQU5UIiwiaWF0IjoxNzE3NTYyMjg4LCJleHAiOjE3MTc1NjQwODh9.pewYiBmFBUkXHq2TBrSangJx5qkEtQbGgOKAT8i9mPs'
+
+  useEffect(() => {
+    const getManageArticlesList = async () => {
+      try {
+        let url = `http://10aeat.com/manage/articles/list?`
+        if (selectedStatus !== '전체') {
+          const progress =
+            selectedStatus === '진행중/대기' ? 'INPROGRESS' : 'COMPLETE'
+          url += `&progress=${progress}`
+        }
+        const manageArticleResponse = await fetch(
+          // `http://10aeat.com/manage/articles/list`,
+          url,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${accesstoken}`,
+            },
+          },
+        )
+        const manageArticlesList = await manageArticleResponse.json()
+        setArticleList(manageArticlesList)
+        console.log(manageArticlesList)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    getManageArticlesList()
+  })
 
   const handleStatusClick = (status: string) => {
     setSelectedStatus(status)
@@ -46,8 +79,8 @@ export default function ManageList() {
   }
 
   return (
-    <>
-      <NavBar isTitle={true} isTextChange={false}>
+    <main className="flex flex-col items-center justify-center">
+      <NavBar isTitle isTextChange={false}>
         법정 시설물 유지관리 점검 현황
       </NavBar>
 
@@ -59,7 +92,7 @@ export default function ManageList() {
       />
 
       {/* 전체 필터링 */}
-      <div className="flex w-full items-start gap-[14px] px-4 mb-4">
+      <div className="flex items-start gap-[14px] px-4 mb-4">
         <Button
           buttonStyle={ButtonStyle.FILTER}
           isSelect={selectedStatus === '전체'}
@@ -83,27 +116,27 @@ export default function ManageList() {
         />
       </div>
 
-      {/* 카드들 */}
-      {exampleData.length > 0 ? (
+      {articleList && articleList.length > 0 ? (
         <div className="flex flex-col items-center gap-3 min-h-[400px]">
-          {exampleData.map((item, index) => (
+          {articleList.map((item, index) => (
             <ManageCard
-              key={index}
+              key={item.id}
               id={item.id}
               period={item.period}
               periodCount={item.periodCount}
               title={item.title}
               allSchedule={item.allSchedule}
               completedSchedule={item.completedSchedule}
-              issueCheck={item.issueCheck}
+              issueId={item.issueId}
             />
           ))}
         </div>
       ) : (
         <NoData />
       )}
-
-      <Pagination totalItems={exampleData.length} />
-    </>
+      {articleList && (
+        <Pagination totalItems={articleList.length} itemsPerPage={0} />
+      )}
+    </main>
   )
 }

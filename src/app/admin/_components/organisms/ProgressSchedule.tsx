@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react'
+import DatePicker1 from '@/components/atoms/DatePicker'
 import Table from '../atoms/Table'
 import TableHead from '../atoms/TableHead'
 import AdminModalOrganism from './AdminModalOrganism'
-import DatePicker1 from '@/components/atoms/DatePicker'
 import { BottomStyle } from '../atoms/AdminModalBottom'
 
 // 추가된 props 타입 정의
@@ -70,9 +70,9 @@ export default function ProgressScheduleOrganism({
   return (
     <div>
       <TableHead
-        imgSrc={'/icons/checklist_minimalistic.svg'}
-        title={'사안 진행 현황'}
-        btnText={'진행 현황 추가'}
+        imgSrc="/icons/checklist_minimalistic.svg"
+        title="사안 진행 현황"
+        btnText="진행 현황 추가"
         handleAddItem={handleAddProgress}
         handleDelete={handleDelete}
         selectedItems={selectedItems}
@@ -117,7 +117,7 @@ export default function ProgressScheduleOrganism({
                 <span>제목</span>
                 <input type="text" defaultValue={currentItem?.title || ''} />
                 <span>상세 내용</span>
-                <textarea defaultValue={currentItem?.content || ''}></textarea>
+                <textarea defaultValue={currentItem?.content || ''} />
               </div>
             </div>
           </div>

@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+
 'use client'
 
 import ChangeYear from '@/components/atoms/ChangeYear'
@@ -53,7 +55,7 @@ export default function ManageMonthly() {
 
   return (
     <>
-      <NavBar isTitle={true} isTextChange={false}>
+      <NavBar isTitle isTextChange={false}>
         법정 시설물 유지관리 점검 현황
       </NavBar>
 
@@ -72,14 +74,14 @@ export default function ManageMonthly() {
         <div className="flex flex-col items-center gap-3 min-h-[400px]">
           {filteredData.map((item, index) => (
             <ManageCard
-              key={index}
+              key={item.id}
               id={item.id}
               period={item.period}
               periodCount={item.periodCount}
               title={item.title}
               allSchedule={item.allSchedule}
               completedSchedule={item.completedSchedule}
-              issueCheck={item.issueCheck}
+              issueId={item.issueId}
             />
           ))}
         </div>
