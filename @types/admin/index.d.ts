@@ -20,3 +20,19 @@ interface ITEM {
   isDone?: boolean
   isIssue?: boolean
 }
+
+interface MANAGER_REPAIR_PROGRESS {
+  startSchedule: number[]
+  endSchedule: number[]
+  title: string
+  content: string
+}
+
+interface ISSUE_DATA {
+  id: number
+  title: string
+  content: string
+  inProgress: boolean
+  startSchedule: string
+  endSchedule: string
+}

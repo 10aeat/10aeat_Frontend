@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 // 댓글 or 진행 내용 없을 때 카드
 export default function AdminCard({ managerId }: { managerId: number }) {
   const accesstoken =
-    'eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoiVEVOQU5UIiwiaWF0IjoxNzE3NTYyMjg4LCJleHAiOjE3MTc1NjQwODh9.pewYiBmFBUkXHq2TBrSangJx5qkEtQbGgOKAT8i9mPs'
+    'eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3RAT1dORVIuY29tIiwicm9sZSI6Ik9XTkVSIiwiaWF0IjoxNzE3NjQzNDcyLCJleHAiOjE3MTc2NDUyNzJ9.h5agYhxsRB1t2T3UwtV0Jsf4f9fpY46qFvwZKWn_uX4'
   const [managerInfoData, setManagerInfoData] = useState<MANAGER_INFO>()
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function AdminCard({ managerId }: { managerId: number }) {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
-              Authorization: `Bearer ${accesstoken}`,
+              accessToken: `${accesstoken}`,
             },
           },
         )
@@ -54,23 +54,21 @@ export default function AdminCard({ managerId }: { managerId: number }) {
                 메일
               </div>
             </div>
-            <div className="inline-flex flex-col items-center gap-[4px] px-[12px] py-0 absolute top-[32px] left-[274px]">
-              <a
-                href={`tel:${managerInfoData.phoneNumber}`}
-                className="flex flex-col items-center"
-              >
-                <Image
-                  src="/icons/phone.svg"
-                  width={32}
-                  height={32}
-                  alt="phone"
-                  className="ml-[1px] w-[24px] h-[24px]"
-                />
-                <div className="fontchange font-Pretendard relative w-fit text-sm font-medium text-gray-900 whitespace-nowrap">
-                  전화
-                </div>
-              </a>
-            </div>
+            <a
+              href={`tel:${managerInfoData.phoneNumber}`}
+              className="inline-flex flex-col items-center gap-[4px] px-[12px] py-0 absolute top-[32px] left-[274px]"
+            >
+              <Image
+                src="/icons/phone.svg"
+                width={32}
+                height={32}
+                alt="phone"
+                className="ml-[1px] w-[24px] h-[24px]"
+              />
+              <div className="fontchange font-Pretendard relative w-fit text-sm font-medium text-gray-900 whitespace-nowrap">
+                전화
+              </div>
+            </a>
             <div className="absolute w-[58px] h-[48px] top-[31px] left-[20px]">
               <div className="absolute w-[48px] h-[48px] top-0 left-0 bg-gray-300 rounded-[24px]">
                 <Image
