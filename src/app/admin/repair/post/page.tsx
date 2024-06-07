@@ -1,10 +1,10 @@
 'use client'
 
 import Image from 'next/image'
+import PenIcon from '@/components/icons/pen_with_line.svg'
 import TagBadge, { TagBadgeStyle } from '@/components/atoms/TagBadge'
 import AdminComments from '@/components/atoms/AdminComments'
 import AdminButton, { ButtonStyle } from '../../_components/atoms/AdminButton'
-import PenIcon from '../../../../../../../public/icons/pen_with_line.svg'
 
 export default function RepairPost() {
   return (

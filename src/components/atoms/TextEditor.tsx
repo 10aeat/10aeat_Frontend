@@ -9,7 +9,7 @@ const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
 
 interface TextEditorProps {
   placeholder: string
-  value: string // value prop 추가
+  value: string
   onChange: (value: string) => void
 }
 

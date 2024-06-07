@@ -48,23 +48,29 @@ export default function AddOffice() {
               width="168px"
               placeholder=""
               value={dong}
-              onChange={setDong}
+              onChange={(e) => setDong(e.target.value)}
             />{' '}
             동
           </div>
           <div className="flex gap-[16px] items-center">
-            <TextArea width="168px" placeholder="" value={ho} /> 호
+            <TextArea
+              width="168px"
+              placeholder=""
+              value={ho}
+              onChange={(e) => setHo(e.target.value)}
+            />{' '}
+            호
           </div>
         </div>
       </div>
       <button
         type="submit"
         className={
-          dong.trim() === ''
+          dong.trim() === '' || ho.trim() === ''
             ? 'flex justify-center mt-auto mb-[68px] mx-auto w-[343px] p-[14px] rounded-[12px] bg-blue-600 opacity-40 text-[20px] font-semibold leading-[20px] text-white'
             : 'flex justify-center mt-auto mb-[68px] mx-auto w-[343px] p-[14px] rounded-[12px] bg-blue-600 text-[20px] font-semibold leading-[20px] text-white'
         }
-        disabled={dong.trim() === ''}
+        disabled={dong.trim() === '' || ho.trim() === ''}
       >
         추가하기
       </button>
