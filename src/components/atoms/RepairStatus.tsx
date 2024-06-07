@@ -24,13 +24,13 @@ export default function RepairStatus({
         </div>
         <p className="relative w-[70px] top-[4px] left-[4px] font-Pretendard text-[20px] leading-[28px] absolute text-gray-900 text-center font-bold">
           <span className="relative font-bold">
-            {(completeRedDot || inProgressAndPendingRedDot) && (
+            {inProgressAndPendingRedDot && (
               <Image
                 src="/icons/dot.svg"
                 width={8}
                 height={8}
                 alt="issue"
-                className="absolute top-[3px] left-[-18px] transform translate-x-1/2 -translate-y-1/2"
+                className="absolute top-[3px] left-[-14px] transform translate-x-1/2 -translate-y-1/2"
               />
             )}
             {inProgressAndPending}
@@ -42,8 +42,19 @@ export default function RepairStatus({
         <div className="text-center w-[77px] font-Pretendard font-medium text-[16px] leading-[24px] ">
           완료
         </div>
-        <p className="w-[70px] top-[28px] left-[4px] font-Pretendard text-[20px] leading-[28px] absolute text-gray-900 text-center font-bold">
-          <span className="font-bold">{complete}</span>
+        <p className="relative w-[70px] top-[4px] left-[4px] font-Pretendard text-[20px] leading-[28px] absolute text-gray-900 text-center font-bold">
+          <span className="relative font-bold">
+            {completeRedDot && (
+              <Image
+                src="/icons/dot.svg"
+                width={8}
+                height={8}
+                alt="issue"
+                className="absolute top-[3px] left-[-14px] transform translate-x-1/2 -translate-y-1/2"
+              />
+            )}
+            {complete}
+          </span>
           <span className="font-medium">개</span>
         </p>
       </div>
