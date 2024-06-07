@@ -150,17 +150,19 @@ export default function ExecuteScheduleOrganism({
                 />
               </div>
             </div>
-            <div>
-              <span className="text-blue-600 font-semibold">
-                2. 일정 관련 변경 사유 &nbsp;&nbsp;*필수
-              </span>
-              <div className="flex flex-col font-medium text-gray-600">
-                <span>제목</span>
-                <input type="text" defaultValue={currentItem?.title || ''} />
-                <span>상세 내용</span>
-                <textarea defaultValue={currentItem?.content || ''} />
+            {modalMode !== 'add' && (
+              <div>
+                <span className="text-blue-600 font-semibold">
+                  2. 일정 관련 변경 사유 &nbsp;&nbsp;*필수
+                </span>
+                <div className="flex flex-col font-medium text-gray-600">
+                  <span>제목</span>
+                  <input type="text" defaultValue={currentItem?.title || ''} />
+                  <span>상세 내용</span>
+                  <textarea defaultValue={currentItem?.content || ''} />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </AdminModalOrganism>
       )}

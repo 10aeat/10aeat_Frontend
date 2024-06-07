@@ -16,12 +16,18 @@ import dayjs from 'dayjs'
 interface Props {
   isDisabled: boolean
   defaultValue?: string
+  onDateChange?: (date: number[]) => void
 }
 
-export default function DatePicker1({ isDisabled }: Props) {
+export default function DatePicker1({
+  isDisabled,
+  defaultValue,
+  onDateChange,
+}: Props) {
   const [open, setOpen] = useState(false)
   const [entryRequired, setEntryRequired] = useState(false)
-  const [selectedDate, setSelectedDate] = useState(dayjs())
+  const [selectedDate, setSelectedDate] = useState<dayjs.Dayjs>(dayjs())
+  const [dateArray, setDateArray] = useState<number[]>([])
 
   const handleToggle = () => {
     if (!isDisabled) {
@@ -29,11 +35,29 @@ export default function DatePicker1({ isDisabled }: Props) {
     }
   }
 
-  const handleDateChange = (date: React.SetStateAction<dayjs.Dayjs>) => {
+  const handleDateChange = (date: dayjs.Dayjs) => {
     if (!isDisabled) {
       setSelectedDate(date)
-      setOpen(false) // 날짜 선택 후 캘린더 닫기
-      console.log(date)
+
+      const newDateArray = [
+        date.year(),
+        date.month() + 1,
+        date.date(),
+        date.hour(),
+        date.minute(),
+        date.second(),
+        date.millisecond(),
+      ]
+
+      setDateArray(newDateArray)
+
+      // 날짜 선택 후 캘린더 닫기 로직이 포함되어 있다고 가정
+      console.log(newDateArray)
+
+      // onDateChange 함수를 호출하여 변경된 날짜 정보를 외부로 전달
+      if (onDateChange) {
+        onDateChange(newDateArray)
+      }
     }
   }
 

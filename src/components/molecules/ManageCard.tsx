@@ -2,6 +2,18 @@ import Box, { BoxStyle } from '../atoms/Box'
 import ProgressBar from '../atoms/ProgressBar'
 import TagBadge, { TagBadgeStyle } from '../atoms/TagBadge'
 
+const periodLabels: { [key in Period]: string } = {
+  WEEK: '1주',
+  MONTH: '1개월',
+  HALF_YEAR: '6개월',
+  YEAR: '연',
+  TWO_YEAR: '2년',
+  THREE_YEAR: '3년',
+  FOUR_YEAR: '4년',
+  FIVE_YEAR: '5년',
+  ETC: '기타',
+}
+
 export default function ManageCard({
   id,
   title,
@@ -11,6 +23,11 @@ export default function ManageCard({
   completedSchedule,
   issueId,
 }: MANAGE_ARTICLE_LIST) {
+  const periodText = (period: Period, count: number): string => {
+    const baseText = periodLabels[period] || '기간 정보 없음'
+    return period === Period.ETC ? baseText : `${baseText} ${count}회`
+  }
+
   return (
     <Box
       boxStyle={BoxStyle.BOX_WHITE_CARD}
@@ -19,8 +36,7 @@ export default function ManageCard({
     >
       <div className="flex w-full gap-x-2 justify-start items-center">
         <TagBadge tagBadgeStyle={TagBadgeStyle.DEFAULT_TAG}>
-          {(period === 'YEAR' && `연 ${periodCount}회`) ||
-            (period === 'MONTH' && `반기 ${periodCount}회`)}
+          {periodText(period, periodCount)}
         </TagBadge>
         <span className="text-gray-900 text-lg font-bold">{title}</span>
       </div>

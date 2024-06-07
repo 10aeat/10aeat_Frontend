@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import DatePicker1 from '@/components/atoms/DatePicker'
 import Table from '../atoms/Table'
 import TableHead from '../atoms/TableHead'
@@ -16,18 +16,22 @@ interface Column {
 
 interface Props {
   columns: Column[]
-  data: ITEM[]
+  progressData: MANAGER_REPAIR_PROGRESS[]
   noDataText: string
   selectedItems: string[]
   setSelectedItems: (items: string[]) => void
+  repairArticleId: number
+  accessToken: string
 }
 
 export default function ProgressScheduleOrganism({
   columns,
-  data,
+  progressData,
   noDataText,
   selectedItems,
   setSelectedItems,
+  repairArticleId,
+  accessToken,
 }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [modalMode, setModalMode] = useState<'add' | 'edit'>()
@@ -35,7 +39,7 @@ export default function ProgressScheduleOrganism({
 
   const handleSelectAll = (isSelected: boolean) => {
     if (isSelected) {
-      setSelectedItems(data.map((item) => item.title))
+      setSelectedItems(progressData.map((item) => item.title))
     } else {
       setSelectedItems([])
     }
@@ -79,7 +83,7 @@ export default function ProgressScheduleOrganism({
       />
       <Table
         columns={columns}
-        data={data}
+        data={progressData}
         noDataText={noDataText}
         selectedItems={selectedItems}
         setSelectedItems={setSelectedItems}

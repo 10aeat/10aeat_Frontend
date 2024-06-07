@@ -8,27 +8,6 @@ import Pagination from '@/components/atoms/Pagination'
 import ManageCard from '@/components/molecules/ManageCard'
 import { useEffect, useState } from 'react'
 
-const exampleData: MANAGE_ARTICLE_LIST[] = [
-  // {
-  //   id: 1,
-  //   period: 'YEAR',
-  //   periodCount: 1,
-  //   title: '소방시설 작동기능 점검',
-  //   allSchedule: 12,
-  //   completedSchedule: 1, //(all이랑 complete가 동일하면 전체 완료)
-  //   issueCheck: false, // 사용자가 이슈 확인했는지 안했는지
-  // },
-  // {
-  //   id: 2,
-  //   period: 'MONTH',
-  //   periodCount: 1,
-  //   title: '승강기 자체 점검',
-  //   allSchedule: 12,
-  //   completedSchedule: 12,
-  //   issueCheck: true,
-  // },
-]
-
 export default function ManageList() {
   const [selectedStatus, setSelectedStatus] = useState('전체')
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear())
@@ -43,19 +22,15 @@ export default function ManageList() {
         if (selectedStatus !== '전체') {
           const progress =
             selectedStatus === '진행중/대기' ? 'INPROGRESS' : 'COMPLETE'
-          url += `&progress=${progress}`
+          url += `progress=${progress}`
         }
-        const manageArticleResponse = await fetch(
-          // `http://10aeat.com/manage/articles/list`,
-          url,
-          {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${accesstoken}`,
-            },
+        const manageArticleResponse = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${accesstoken}`,
           },
-        )
+        })
         const manageArticlesList = await manageArticleResponse.json()
         setArticleList(manageArticlesList)
         console.log(manageArticlesList)
