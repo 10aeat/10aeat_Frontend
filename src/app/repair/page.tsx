@@ -152,7 +152,7 @@ export default function Home() {
         건물 유지보수 사안
       </NavBar>
       {/* 상태 버튼 */}
-      <div className="gap-[14px] relative left-[16px] inline-flex items-start">
+      <div className="gap-[14px] relative inline-flex items-start">
         <Button
           buttonStyle={ButtonStyle.FILTER}
           isSelect={selectedStatus === '전체'}
@@ -178,7 +178,7 @@ export default function Home() {
         />
       </div>
       {/* Card 영역 */}
-      <div className="gap-[12px] top-[28px] relative left-[16px] inline-flex flex-col items-start">
+      <div className="gap-[12px] top-[28px] relative inline-flex flex-col items-start">
         <div className="relative w-fit mt-[-1.00px] font-Pretendard font-bold text-gray-900 text-[18px] tracking-[0] leading-[24px] whitespace-nowrap">
           어떤 사항을 확인해보시겠어요?
         </div>

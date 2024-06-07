@@ -143,3 +143,23 @@ interface MANAGE_SUMMARY {
   pending: number
   hasIssue: number[]
 }
+
+interface MANAGE_LIST_ARTICLE {
+  period: string
+  periodCount: number
+  title: string
+  issueId: number
+  progress: string
+  legalBasis: string
+  target: string
+  responsibility: string
+  note: string
+  manageSchedule: MANAGE_SCHEDULE[]
+}
+
+interface MANAGE_SCHEDULE {
+  manageScheduleId: number
+  isComplete: boolean
+  scheduleStart: string
+  scheduleEnd: string
+}
