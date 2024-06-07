@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-console */
 /* eslint-disable react/jsx-no-useless-fragment */
 
 'use client'
@@ -37,6 +39,26 @@ export default function ItemUpdate(manageArticleId: number) {
     },
   ]
 
+  // manageData 없는 거 오류 안나게 하려고 위의 코드 복붙
+  const manageData = [
+    {
+      title: '시작일',
+      dataIndex: 'startDate',
+    },
+    {
+      title: '종료일',
+      dataIndex: 'endDate',
+    },
+    {
+      title: '일정 변경 사유',
+      dataIndex: 'title',
+    },
+    {
+      title: '완료 여부',
+      dataIndex: 'isDone',
+    },
+  ]
+
   const issueColumns = [
     {
       title: '이슈사항',
@@ -45,17 +67,6 @@ export default function ItemUpdate(manageArticleId: number) {
         <>
           {text}
           {record.isIssue && <AdminTag tagStyle={TagStyle.ISSUE_TAG} />}
-        </>
-      ),
-    },
-    {
-      title: '이슈 종류',
-      dataIndex: 'issueSort',
-      render: (text: string, record: ITEM) => (
-        <>
-          {record.issueSort && (
-            <AdminTag tagStyle={TagStyle.TAG_SORT} tagName={text} />
-          )}
         </>
       ),
     },
