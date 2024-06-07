@@ -1,31 +1,27 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 'use client'
 
 import Dropdown from '@/components/atoms/Dropdown'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import NavBar from '../_components/atoms/NavBar'
 import AdminTag, { TagStyle } from '../_components/atoms/AdminTag'
 import IssueHistoryOrganism from '../_components/organisms/IssueHistory'
 import ProgressScheduleOrganism from '../_components/organisms/ProgressSchedule'
 import AdminButton, { ButtonStyle } from '../_components/atoms/AdminButton'
 
-export default function ItemUpdate() {
+export default function ItemUpdate(repairArticleId: number) {
+  const accessToken =
+    'eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3RAT1dORVIuY29tIiwicm9sZSI6Ik9XTkVSIiwiaWF0IjoxNzE3NjQzNDcyLCJleHAiOjE3MTc2NDUyNzJ9.h5agYhxsRB1t2T3UwtV0Jsf4f9fpY46qFvwZKWn_uX4'
+
   const [selectedProgressItems, setSelectedProgressItems] = useState<string[]>(
     [],
   )
   const [selectedIssueItems, setSelectedIssueItems] = useState<string[]>([])
-
-  const progressData: ITEM[] = [
-    {
-      date: '24.08.11',
-      title: '제목은 공백 포함 20자',
-      content: '진행사항 내용은 공백 포함 40글자 수 제한입니다',
-    },
-    {
-      date: '24.07.11',
-      title: '제목은 공백 포함 20자 글자 수 제한',
-      content: '진행사항 내용은 공백 포함 40글자',
-    },
-  ]
+  const [progressData, setProgressData] = useState<MANAGER_REPAIR_PROGRESS[]>(
+    [],
+  )
+  const [issueData, setIssueData] = useState<ISSUE_DATA[]>([])
 
   const progressColumns = [
     {
@@ -42,27 +38,14 @@ export default function ItemUpdate() {
     },
   ]
 
-  const issueData: ITEM[] = [
-    {
-      date: '24.08.11',
-      title: '이슈는 제목이 공백 포함 30자 글자 제한입니다.',
-      isIssue: true,
-    },
-    {
-      date: '24.07.11',
-      title: '이슈 이슈',
-      isIssue: false,
-    },
-  ]
-
   const issueColumns = [
     {
       title: '이슈사항',
       dataIndex: 'title',
-      render: (text: string, record: ITEM) => (
+      render: (text: string) => (
         <>
           {text}
-          {record.isIssue && <AdminTag tagStyle={TagStyle.ISSUE_TAG} />}
+          <AdminTag tagStyle={TagStyle.ISSUE_TAG} />
         </>
       ),
     },
@@ -71,6 +54,55 @@ export default function ItemUpdate() {
       dataIndex: 'date',
     },
   ]
+
+  const fetchRepairArticles = async () => {
+    try {
+      const response = await fetch(
+        // `http://10aeat.com/repair/articles/progress/${repairArticleId}`,
+        `http://10aeat.com/repair/articles/progress/1`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            accessToken,
+          },
+        },
+      )
+
+      const result = await response.json()
+      setProgressData(result.data) // 받아온 데이터를 state에 저장
+      console.log(result.data)
+    } catch (error) {
+      console.error('ERROR:', error)
+    }
+  }
+
+  const fetchRepairIssues = async () => {
+    try {
+      const response = await fetch(
+        // `http://10aeat.com/issues/check/repair/${repairArticleId}`,
+        `http://10aeat.com/issues/check/repair/1`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            accessToken,
+          },
+        },
+      )
+
+      const result = await response.json()
+      setIssueData(result.data) // 받아온 데이터를 state에 저장
+      console.log(result.data)
+    } catch (error) {
+      console.error('ERROR:', error)
+    }
+  }
+
+  useEffect(() => {
+    fetchRepairArticles()
+    fetchRepairIssues()
+  }, [repairArticleId, accessToken, fetchRepairArticles, fetchRepairIssues])
 
   return (
     <div className="bg-white overflow-y-auto pb-[45px]">
@@ -90,18 +122,24 @@ export default function ItemUpdate() {
           <div className="grid gap-y-[72px]">
             <ProgressScheduleOrganism
               columns={progressColumns}
-              data={progressData}
               noDataText="유지보수 사안이 어디까지 진행되었는지 작성해 주세요."
+              progressData={progressData}
               selectedItems={selectedProgressItems}
               setSelectedItems={setSelectedProgressItems}
+              repairArticleId={1}
+              accessToken={accessToken}
             />
-            <IssueHistoryOrganism
-              columns={issueColumns}
-              data={issueData}
-              noDataText="유지보수 사안과 관련한 이슈 사항이 있다면 작성해 주세요."
-              selectedItems={selectedIssueItems}
-              setSelectedItems={setSelectedIssueItems}
-            />
+            {progressData.length > 0 && (
+              <IssueHistoryOrganism
+                columns={issueColumns}
+                noDataText="유지보수 사안과 관련한 이슈 사항이 있다면 작성해 주세요."
+                issueData={issueData}
+                selectedItems={selectedIssueItems}
+                setSelectedItems={setSelectedIssueItems}
+                articleId={1}
+                accessToken={accessToken}
+              />
+            )}
           </div>
           <div className="flex justify-end">
             <AdminButton buttonStyle={ButtonStyle.PRIMARY} buttonSize="md">

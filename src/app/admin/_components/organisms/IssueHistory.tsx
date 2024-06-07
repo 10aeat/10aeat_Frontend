@@ -16,22 +16,22 @@ interface Column {
 
 interface Props {
   columns: Column[]
-  data: ITEM[]
+  issueData: ISSUE_DATA[]
   noDataText: string
   selectedItems: string[]
   setSelectedItems: (items: string[]) => void
-  // statusColumn?: Column // statusColumn 추가
-  // handleStatusChange?: (value: string, index: number) => void // handleStatusChange 추가
-  // handleSelectAll?: (isSelected: boolean) => void // handleSelectAll 추가
-  // handleSelectItem?: (isSelected: boolean, item: any) => void // handleSelectItem 추가
+  articleId: number
+  accessToken: string
 }
 
 export default function IssueHistoryOrganism({
   columns,
-  data,
+  issueData,
   noDataText,
   selectedItems,
   setSelectedItems,
+  articleId,
+  accessToken,
 }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isHandOffModalOpen, setIsHandOffModalOpen] = useState(false)
@@ -40,7 +40,7 @@ export default function IssueHistoryOrganism({
 
   const handleSelectAll = (isSelected: boolean) => {
     if (isSelected) {
-      setSelectedItems(data.map((item) => item.title))
+      setSelectedItems(issueData.map((item) => item.title))
     } else {
       setSelectedItems([])
     }
@@ -91,7 +91,7 @@ export default function IssueHistoryOrganism({
       />
       <Table
         columns={columns}
-        data={data}
+        data={issueData}
         noDataText={noDataText}
         selectedItems={selectedItems}
         setSelectedItems={setSelectedItems}
