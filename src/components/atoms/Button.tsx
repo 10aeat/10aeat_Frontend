@@ -26,6 +26,7 @@ interface Props {
   text?: string
   total?: number
   children?: React.ReactNode
+  redDot?: boolean
   onClickFunction?: () => Promise<void> | void
 }
 
@@ -35,6 +36,7 @@ export default function Button({
   isSelect,
   text,
   total,
+  redDot,
   onClickFunction,
   children,
 }: Props) {
@@ -111,7 +113,18 @@ export default function Button({
             <span className="text-base font-medium font-Pretendard">
               {text}
             </span>
-            <span className="text-xl font-bold font-Pretendard">{total}개</span>
+            <span className="relative text-xl font-bold font-Pretendard">
+              {total}개
+              {redDot && (
+                <Image
+                  src="/icons/dot.svg"
+                  width={8}
+                  height={8}
+                  alt="issue"
+                  className="absolute top-[3px] left-[-13px] transform translate-x-1/2 -translate-y-1/2"
+                />
+              )}
+            </span>
           </button>
         )
       case ButtonStyle.MONTHLY_NONE:
