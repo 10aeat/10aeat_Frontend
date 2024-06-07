@@ -194,9 +194,9 @@ export default function AdminComments() {
                       onChange={(e) =>
                         handleReplyChange(comment.parentCommentId, e)
                       }
-                      ref={(el) =>
-                        (replyInputRefs.current[comment.parentCommentId] = el)
-                      }
+                      ref={(el) => {
+                        replyInputRefs.current[comment.parentCommentId] = el
+                      }}
                     />
                     <button
                       type="button"

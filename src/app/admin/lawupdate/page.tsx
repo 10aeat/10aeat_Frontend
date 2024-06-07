@@ -135,6 +135,7 @@ export default function ItemUpdate(manageArticleId: number) {
               placeholder="내용을 입력하세요."
               width="480px"
               text="16px"
+              onChange={(e) => e.target.value}
             />
           </div>
           <div className="flex justify-end">
