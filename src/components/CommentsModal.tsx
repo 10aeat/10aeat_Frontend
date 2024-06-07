@@ -174,9 +174,9 @@ export default function CommentsComponent({ isOpen, onClose }: ModalProps) {
                         onChange={(e) =>
                           handleReplyChange(comment.parentCommentId, e)
                         }
-                        ref={(el) =>
-                          (replyInputRefs.current[comment.parentCommentId] = el)
-                        }
+                        ref={(el) => {
+                          replyInputRefs.current[comment.parentCommentId] = el
+                        }}
                       />
                       <button
                         onClick={() => handleAddReply(comment.parentCommentId)}

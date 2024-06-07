@@ -17,15 +17,15 @@ export default function RepairUpload() {
   const [constructionEnd, setConstructionEnd] = useState(null)
   const [images, setImages] = useState<string[]>([])
 
-  const handleTitleChange = (value: string) => setTitle(value)
-  const handleContentChange = (value: string) => setContent(value)
-  const handleRepairCompanyChange = (value: string) => setRepairCompany(value)
-  const handleRepairCompanyWebsiteChange = (value: string) =>
-    setRepairCompanyWebsite(value)
-  const handleConstructionStartChange = (date: any) =>
-    setConstructionStart(date)
-  const handleConstructionEndChange = (date: any) => setConstructionEnd(date)
-  const handleImagesChange = (value: string[]) => setImages(value)
+  // const handleTitleChange = (value: string) => setTitle(value)
+  // const handleContentChange = (value: string) => setContent(value)
+  // const handleRepairCompanyChange = (value: string) => setRepairCompany(value)
+  // const handleRepairCompanyWebsiteChange = (value: string) =>
+  //   setRepairCompanyWebsite(value)
+  // const handleConstructionStartChange = (date: any) =>
+  //   setConstructionStart(date)
+  // const handleConstructionEndChange = (date: any) => setConstructionEnd(date)
+  // const handleImagesChange = (value: string[]) => setImages(value)
 
   const handleSubmit = async () => {
     const postData = {
@@ -96,7 +96,7 @@ export default function RepairUpload() {
               placeholder="제목을 입력해주세요."
               width="840px"
               value={title}
-              onChange={handleTitleChange}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </div>
         </div>
@@ -109,7 +109,7 @@ export default function RepairUpload() {
             <TextEditor
               placeholder="내용을 입력해주세요."
               value={content}
-              onChange={handleContentChange}
+              onChange={setContent}
             />
           </div>
         </div>
@@ -123,14 +123,14 @@ export default function RepairUpload() {
               width="178px"
               text="14px"
               value={repairCompany}
-              onChange={handleRepairCompanyChange}
+              onChange={(e) => setRepairCompany(e.target.value)}
             />
             <TextArea
               placeholder="해당 업체의 웹사이트 링크를 첨부해주세요."
               width="292px"
               text="14px"
               value={repairCompanyWebsite}
-              onChange={handleRepairCompanyWebsiteChange}
+              onChange={(e) => setRepairCompanyWebsite(e.target.value)}
             />
           </div>
         </div>

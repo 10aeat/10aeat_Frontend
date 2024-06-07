@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
-import ClipboardIcon from '../../../../../../../public/icons/clipboard_check.svg'
+import ClipboardIcon from '@/components/icons/clipboard_check.svg'
 
 export default function SideMenu() {
   const [isOpen, setIsOpen] = useState<Boolean>(true)
