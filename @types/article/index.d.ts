@@ -90,3 +90,44 @@ interface AGENDA_PROGRESS {
   startSchedule: string
   endSchedule: string
 }
+
+interface REPAIR_SUMMARY {
+  complete: number
+  completeRedDot: boolean
+  inProgressAndPending: number
+  inProgressAndPendingRedDot: boolean
+  total: number
+}
+
+interface REPAIR_LIST {
+  pageSize: number
+  currentPage: number
+  totalElements: number
+  totalPages: number
+  articles: Article[]
+}
+
+interface REPAIR_LIST_ARTICLE {
+  id: number
+  category: 'INSTALL' | 'REPAIR' | 'REPLACE'
+  managerName: string
+  progress: 'INPROGRESS' | 'PENDING' | 'COMPLETE'
+  title: string
+  startConstruction: string
+  endConstruction: string
+  createdAt: string
+  updatedAt: string
+  commentCount: number
+  viewCount: number
+  isSave: boolean
+  redDot: boolean
+  imageUrl: string
+  activeIssueId: number | null
+}
+
+interface MANAGE_SUMMARY {
+  complete: number
+  inprogress: number
+  pending: number
+  hasIssue: number[]
+}

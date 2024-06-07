@@ -6,23 +6,91 @@ import ManageStatus from '@/components/atoms/ManageStatus'
 import MonthlyPlan from '@/components/atoms/MonthlyPlan'
 import RepairStatus from '@/components/atoms/RepairStatus'
 import TagBadge, { TagBadgeStyle } from '@/components/atoms/TagBadge'
+import { useAccessToken } from '@/components/store/AccessTokenStore'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
+  const { accessToken, setAccessToken } = useAccessToken()
+
   const [selectedMonth, setSelectedMonth] = useState<number | null>(null)
+  const [searchQuery, setSearchQuery] = useState('')
+  const router = useRouter()
+
+  // 유지보수 게시글 요약 조회
+  const [repairSummary, setRepairSummary] = useState<REPAIR_SUMMARY>({
+    complete: 0,
+    completeRedDot: false,
+    inProgressAndPending: 0,
+    inProgressAndPendingRedDot: false,
+    total: 0,
+  })
+
+  const [manageSummary, setManageSummary] = useState<MANAGE_SUMMARY>({
+    complete: 0,
+    inprogress: 0,
+    pending: 0,
+    hasIssue: [],
+  })
+
   const handleSelectMonth = (month: number) => {
     setSelectedMonth(month)
   }
-  const router = useRouter()
 
-  // GET /repair/articles/summary 유지보수 사안 요약
-  const repairStatus = {
-    all: 18,
-    inprogressAndpending: 2,
-    complete: 2,
+  const handleTagBadgeClick = (tag: string) => {
+    setSearchQuery(tag)
   }
+
+  const handleSearchInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setSearchQuery(event.target.value)
+  }
+
+  useEffect(() => {
+    const getRepairSummaryData = async () => {
+      try {
+        const getRepairSummaryResponse = await fetch(
+          'http://10aeat.com/repair/articles/summary',
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              AccessToken: accessToken,
+            },
+          },
+        )
+        const repairSummaryData = await getRepairSummaryResponse.json()
+        setRepairSummary(repairSummaryData.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    const getManageSummaryData = async () => {
+      try {
+        const getRepairSummaryResponse = await fetch(
+          'http://10aeat.com/manage/articles/summary',
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              AccessToken: accessToken,
+            },
+          },
+        )
+        const manageSummaryData = await getRepairSummaryResponse.json()
+        setManageSummary(manageSummaryData.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    getRepairSummaryData()
+    getManageSummaryData()
+  }, [accessToken])
+
   return (
     <div className="flex flex-col h-[975px] w-full items-center bg-gray-100 ">
       <div className="relative w-[375px] h-[50px]">
@@ -42,10 +110,30 @@ export default function Home() {
       <div className="relative w-[345px] h-[90px]">
         <div className=" w-[345px] h-[90px]">
           <div className="inline-flex items-start gap-[8px] absolute top-[66px] left-[82px]">
-            <TagBadge tagBadgeStyle={TagBadgeStyle.DEFAULT_TAG}>설치</TagBadge>
-            <TagBadge tagBadgeStyle={TagBadgeStyle.DEFAULT_TAG}>보수</TagBadge>
-            <TagBadge tagBadgeStyle={TagBadgeStyle.DEFAULT_TAG}>교체</TagBadge>
-            <TagBadge tagBadgeStyle={TagBadgeStyle.DEFAULT_TAG}>공사</TagBadge>
+            <TagBadge
+              tagBadgeStyle={TagBadgeStyle.DEFAULT_TAG}
+              onClickFunction={() => handleTagBadgeClick('설치')}
+            >
+              설치
+            </TagBadge>
+            <TagBadge
+              tagBadgeStyle={TagBadgeStyle.DEFAULT_TAG}
+              onClickFunction={() => handleTagBadgeClick('보수')}
+            >
+              보수
+            </TagBadge>
+            <TagBadge
+              tagBadgeStyle={TagBadgeStyle.DEFAULT_TAG}
+              onClickFunction={() => handleTagBadgeClick('교체')}
+            >
+              교체
+            </TagBadge>
+            <TagBadge
+              tagBadgeStyle={TagBadgeStyle.DEFAULT_TAG}
+              onClickFunction={() => handleTagBadgeClick('공사')}
+            >
+              공사
+            </TagBadge>
           </div>
           <div className="absolute top-[64px] font-Pretendard text-[16px] font-semibold leading-[24px] capitalize">
             추천검색어
@@ -57,6 +145,8 @@ export default function Home() {
                   className="left-[30px] font-Pretendard font-normal text-gray-400 bg-gray-100 text-[20px] leading-[26px] absolute "
                   placeholder="무엇을 찾으시나요?"
                   type="text"
+                  value={searchQuery}
+                  onChange={handleSearchInputChange}
                 />
                 <Image
                   src="/icons/search.svg"
@@ -71,10 +161,14 @@ export default function Home() {
         </div>
       </div>
       <div className="relative  w-[345px]  h-[140px]">
-        <button
+        <Link
           type="button"
-          className=" mt-[34px]"
-          onClick={() => router.push('/repair')}
+          className="block mt-[34px]"
+          // onClick={() => router.push({ pathname: '/repair' })}
+          href={{
+            pathname: '/repair',
+            query: { data: JSON.stringify(repairSummary) },
+          }}
         >
           <div className="absolute  font-Pretendard font-bold text-gray-900 text-[18px] leading-[24px] whitespace-nowrap">
             2024 건물 유지보수 사안
@@ -86,11 +180,13 @@ export default function Home() {
             alt="arrow_right_large"
             className="!absolute !w-[24px] !h-[24px] !left-[187px]"
           />
-        </button>
+        </Link>
         <RepairStatus
-          all={repairStatus.all}
-          inprogressAndpending={repairStatus.inprogressAndpending}
-          complete={repairStatus.complete}
+          total={repairSummary?.total}
+          inProgressAndPending={repairSummary?.inProgressAndPending}
+          complete={repairSummary?.complete}
+          completeRedDot={repairSummary?.completeRedDot}
+          inProgressAndPendingRedDot={repairSummary?.inProgressAndPendingRedDot}
         />
       </div>
       <div className="mt-[32px] w-[345px]  h-[140px]">
@@ -99,7 +195,7 @@ export default function Home() {
             2024 법정 시설물 유지관리 점검 현황
           </div>
         </div>
-        <ManageStatus />
+        <ManageStatus manageSummary={manageSummary} />
         <div className="mt-[16px]" />
         <MonthlyPlan onSelectMonth={handleSelectMonth} />
       </div>

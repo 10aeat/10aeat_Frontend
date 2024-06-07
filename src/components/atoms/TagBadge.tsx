@@ -11,14 +11,23 @@ interface Props {
   tagBadgeStyle: TagBadgeStyle
   children?: React.ReactNode
   progress?: string
+  onClickFunction?: () => void
 }
 
-export default function TagBadge({ tagBadgeStyle, children, progress }: Props) {
+export default function TagBadge({
+  tagBadgeStyle,
+  children,
+  progress,
+  onClickFunction,
+}: Props) {
   const selectTagBadge = () => {
     switch (tagBadgeStyle) {
       case TagBadgeStyle.DEFAULT_TAG:
         return (
-          <div className="text-sm font-medium inline-flex h-[18px] p-[10px] items-center gap-[6px] shrink-0 rounded-[8px] border-solid border-[1px] border-gray-300 bg-gray-50 text-gray-700 capitalize leading-[1px] font-Pretendard">
+          <div
+            onClick={onClickFunction}
+            className="text-sm font-medium inline-flex h-[18px] p-[10px] items-center gap-[6px] shrink-0 rounded-[8px] border-solid border-[1px] border-gray-300 bg-gray-50 text-gray-700 capitalize leading-[1px] font-Pretendard"
+          >
             {children}
           </div>
         )

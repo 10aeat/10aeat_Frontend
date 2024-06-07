@@ -6,45 +6,13 @@ import NavBar from '@/components/atoms/NavBar'
 import Pagination from '@/components/atoms/Pagination'
 import { useEffect, useState } from 'react'
 import { useAccessToken } from '@/components/store/AccessTokenStore'
-
-interface RepairSummary {
-  complete: number
-  completeRedDot: boolean
-  inProgressAndPending: number
-  inProgressAndPendingRedDot: boolean
-  total: number
-}
-interface Article {
-  id: number
-  category: 'INSTALL' | 'REPAIR' | 'REPLACE'
-  managerName: string
-  progress: 'INPROGRESS' | 'PENDING' | 'COMPLETE'
-  title: string
-  startConstruction: string
-  endConstruction: string
-  createdAt: string
-  updatedAt: string
-  commentCount: number
-  viewCount: number
-  isSave: boolean
-  redDot: boolean
-  imageUrl: string
-  activeIssueId: number | null
-}
-interface RepairList {
-  pageSize: number
-  currentPage: number
-  totalElements: number
-  totalPages: number
-  articles: Article[]
-}
-
-// 뱃지 넣어야함
+import { useRouter } from 'next/navigation'
 export default function Home() {
   const { accessToken, setAccessToken } = useAccessToken()
+  const router = useRouter()
 
   // 유지보수 게시글 요약 조회
-  const [repairSummary, setRepairSummary] = useState<RepairSummary>({
+  const [repairSummary, setRepairSummary] = useState<REPAIR_SUMMARY>({
     complete: 0,
     completeRedDot: false,
     inProgressAndPending: 0,
@@ -53,7 +21,7 @@ export default function Home() {
   })
 
   // 유지보수 게시글 전체 조회
-  const [repairList, setRepairList] = useState<RepairList>({
+  const [repairList, setRepairList] = useState<REPAIR_LIST>({
     pageSize: 20,
     currentPage: 0,
     totalElements: 2,
@@ -77,6 +45,14 @@ export default function Home() {
 
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category)
+  }
+
+  const handleCardClick = (articleId: number) => {
+    // 해당 카드의 상세 페이지 경로를 생성합니다.
+    const detailPath = `/repair/${articleId}/detail`
+
+    // 생성한 경로로 페이지를 이동합니다.
+    router.push(detailPath)
   }
 
   useEffect(() => {
@@ -113,7 +89,7 @@ export default function Home() {
         const repairArticleData = await getRepairSummaryResponse.json()
         setRepairList(repairArticleData.data)
 
-        const initialRepairList: RepairList = {
+        const initialRepairList: REPAIR_LIST = {
           pageSize: 5,
           currentPage: 0,
           totalElements: 10,
@@ -297,7 +273,7 @@ export default function Home() {
 
         // 카테고리별 게시글 수 계산
         const counts = { INSTALL: 0, REPAIR: 0, REPLACE: 0 }
-        initialRepairList.articles.forEach((article: Article) => {
+        initialRepairList.articles.forEach((article: REPAIR_LIST_ARTICLE) => {
           // repairArticleData.data.articles.forEach((article: Article) => {
           counts[article.category] += 1
         })
@@ -309,11 +285,11 @@ export default function Home() {
     getRepairSummaryData()
     getRepairListData()
   }, [accessToken])
-  console.log(repairSummary)
-  console.log(repairList)
+  // console.log(repairSummary)
+  // console.log(repairList)
 
   // 카드 스타일 지정 함수
-  function determineCardStyle(article: Article): CardStyle {
+  function determineCardStyle(article: REPAIR_LIST_ARTICLE): CardStyle {
     const hasImage = article.imageUrl && article.imageUrl !== ''
     const hasPeriod = article.startConstruction && article.endConstruction
 
@@ -400,7 +376,7 @@ export default function Home() {
           />
         </div>
         <div className="inline-flex flex-col top-[18px] items-start gap-[18px] relative">
-          {repairList.articles.map((article: Article) => (
+          {repairList.articles.map((article: REPAIR_LIST_ARTICLE) => (
             <Card
               // 각 기사에 대한 카드 스타일을 결정합니다.
               cardStyle={determineCardStyle(article)}
@@ -416,6 +392,7 @@ export default function Home() {
               view={article.viewCount}
               comment={article.commentCount}
               key={article.id} // 각 카드에 고유한 key를 제공합니다.
+              onClickFunction={() => handleCardClick(article.id)}
             />
           ))}
         </div>
