@@ -10,7 +10,7 @@ interface Props {
   boxStyle: BoxStyle
   children: React.ReactNode
   style?: string
-  issueId?: number
+  issueId?: number | null
 }
 
 export default function Box({ boxStyle, children, style, issueId }: Props) {

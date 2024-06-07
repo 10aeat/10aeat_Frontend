@@ -39,14 +39,26 @@ interface REPAIR_ARTICLE_DETAIL {
   companyWebsite: string // 담당업체 웹사이트 url
 }
 
+enum Period {
+  WEEK = 'WEEK',
+  MONTH = 'MONTH',
+  HALF_YEAR = 'HALF_YEAR',
+  YEAR = 'YEAR',
+  TWO_YEAR = 'TWO_YEAR',
+  THREE_YEAR = 'THREE_YEAR',
+  FOUR_YEAR = 'FOUR_YEAR',
+  FIVE_YEAR = 'FIVE_YEAR',
+  ETC = 'ETC',
+}
+
 interface MANAGE_ARTICLE_LIST {
   id: number
-  period: string
+  period: Period
   periodCount: number
   title: string
   allSchedule: number
   completedSchedule: number // (all이랑 complete가 동일하면 전체 완료)
-  issueId: number
+  issueId: number | null
 }
 
 interface MANAGE_ARTICLE_DETAIL {

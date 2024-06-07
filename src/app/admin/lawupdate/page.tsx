@@ -1,8 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-console */
 /* eslint-disable react/jsx-no-useless-fragment */
 
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import TextArea from '@/components/atoms/TextArea'
 import NavBar from '../_components/atoms/NavBar'
 import AdminTag, { TagStyle } from '../_components/atoms/AdminTag'
@@ -11,24 +13,12 @@ import ExecuteScheduleOrganism from '../_components/organisms/ExecuteSchedule'
 import IssueHistoryOrganism from '../_components/organisms/IssueHistory'
 import AdminButton, { ButtonStyle } from '../_components/atoms/AdminButton'
 
-export default function ItemUpdate() {
+export default function ItemUpdate(manageArticleId: number) {
+  const accessToken =
+    'eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3RAT1dORVIuY29tIiwicm9sZSI6Ik9XTkVSIiwiaWF0IjoxNzE3NjQzNDcyLCJleHAiOjE3MTc2NDUyNzJ9.h5agYhxsRB1t2T3UwtV0Jsf4f9fpY46qFvwZKWn_uX4'
   const [selectedManageItems, setSelectedManageItems] = useState<string[]>([])
   const [selectedIssueItems, setSelectedIssueItems] = useState<string[]>([])
-
-  const manageData: ITEM[] = [
-    // {
-    //   startDate: '24.05.23',
-    //   endDate: '24.05.24',
-    //   title: '이슈는 제목이 공백 포함 30자 글자 제한입니다.',
-    //   isDone: true,
-    // },
-    // {
-    //   startDate: '24.05.25',
-    //   endDate: '24.05.26',
-    //   title: '이슈는 제목이 공백 포함 30자 글자 제한',
-    //   isDone: true,
-    // },
-  ]
+  const [issueData, setIssueData] = useState<ISSUE_DATA[]>([])
 
   const manageColumns = [
     {
@@ -49,18 +39,23 @@ export default function ItemUpdate() {
     },
   ]
 
-  const issueData: ITEM[] = [
+  // manageData 없는 거 오류 안나게 하려고 위의 코드 복붙
+  const manageData = [
     {
-      issueDate: '24.08.11',
-      title: '이슈는 제목이 공백 포함 30자 글자 제한입니다.',
-      isIssue: true,
-      issueSort: '일반',
+      title: '시작일',
+      dataIndex: 'startDate',
     },
     {
-      issueDate: '24.07.11',
-      title: '이슈 이슈',
-      isIssue: false,
-      issueSort: '일정 변경',
+      title: '종료일',
+      dataIndex: 'endDate',
+    },
+    {
+      title: '일정 변경 사유',
+      dataIndex: 'title',
+    },
+    {
+      title: '완료 여부',
+      dataIndex: 'isDone',
     },
   ]
 
@@ -76,21 +71,36 @@ export default function ItemUpdate() {
       ),
     },
     {
-      title: '이슈 종류',
-      dataIndex: 'issueSort',
-      render: (text: string, record: ITEM) => (
-        <>
-          {record.issueSort && (
-            <AdminTag tagStyle={TagStyle.TAG_SORT} tagName={text} />
-          )}
-        </>
-      ),
-    },
-    {
       title: '게시일자',
       dataIndex: 'issueDate',
     },
   ]
+
+  const fetchManageIssues = async () => {
+    try {
+      const response = await fetch(
+        // `http://10aeat.com/issues/check/manage/{manageArticleId}`,
+        `http://10aeat.com/issues/check/manage/1`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            accessToken,
+          },
+        },
+      )
+
+      const result = await response.json()
+      setIssueData(result.data) // 받아온 데이터를 state에 저장
+      console.log(result.data)
+    } catch (error) {
+      console.error('ERROR:', error)
+    }
+  }
+
+  useEffect(() => {
+    fetchManageIssues()
+  }, [manageArticleId, fetchManageIssues])
 
   return (
     <div className="bg-white overflow-y-auto pb-[45px]">
@@ -111,10 +121,12 @@ export default function ItemUpdate() {
           {manageData.length > 0 && (
             <IssueHistoryOrganism
               columns={issueColumns}
-              data={issueData}
+              issueData={issueData}
               noDataText="법정 시설물 유지관리 점검 사항과 관련한 이슈 사항이 있다면 작성해 주세요."
               selectedItems={selectedIssueItems}
               setSelectedItems={setSelectedIssueItems}
+              articleId={0}
+              accessToken={accessToken}
             />
           )}
           <div className="font-Pretendard flex gap-x-[50px] items-center">
