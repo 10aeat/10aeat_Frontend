@@ -280,6 +280,7 @@ export default function Home() {
                 end={article.endConstruction}
                 view={article.viewCount}
                 comment={article.commentCount}
+                redDot={article.redDot}
                 key={article.id} // 각 카드에 고유한 key를 제공합니다.
                 onClickFunction={() => handleCardClick(article.id)}
               />

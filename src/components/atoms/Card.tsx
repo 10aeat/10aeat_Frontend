@@ -19,6 +19,7 @@ interface Props {
   title: string
   start?: string
   end?: string
+  redDot?: boolean
   state: string
   name: string
   view: number
@@ -31,6 +32,7 @@ export default function Card({
   cardStyle,
   isSave,
   img_src,
+  redDot,
   title,
   start,
   end,
@@ -67,6 +69,15 @@ export default function Card({
                 />
                 <div className="inline-flex flex-col items-start gap-[5px] relative flex-[0_0_auto] mr-[-1.00px]">
                   <div className="flex w-[246px] items-start gap-[12px] relative flex-[0_0_auto]">
+                    {redDot && (
+                      <Image
+                        src="/icons/dot.svg"
+                        width={8}
+                        height={8}
+                        alt="issue"
+                        className="absolute top-[3px] left-[-14px] transform translate-x-1/2 -translate-y-1/2"
+                      />
+                    )}
                     <div className="relative flex-1 h-[27px] mt-[-1.00px] font-Pretendard font-bold text-[18px] tracking-[-0.34px] leading-[27px] whitespace-nowrap overflow-hidden text-ellipsis">
                       {title}
                     </div>
@@ -144,6 +155,15 @@ export default function Card({
               <div className="flex w-[311px] items-center gap-[10px] relative">
                 <div className="flex flex-col items-start gap-[5px] relative ">
                   <div className="flex w-[311px] items-start gap-[12px] relative flex-[0_0_auto]">
+                    {redDot && (
+                      <Image
+                        src="/icons/dot.svg"
+                        width={8}
+                        height={8}
+                        alt="issue"
+                        className="absolute top-[3px] left-[-14px] transform translate-x-1/2 -translate-y-1/2"
+                      />
+                    )}
                     <div className="relative flex-1 h-[27px] mt-[-1.00px] font-Pretendard font-bold text-[18px] tracking-[-0.34px] leading-[27px] whitespace-nowrap overflow-hidden text-ellipsis">
                       {title}
                     </div>
@@ -219,6 +239,15 @@ export default function Card({
             <div className="flex flex-wrap w-[343px] h-[124px] items-end gap-[8px_10px] p-[16px] bg-[#ffffff] rounded-[18px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
               <div className="inline-flex items-end gap-[8px] relative flex-[0_0_auto]">
                 <div className="flex w-[275px] h-[56px] items-center gap-[8px] relative">
+                  {redDot && (
+                    <Image
+                      src="/icons/dot.svg"
+                      width={8}
+                      height={8}
+                      alt="issue"
+                      className="absolute top-[14px] left-[-14px] transform translate-x-1/2 -translate-y-1/2"
+                    />
+                  )}
                   <div className="relative flex-1 h-[27px] mt-[-1.00px] font-Pretendard font-bold text-[18px] tracking-[-0.34px] leading-[27px] whitespace-nowrap overflow-hidden text-ellipsis">
                     {title}
                   </div>
@@ -299,6 +328,15 @@ export default function Card({
                     alt="Rectangle"
                     src={img_src}
                   />
+                  {redDot && (
+                    <Image
+                      src="/icons/dot.svg"
+                      width={8}
+                      height={8}
+                      alt="issue"
+                      className="absolute top-[12px] left-[56px] transform translate-x-1/2 -translate-y-1/2"
+                    />
+                  )}
                   <div className="relative flex-1 h-[27px] mt-[-1.00px] font-Pretendard font-bold text-[18px] tracking-[-0.34px] leading-[27px] whitespace-nowrap overflow-hidden text-ellipsis">
                     {title}
                   </div>
