@@ -1,10 +1,17 @@
+'use client'
+
+import BottomNav from '@/components/atoms/BottomNav'
 import IconProfile from '@/components/icons/profile'
 import Image from 'next/image'
+import { useState } from 'react'
 
-export default function page() {
+export default function Page() {
+  const [info, setInfo] = useState()
+  const [buildings, setBuildings] = useState()
+
   return (
-    <div className="flex flex-col w-full items-center h-[812px] bg-gray-100">
-      <div className="absolute top-[40px] w-[375px] inline-flex items-center gap-[16px]">
+    <div className="relative flex flex-col w-[375px] items-center h-[812px] bg-gray-100 ">
+      <div className="absolute top-[40px] w-[375px] inline-flex items-center gap-[16px] pl-[16px]">
         <IconProfile width="80px" height="80px" />
         <div className=" flex flex-col items-start gap-[4px]">
           <div className="flex items-center gap-[8px]">
@@ -25,7 +32,7 @@ export default function page() {
         </div>
       </div>
       <div className="absolute top-[168px] w-[375px] inline-flex flex-col items-start gap-[40px]">
-        <div className="flex flex-col items-start gap-[8px]">
+        <div className="pl-[16px] flex flex-col items-start gap-[8px]">
           <div className="flex items-center gap-[8px]">
             <Image
               src="/icons/building.svg"
@@ -61,7 +68,7 @@ export default function page() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-start gap-[24px]">
+        <div className="pl-[16px] flex flex-col items-start gap-[24px]">
           <div className="flex items-center gap-[8px]">
             <div className="flex w-[343px] flex-col items-start gap-[8px]">
               <div className="font-Pretendard text-[18px] font-bold text-gray-700 leading-[24px] capitalize">
@@ -133,6 +140,7 @@ export default function page() {
           </button>
         </div>
       </div>
+      <BottomNav />
     </div>
   )
 }
