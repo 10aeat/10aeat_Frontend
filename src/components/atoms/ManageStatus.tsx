@@ -22,15 +22,16 @@ export default function ManageStatus({ manageSummary }: Props) {
     {
       id: '진행중/대기',
       label: '진행중/대기',
-      value: manageSummary?.inprogress,
+      value: (manageSummary?.inprogress ?? 0) + (manageSummary?.pending ?? 0),
       color: '#E5E7Eb',
     },
   ]
   const totalValue = data.reduce((acc, item) => acc + item.value, 0)
   const completedItem = data.find((item) => item.id === '완료')
   const completedValue = completedItem ? completedItem.value : 0
-  const completionPercentage =
-    totalValue ?? ((completedValue / totalValue) * 100).toFixed(0)
+  const completionPercentage = totalValue
+    ? ((completedValue / totalValue) * 100).toFixed(0)
+    : 0
 
   return (
     <div className="relative w-[343px] h-[228px] top-[36px] bg-white rounded-[18px] shadow-primary">

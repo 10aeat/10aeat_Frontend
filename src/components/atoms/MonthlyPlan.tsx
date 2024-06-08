@@ -5,13 +5,18 @@ import SelectMonth from '../molecules/SelectMonth'
 import Button, { ButtonStyle } from './Button'
 
 interface Props {
+  monthlySummary: number[]
   onSelectMonth: (month: number) => void
 }
-export default function MonthlyPlan({ onSelectMonth }: Props) {
+export default function MonthlyPlan({ monthlySummary, onSelectMonth }: Props) {
   const months = Array.from({ length: 12 }, (_, i) => `${i + 1}`)
   const firstRowMonths = months.slice(0, 6)
   const secondRowMonths = months.slice(6, 12)
-  const [selectedMonth, setSelectedMonth] = useState<number | null>(null)
+  const currentMonth = new Date().getMonth() + 1
+  const [selectedMonth, setSelectedMonth] = useState<number | null>(
+    currentMonth,
+  )
+
   const handleMonthClick = (index: number) => {
     const month = index + 1
     if (selectedMonth === month) {
@@ -21,6 +26,12 @@ export default function MonthlyPlan({ onSelectMonth }: Props) {
       setSelectedMonth(month)
       onSelectMonth(month)
     }
+  }
+
+  const getButtonStyle = (month: number) => {
+    return monthlySummary.includes(month)
+      ? ButtonStyle.MONTHLY
+      : ButtonStyle.MONTHLY_NONE
   }
 
   return (
@@ -37,8 +48,8 @@ export default function MonthlyPlan({ onSelectMonth }: Props) {
                 {firstRowMonths.map((month, index) => (
                   <Button
                     key={index}
-                    buttonStyle={ButtonStyle.MONTHLY}
-                    style="flex-1 m-0"
+                    buttonStyle={getButtonStyle(index + 1)}
+                    style="flex-1 m-0 bg-gray-50"
                     isSelect={selectedMonth === index + 1}
                     onClickFunction={() => handleMonthClick(index)}
                   >
@@ -50,7 +61,7 @@ export default function MonthlyPlan({ onSelectMonth }: Props) {
                 {secondRowMonths.map((month, index) => (
                   <Button
                     key={index}
-                    buttonStyle={ButtonStyle.MONTHLY}
+                    buttonStyle={getButtonStyle(index + 7)}
                     style="flex-1 m-0"
                     isSelect={selectedMonth === index + 7}
                     onClickFunction={() => handleMonthClick(index + 6)}

@@ -28,12 +28,16 @@ export default function Home() {
     total: 0,
   })
 
+  // 법정관리 게시글 요약 조회
   const [manageSummary, setManageSummary] = useState<MANAGE_SUMMARY>({
     complete: 0,
     inprogress: 0,
     pending: 0,
     hasIssue: [],
   })
+
+  // 법정관리 월별 요약 조회
+  const [monthlySummary, setMonthlySummary] = useState([])
 
   const handleSelectMonth = (month: number) => {
     setSelectedMonth(month)
@@ -86,13 +90,32 @@ export default function Home() {
         console.error(error)
       }
     }
+    const getMonthlySummaryData = async () => {
+      try {
+        const getMonthlySummaryResponse = await fetch(
+          'http://10aeat.com/manage//monthly/summary',
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              AccessToken: accessToken,
+            },
+          },
+        )
+        const monthlySummaryData = await getMonthlySummaryResponse.json()
+        setMonthlySummary(monthlySummaryData.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
 
     getRepairSummaryData()
     getManageSummaryData()
+    getMonthlySummaryData()
   }, [accessToken])
 
   return (
-    <div className="flex flex-col h-[975px] w-full items-center bg-gray-100 ">
+    <div className="flex flex-col h-[875px] w-full items-center bg-gray-100 ">
       <div className="relative w-[375px] h-[50px]">
         <div className="flex w-[97px] h-[28.462px] justify-center items-center gap-[2.205px] ">
           <div className="relative flex w-[97px] h-[28px] !top-[11px] left-[13px] justify-center items-center gap-[2.205px] ">
@@ -197,7 +220,10 @@ export default function Home() {
         </div>
         <ManageStatus manageSummary={manageSummary} />
         <div className="mt-[16px]" />
-        <MonthlyPlan onSelectMonth={handleSelectMonth} />
+        <MonthlyPlan
+          onSelectMonth={handleSelectMonth}
+          monthlySummary={monthlySummary}
+        />
       </div>
       <BottomNav />
     </div>

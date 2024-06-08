@@ -17,7 +17,8 @@ interface Props {
   isSave: boolean
   img_src?: string
   title: string
-  period?: string
+  start?: string
+  end?: string
   state: string
   name: string
   view: number
@@ -31,7 +32,8 @@ export default function Card({
   isSave,
   img_src,
   title,
-  period,
+  start,
+  end,
   state,
   name,
   view,
@@ -40,9 +42,18 @@ export default function Card({
 }: Props) {
   const selectCard = () => {
     const [saveState, setSaveState] = useState(isSave)
+    console.log(start)
+    const startData = start
+      ? `${start[0].toString().slice(2, 4)}.${start[1].toString().padStart(2, '0')}.${start[1].toString().padStart(2, '0')}`
+      : ''
+    const endData = end
+      ? `~ ${end[0].toString().slice(2, 4)}.${end[1].toString().padStart(2, '0')}.${end[1].toString().padStart(2, '0')}`
+      : ''
+    const date = `${startData} ${endData}`
     switch (cardStyle) {
       case CardStyle.ALL:
         return (
+          // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
           <div
             onClick={onClickFunction}
             className="inline-flex flex-col items-start gap-[8px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]"
@@ -70,7 +81,7 @@ export default function Card({
                   </div>
 
                   <div className="relative self-stretch h-[20px] text-gray-600 font-Pretendard whitespace-nowrap text-sm font-normal">
-                    진행기간 : {period}
+                    진행기간 : {date}
                   </div>
                 </div>
               </div>
@@ -147,7 +158,7 @@ export default function Card({
                   </div>
 
                   <div className="relative self-stretch h-[20px] text-gray-600 font-Pretendard whitespace-nowrap text-sm font-normal">
-                    진행기간 : {period}
+                    진행기간 : {date}
                   </div>
                 </div>
               </div>
