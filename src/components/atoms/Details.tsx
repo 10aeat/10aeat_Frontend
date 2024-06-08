@@ -6,7 +6,35 @@ import TimelineSeparator from '@mui/lab/TimelineSeparator'
 import TimelineConnector from '@mui/lab/TimelineConnector'
 import TimelineContent from '@mui/lab/TimelineContent'
 
-export default function Details() {
+export default function Details({
+  manageSchedule,
+}: {
+  manageSchedule: MANAGE_SCHEDULE[]
+}) {
+  console.log(manageSchedule)
+  const data = manageSchedule?.map((schedule) => {
+    const startDate = new Date(
+      Number(schedule.scheduleStart[0]),
+      Number(schedule.scheduleStart[1]),
+      Number(schedule.scheduleStart[2]),
+    )
+    console.log(startDate)
+    const endDate = schedule.scheduleEnd
+      ? new Date(
+          Number(schedule.scheduleStart[0]),
+          Number(schedule.scheduleStart[1]),
+          Number(schedule.scheduleStart[2]),
+        )
+      : null
+    return {
+      date: `${startDate.getFullYear()}-${(startDate.getMonth() + 1).toString().padStart(2, '0')}-${startDate.getDate().toString().padStart(2, '0')}`,
+      isChecked: schedule.isComplete,
+      endDate: endDate
+        ? `${endDate.getFullYear()}-${(endDate.getMonth() + 1).toString().padStart(2, '0')}-${endDate.getDate().toString().padStart(2, '0')}`
+        : null,
+    }
+  })
+  console.log(data)
   // 예제 데이터
   const exampleData = [
     {
@@ -46,7 +74,7 @@ export default function Details() {
             },
           }}
         >
-          {exampleData.map((item, index) => (
+          {data?.map((item, index) => (
             <TimelineItem sx={{ minHeight: 50 }}>
               <TimelineSeparator>
                 <div className="w-[32px] h-[32px]">
@@ -57,13 +85,15 @@ export default function Details() {
                     alt="check_circle"
                   />
                 </div>
-                {index < exampleData.length - 1 && (
+                {index < data.length - 1 && (
                   <TimelineConnector className="bg-gray-300" />
                 )}
               </TimelineSeparator>
               <TimelineContent style={{ padding: 5, height: '10px' }}>
-                <span className="fontchange font-Pretendard font-medium text-[16px] leading-[24px] capitalize">
-                  {item.date.replaceAll('-', '.')}
+                <span className="flex fontchange font-Pretendard font-medium text-[16px] leading-[24px] capitalize whitespace-nowrap">
+                  {!item.endDate
+                    ? item.date.replaceAll('-', '.')
+                    : `${item.date.replaceAll('-', '.')} ~ ${item.endDate.replaceAll('-', '.')}`}
                 </span>
               </TimelineContent>
             </TimelineItem>

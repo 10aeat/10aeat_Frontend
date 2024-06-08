@@ -7,26 +7,31 @@ import Image from 'next/image'
 import { ResponsivePie } from '@nivo/pie'
 import { useRouter } from 'next/navigation'
 
-export default function ManageStatus() {
+interface Props {
+  manageSummary: MANAGE_SUMMARY
+}
+export default function ManageStatus({ manageSummary }: Props) {
   const router = useRouter()
   const data = [
     {
       id: '완료',
       label: '완료',
-      value: 20,
+      value: manageSummary?.complete,
       color: '#1D4ED8',
     },
     {
       id: '진행중/대기',
       label: '진행중/대기',
-      value: 5,
+      value: manageSummary?.inprogress,
       color: '#E5E7Eb',
     },
   ]
   const totalValue = data.reduce((acc, item) => acc + item.value, 0)
   const completedItem = data.find((item) => item.id === '완료')
   const completedValue = completedItem ? completedItem.value : 0
-  const completionPercentage = ((completedValue / totalValue) * 100).toFixed(0)
+  const completionPercentage =
+    totalValue ?? ((completedValue / totalValue) * 100).toFixed(0)
+
   return (
     <div className="relative w-[343px] h-[228px] top-[36px] bg-white rounded-[18px] shadow-primary">
       <button

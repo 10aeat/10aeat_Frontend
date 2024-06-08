@@ -69,10 +69,8 @@ export default function Page() {
       if (response) {
         console.log('로그인 성공!')
         console.log(response.headers.accesstoken)
-        alert('로그인 성공')
         setAccessToken(response.headers.accesstoken)
-        console.log(accessToken)
-        router.push('/repair')
+        router.push('/')
       } else {
         // 오류 처리
         // console.error('로그인 실패:', response.statusText)

@@ -5,16 +5,15 @@ const accessTokenKey = 'accesstoken-key'
 
 interface AccessToken {
   accessToken: string
-  setAccessToken: (accessToken: string) => void
+  setAccessToken: (newAccessToken: string) => void
 }
 
 export const useAccessToken = create(
   persist<AccessToken>(
     (set) => ({
       accessToken: '',
-
       setAccessToken: (accessToken: string) => {
-        set({ accessToken })
+        set({ accessToken: accessToken })
       },
     }),
     {

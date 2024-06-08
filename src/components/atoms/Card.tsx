@@ -22,6 +22,7 @@ interface Props {
   name: string
   view: number
   comment: number
+  onClickFunction?: () => Promise<void> | void
   // children?: string
 }
 
@@ -35,13 +36,17 @@ export default function Card({
   name,
   view,
   comment,
+  onClickFunction,
 }: Props) {
   const selectCard = () => {
     const [saveState, setSaveState] = useState(isSave)
     switch (cardStyle) {
       case CardStyle.ALL:
         return (
-          <div className="inline-flex flex-col items-start gap-[8px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
+          <div
+            onClick={onClickFunction}
+            className="inline-flex flex-col items-start gap-[8px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]"
+          >
             <div className="flex flex-wrap w-[343px] h-[124px] items-end gap-[8px_10px] p-[16px] bg-[#ffffff] rounded-[18px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
               <div className="flex w-[311px] items-center gap-[10px] relative">
                 <img
