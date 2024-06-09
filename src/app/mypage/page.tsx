@@ -5,9 +5,11 @@ import IconProfile from '@/components/icons/profile'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useAccessToken } from '@/components/store/AccessTokenStore'
+import { useRouter } from 'next/navigation'
 
 export default function Page() {
-  const { accessToken } = useAccessToken()
+  const { accessToken, setAccessToken } = useAccessToken()
+  const router = useRouter()
   const [info, setInfo] = useState<MYINFO>({
     name: '',
     role: '',
@@ -15,6 +17,10 @@ export default function Page() {
   })
   const [buildings, setBuildings] = useState()
 
+  const handleLogout = () => {
+    setAccessToken('')
+    router.push('/signup')
+  }
   useEffect(() => {
     const getInfoData = async () => {
       try {
@@ -176,8 +182,9 @@ export default function Page() {
           <button
             type="button"
             className="flex flex-col items-start border-b-[1px] border-solid border-gray-300"
+            onClick={handleLogout}
           >
-            <div className="w-[49px]  text-gray-500 font-Pretendard text-[14px] font-normal leading-[20px] capitalize ">
+            <div className="w-[49px]  text-gray-500 font-Pretendard text-[14px] font-normal leading-[20px] capitalize">
               로그아웃
             </div>
           </button>
