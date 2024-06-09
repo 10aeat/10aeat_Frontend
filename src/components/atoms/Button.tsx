@@ -131,8 +131,8 @@ export default function Button({
         return (
           <button
             type="button"
-            className="flex w-[45px] h-[40px] p-[8px] justify-center flex-col items-center gap-[8px] shrink-0 rounded-[6px] bg-gray-200 text-gray-400 text-center text-base font-normal font-Pretendard"
-            onClick={onClickFunction}
+            className="disalbed flex w-[45px] h-[40px] p-[8px] justify-center flex-col items-center gap-[8px] shrink-0 rounded-[6px] bg-gray-200 text-gray-400 text-center text-base font-normal font-Pretendard"
+            // onClick={onClickFunction}
           >
             {children}
           </button>
