@@ -126,6 +126,9 @@ export default function Home() {
             width={24}
             height={24}
             alt="bell"
+            onClick={() => {
+              router.push('/alert')
+            }}
             className="!absolute !w-[24px] !h-[24px] !top-[13px] !left-[335px]"
           />
         </div>

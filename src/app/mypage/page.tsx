@@ -59,7 +59,7 @@ export default function Page() {
   console.log(info)
   console.log(buildings)
   return (
-    <div className="relative flex flex-col w-[375px] items-center h-[812px] bg-gray-100 ">
+    <div className="flex flex-col h-[812px] w-full items-center bg-gray-100 ">
       <div className="absolute top-[40px] w-[375px] inline-flex items-center gap-[16px] pl-[16px]">
         <IconProfile width="80px" height="80px" />
         <div className=" flex flex-col items-start gap-[4px]">
