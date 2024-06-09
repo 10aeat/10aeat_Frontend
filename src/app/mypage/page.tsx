@@ -194,16 +194,14 @@ export default function Page() {
         </div>
       </div>
       {isModalVisible && (
-        <div className="p-[16px]">
-          <AdminModalOrganism
-            title="로그아웃"
-            bottomStyle={BottomStyle.CANCEL_DONE}
-            btntext="로그아웃"
-            onClose={handleLogout}
-          >
-            로그아웃 하시겠습니까?
-          </AdminModalOrganism>
-        </div>
+        <AdminModalOrganism
+          title="로그아웃"
+          bottomStyle={BottomStyle.CANCEL_DONE}
+          btntext="로그아웃"
+          onClose={handleLogout}
+        >
+          로그아웃 하시겠습니까?
+        </AdminModalOrganism>
       )}
       <BottomNav />
     </div>
