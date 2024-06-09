@@ -6,6 +6,8 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useAccessToken } from '@/components/store/AccessTokenStore'
 import { useRouter } from 'next/navigation'
+import AdminModalOrganism from '../admin/_components/organisms/AdminModalOrganism'
+import { BottomStyle } from '../admin/_components/atoms/AdminModalBottom'
 
 export default function Page() {
   const { accessToken, setAccessToken } = useAccessToken()
@@ -16,9 +18,10 @@ export default function Page() {
     officeName: '',
   })
   const [buildings, setBuildings] = useState()
-
+  const [isModalVisible, setIsModalVisible] = useState(false)
   const handleLogout = () => {
     setAccessToken('')
+    setIsModalVisible(false)
     router.push('/signup')
   }
   useEffect(() => {
@@ -59,7 +62,7 @@ export default function Page() {
   console.log(info)
   console.log(buildings)
   return (
-    <div className="relative flex flex-col w-[375px] items-center h-[812px] bg-gray-100 ">
+    <div className="flex flex-col h-[812px] w-full items-center bg-gray-100 ">
       <div className="absolute top-[40px] w-[375px] inline-flex items-center gap-[16px] pl-[16px]">
         <IconProfile width="80px" height="80px" />
         <div className=" flex flex-col items-start gap-[4px]">
@@ -182,7 +185,7 @@ export default function Page() {
           <button
             type="button"
             className="flex flex-col items-start border-b-[1px] border-solid border-gray-300"
-            onClick={handleLogout}
+            onClick={() => setIsModalVisible(true)}
           >
             <div className="w-[49px]  text-gray-500 font-Pretendard text-[14px] font-normal leading-[20px] capitalize">
               로그아웃
@@ -190,6 +193,16 @@ export default function Page() {
           </button>
         </div>
       </div>
+      {isModalVisible && (
+        <AdminModalOrganism
+          title="로그아웃"
+          bottomStyle={BottomStyle.CANCEL_DONE}
+          btntext="로그아웃"
+          onClose={handleLogout}
+        >
+          로그아웃 하시겠습니까?
+        </AdminModalOrganism>
+      )}
       <BottomNav />
     </div>
   )
