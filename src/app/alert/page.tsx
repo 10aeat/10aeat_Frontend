@@ -12,10 +12,6 @@ export default function Page() {
         <Alert />
         <Alert />
         <Alert />
-        <Alert />
-        <Alert />
-        <Alert />
-        <Alert />
       </div>
     </div>
   )

@@ -7,7 +7,7 @@ interface Props {
 export default function BottomNav({ isHome }: Props) {
   const router = useRouter()
   return (
-    <div className="fixed bottom-0 w-[375px] h-[56px] rounded-t-[18px]  z-10 flex justify-between bg-white">
+    <div className="fixed bottom-0 w-[375px] h-[56px] rounded-t-[18px]  z-9 flex justify-between bg-white">
       <button
         type="button"
         className="flex-1 flex items-center justify-center"
