@@ -225,7 +225,7 @@ export default function Home() {
           monthlySummary={monthlySummary}
         />
       </div>
-      <BottomNav />
+      <BottomNav isHome />
     </div>
   )
 }

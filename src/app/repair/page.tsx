@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation'
 import NoData from '@/components/atoms/NoData'
 
 export default function Home() {
-  const { accessToken, setAccessToken } = useAccessToken()
+  const { accessToken } = useAccessToken()
   const router = useRouter()
 
   // OK

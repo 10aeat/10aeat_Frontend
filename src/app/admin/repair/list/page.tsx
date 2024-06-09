@@ -1,3 +1,7 @@
+'use client'
+
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 import AdminButton, {
   ButtonStyle,
 } from '@/app/admin/_components/atoms/AdminButton'
@@ -7,9 +11,101 @@ import AdminListTable from '@/app/admin/_components/atoms/AdminRepairTable'
 import AdminLogo from '@/app/admin/_components/atoms/AdminLogo'
 import Dropdown from '@/components/atoms/Dropdown'
 import Pagination from '@/components/atoms/Pagination'
+import { useAccessToken } from '@/components/store/AccessTokenStore'
 import SideMenu from '../../sidemenu/page'
 
-export default function page() {
+export default function Page() {
+  const { accessToken, setAccessToken } = useAccessToken()
+
+  const email = 'admin@google.com'
+  const password = 'adminpassword'
+
+  const [repairList, setRepairList] = useState<REPAIR_LIST>({
+    pageSize: 5,
+    currentPage: 0,
+    totalElements: 0,
+    totalPages: 1,
+    articles: [],
+  })
+
+  const [currentPage, setCurrentPage] = useState(0)
+  const [articleList, setArticleList] = useState<REPAIR_LIST_ARTICLE[]>([])
+
+  // 유지보수 게시글 전체 조회
+
+  // OK
+  useEffect(() => {
+    const handleLogin = async () => {
+      try {
+        const response = await axios.post('http://10aeat.com/managers/login', {
+          email,
+          password,
+        })
+        if (response) {
+          console.log('로그인 성공!')
+          console.log(response.headers.accesstoken)
+          setAccessToken(response.headers.accesstoken)
+        } else {
+          // 오류 처리
+          console.error('로그인 실패:', response)
+        }
+      } catch (error) {
+        // 네트워크 오류 등을 처리합니다.
+        console.error('네트워크 오류:', error)
+      }
+    }
+    const getRepairListData = async () => {
+      try {
+        const response = await fetch(
+          `http://10aeat.com/repair/articles/list?size=5`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              AccessToken: accessToken,
+            },
+          },
+        )
+
+        const data = await response.json()
+        setRepairList(data.data)
+
+        console.log(data)
+        const article = data.data.articles
+
+        setArticleList(article)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    handleLogin()
+    getRepairListData()
+  }, [accessToken])
+
+  // const handleSearch = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `http://10aeat.com/repair?keyword=${'11'}&page=${2}`,
+  //       {
+  //         method: 'GET',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           AccessToken: accessToken,
+  //         },
+  //       },
+  //     )
+  //     const data = await response.json()
+  //     setRepairList(data.data)
+
+  //     console.log(data)
+  //     const article = data.data.articles
+
+  //     setArticleList(article)
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
+  // // console.log(handleSearch())
   return (
     <div className="relative w-full bg-white">
       <AdminLogo />
@@ -38,37 +134,30 @@ export default function page() {
           <Dropdown
             isDisabled={false}
             size="md"
-            placeholder="사안유형"
+            placeholder="전체"
             options={['전체', '설치', '보수', '교체']}
           />
           <AdminInput />
-          <AdminButton buttonSize="sm" buttonStyle={ButtonStyle.SECONDARY_GRAY}>
+          <AdminButton
+            buttonSize="sm"
+            buttonStyle={ButtonStyle.SECONDARY_GRAY}
+            // onClickFunction={handleSearch}
+          >
             <span className="text-gray-600 px-[4px]">검색</span>
           </AdminButton>
         </div>
         <div className="relative inline-flex top-[24px] items-start gap-[10px]">
           <AdminFilterBtn />
         </div>
-        <div className=" justify-between relative flex py-[12px] mt-[24px] items-center gap-[695px]">
-          <span className="font-Pretendard text-[18px] font-semibold leading-[24px] text-gray-900 whitespace-nowrap">
-            총 <span className="text-[#2463EB]"> 0개</span>의 게시물이
-            조회되었습니다.
-          </span>
-          <div className="flex justify-end items-start gap-[4px]">
-            <AdminButton
-              buttonSize="md"
-              isDisabled
-              buttonStyle={ButtonStyle.WARNING}
-            >
-              삭제
-            </AdminButton>
-          </div>
-        </div>
-        <div className="mt-[-12px]">
-          <AdminListTable />
-        </div>
+
+        <AdminListTable repairList={repairList} articleList={articleList} />
         <div className="relative flex w-[1000px] justify-end items-center gap-[4px] pb-[100px]">
-          <Pagination totalItems={100} itemsPerPage={5} />
+          <Pagination
+            currentPage={0}
+            onPageChange={setCurrentPage}
+            totalItems={100}
+            itemsPerPage={5}
+          />
         </div>
       </div>
     </div>
