@@ -7,9 +7,10 @@ import Pagination from '@/components/atoms/Pagination'
 import { useEffect, useState } from 'react'
 import { useAccessToken } from '@/components/store/AccessTokenStore'
 import { useRouter } from 'next/navigation'
+import NoData from '@/components/atoms/NoData'
 
 export default function Home() {
-  const { accessToken, setAccessToken } = useAccessToken()
+  const { accessToken } = useAccessToken()
   const router = useRouter()
 
   // OK
@@ -30,6 +31,8 @@ export default function Home() {
     totalPages: 1,
     articles: [],
   })
+
+  const [articleList, setArticleList] = useState<REPAIR_LIST_ARTICLE[]>([])
 
   // 버튼 조작
   const [selectedStatus, setSelectedStatus] = useState('전체')
@@ -57,17 +60,14 @@ export default function Home() {
             },
           },
         )
+        console.log('호출')
+
         const data = await response.json()
         setRepairSummary(data.data)
       } catch (error) {
         console.error(error)
       }
     }
-
-    getRepairSummaryData()
-  }, [accessToken])
-
-  useEffect(() => {
     const getRepairListData = async () => {
       try {
         const response = await fetch(`http://10aeat.com/repair/articles/list`, {
@@ -77,22 +77,73 @@ export default function Home() {
             AccessToken: accessToken,
           },
         })
+
         const data = await response.json()
         setRepairList(data.data)
 
+        const article = data.data.articles
         // 카테고리별 게시글 수 계산
         const counts = { INSTALL: 0, REPAIR: 0, REPLACE: 0 }
-        data.data.articles.forEach((article: REPAIR_LIST_ARTICLE) => {
+        data.data?.articles.forEach((article: REPAIR_LIST_ARTICLE) => {
           counts[article.category] += 1
         })
         setCategoryCounts(counts)
+        setArticleList(article)
       } catch (error) {
         console.error(error)
       }
     }
 
     getRepairListData()
+    getRepairSummaryData()
   }, [accessToken])
+
+  console.log(categoryCounts)
+  useEffect(() => {
+    const getRepairListData = async () => {
+      try {
+        let url = `http://10aeat.com/repair/articles/list?page=${currentPage}`
+
+        // 상태가 '전체'가 아닌 경우에만 상태에 따라 쿼리 파라미터 추가
+        if (selectedStatus !== '전체') {
+          const statusQuery =
+            selectedStatus === '진행중/대기'
+              ? 'progress=PENDING&progress=INPROGRESS'
+              : 'progress=COMPLETE'
+          url += `&${statusQuery}`
+        }
+
+        // 카테고리가 '전체'가 아닌 경우에만 카테고리에 따라 쿼리 파라미터 추가
+        if (selectedCategory !== '전체') {
+          const categoryQuery = `category=${selectedCategory}`
+          // 상태가 '전체'가 아닌 경우에는 '&'로 쿼리 파라미터 연결
+          url += `&${categoryQuery}`
+        }
+
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            AccessToken: accessToken,
+          },
+        })
+        const data = await response.json()
+        setRepairList(data.data)
+
+        const article = data.data.articles
+        // 카테고리별 게시글 수 계산
+        const counts = { INSTALL: 0, REPAIR: 0, REPLACE: 0 }
+        data.data?.articles.forEach((article: REPAIR_LIST_ARTICLE) => {
+          counts[article.category] += 1
+        })
+        setCategoryCounts(counts)
+        setArticleList(article)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    getRepairListData()
+  }, [selectedStatus, selectedCategory, currentPage, accessToken])
 
   // 상태 버튼 클릭 핸들러
   const handleStatusClick = (status: string) => {
@@ -110,11 +161,6 @@ export default function Home() {
   // const handlePageChange = (page: number) => {
   //   setRepairList((prev) => ({ ...prev, currentPage: page }))
   // }
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page)
-    // 페이지 변경에 필요한 다른 동작을 수행합니다.
-    // 예: 해당 페이지의 데이터를 가져오는 등의 비동기 작업 수행 가능
-  }
 
   const handleCardClick = (articleId: number) => {
     // 해당 카드의 상세 페이지 경로를 생성합니다.
@@ -123,9 +169,6 @@ export default function Home() {
     // 생성한 경로로 페이지를 이동합니다.
     router.push(detailPath)
   }
-
-  // console.log(repairSummary)
-  // console.log(repairList)
 
   // 카드 스타일 지정 함수
   function determineCardStyle(article: REPAIR_LIST_ARTICLE): CardStyle {
@@ -143,7 +186,9 @@ export default function Home() {
     }
     return CardStyle.ALL_NO
   }
-  console.log(currentPage)
+
+  // console.log(currentPage)
+  console.log(articleList)
 
   return (
     <div className="flex flex-col w-full items-center ">
@@ -191,51 +236,65 @@ export default function Home() {
           />
           <Button
             buttonStyle={ButtonStyle.HUG}
-            isSelect={selectedCategory === '설치'}
-            onClickFunction={() => handleCategoryClick('설치')}
+            isSelect={selectedCategory === 'INSTALL'}
+            onClickFunction={() => handleCategoryClick('INSTALL')}
             text="설치"
             total={categoryCounts.INSTALL}
           />
           <Button
             buttonStyle={ButtonStyle.HUG}
-            isSelect={selectedCategory === '보수'}
-            onClickFunction={() => handleCategoryClick('보수')}
+            isSelect={selectedCategory === 'REPAIR'}
+            onClickFunction={() => handleCategoryClick('REPAIR')}
             text="보수"
             total={categoryCounts.REPAIR}
           />
           <Button
             buttonStyle={ButtonStyle.HUG}
-            isSelect={selectedCategory === '교체'}
-            onClickFunction={() => handleCategoryClick('교체')}
+            isSelect={selectedCategory === 'REPLACE'}
+            onClickFunction={() => handleCategoryClick('REPLACE')}
             text="교체"
             total={categoryCounts.REPLACE}
           />
         </div>
-        <div className="inline-flex flex-col top-[18px] items-start gap-[18px] relative">
-          {/* {filteredArticles?.map((article: REPAIR_LIST_ARTICLE) => (
-            <Card
-              // 각 기사에 대한 카드 스타일을 결정합니다.
-              cardStyle={determineCardStyle(article)}
-              isSave={article.isSave}
-              // 다른 속성들도 동적으로 전달합니다.
-              title={article.title}
-              state={article.progress === 'COMPLETE' ? '완료' : '진행중'}
-              name={article.managerName}
-              // 이미지 URL이 존재하면 전달하고, 아니면 빈 문자열을 전달합니다.
-              img_src={article.imageUrl || ''}
-              // 기간 정보를 포맷팅하여 전달합니다.
-              period={`${article.startConstruction} ~ ${article.endConstruction}`}
-              view={article.viewCount}
-              comment={article.commentCount}
-              key={article.id} // 각 카드에 고유한 key를 제공합니다.
-              onClickFunction={() => handleCardClick(article.id)}
-            />
-          ))} */}
+        <div className="inline-flex flex-col justify-center top-[18px] items-start gap-[18px] relative">
+          {articleList && articleList.length > 0 ? (
+            articleList.map((article: REPAIR_LIST_ARTICLE) => (
+              <Card
+                // 각 기사에 대한 카드 스타일을 결정합니다.
+                cardStyle={determineCardStyle(article)}
+                isSave={article.isSave}
+                // 다른 속성들도 동적으로 전달합니다.
+                title={article.title}
+                state={
+                  // eslint-disable-next-line no-nested-ternary
+                  article.progress === 'COMPLETE'
+                    ? '완료'
+                    : article.progress === 'INPROGRESS'
+                      ? '진행중'
+                      : '대기'
+                }
+                name={article.managerName}
+                // 이미지 URL이 존재하면 전달하고, 아니면 빈 문자열을 전달합니다.
+                img_src={article.imageUrl || ''}
+                start={article.startConstruction}
+                end={article.endConstruction}
+                view={article.viewCount}
+                comment={article.commentCount}
+                redDot={article.redDot}
+                key={article.id} // 각 카드에 고유한 key를 제공합니다.
+                onClickFunction={() => handleCardClick(article.id)}
+              />
+            ))
+          ) : (
+            <NoData />
+          )}
         </div>
         <div className=" w-full  mt-8 !flex justify-center ">
           <Pagination
             totalItems={repairList?.totalElements}
             itemsPerPage={repairList?.pageSize}
+            currentPage={currentPage + 1} // currentPage 추가
+            onPageChange={setCurrentPage} // 페이지 변경 이벤트 핸들러 추가
           />
         </div>
       </div>

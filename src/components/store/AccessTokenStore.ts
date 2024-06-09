@@ -12,8 +12,8 @@ export const useAccessToken = create(
   persist<AccessToken>(
     (set) => ({
       accessToken: '',
-      setAccessToken: (accessToken: string) => {
-        set({ accessToken: accessToken })
+      setAccessToken: (newAccessToken: string) => {
+        set({ accessToken: newAccessToken })
       },
     }),
     {

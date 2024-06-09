@@ -79,6 +79,7 @@ export default function Page() {
     } catch (error) {
       // 네트워크 오류 등을 처리합니다.
       console.error('네트워크 오류:', error)
+      setIsPasswordValid(false)
     }
   }
 
@@ -117,15 +118,6 @@ export default function Page() {
               className="w-[24px] h-[24px] cursor-pointer"
             />
           )}
-          {/* {!isEmailValid && (
-            <Image
-              src="/icons/danger.svg"
-              width={24}
-              height={24}
-              alt="danger"
-              className="w-[24px] h-[24px] cursor-pointer"
-            />
-          )} */}
         </div>
         {!isEmailValid && (
           <div className="relative top-[14px] font-Pretendard text-red-500 font-normal text-[12px] leading-[18px] self-stretch">

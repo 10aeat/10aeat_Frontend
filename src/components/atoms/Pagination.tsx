@@ -1,6 +1,3 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable @typescript-eslint/no-use-before-define */
-
 'use client'
 
 import Image from 'next/image'
@@ -10,10 +7,16 @@ import Page from './Page'
 interface Props {
   totalItems: number
   itemsPerPage: number
+  currentPage: number // 추가된 부분
+  onPageChange: (page: number) => void // 추가된 부분
 }
 
-export default function Pagination({ totalItems, itemsPerPage }: Props) {
-  const [currentPage, setCurrentPage] = useState(1)
+export default function Pagination({
+  totalItems,
+  itemsPerPage,
+  currentPage,
+  onPageChange,
+}: Props) {
   const [totalPages, setTotalPages] = useState(
     Math.ceil(totalItems / itemsPerPage),
   )
@@ -21,11 +24,7 @@ export default function Pagination({ totalItems, itemsPerPage }: Props) {
 
   useEffect(() => {
     setTotalPages(Math.ceil(totalItems / itemsPerPage))
-  }, [totalItems])
-
-  useEffect(() => {
-    updatePageNumbers(currentPage)
-  }, [currentPage, totalPages])
+  }, [itemsPerPage, totalItems])
 
   const updatePageNumbers = (page: number) => {
     let startPage = 1
@@ -45,26 +44,30 @@ export default function Pagination({ totalItems, itemsPerPage }: Props) {
     }
 
     const pageNums = []
-    for (let i = startPage; i <= endPage; i++) {
+    for (let i = startPage; i <= endPage; i += 1) {
       pageNums.push(i)
     }
     setPageNumbers(pageNums)
   }
 
+  useEffect(() => {
+    updatePageNumbers(currentPage)
+  }, [currentPage, totalPages])
+
   const handlePageClick = (page: number) => {
-    setCurrentPage(page)
+    onPageChange(page - 1) // 페이지 변경 이벤트 핸들러 호출
   }
 
   const handlePreviousClick = () => {
     if (currentPage > 1) {
-      setCurrentPage(currentPage - 1)
+      onPageChange(currentPage - 2)
       updatePageNumbers(currentPage - 1)
     }
   }
 
   const handleNextClick = () => {
     if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1)
+      onPageChange(currentPage)
       updatePageNumbers(currentPage + 1)
     }
   }

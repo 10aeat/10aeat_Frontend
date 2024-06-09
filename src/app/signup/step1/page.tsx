@@ -1,10 +1,43 @@
+'use client'
+
 import AdminButton, {
   ButtonStyle,
 } from '@/app/admin/_components/atoms/AdminButton'
 import NavBar from '@/components/atoms/NavBar'
-import React from 'react'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import { ChangeEvent, useState } from 'react'
 
-export default function page() {
+export default function Page() {
+  const [email, setEmail] = useState('')
+  const [code, setCode] = useState('')
+  const [isEmailFilled, setIsEmailFilled] = useState(false)
+  const [isCodeFilled, setIsCodeFilled] = useState(false)
+  const [isEmailValid, setIsEmailValid] = useState(true)
+  const [isCodeValid, setIsCodeValid] = useState(true)
+
+  const router = useRouter()
+
+  // 이메일 유효성 검사 함수
+  const validateEmail = (email: string) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return regex.test(email)
+  }
+
+  // 이메일 입력란 값 변경 핸들러
+  const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value)
+    setIsEmailFilled(!!event.target.value)
+    setIsEmailValid(validateEmail(event.target.value))
+  }
+
+  // 이메일 입력란 초기화 핸들러
+  const handleEmailClear = () => {
+    setEmail('')
+    setIsEmailFilled(false)
+    setIsEmailValid(true)
+  }
+
   return (
     <div className="flex flex-col w-full items-center bg-white h-[812px]">
       <NavBar isTextChange={false} isTitle />
@@ -27,26 +60,35 @@ export default function page() {
         <div className="font-Pretendard text-[16px] text-gray-900 font-medium leading-[24px] capitalize ">
           이메일
         </div>
-        <div className="relative top-[12px] flex w-[343px] h-[48px] px-[16px] py-[12px] gap-[8px] rounded-[10px] border-solid border-[1px] border-gray-300 bg-white">
+        <div
+          className={`relative top-[12px] flex w-[343px] h-[48px] px-[16px] py-[12px] gap-[8px] rounded-[10px] border-solid border-[1px] ${
+            isEmailValid ? 'border-gray-300' : 'border-red-500'
+          } bg-white ${isEmailValid ? 'focus-within:border-blue-600' : ''}`}
+        >
           <input
-            className="flex items-center gap-[8px] flex-[1_0_0%] opacity-[0.4] font-Pretendard text-[16px] font-normal leading-[24px] text-gray-700"
+            onChange={handleEmailChange}
+            value={email}
+            className="flex items-center gap-[8px] flex-[1_0_0%] opacity-[0.4] font-Pretendard text-[16px] font-normal leading-[24px] text-gray-700 focus:opacity-100 focus:outline-none"
             placeholder="이메일 주소를 입력해주세요."
           />
-          {/* <Image
-          src="/icons/close_circle.svg"
-          width={24}
-          height={24}
-          alt="close_circle"
-          className="w-[24px] h-[24px]"
-        /> */}
-          {/* <Image
-          src="/icons/danger.svg"
-          width={24}
-          height={24}
-          alt="danger"
-          className="w-[24px] h-[24px]"
-        /> */}
+          {isEmailFilled && (
+            <Image
+              onClick={handleEmailClear}
+              src={
+                isEmailValid ? `/icons/close_circle.svg` : '/icons/danger.svg'
+              }
+              width={24}
+              height={24}
+              alt="close_circle"
+              className="w-[24px] h-[24px] cursor-pointer"
+            />
+          )}
         </div>
+        {!isEmailValid && (
+          <div className="relative top-[14px] font-Pretendard text-red-500 font-normal text-[12px] leading-[18px] self-stretch">
+            잘못된 유형의 이메일 주소입니다.
+          </div>
+        )}
       </div>
       <div className="absolute top-[308px] w-[343px] h-[84px]">
         <div className="font-Pretendard text-[16px] text-gray-900 font-medium leading-[24px] capitalize ">
