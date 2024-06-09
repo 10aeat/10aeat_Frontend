@@ -3,12 +3,55 @@
 import BottomNav from '@/components/atoms/BottomNav'
 import IconProfile from '@/components/icons/profile'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useAccessToken } from '@/components/store/AccessTokenStore'
 
 export default function Page() {
-  const [info, setInfo] = useState()
+  const { accessToken } = useAccessToken()
+  const [info, setInfo] = useState<MYINFO>({
+    name: '',
+    role: '',
+    officeName: '',
+  })
   const [buildings, setBuildings] = useState()
 
+  useEffect(() => {
+    const getInfoData = async () => {
+      try {
+        const response = await fetch('http://10aeat.com/my/info', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            AccessToken: accessToken,
+          },
+        })
+        const data = await response.json()
+        setInfo(data.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    const getBuildingData = async () => {
+      try {
+        const response = await fetch('http://10aeat.com/my/building/unit', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            AccessToken: accessToken,
+          },
+        })
+        const data = await response.json()
+        setBuildings(data.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    getInfoData()
+    getBuildingData()
+  }, [accessToken])
+
+  console.log(info)
+  console.log(buildings)
   return (
     <div className="relative flex flex-col w-[375px] items-center h-[812px] bg-gray-100 ">
       <div className="absolute top-[40px] w-[375px] inline-flex items-center gap-[16px] pl-[16px]">
@@ -16,7 +59,7 @@ export default function Page() {
         <div className=" flex flex-col items-start gap-[4px]">
           <div className="flex items-center gap-[8px]">
             <div className="font-Pretendard text-[24px] font-bold text-gray-900 leading-[32px] ">
-              나소유
+              {info?.name}
             </div>
             <div className="font-Pretendard text-[24px] font-bold text-gray-900 leading-[32px] ml-[-4px]">
               님
@@ -27,7 +70,7 @@ export default function Page() {
             </div>
           </div>
           <div className="font-Pretendard text-[16px] font-medium text-gray-600 leading-[24px] capitalize">
-            갑을그레이트밸리
+            {info?.officeName}
           </div>
         </div>
       </div>

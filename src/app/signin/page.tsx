@@ -79,6 +79,7 @@ export default function Page() {
     } catch (error) {
       // 네트워크 오류 등을 처리합니다.
       console.error('네트워크 오류:', error)
+      setIsPasswordValid(false)
     }
   }
 
