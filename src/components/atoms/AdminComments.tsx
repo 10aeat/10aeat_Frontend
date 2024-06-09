@@ -104,6 +104,23 @@ export default function AdminComments() {
     }
   }, [showReplyInput])
 
+  const handleKeyDownComment = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      handleAddComment()
+    }
+  }
+
+  const handleKeyDownReply = (
+    parentCommentId: number,
+    e: React.KeyboardEvent<HTMLInputElement>,
+  ) => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      handleAddReply(parentCommentId)
+    }
+  }
+
   return (
     <div className="flex flex-col text-[16px] font-normal mb-[120px] leading-[24px] text-gray-900 font-Pretendard">
       <div className="overflow-hidden pl-[40px] pr-[56px] h-[calc(100%-100px)]">
@@ -194,26 +211,13 @@ export default function AdminComments() {
                       onChange={(e) =>
                         handleReplyChange(comment.parentCommentId, e)
                       }
+                      onKeyDown={(e) =>
+                        handleKeyDownReply(comment.parentCommentId, e)
+                      }
                       ref={(el) => {
                         replyInputRefs.current[comment.parentCommentId] = el
                       }}
                     />
-                    <button
-                      type="button"
-                      onClick={() => handleAddReply(comment.parentCommentId)}
-                      disabled={!newReply[comment.parentCommentId]?.trim()}
-                    >
-                      <Image
-                        src={
-                          newReply[comment.parentCommentId]?.trim()
-                            ? '/icons/able_blue.svg'
-                            : '/icons/able_base.svg'
-                        }
-                        width={32}
-                        height={32}
-                        alt="able_base"
-                      />
-                    </button>
                   </div>
                 </div>
               </div>
@@ -234,23 +238,8 @@ export default function AdminComments() {
           type="text"
           value={newComment}
           onChange={handleCommentChange}
+          onKeyDown={handleKeyDownComment}
         />
-        <button
-          type="button"
-          onClick={handleAddComment}
-          disabled={!newComment.trim()}
-        >
-          <Image
-            src={
-              newComment.trim()
-                ? '/icons/able_blue.svg'
-                : '/icons/able_base.svg'
-            }
-            width={32}
-            height={32}
-            alt="able_base"
-          />
-        </button>
       </div>
     </div>
   )
