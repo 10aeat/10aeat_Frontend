@@ -60,7 +60,6 @@ export default function Home() {
             },
           },
         )
-        console.log('호출')
 
         const data = await response.json()
         setRepairSummary(data.data)
@@ -98,7 +97,6 @@ export default function Home() {
     getRepairSummaryData()
   }, [accessToken])
 
-  console.log(categoryCounts)
   useEffect(() => {
     const getRepairListData = async () => {
       try {
@@ -157,11 +155,6 @@ export default function Home() {
     setSelectedCategory(category)
   }
 
-  // // 페이지네이션 핸들러
-  // const handlePageChange = (page: number) => {
-  //   setRepairList((prev) => ({ ...prev, currentPage: page }))
-  // }
-
   const handleCardClick = (articleId: number) => {
     // 해당 카드의 상세 페이지 경로를 생성합니다.
     const detailPath = `/repair/${articleId}/detail`
@@ -191,7 +184,7 @@ export default function Home() {
   console.log(articleList)
 
   return (
-    <div className="flex flex-col w-full items-center ">
+    <div className="flex flex-col w-full items-center bg-gray-100 ">
       {/* NavBar */}
       <NavBar isTextChange={false} isTitle>
         건물 유지보수 사안
