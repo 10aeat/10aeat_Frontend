@@ -6,7 +6,6 @@ import AdminLogo from '@/app/admin/_components/atoms/AdminLogo'
 import AdminManageTable from '@/app/admin/_components//atoms/AdminManageTable'
 import AdminMonthPicker from '@/app/admin/_components/atoms/AdminMonthPicker'
 import AdminYearPicker from '@/app/admin/_components/atoms/AdminYearPicker'
-import Pagination from '@/components/atoms/Pagination'
 import SideMenu from '../../sidemenu/page'
 
 export default function page() {
@@ -65,16 +64,7 @@ export default function page() {
         <div className="mt-[-12px]">
           <AdminManageTable />
         </div>
-        <div className="relative flex w-[1000px] justify-end items-center gap-[4px] pb-[100px]">
-          <Pagination
-            currentPage={0}
-            onPageChange={() => {
-              console.log('d')
-            }}
-            totalItems={100}
-            itemsPerPage={5}
-          />
-        </div>
+        <div className="relative flex w-[1000px] justify-end items-center gap-[4px] pb-[100px]" />
       </div>
     </div>
   )
