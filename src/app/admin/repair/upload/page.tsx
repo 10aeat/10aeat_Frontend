@@ -74,11 +74,6 @@ export default function RepairUpload() {
     // }
   }
 
-  const handleButtonClick = (e) => {
-    e.preventDefault()
-    handleSubmit()
-  }
-
   return (
     <div className="w-[1024px] mx-[24px] bg-white font-Pretendard">
       <div className="flex items-center py-[24px] my-[16px] border-b border-gray-300">
@@ -172,7 +167,6 @@ export default function RepairUpload() {
         <button
           className="flex p-[14px] rounded-[12px] bg-blue-600 text-[20px] font-semibold leading-[20px] text-white"
           type="submit"
-          onClick={handleButtonClick}
         >
           등록하기
         </button>

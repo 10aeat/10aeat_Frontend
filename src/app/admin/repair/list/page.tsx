@@ -80,6 +80,7 @@ export default function Page() {
     }
     handleLogin()
     getRepairListData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [accessToken])
 
   // const handleSearch = async () => {

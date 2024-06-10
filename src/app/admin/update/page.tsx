@@ -5,13 +5,15 @@
 import Dropdown from '@/components/atoms/Dropdown'
 import { useEffect, useState } from 'react'
 import { useAccessToken } from '@/components/store/AccessTokenStore'
+import { useParams } from 'next/navigation'
 import NavBar from '../_components/atoms/NavBar'
 import AdminTag, { TagStyle } from '../_components/atoms/AdminTag'
 import IssueHistoryOrganism from '../_components/organisms/IssueHistory'
 import ProgressScheduleOrganism from '../_components/organisms/ProgressSchedule'
 import AdminButton, { ButtonStyle } from '../_components/atoms/AdminButton'
 
-export default function ItemUpdate(repairArticleId: number) {
+export default function ItemUpdate() {
+  const repairArticleId = useParams()
   const { accessToken } = useAccessToken()
   const [selectedProgressItems, setSelectedProgressItems] = useState<string[]>(
     [],

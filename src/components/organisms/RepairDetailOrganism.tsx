@@ -38,6 +38,7 @@ export default function RepairDetailOrganism() {
       }
     }
     getRepairArticleData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [repairArticleId])
 
   const handleConfirm = () => {

@@ -141,7 +141,7 @@ export default function Page() {
         </Link>
       </div>
       <div className="flex flex-col justify-center mt-[20px] gap-[16px]">
-        {visibleCardsSet1.map((_, index) => (
+        {/* {visibleCardsSet1.map((_, index) => (
           <Card
             key={index}
             cardStyle={CardStyle.ALL}
@@ -152,7 +152,7 @@ export default function Page() {
             view={0}
             comment={0}
           />
-        ))}
+        ))} */}
         {currentPageSet1 < totalPagesSet1 && (
           <button
             className="flex w-[345px] h-[24px] justify-center gap-[4px]"
@@ -188,7 +188,7 @@ export default function Page() {
         </Link>
       </div>
       <div className="flex flex-col justify-center mt-[20px] gap-[16px]">
-        {visibleCardsSet2.map((item, index) => (
+        {/* {visibleCardsSet2.map((item, index) => (
           <ManageCard
             key={index}
             id={index}
@@ -199,7 +199,7 @@ export default function Page() {
             completedSchedule={0}
             issueId={null}
           />
-        ))}
+        ))} */}
         {currentPageSet2 < totalPagesSet2 && (
           <button
             className="flex w-[345px] h-[24px] justify-center gap-[4px]"

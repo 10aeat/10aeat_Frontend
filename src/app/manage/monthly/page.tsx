@@ -48,6 +48,7 @@ export default function ManageMonthly() {
       }
     }
     getManageArticlesMonthly()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedYear, accessToken])
 
   const handlePreviousYear = () => {

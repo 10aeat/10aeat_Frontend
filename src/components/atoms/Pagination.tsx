@@ -42,7 +42,6 @@ export default function Pagination({
         }
       }
     }
-
     const pageNums = []
     for (let i = startPage; i <= endPage; i += 1) {
       pageNums.push(i)
@@ -52,6 +51,7 @@ export default function Pagination({
 
   useEffect(() => {
     updatePageNumbers(currentPage)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage, totalPages])
 
   const handlePageClick = (page: number) => {
