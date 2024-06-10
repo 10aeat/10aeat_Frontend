@@ -66,14 +66,14 @@ export default function page() {
           <AdminManageTable />
         </div>
         <div className="relative flex w-[1000px] justify-end items-center gap-[4px] pb-[100px]">
-          <Pagination
+          {/* <Pagination
             currentPage={0}
             onPageChange={() => {
               console.log('d')
             }}
             totalItems={100}
             itemsPerPage={5}
-          />
+          /> */}
         </div>
       </div>
     </div>
