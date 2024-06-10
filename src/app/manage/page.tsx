@@ -44,9 +44,8 @@ export default function ManageList() {
           params.push(`year=${selectedYear}`)
         }
         if (selectedStatus !== '전체') {
-          const progress =
-            selectedStatus === '진행중/대기' ? 'INPROGRESS' : 'COMPLETE'
-          params.push(`progress=${progress}`)
+          const progress = selectedStatus === '진행중/대기' ? 'false' : 'true'
+          params.push(`complete=${progress}`)
         }
         if (params.length > 0) {
           url += params.join('&')
@@ -137,15 +136,14 @@ export default function ManageList() {
       ) : (
         <NoData />
       )}
-      {articleList && (
-        // <Pagination
-        //   totalItems={articleList.length}
-        //   itemsPerPage={0}
-        //   currentPage={0}
-        //   onPageChange={}
-        // />
-        <div>hi</div>
-      )}
+      {/* {articleList && (
+        <Pagination
+          totalItems={articleList.length}
+          itemsPerPage={20}
+          currentPage={0}
+          onPageChange={}
+        />
+      )} */}
     </main>
   )
 }

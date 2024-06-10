@@ -11,6 +11,7 @@ import {
   TimelineOppositeContent,
 } from '@mui/lab'
 import Box, { BoxStyle } from './Box'
+import { useAccessToken } from '../store/AccessTokenStore'
 
 export default function TrackingProgress({
   repairArticleId,
@@ -18,8 +19,7 @@ export default function TrackingProgress({
   repairArticleId: string | string[]
 }) {
   const [progressData, setProgressData] = useState<AGENDA_PROGRESS[]>()
-  const accesstoken =
-    'eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3RAT1dORVIuY29tIiwicm9sZSI6Ik9XTkVSIiwiaWF0IjoxNzE3NjQzNDcyLCJleHAiOjE3MTc2NDUyNzJ9.h5agYhxsRB1t2T3UwtV0Jsf4f9fpY46qFvwZKWn_uX4'
+  const { accessToken } = useAccessToken()
 
   useEffect(() => {
     const getProgressData = async () => {
@@ -30,15 +30,11 @@ export default function TrackingProgress({
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
-              accessToken: `${accesstoken}`,
+              AccessToken: accessToken,
             },
           },
         )
-        let progressData = await getProgressResponse.json()
-        progressData = progressData.sort(
-          (a: AGENDA_PROGRESS, b: AGENDA_PROGRESS) =>
-            b.startSchedule.localeCompare(a.startSchedule),
-        )
+        const progressData = await getProgressResponse.json()
         setProgressData(progressData)
         console.log(progressData)
       } catch (error) {
