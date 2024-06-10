@@ -97,6 +97,7 @@ export default function Home() {
     getRepairSummaryData()
   }, [accessToken])
 
+  console.log(repairSummary)
   useEffect(() => {
     const getRepairListData = async () => {
       try {

@@ -44,10 +44,11 @@ export default function TrackingProgress({
     getProgressData()
   }, [repairArticleId])
 
+  console.log(progressData)
   return (
     <Box boxStyle={BoxStyle.BOX_WHITE_CONTENT}>
       <Timeline style={{ padding: 0 }}>
-        {progressData?.map((item, index) => (
+        {/* {progressData?.map((item, index) => (
           <MuiTimelineItem
             key={progressData[index].id}
             style={{ minHeight: 0 }}
@@ -122,7 +123,7 @@ export default function TrackingProgress({
               )}
             </TimelineContent>
           </MuiTimelineItem>
-        ))}
+        ))} */}
       </Timeline>
     </Box>
   )
