@@ -1,11 +1,11 @@
 // AdminCard.tsx
+import { useAccessToken } from '@/components/store/AccessTokenStore'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 // 댓글 or 진행 내용 없을 때 카드
 export default function AdminCard({ managerId }: { managerId: number }) {
-  const accesstoken =
-    'eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3RAT1dORVIuY29tIiwicm9sZSI6Ik9XTkVSIiwiaWF0IjoxNzE3NjQzNDcyLCJleHAiOjE3MTc2NDUyNzJ9.h5agYhxsRB1t2T3UwtV0Jsf4f9fpY46qFvwZKWn_uX4'
+  const { accessToken } = useAccessToken()
   const [managerInfoData, setManagerInfoData] = useState<MANAGER_INFO>()
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function AdminCard({ managerId }: { managerId: number }) {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
-              accessToken: `${accesstoken}`,
+              AccessToken: accessToken,
             },
           },
         )

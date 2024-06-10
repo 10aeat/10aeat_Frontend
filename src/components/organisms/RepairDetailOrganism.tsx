@@ -33,16 +33,16 @@ export default function RepairDetailOrganism({
             },
           },
         )
-        const repairArticleData = await getRepairArticleResponse.json()
-        setArticleData(repairArticleData)
-        console.log(repairArticleData)
+        const getRepairData = await getRepairArticleResponse.json()
+        setArticleData(getRepairData.data)
+        console.log('상세 데이터: ', articleData)
       } catch (error) {
         console.error(error)
       }
     }
     getRepairArticleData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [repairArticleId])
+  }, [repairArticleId, accessToken])
 
   const handleConfirm = () => {
     setIsVisible(false)
