@@ -61,11 +61,19 @@ export default function RepairPost() {
           </div>
         </div>
 
-        <Image
+        {/* <Image
           className="w-[712px] h-[417px] bg-contain bg-center"
+          width={712}
+          height={417}
           src="https://s3-alpha-sig.figma.com/img/388d/c026/cf053329ca2233996a2bac5635059fd1?Expires=1717977600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=OBuuKSqG7yX1GBRWp-dkP8YMovet4kLoLbhZ8iq17aQmyrvd7mUFZEqfctey66VFMpGJVU8Y0VwC6ZogepkrEXv9SmVTqAbXjU4Z~klAlGbEieSBt3PpEMomgLGBL2~nw0XQb39UtKd61Hlt7JYhClg9Eh4OWGZF6okHFIKS0R5SO3nC5F58tVbOwHRsLcl58jX9s-klyd-z6TLbPrr9uC7cAQfspkMX3-ZuchKN1lk59QYArEgaG9dROlM~~PT2juGccZURA9arcO4xmQ-ZEnWB6OEJyO5YUWbeRjUrBfTFj~XdCJOgsSzv1ywb8apaXcIC-Q9o~~wbt3EL4N2VBQ__"
           alt="이미지"
-        />
+        /> */}
+        {/* <img
+          src="https://s3-alpha-sig.figma.com/img/388d/c026/cf053329ca2233996a2bac5635059fd1?Expires=1717977600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=OBuuKSqG7yX1GBRWp-dkP8YMovet4kLoLbhZ8iq17aQmyrvd7mUFZEqfctey66VFMpGJVU8Y0VwC6ZogepkrEXv9SmVTqAbXjU4Z~klAlGbEieSBt3PpEMomgLGBL2~nw0XQb39UtKd61Hlt7JYhClg9Eh4OWGZF6okHFIKS0R5SO3nC5F58tVbOwHRsLcl58jX9s-klyd-z6TLbPrr9uC7cAQfspkMX3-ZuchKN1lk59QYArEgaG9dROlM~~PT2juGccZURA9arcO4xmQ-ZEnWB6OEJyO5YUWbeRjUrBfTFj~XdCJOgsSzv1ywb8apaXcIC-Q9o~~wbt3EL4N2VBQ__"
+          alt="image"
+          width={712}
+          height={417}
+        /> */}
         <div className="text-[16px] font-normal leading-[24px]">
           하자조치 : 2024.05.15 시작 예정 2층 호실들 중 3개의 호실에 우수관{' '}
           <br />

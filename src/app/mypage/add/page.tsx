@@ -6,8 +6,16 @@ import TextArea from '@/components/atoms/TextArea'
 import { useState } from 'react'
 
 export default function AddOffice() {
-  const [dong, setDong] = useState('')
-  const [ho, setHo] = useState('')
+  const [building, setBuilding] = useState('')
+  const [room, setRoom] = useState('')
+  const [rooms, setRooms] = useState<string[]>([])
+
+  const addRoom = () => {
+    const newRoom = `${building}동 ${room}호`
+    setRooms([...rooms, newRoom])
+    setBuilding('')
+    setRoom('')
+  }
 
   return (
     <div className="flex flex-col w-[375px] h-[812px] bg-gray-100 font-Pretendard">
@@ -47,8 +55,8 @@ export default function AddOffice() {
             <TextArea
               width="168px"
               placeholder=""
-              value={dong}
-              onChange={(e) => setDong(e.target.value)}
+              value={building}
+              onChange={(e) => setBuilding(e.target.value)}
             />{' '}
             동
           </div>
@@ -56,8 +64,8 @@ export default function AddOffice() {
             <TextArea
               width="168px"
               placeholder=""
-              value={ho}
-              onChange={(e) => setHo(e.target.value)}
+              value={room}
+              onChange={(e) => setRoom(e.target.value)}
             />{' '}
             호
           </div>
@@ -65,15 +73,26 @@ export default function AddOffice() {
       </div>
       <button
         type="submit"
+        onClick={addRoom}
         className={
-          dong.trim() === '' || ho.trim() === ''
+          building.trim() === '' || room.trim() === ''
             ? 'flex justify-center mt-auto mb-[68px] mx-auto w-[343px] p-[14px] rounded-[12px] bg-blue-600 opacity-40 text-[20px] font-semibold leading-[20px] text-white'
             : 'flex justify-center mt-auto mb-[68px] mx-auto w-[343px] p-[14px] rounded-[12px] bg-blue-600 text-[20px] font-semibold leading-[20px] text-white'
         }
-        disabled={dong.trim() === '' || ho.trim() === ''}
+        disabled={building.trim() === '' || room.trim() === ''}
       >
         추가하기
       </button>
+      {/* <div className="flex flex-col gap-[32px] mx-auto text-gray-600 text-[18px] font-semibold leading-[24px] mt-[20px]">
+        {rooms.map((room, index) => (
+          <div
+            key={index}
+            className="flex items-center justify-between w-[343px] py-[20px] px-[16px] rounded-[18px] text-[16px] font-semibold text-gray-900 bg-white"
+          >
+            {room}
+          </div>
+        ))}
+      </div> */}
     </div>
   )
 }
