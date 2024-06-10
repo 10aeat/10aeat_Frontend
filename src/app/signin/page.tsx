@@ -70,7 +70,7 @@ export default function Page() {
         console.log('로그인 성공!')
         console.log(response.headers.accesstoken)
         setAccessToken(response.headers.accesstoken)
-        router.push('/')
+        router.push('/main')
       } else {
         // 오류 처리
         // console.error('로그인 실패:', response.statusText)

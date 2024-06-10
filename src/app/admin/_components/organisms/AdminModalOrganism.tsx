@@ -9,6 +9,7 @@ interface Props {
   btntext: string
   children: React.ReactNode
   onClose: () => void
+  onClickFunction?: () => void
 }
 
 export default function AdminModalOrganism({
@@ -17,6 +18,7 @@ export default function AdminModalOrganism({
   children,
   bottomStyle,
   onClose,
+  onClickFunction,
 }: Props) {
   const handleClose = () => {
     onClose() // 부모 컴포넌트에서 전달받은 onClose 호출
@@ -31,6 +33,7 @@ export default function AdminModalOrganism({
           bottomStyle={bottomStyle}
           text={btntext}
           onClose={handleClose}
+          onClickFunction={onClickFunction}
         />
       </div>
     </div>

@@ -29,7 +29,7 @@ export default function MonthlyPlan({ monthlySummary, onSelectMonth }: Props) {
   }
 
   const getButtonStyle = (month: number) => {
-    return monthlySummary.includes(month)
+    return monthlySummary?.includes(month)
       ? ButtonStyle.MONTHLY
       : ButtonStyle.MONTHLY_NONE
   }
