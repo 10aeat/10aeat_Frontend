@@ -26,10 +26,10 @@ export default function Box({ boxStyle, children, style, issueId }: Props) {
             {issueId && (
               <Image
                 src="/icons/issueCheck.svg"
-                width={25}
-                height={25}
+                width={20}
+                height={20}
                 alt="issue"
-                className="absolute top-[-7px] left-[-3px]"
+                className="absolute top-[0px] left-[0px]"
               />
             )}
             {children}
