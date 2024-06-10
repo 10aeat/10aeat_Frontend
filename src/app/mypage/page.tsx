@@ -206,7 +206,7 @@ export default function Page() {
           bottomStyle={BottomStyle.CANCEL_DONE}
           btntext="로그아웃"
           onClose={handleOnClose}
-          onClickFuntion={handleLogout}
+          onClickFunction={handleLogout}
         >
           로그아웃 하시겠습니까?
         </AdminModalOrganism>
