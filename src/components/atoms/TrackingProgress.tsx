@@ -15,7 +15,7 @@ import Box, { BoxStyle } from './Box'
 export default function TrackingProgress({
   repairArticleId,
 }: {
-  repairArticleId: number
+  repairArticleId: string | string[]
 }) {
   const [progressData, setProgressData] = useState<AGENDA_PROGRESS[]>()
   const accesstoken =

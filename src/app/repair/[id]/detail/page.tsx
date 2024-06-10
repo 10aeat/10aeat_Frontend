@@ -1,11 +1,10 @@
 import RepairDetailOrganism from '@/components/organisms/RepairDetailOrganism'
+import { useParams } from 'next/navigation'
 
-export default function RepairDetail({ params }: { params: { id: number } }) {
-  const { id: articleId } = params
-
+export default function RepairDetail() {
   return (
     <main className="flex flex-col items-center justify-center">
-      <RepairDetailOrganism repairArticleId={articleId} />
+      <RepairDetailOrganism />
     </main>
   )
 }

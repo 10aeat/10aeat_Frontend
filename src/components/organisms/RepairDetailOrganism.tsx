@@ -2,23 +2,20 @@
 
 import AdminCard from '@/app/admin/_components/atoms/AdminCard'
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useParams } from 'next/navigation'
 import Issue, { IssueStyle } from '../atoms/Issue'
 import NavBar from '../atoms/NavBar'
 import NoBox from '../atoms/NoBox'
 import ShareBtn from '../atoms/ShareBtn'
 import TrackingProgress from '../atoms/TrackingProgress'
 import AgendaContent from '../molecules/AgendaContent'
+import { useAccessToken } from '../store/AccessTokenStore'
 
-export default function RepairDetailOrganism({
-  repairArticleId,
-}: {
-  repairArticleId: number
-}) {
+export default function RepairDetailOrganism() {
+  const { repairArticleId } = useParams()
   const [isVisible, setIsVisible] = useState(false)
   const [articleData, setArticleData] = useState<REPAIR_ARTICLE_DETAIL>()
-  const accesstoken =
-    'eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3RAT1dORVIuY29tIiwicm9sZSI6Ik9XTkVSIiwiaWF0IjoxNzE3NjQzNDcyLCJleHAiOjE3MTc2NDUyNzJ9.h5agYhxsRB1t2T3UwtV0Jsf4f9fpY46qFvwZKWn_uX4'
+  const { accessToken, setAccessToken } = useAccessToken()
 
   useEffect(() => {
     const getRepairArticleData = async () => {
@@ -29,7 +26,7 @@ export default function RepairDetailOrganism({
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
-              accessToken: `${accesstoken}`,
+              accessToken,
             },
           },
         )

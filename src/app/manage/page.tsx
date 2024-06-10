@@ -6,40 +6,69 @@ import NavBar from '@/components/atoms/NavBar'
 import NoData from '@/components/atoms/NoData'
 import Pagination from '@/components/atoms/Pagination'
 import ManageCard from '@/components/molecules/ManageCard'
+import { useAccessToken } from '@/components/store/AccessTokenStore'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 export default function ManageList() {
   const [selectedStatus, setSelectedStatus] = useState('전체')
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear())
   const [articleList, setArticleList] = useState<MANAGE_ARTICLE_LIST[]>()
-  const accesstoken =
-    'eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoiVEVOQU5UIiwiaWF0IjoxNzE3NTYyMjg4LCJleHAiOjE3MTc1NjQwODh9.pewYiBmFBUkXHq2TBrSangJx5qkEtQbGgOKAT8i9mPs'
+  const [articleSummary, setArticleSummary] = useState<ARTICLE_SUMMARY>()
+  const { accessToken } = useAccessToken()
 
   useEffect(() => {
+    const getManageArticlesSummary = async () => {
+      try {
+        const response = await fetch(
+          'http://10aeat.com/manage/articles/summary',
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              AccessToken: accessToken,
+            },
+          },
+        )
+        const getSummaryData = await response.json()
+        setArticleSummary(getSummaryData.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
     const getManageArticlesList = async () => {
       try {
         let url = `http://10aeat.com/manage/articles/list?`
+        const params = []
+        if (selectedYear !== new Date().getFullYear()) {
+          params.push(`year=${selectedYear}`)
+        }
         if (selectedStatus !== '전체') {
           const progress =
             selectedStatus === '진행중/대기' ? 'INPROGRESS' : 'COMPLETE'
-          url += `progress=${progress}`
+          params.push(`progress=${progress}`)
         }
+        if (params.length > 0) {
+          url += params.join('&')
+        }
+
         const manageArticleResponse = await fetch(url, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${accesstoken}`,
+            AccessToken: accessToken,
           },
         })
         const manageArticlesList = await manageArticleResponse.json()
-        setArticleList(manageArticlesList)
+        setArticleList(manageArticlesList.data)
         console.log(manageArticlesList)
       } catch (error) {
         console.error(error)
       }
     }
+    getManageArticlesSummary()
     getManageArticlesList()
-  }, [])
+  }, [selectedYear, accessToken, selectedStatus])
 
   const handleStatusClick = (status: string) => {
     setSelectedStatus(status)
@@ -54,12 +83,11 @@ export default function ManageList() {
   }
 
   return (
-    <main className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center">
       <NavBar isTitle isTextChange={false}>
         법정 시설물 유지관리 점검 현황
       </NavBar>
 
-      {/* 연도 선택 */}
       <ChangeYear
         selectedYear={selectedYear}
         onPreviousYear={handlePreviousYear}
@@ -90,35 +118,34 @@ export default function ManageList() {
           total={16}
         />
       </div>
-
       {articleList && articleList.length > 0 ? (
         <div className="flex flex-col items-center gap-3 min-h-[400px]">
-          {articleList.map((item, index) => (
-            <ManageCard
-              key={item.id}
-              id={item.id}
-              period={item.period}
-              periodCount={item.periodCount}
-              title={item.title}
-              allSchedule={item.allSchedule}
-              completedSchedule={item.completedSchedule}
-              issueId={item.issueId}
-            />
+          {articleList.map((item) => (
+            <Link href={`${item.id}`} key={item.id}>
+              <ManageCard
+                id={item.id}
+                period={item.period}
+                periodCount={item.periodCount}
+                title={item.title}
+                allSchedule={item.allSchedule}
+                completedSchedule={item.completedSchedule}
+                issueId={item.issueId}
+              />
+            </Link>
           ))}
         </div>
       ) : (
         <NoData />
       )}
       {articleList && (
-        <Pagination
-          onPageChange={() => {
-            console.log()
-          }}
-          currentPage={0}
-          totalItems={articleList.length}
-          itemsPerPage={0}
-        />
+        // <Pagination
+        //   totalItems={articleList.length}
+        //   itemsPerPage={0}
+        //   currentPage={0}
+        //   onPageChange={}
+        // />
+        <div>hi</div>
       )}
-    </main>
+    </div>
   )
 }
