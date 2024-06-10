@@ -11,14 +11,14 @@ interface Props {
   bottomStyle: BottomStyle
   text?: string
   onClose: () => void
-  onClickFuntion?: () => void
+  onClickFunction?: () => void
 }
 
 export default function AdminModalBottom({
   bottomStyle,
   text,
   onClose,
-  onClickFuntion,
+  onClickFunction,
 }: Props) {
   // eslint-disable-next-line consistent-return
   const selectModalBottom = () => {
@@ -39,7 +39,7 @@ export default function AdminModalBottom({
               buttonStyle={ButtonStyle.PRIMARY}
               isDisabled={false}
               buttonSize="lg"
-              onClickFunction={onClickFuntion}
+              onClickFunction={onClickFunction}
             >
               {text}
             </AdminButton>
