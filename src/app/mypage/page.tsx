@@ -24,6 +24,7 @@ export default function Page() {
     setIsModalVisible(false)
     router.push('/signup')
   }
+  console.log(isModalVisible)
   useEffect(() => {
     const getInfoData = async () => {
       try {
