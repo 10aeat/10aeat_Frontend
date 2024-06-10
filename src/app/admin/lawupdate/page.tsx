@@ -6,6 +6,8 @@
 
 import { useEffect, useState } from 'react'
 import TextArea from '@/components/atoms/TextArea'
+import { useParams } from 'next/navigation'
+import { useAccessToken } from '@/components/store/AccessTokenStore'
 import NavBar from '../_components/atoms/NavBar'
 import AdminTag, { TagStyle } from '../_components/atoms/AdminTag'
 import InputDetail from './_component/InputDetail'
@@ -13,9 +15,9 @@ import ExecuteScheduleOrganism from '../_components/organisms/ExecuteSchedule'
 import IssueHistoryOrganism from '../_components/organisms/IssueHistory'
 import AdminButton, { ButtonStyle } from '../_components/atoms/AdminButton'
 
-export default function ItemUpdate(manageArticleId: number) {
-  const accessToken =
-    'eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3RAT1dORVIuY29tIiwicm9sZSI6Ik9XTkVSIiwiaWF0IjoxNzE3NjQzNDcyLCJleHAiOjE3MTc2NDUyNzJ9.h5agYhxsRB1t2T3UwtV0Jsf4f9fpY46qFvwZKWn_uX4'
+export default function ItemUpdate() {
+  const { manageArticleId } = useParams()
+  const { accessToken } = useAccessToken()
   const [selectedManageItems, setSelectedManageItems] = useState<string[]>([])
   const [selectedIssueItems, setSelectedIssueItems] = useState<string[]>([])
   const [issueData, setIssueData] = useState<ISSUE_DATA[]>([])
@@ -85,7 +87,7 @@ export default function ItemUpdate(manageArticleId: number) {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            accessToken,
+            AccessToken: accessToken,
           },
         },
       )
@@ -100,7 +102,7 @@ export default function ItemUpdate(manageArticleId: number) {
 
   useEffect(() => {
     fetchManageIssues()
-  }, [manageArticleId, fetchManageIssues])
+  }, [accessToken, manageArticleId, fetchManageIssues])
 
   return (
     <div className="bg-white overflow-y-auto pb-[45px]">

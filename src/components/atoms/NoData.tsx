@@ -8,7 +8,7 @@ export default function NoData() {
         width={80}
         height={80}
         alt="no-data"
-        className="shrink-0"
+        className="shrink-0 mb-[20px]"
       />
       <span className="text-gray-600 text-center font-Pretendard text-xl font-bold capitalize">
         등록된 법정 시설물 <br />

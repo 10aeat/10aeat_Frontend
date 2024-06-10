@@ -25,7 +25,7 @@ export default function ManageCard({
 }: MANAGE_ARTICLE_LIST) {
   const periodText = (period: Period, count: number): string => {
     const baseText = periodLabels[period] || '기간 정보 없음'
-    return period === Period.ETC ? baseText : `${baseText} ${count}회`
+    return period === 'ETC' ? baseText : `${baseText} ${count}회`
   }
 
   return (

@@ -4,6 +4,7 @@
 
 import Dropdown from '@/components/atoms/Dropdown'
 import { useEffect, useState } from 'react'
+import { useAccessToken } from '@/components/store/AccessTokenStore'
 import NavBar from '../_components/atoms/NavBar'
 import AdminTag, { TagStyle } from '../_components/atoms/AdminTag'
 import IssueHistoryOrganism from '../_components/organisms/IssueHistory'
@@ -11,9 +12,7 @@ import ProgressScheduleOrganism from '../_components/organisms/ProgressSchedule'
 import AdminButton, { ButtonStyle } from '../_components/atoms/AdminButton'
 
 export default function ItemUpdate(repairArticleId: number) {
-  const accessToken =
-    'eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3RAT1dORVIuY29tIiwicm9sZSI6Ik9XTkVSIiwiaWF0IjoxNzE3NjQzNDcyLCJleHAiOjE3MTc2NDUyNzJ9.h5agYhxsRB1t2T3UwtV0Jsf4f9fpY46qFvwZKWn_uX4'
-
+  const { accessToken } = useAccessToken()
   const [selectedProgressItems, setSelectedProgressItems] = useState<string[]>(
     [],
   )
@@ -64,7 +63,7 @@ export default function ItemUpdate(repairArticleId: number) {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            accessToken,
+            AccessToken: accessToken,
           },
         },
       )
@@ -86,7 +85,7 @@ export default function ItemUpdate(repairArticleId: number) {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            accessToken,
+            AccessToken: accessToken,
           },
         },
       )
