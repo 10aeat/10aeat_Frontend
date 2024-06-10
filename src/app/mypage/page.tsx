@@ -19,11 +19,17 @@ export default function Page() {
   })
   const [buildings, setBuildings] = useState()
   const [isModalVisible, setIsModalVisible] = useState(false)
+  const handleOnClose = () => {
+    setIsModalVisible(false)
+  }
   const handleLogout = () => {
     setAccessToken('')
     setIsModalVisible(false)
+
+    console.log(isModalVisible)
     router.push('/signup')
   }
+  console.log(accessToken)
   console.log(isModalVisible)
   useEffect(() => {
     const getInfoData = async () => {
@@ -199,7 +205,8 @@ export default function Page() {
           title="로그아웃"
           bottomStyle={BottomStyle.CANCEL_DONE}
           btntext="로그아웃"
-          onClose={handleLogout}
+          onClose={handleOnClose}
+          onClickFunction={handleLogout}
         >
           로그아웃 하시겠습니까?
         </AdminModalOrganism>

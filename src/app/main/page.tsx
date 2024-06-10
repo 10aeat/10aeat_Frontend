@@ -100,7 +100,7 @@ export default function Home() {
     const getMonthlySummaryData = async () => {
       try {
         const getMonthlySummaryResponse = await fetch(
-          'http://10aeat.com/manage//monthly/summary',
+          'http://10aeat.com/manage/articles/monthly/summary',
           {
             method: 'GET',
             headers: {
@@ -111,6 +111,7 @@ export default function Home() {
         )
         const monthlySummaryData = await getMonthlySummaryResponse.json()
         setMonthlySummary(monthlySummaryData.data)
+        console.log(monthlySummaryData)
       } catch (error) {
         console.error(error)
       }
@@ -120,6 +121,9 @@ export default function Home() {
     getManageSummaryData()
     getMonthlySummaryData()
   }, [accessToken])
+  console.log(repairSummary)
+  console.log(manageSummary)
+  console.log(monthlySummary)
 
   return (
     <div className="flex flex-col h-[875px] w-full items-center bg-gray-100 ">
