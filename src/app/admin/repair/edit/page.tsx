@@ -6,8 +6,12 @@ import TextEditor from '@/components/atoms/TextEditor'
 import Image from 'next/image'
 import { useState } from 'react'
 import DatePicker1 from '@/components/atoms/DatePicker'
+import DangerIcon from '@/components/icons/danger.svg'
+import CloseIcon from '@/components/icons/close.svg'
 
-export default function RepairEdit() {
+export default function RepairUpload() {
+  const [category, setCategory] = useState('')
+  const [progress, setProgress] = useState('')
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [repairCompany, setRepairCompany] = useState('')
@@ -15,8 +19,32 @@ export default function RepairEdit() {
   const [constructionStart, setConstructionStart] = useState(null)
   const [constructionEnd, setConstructionEnd] = useState(null)
   const [images, setImages] = useState<string[]>([])
+  const [showWarning, setShowWarning] = useState(false)
+
+  // const handleTitleChange = (value: string) => setTitle(value)
+  // const handleContentChange = (value: string) => setContent(value)
+  // const handleRepairCompanyChange = (value: string) => setRepairCompany(value)
+  // const handleRepairCompanyWebsiteChange = (value: string) =>
+  //   setRepairCompanyWebsite(value)
+  // const handleConstructionStartChange = (date: any) =>
+  //   setConstructionStart(date)
+  // const handleConstructionEndChange = (date: any) => setConstructionEnd(date)
+  // const handleImagesChange = (value: string[]) => setImages(value)
 
   const handleSubmit = async () => {
+    if (
+      !category ||
+      !progress ||
+      !title ||
+      !content ||
+      !repairCompany ||
+      !repairCompanyWebsite
+    ) {
+      setShowWarning(true)
+      setTimeout(() => setShowWarning(false), 2000)
+      return
+    }
+
     const postData = {
       category: 'REPAIR',
       progress: 'PENDING',
@@ -45,6 +73,11 @@ export default function RepairEdit() {
     // }
   }
 
+  const handleButtonClick = (e) => {
+    e.preventDefault()
+    handleSubmit()
+  }
+
   return (
     <div className="w-[1024px] mx-[24px] bg-white font-Pretendard">
       <div className="flex items-center py-[24px] my-[16px] border-b border-gray-300">
@@ -68,8 +101,20 @@ export default function RepairEdit() {
             <div className="text-blue-600">*</div>
           </div>
           <div className="flex gap-[12px]">
-            <Dropdown isDisabled={false} size="md" />
-            <Dropdown isDisabled={false} size="md" />
+            <Dropdown
+              isDisabled={false}
+              size="md"
+              placeholder="사안 유형"
+              options={['설치', '보수', '교체']}
+              onChange={setCategory}
+            />
+            <Dropdown
+              isDisabled={false}
+              size="md"
+              placeholder="진행 상태"
+              options={['진행중', '대기', '완료']}
+              onChange={setProgress}
+            />
           </div>
         </div>
         <DatePicker1 isDisabled={false} />
@@ -122,28 +167,25 @@ export default function RepairEdit() {
           />
         </div>
       </div>
-      <div className="flex w-[1024px] justify-end p-[24px] gap-[12px]">
-        <button
-          className="flex p-[14px] rounded-[12px] bg-white text-[20px] font-semibold leading-[20px] border text-blue-600 border-blue-600"
-          type="submit"
-        >
-          취소
-        </button>
+      <div className="flex w-[1024px] justify-end p-[24px]">
         <button
           className="flex p-[14px] rounded-[12px] bg-blue-600 text-[20px] font-semibold leading-[20px] text-white"
           type="submit"
+          onClick={handleButtonClick}
         >
-          수정하기
+          등록하기
         </button>
       </div>
-      {title === '' ||
-      content === '' ||
-      repairCompany === '' ||
-      repairCompanyWebsite === '' ? (
-        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 py-[8px] px-[16px] rounded-[100px] bg-gray-800 text-16px font-semibold leadeing-[24px] text-white">
-          게시글 등록 필수 항목을 전부 입력해 주세요.
+      {showWarning && (
+        <div className="flex fixed top-[36px] left-1/2 transform -translate-x-1/2 py-[12px] px-[16px] gap-[16px] justify-between rounded-[8px] bg-[#C05621] text-18px leadeing-[24px] text-white">
+          <DangerIcon fill="#FFF" />
+          <div className="flex w-[229px] flex-col gap-[8px]">
+            <div className="font-semibold">게시글 등록</div>
+            <div>필수 항목을 전부 입력해 주세요.</div>
+          </div>
+          <CloseIcon width="24" height="24" fill="#FFF" />
         </div>
-      ) : null}
+      )}
     </div>
   )
 }
