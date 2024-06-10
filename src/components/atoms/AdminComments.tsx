@@ -143,11 +143,16 @@ export default function AdminComments() {
                     <div className="w-[36px] h-[36px]">
                       <IconProfile width="36px" height="36px" />
                     </div>
-                    <div className="pl-[10px] text-base text-gray-900 font-bold">
-                      {comment.writer}
-                    </div>
-                    <div className="pl-[4px] text-sm text-[#A4A4A4] font-normal">
-                      {comment.updatedAt}
+                    <div className="pl-[10px] flex gap-[4px] items-center">
+                      <div className="text-base text-gray-900 font-bold">
+                        {comment.writer}
+                      </div>
+                      <div className="flex h-[24px] px-[8px] py-[4px] items-center rounded-[8px] bg-blue-50 text-[13px] font-medium text-blue-700">
+                        작성자
+                      </div>
+                      <div className="text-sm text-[#A4A4A4] font-normal">
+                        {comment.updatedAt}
+                      </div>
                     </div>
                   </div>
                   <div className="pl-[40px] m-[8px] text-base text-gray-900 font-normal">
@@ -190,11 +195,16 @@ export default function AdminComments() {
                           <div className="w-[32px] h-[32px]">
                             <IconProfile width="32px" height="32px" />
                           </div>
-                          <div className="pl-[10px] text-base text-gray-900 font-bold">
-                            {reply.writer}
-                          </div>
-                          <div className="pl-[4px] text-sm text-[#A4A4A4] font-normal">
-                            {reply.updatedAt}
+                          <div className="pl-[10px] flex gap-[4px] items-center">
+                            <div className="text-base text-gray-900 font-bold">
+                              {reply.writer}
+                            </div>
+                            <div className="flex h-[24px] px-[8px] py-[4px] items-center rounded-[8px] bg-blue-50 text-[13px] font-medium text-blue-700">
+                              작성자
+                            </div>
+                            <div className="text-sm text-[#A4A4A4] font-normal">
+                              {reply.updatedAt}
+                            </div>
                           </div>
                         </div>
                         <div className="mt-[8px] pl-[42px] text-base text-gray-900 font-normal">
