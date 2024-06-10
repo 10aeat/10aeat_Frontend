@@ -11,11 +11,14 @@ import TrackingProgress from '../atoms/TrackingProgress'
 import AgendaContent from '../molecules/AgendaContent'
 import { useAccessToken } from '../store/AccessTokenStore'
 
-export default function RepairDetailOrganism() {
-  const { repairArticleId } = useParams()
+export default function RepairDetailOrganism({
+  repairArticleId,
+}: {
+  repairArticleId: string | string[]
+}) {
   const [isVisible, setIsVisible] = useState(false)
   const [articleData, setArticleData] = useState<REPAIR_ARTICLE_DETAIL>()
-  const { accessToken, setAccessToken } = useAccessToken()
+  const { accessToken } = useAccessToken()
 
   useEffect(() => {
     const getRepairArticleData = async () => {
@@ -26,7 +29,7 @@ export default function RepairDetailOrganism() {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
-              accessToken,
+              AccessToken: accessToken,
             },
           },
         )
