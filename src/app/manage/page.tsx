@@ -110,7 +110,14 @@ export default function ManageList() {
         <NoData />
       )}
       {articleList && (
-        <Pagination totalItems={articleList.length} itemsPerPage={0} />
+        <Pagination
+          onPageChange={() => {
+            console.log()
+          }}
+          currentPage={0}
+          totalItems={articleList.length}
+          itemsPerPage={0}
+        />
       )}
     </main>
   )
