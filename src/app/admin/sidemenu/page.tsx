@@ -3,10 +3,13 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import ClipboardIcon from '@/components/icons/clipboard_check.svg'
+import { useRouter } from 'next/navigation'
 
 export default function SideMenu() {
   const [isOpen, setIsOpen] = useState<Boolean>(true)
-  const [selectMenu, setSelectMenu] = useState<number | null>(null)
+  const [selectMenu, setSelectMenu] = useState<number | null>(1)
+
+  const router = useRouter()
 
   const handleToggleMenu = () => {
     setIsOpen(!isOpen)
@@ -14,6 +17,8 @@ export default function SideMenu() {
 
   const handleSelectMenu = (menuIndex: number) => {
     setSelectMenu(menuIndex)
+    if (menuIndex === 1) router.push('/admin/repair/list')
+    else router.push('/admin/lawupdate')
   }
 
   return (

@@ -17,6 +17,7 @@ export default function Home() {
 
   const [selectedMonth, setSelectedMonth] = useState<number | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
+  const [isSearchFilled, setIsSearchFilled] = useState(false)
   const router = useRouter()
 
   // 유지보수 게시글 요약 조회
@@ -51,6 +52,12 @@ export default function Home() {
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     setSearchQuery(event.target.value)
+    setIsSearchFilled(true)
+  }
+
+  const handleSearchInputClear = () => {
+    setSearchQuery('')
+    setIsSearchFilled(false)
   }
 
   useEffect(() => {
@@ -180,13 +187,23 @@ export default function Home() {
                   height={22}
                   alt="search"
                 />
+                {isSearchFilled && (
+                  <Image
+                    onClick={handleSearchInputClear}
+                    src="/icons/close_circle.svg"
+                    width={24}
+                    height={24}
+                    alt="close_circle"
+                    className="relative left-[308px] bottom-[18px] w-[20px] h-[20px] cursor-pointer"
+                  />
+                )}
               </div>
               {/* <div className="absolute w-[345px] h-[52px] border-b border-gray-800"></div> */}
             </div>
           </div>
         </div>
       </div>
-      <div className="relative  w-[345px]  h-[140px]">
+      <div className="relative w-[345px]  h-[140px]">
         <Link
           type="button"
           className="block mt-[34px]"
