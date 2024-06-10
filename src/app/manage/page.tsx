@@ -146,6 +146,6 @@ export default function ManageList() {
         // />
         <div>hi</div>
       )}
-    </div>
+    </main>
   )
 }
