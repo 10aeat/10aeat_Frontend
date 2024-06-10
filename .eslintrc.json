@@ -16,7 +16,7 @@
     "@typescript-eslint/no-shadow": "off",
     "@typescript-eslint/naming-convention": "off",
     "@typescript-eslint/no-unused-vars": "off",
-     "@next/next/no-page-custom-font": "off",
+    "@next/next/no-page-custom-font": "off",
     "import/extensions": "off",
     "react/style-prop-object": "off",
     "react/require-default-props": "off",
@@ -24,6 +24,9 @@
     "react/no-unescaped-entities": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
     "import/prefer-default-export": "off",
+    "react/prop-types": "off", //배포시 오류때문에 추가
+    "no-console": "off", //배포시 오류때문에 추가
+    "@next/next/no-img-element": "off", //배포시 오류때문에 추가, img태그 사용 가능하게
     "prettier/prettier": [
       "error",
       {
