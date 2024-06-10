@@ -20,11 +20,13 @@ export default function Page() {
   const [currentPageSet1, setCurrentPageSet1] = useState(1)
   const [currentPageSet2, setCurrentPageSet2] = useState(1)
 
-  const handleTagBadgeClick = (tag) => {
+  const handleTagBadgeClick = (tag: string) => {
     setSearchQuery(tag)
   }
 
-  const handleSearchInputChange = (event) => {
+  const handleSearchInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     setSearchQuery(event.target.value)
     setIsSearchFilled(true)
   }
