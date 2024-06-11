@@ -2,15 +2,15 @@
 
 import React, { useState, useEffect } from 'react'
 import NavBar from '@/components/atoms/NavBar'
-import Modal, { ModalStyle } from './Modal'
 import { useAccessToken } from '@/components/store/AccessTokenStore'
+import Modal, { ModalStyle } from './Modal'
 
 export default function DeleteOffice() {
   const [rooms, setRooms] = useState(['B동 156호', 'B동 200호'])
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [message, setMessage] = useState(false)
   const [selectedRoom, setSelectedRoom] = useState('')
-  const [buildingInfoId, setBuildingInfoId] = useState<BUILDING[]>()
+  const [building, setBuilding] = useState<BUILDING[]>()
   const { accessToken } = useAccessToken()
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function DeleteOffice() {
           },
         })
         const data = await response.json()
-        setBuildingInfoId(data.data)
+        setBuilding(data.data)
       } catch (error) {
         console.error(error)
       }
@@ -32,7 +32,7 @@ export default function DeleteOffice() {
     getOfficeData()
   }, [accessToken])
 
-  console.log(buildingInfoId)
+  console.log(building)
 
   const clickModal = (room: string) => {
     setSelectedRoom(room)
@@ -54,9 +54,7 @@ export default function DeleteOffice() {
         호실 추가
       </NavBar>
       <div className="flex flex-col gap-[32px] mx-auto text-gray-600 text-[18px] font-semibold leading-[24px]">
-        {buildingInfoId && buildingInfoId.length > 0
-          ? buildingInfoId[0].officeName
-          : ''}
+        {building && building.length > 0 ? building[0].officeName : ''}
         <div className="flex flex-col items-center gap-[16px]">
           {rooms.map((room) => (
             <div

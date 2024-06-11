@@ -3,18 +3,60 @@
 import Image from 'next/image'
 import NavBar from '@/components/atoms/NavBar'
 import TextArea from '@/components/atoms/TextArea'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useAccessToken } from '@/components/store/AccessTokenStore'
 
 export default function AddOffice() {
-  const [building, setBuilding] = useState('')
-  const [room, setRoom] = useState('')
-  const [rooms, setRooms] = useState<string[]>([])
+  const [dong, setDong] = useState('')
+  const [ho, setHo] = useState('')
+  const [building, setBuilding] = useState<string[]>([])
+  const { accessToken } = useAccessToken()
 
-  const addRoom = () => {
-    const newRoom = `${building}동 ${room}호`
-    setRooms([...rooms, newRoom])
-    setBuilding('')
-    setRoom('')
+  useEffect(() => {
+    const buildingData = async () => {
+      try {
+        const response = await fetch(`http://10aeat.com/my/building/units`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            AccessToken: accessToken,
+          },
+        })
+        const data = await response.json()
+        setBuilding(data.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    buildingData()
+  }, [accessToken])
+
+  console.log(building)
+
+  const addBuilding = async () => {
+    const newBuilding = `${dong}동 ${ho}호`
+
+    try {
+      const response = await fetch(`http://10aeat.com/my/building/units`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          AccessToken: accessToken,
+        },
+        body: JSON.stringify({ building: newBuilding }),
+      })
+
+      if (response.ok) {
+        setBuilding([...building, newBuilding])
+        setDong('')
+        setHo('')
+        console.log(building)
+      } else {
+        console.error('Failed to add building')
+      }
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
@@ -55,8 +97,8 @@ export default function AddOffice() {
             <TextArea
               width="168px"
               placeholder=""
-              value={building}
-              onChange={(e) => setBuilding(e.target.value)}
+              value={dong}
+              onChange={(e) => setDong(e.target.value)}
             />{' '}
             동
           </div>
@@ -64,8 +106,8 @@ export default function AddOffice() {
             <TextArea
               width="168px"
               placeholder=""
-              value={room}
-              onChange={(e) => setRoom(e.target.value)}
+              value={ho}
+              onChange={(e) => setHo(e.target.value)}
             />{' '}
             호
           </div>
@@ -73,18 +115,18 @@ export default function AddOffice() {
       </div>
       <button
         type="submit"
-        onClick={addRoom}
+        onClick={addBuilding}
         className={
-          building.trim() === '' || room.trim() === ''
+          dong.trim() === '' || ho.trim() === ''
             ? 'flex justify-center mt-auto mb-[68px] mx-auto w-[343px] p-[14px] rounded-[12px] bg-blue-600 opacity-40 text-[20px] font-semibold leading-[20px] text-white'
             : 'flex justify-center mt-auto mb-[68px] mx-auto w-[343px] p-[14px] rounded-[12px] bg-blue-600 text-[20px] font-semibold leading-[20px] text-white'
         }
-        disabled={building.trim() === '' || room.trim() === ''}
+        disabled={dong.trim() === '' || ho.trim() === ''}
       >
         추가하기
       </button>
       {/* <div className="flex flex-col gap-[32px] mx-auto text-gray-600 text-[18px] font-semibold leading-[24px] mt-[20px]">
-        {rooms.map((room, index) => (
+        {buildings.map((room, index) => (
           <div
             key={index}
             className="flex items-center justify-between w-[343px] py-[20px] px-[16px] rounded-[18px] text-[16px] font-semibold text-gray-900 bg-white"
