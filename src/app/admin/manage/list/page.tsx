@@ -6,13 +6,13 @@ import AdminLogo from '@/app/admin/_components/atoms/AdminLogo'
 import AdminManageTable from '@/app/admin/_components//atoms/AdminManageTable'
 import AdminMonthPicker from '@/app/admin/_components/atoms/AdminMonthPicker'
 import AdminYearPicker from '@/app/admin/_components/atoms/AdminYearPicker'
-import SideMenu from '../../sidemenu/page'
+import SideMenu from '@/app/admin/_components/atoms/Sidemenu'
 
 export default function page() {
   return (
     <div className="relative w-full bg-white overflow-y-auto">
       <AdminLogo />
-      <SideMenu />
+      <SideMenu menuIndex={2} />
       <div className="inline-flex flex-col items-start gap-4 absolute top-28 left-64">
         <div className="flex flex-col items-start relative self-stretch w-full flex-[0_0_auto]">
           <div className="font-Pretendard text-[24px] font-bold leading-[32px] capitalize text-gray-900">

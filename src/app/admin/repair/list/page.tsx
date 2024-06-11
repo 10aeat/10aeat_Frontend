@@ -12,7 +12,7 @@ import AdminLogo from '@/app/admin/_components/atoms/AdminLogo'
 import Dropdown from '@/components/atoms/Dropdown'
 import Pagination from '@/components/atoms/Pagination'
 import { useAccessToken } from '@/components/store/AccessTokenStore'
-import SideMenu from '../../sidemenu/page'
+import SideMenu from '@/app/admin/_components/atoms/Sidemenu'
 
 export default function Page() {
   const { accessToken, setAccessToken } = useAccessToken()
@@ -110,7 +110,7 @@ export default function Page() {
   return (
     <div className="relative w-full bg-white">
       <AdminLogo />
-      <SideMenu />
+      <SideMenu menuIndex={1} />
       <div className="inline-flex flex-col items-start gap-4 absolute top-28 left-64">
         <div className="flex flex-col items-start relative self-stretch w-full flex-[0_0_auto]">
           <div className="font-Pretendard text-[24px] font-bold leading-[32px] capitalize text-gray-900">
