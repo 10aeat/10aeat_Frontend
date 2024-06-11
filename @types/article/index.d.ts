@@ -111,8 +111,7 @@ interface AGENDA_PROGRESS {
   title: string
   content: string
   inProgress: boolean
-  startSchedule: string
-  endSchedule: string
+  startSchedule: number[]
 }
 
 interface REPAIR_SUMMARY {

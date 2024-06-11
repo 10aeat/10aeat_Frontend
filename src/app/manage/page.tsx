@@ -21,7 +21,7 @@ export default function ManageList() {
     const getManageArticlesSummary = async () => {
       try {
         const response = await fetch(
-          'http://10aeat.com/manage/articles/summary',
+          'http://api.10aeat.com/manage/articles/summary',
           {
             method: 'GET',
             headers: {
@@ -38,7 +38,7 @@ export default function ManageList() {
     }
     const getManageArticlesList = async () => {
       try {
-        let url = `http://10aeat.com/manage/articles/list?`
+        let url = `http://api.10aeat.com/manage/articles/list?`
         const params = []
         if (selectedYear !== new Date().getFullYear()) {
           params.push(`year=${selectedYear}`)

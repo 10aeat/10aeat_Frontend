@@ -1,7 +1,8 @@
 import Image from 'next/image'
+import { useState } from 'react'
 import Box, { BoxStyle } from '../atoms/Box'
 import TagBadge, { TagBadgeStyle } from '../atoms/TagBadge'
-import { useSaveStore } from '../store/SaveStore'
+import { useAccessToken } from '../store/AccessTokenStore'
 
 const categoryLabel: { [key in Category]: string } = {
   INSTALL: '설치',
@@ -22,7 +23,7 @@ export default function AgendaContent({
   startConstruction,
   endConstruction,
 }: REPAIR_ARTICLE_DETAIL) {
-  const { setIsSave } = useSaveStore()
+  const [stausIsSave, setIsSave] = useState(isSave)
 
   const formatDate = (date: number[]) => {
     const [year, month, day] = date
@@ -36,19 +37,23 @@ export default function AgendaContent({
   const formattedEndCon = formatDate(endConstruction)
 
   const categoryText = categoryLabel[category as keyof typeof categoryLabel]
+  const { accessToken } = useAccessToken()
 
   const handleSave = async () => {
     try {
-      const method = isSave ? 'DELETE' : 'POST'
+      const method = stausIsSave ? 'DELETE' : 'POST'
       const response = await fetch(
-        `http://10aeat.com/repair/articles/save/${articleId}`,
+        `http://api.10aeat.com/repair/articles/save/${articleId}`,
         {
           method,
+          headers: {
+            AccessToken: accessToken,
+          },
         },
       )
 
       if (response.ok) {
-        setIsSave(!isSave)
+        setIsSave(!stausIsSave)
       } else {
         console.error('Failed to save or delete the article')
       }
@@ -67,7 +72,7 @@ export default function AgendaContent({
           </TagBadge>
         </div>
         <Image
-          src={`${isSave ? '/icons/star_fill.svg' : '/icons/star_linear.svg'}`}
+          src={`${stausIsSave ? '/icons/star_fill.svg' : '/icons/star_linear.svg'}`}
           width={28}
           height={28}
           alt="save"

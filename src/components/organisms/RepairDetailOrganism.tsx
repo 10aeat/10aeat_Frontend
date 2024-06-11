@@ -30,7 +30,7 @@ export default function RepairDetailOrganism({
       if (issueId) {
         try {
           const issueResponse = await fetch(
-            `http://10aeat.com/articles/issue/detail/${issueId}`,
+            `http://api.10aeat.com/articles/issue/detail/${issueId}`,
             {
               method: 'GET',
               headers: {
@@ -51,7 +51,7 @@ export default function RepairDetailOrganism({
     const getRepairArticleData = async () => {
       try {
         const getRepairArticleResponse = await fetch(
-          `http://10aeat.com/repair/articles/${repairArticleId}`,
+          `http://api.10aeat.com/repair/articles/${repairArticleId}`,
           {
             method: 'GET',
             headers: {
@@ -130,7 +130,6 @@ export default function RepairDetailOrganism({
             </div>
             <TrackingProgress repairArticleId={repairArticleId} />
           </div>
-          <ShareBtn />
           <div className="px-4 mt-8">
             <div className="font-bold text-lg font-Pretendard mb-3">댓글</div>
             <NoBox type="댓글" />

@@ -82,7 +82,7 @@ export default function ItemUpdate() {
     try {
       const response = await fetch(
         // `http://10aeat.com/issues/check/manage/{manageArticleId}`,
-        `http://10aeat.com/issues/check/manage/1`,
+        `http://api.10aeat.com/issues/check/manage/1`,
         {
           method: 'POST',
           headers: {
