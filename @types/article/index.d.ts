@@ -58,7 +58,15 @@ enum Period {
   ETC = 'ETC',
 }
 
-interface MANAGE_ARTICLE_LIST {
+interface MANAGE_LIST {
+  pageSize: number
+  currentPage: number
+  totalElements: number
+  totalPages: number
+  articles: MANAGE_ARTICLE_LIST_CARD[]
+}
+
+interface MANAGE_ARTICLE_LIST_CARD {
   id: number
   period: Period
   periodCount: number
@@ -79,11 +87,6 @@ interface MANAGE_ARTICLE_DETAIL {
   manager: string // 점검담당
   note: string
   manageSchedule: [
-    {
-      manageScheduleId: number
-      isComplete: boolean
-      schedule: string
-    },
     {
       manageScheduleId: number
       isComplete: boolean

@@ -13,8 +13,11 @@ import { useEffect, useState } from 'react'
 export default function ManageList() {
   const [selectedStatus, setSelectedStatus] = useState('전체')
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear())
-  const [articleList, setArticleList] = useState<MANAGE_ARTICLE_LIST[]>()
+  const [articleList, setArticleList] = useState<MANAGE_LIST>()
+  const [articleListCard, setArticleListCard] =
+    useState<MANAGE_ARTICLE_LIST_CARD[]>()
   const [articleSummary, setArticleSummary] = useState<ARTICLE_SUMMARY>()
+  const [currentPage, setCurrentPage] = useState(0)
   const { accessToken } = useAccessToken()
 
   useEffect(() => {
@@ -32,13 +35,16 @@ export default function ManageList() {
         )
         const getSummaryData = await response.json()
         setArticleSummary(getSummaryData.data)
+        console.log(articleSummary)
       } catch (error) {
         console.log(error)
       }
     }
+    getManageArticlesSummary()
+
     const getManageArticlesList = async () => {
       try {
-        let url = `http://api.10aeat.com/manage/articles/list?`
+        let url = `http://api.10aeat.com/manage/articles/list?page=${currentPage}`
         const params = []
         if (selectedYear !== new Date().getFullYear()) {
           params.push(`year=${selectedYear}`)
@@ -48,7 +54,7 @@ export default function ManageList() {
           params.push(`complete=${progress}`)
         }
         if (params.length > 0) {
-          url += params.join('&')
+          url += `${params.join('&')}`
         }
 
         const manageArticleResponse = await fetch(url, {
@@ -58,26 +64,43 @@ export default function ManageList() {
             AccessToken: accessToken,
           },
         })
+        console.log(url)
         const manageArticlesList = await manageArticleResponse.json()
         setArticleList(manageArticlesList.data)
+        setArticleListCard(manageArticlesList.data.articles)
         console.log(manageArticlesList)
+        console.log(manageArticlesList.data)
+        console.log(manageArticlesList.data.articles)
       } catch (error) {
         console.error(error)
       }
     }
-    getManageArticlesSummary()
     getManageArticlesList()
-  }, [selectedYear, accessToken, selectedStatus])
+  }, [selectedYear, accessToken, selectedStatus, currentPage])
+
+  const getTotalInProgressAndPending = () => {
+    return (articleSummary?.inprogress || 0) + (articleSummary?.pending || 0)
+  }
+  const getTotalAll = () => {
+    return (
+      (articleSummary?.inprogress || 0) +
+      (articleSummary?.pending || 0) +
+      (articleSummary?.complete || 0)
+    )
+  }
 
   const handleStatusClick = (status: string) => {
+    setCurrentPage(0)
     setSelectedStatus(status)
   }
 
   const handlePreviousYear = () => {
+    setCurrentPage(0)
     setSelectedYear((prevYear) => prevYear - 1)
   }
 
   const handleNextYear = () => {
+    setCurrentPage(0)
     setSelectedYear((prevYear) => prevYear + 1)
   }
 
@@ -100,26 +123,26 @@ export default function ManageList() {
           isSelect={selectedStatus === '전체'}
           onClickFunction={() => handleStatusClick('전체')}
           text="전체"
-          total={22}
+          total={getTotalAll()}
         />
         <Button
           buttonStyle={ButtonStyle.FILTER}
           isSelect={selectedStatus === '진행중/대기'}
           onClickFunction={() => handleStatusClick('진행중/대기')}
           text="진행중/대기"
-          total={6}
+          total={getTotalInProgressAndPending()}
         />
         <Button
           buttonStyle={ButtonStyle.FILTER}
           isSelect={selectedStatus === '완료'}
           onClickFunction={() => handleStatusClick('완료')}
           text="완료"
-          total={16}
+          total={articleSummary?.complete || 0}
         />
       </div>
-      {articleList && articleList.length > 0 ? (
+      {articleListCard && articleListCard.length > 0 ? (
         <div className="flex flex-col items-center gap-3 min-h-[400px]">
-          {articleList.map((item) => (
+          {articleListCard.map((item) => (
             <Link href={`/manage/${item.id}/detail`} key={item.id}>
               <ManageCard
                 id={item.id}
@@ -136,14 +159,14 @@ export default function ManageList() {
       ) : (
         <NoData />
       )}
-      {/* {articleList && (
+      {articleList && (
         <Pagination
-          totalItems={articleList.length}
-          itemsPerPage={20}
-          currentPage={0}
-          onPageChange={}
+          totalItems={articleList.totalElements}
+          itemsPerPage={articleList.pageSize}
+          currentPage={currentPage + 1}
+          onPageChange={setCurrentPage}
         />
-      )} */}
+      )}
     </main>
   )
 }
