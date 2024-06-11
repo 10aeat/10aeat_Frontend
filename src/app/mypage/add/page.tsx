@@ -9,11 +9,11 @@ import { useAccessToken } from '@/components/store/AccessTokenStore'
 export default function AddOffice() {
   const [dong, setDong] = useState('')
   const [ho, setHo] = useState('')
-  const [building, setBuilding] = useState<string[]>([])
+  const [buildings, setBuildings] = useState<BUILDING[]>([])
   const { accessToken } = useAccessToken()
 
   useEffect(() => {
-    const buildingData = async () => {
+    const getBuildingData = async () => {
       try {
         const response = await fetch(`http://10aeat.com/my/building/units`, {
           method: 'GET',
@@ -23,18 +23,29 @@ export default function AddOffice() {
           },
         })
         const data = await response.json()
-        setBuilding(data.data)
+        setBuildings(data.data)
       } catch (error) {
         console.error(error)
       }
     }
-    buildingData()
+    getBuildingData()
   }, [accessToken])
 
-  console.log(building)
+  console.log(buildings)
 
   const addBuilding = async () => {
-    const newBuilding = `${dong}동 ${ho}호`
+    // buildingInfoId중 가장 높은 값 검색
+    const maxBuildingInfoId = buildings.reduce(
+      (maxId, building) => Math.max(maxId, building.buildingInfoId),
+      0,
+    )
+    //새로운 building 정보
+    const newBuilding = {
+      buildingInfoId: maxBuildingInfoId + 1,
+      officeName: '미왕 빌딩',
+      dong,
+      ho,
+    }
 
     try {
       const response = await fetch(`http://10aeat.com/my/building/units`, {
@@ -43,14 +54,14 @@ export default function AddOffice() {
           'Content-Type': 'application/json',
           AccessToken: accessToken,
         },
-        body: JSON.stringify({ building: newBuilding }),
+        body: JSON.stringify({ dong, ho }),
       })
 
       if (response.ok) {
-        setBuilding([...building, newBuilding])
+        setBuildings([...buildings, newBuilding])
         setDong('')
         setHo('')
-        console.log(building)
+        console.log(buildings)
       } else {
         console.error('Failed to add building')
       }
@@ -125,16 +136,6 @@ export default function AddOffice() {
       >
         추가하기
       </button>
-      {/* <div className="flex flex-col gap-[32px] mx-auto text-gray-600 text-[18px] font-semibold leading-[24px] mt-[20px]">
-        {buildings.map((room, index) => (
-          <div
-            key={index}
-            className="flex items-center justify-between w-[343px] py-[20px] px-[16px] rounded-[18px] text-[16px] font-semibold text-gray-900 bg-white"
-          >
-            {room}
-          </div>
-        ))}
-      </div> */}
     </div>
   )
 }
