@@ -14,13 +14,43 @@ export default function ManageMonthly() {
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear())
   const [selectedMonth, setSelectedMonth] = useState<number | null>(null)
   const [articleList, setArticleList] = useState<MANAGE_ARTICLE_LIST[]>()
-  const [articleSummary, setArticleSummary] = useState<ARTICLE_SUMMARY>()
+  const [articleSummary, setArticleSummary] =
+    useState<MANAGE_ARTICLE_MONTHLY_SUMMARY[]>()
   const { accessToken } = useAccessToken()
 
   useEffect(() => {
+    const getMonthlySummary = async () => {
+      try {
+        let url = `http://api.10aeat.com/manage/articles/monthly/summary`
+        const params = []
+
+        if (selectedYear !== new Date().getFullYear()) {
+          params.push(`year=${selectedYear}`)
+        }
+        if (params.length > 0) {
+          url += `?${params.join('&')}`
+        }
+
+        const summaryResponse = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            AccessToken: accessToken,
+          },
+        })
+        if (!summaryResponse.ok) {
+          throw new Error(`HTTP error! status: ${summaryResponse.status}`)
+        }
+        const monthlySummary = await summaryResponse.json()
+        setArticleSummary(monthlySummary.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
     const getManageArticlesMonthly = async () => {
       try {
-        let url = `/manage/articles/monthly/list?`
+        let url = `http://api.10aeat.com/manage/articles/monthly/list`
         const params = []
 
         if (selectedYear !== new Date().getFullYear()) {
@@ -30,7 +60,7 @@ export default function ManageMonthly() {
           params.push(`month=${selectedMonth}`)
         }
         if (params.length > 0) {
-          url += params.join('&')
+          url += `?${params.join('&')}`
         }
 
         const manageArticleResponse = await fetch(url, {
@@ -40,16 +70,20 @@ export default function ManageMonthly() {
             AccessToken: accessToken,
           },
         })
+        if (!manageArticleResponse.ok) {
+          throw new Error(`ERROR! status: ${manageArticleResponse.status}`)
+        }
         const manageArticlesList = await manageArticleResponse.json()
         setArticleList(manageArticlesList.data)
         console.log(manageArticlesList)
       } catch (error) {
-        console.error(error)
+        console.log(error)
       }
     }
+    getMonthlySummary()
     getManageArticlesMonthly()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedYear, accessToken])
+  }, [selectedYear, selectedMonth, accessToken])
 
   const handlePreviousYear = () => {
     setSelectedYear((prevYear) => prevYear - 1)
@@ -75,7 +109,7 @@ export default function ManageMonthly() {
         onNextYear={handleNextYear}
       />
 
-      <SelectMonth onSelectMonth={handleSelectMonth} />
+      <SelectMonth onSelectMonth={handleSelectMonth} data={articleSummary} />
 
       {articleList && articleList.length > 0 ? (
         <div className="flex flex-col items-center gap-3 min-h-[400px]">

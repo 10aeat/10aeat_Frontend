@@ -103,7 +103,7 @@ export default function Page() {
           <input
             onChange={handleEmailChange}
             value={email}
-            className="flex items-center gap-[8px] flex-[1_0_0%] opacity-[0.4] font-Pretendard text-[16px] font-normal leading-[24px] text-gray-700 focus:opacity-100 focus:outline-none"
+            className="flex items-center gap-[8px] flex-[1_0_0%] opacity-[0.4] font-Pretendard text-[16px] font-normal leading-[24px] focus:text-gray-700 focus:opacity-100 focus:outline-none"
             placeholder="이메일 주소를 입력해주세요."
           />
           {isEmailFilled && (
@@ -138,7 +138,7 @@ export default function Page() {
             type={isPasswordVisible ? 'text' : 'password'}
             value={password}
             onChange={handlePasswordChange}
-            className="flex items-center gap-[8px] flex-[1_0_0%] opacity-[0.4] font-Pretendard text-[16px] font-normal leading-[24px] text-gray-700 focus:opacity-100 focus:outline-none"
+            className="flex items-center gap-[8px] flex-[1_0_0%] opacity-[0.4] font-Pretendard text-[16px] font-normal leading-[24px] focus:text-gray-700 focus:opacity-100 focus:outline-none"
             placeholder="영문, 숫자, 특수기호 포함 8-16자입니다."
           />
           {isPasswordFilled && (

@@ -2,7 +2,6 @@
 
 import AdminCard from '@/app/admin/_components/atoms/AdminCard'
 import { useState, useEffect } from 'react'
-import { useParams } from 'next/navigation'
 import Issue, { IssueStyle } from '../atoms/Issue'
 import NavBar from '../atoms/NavBar'
 import NoBox from '../atoms/NoBox'
@@ -13,18 +12,46 @@ import { useAccessToken } from '../store/AccessTokenStore'
 
 export default function RepairDetailOrganism({
   repairArticleId,
+  issueId,
 }: {
   repairArticleId: string | string[]
+  issueId: string | string[]
 }) {
   const [isVisible, setIsVisible] = useState(false)
   const [articleData, setArticleData] = useState<REPAIR_ARTICLE_DETAIL>()
+  const [issueData, setIssueData] = useState<{
+    title: string
+    content: string
+  } | null>(null)
   const { accessToken } = useAccessToken()
 
   useEffect(() => {
+    const checkForActiveIssue = async () => {
+      if (issueId) {
+        try {
+          const issueResponse = await fetch(
+            `http://api.10aeat.com/articles/issue/detail/${issueId}`,
+            {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json',
+                AccessToken: accessToken,
+              },
+            },
+          )
+          const issueDetail = await issueResponse.json()
+          console.log('Issue detail:', issueDetail)
+          setIssueData(issueDetail)
+        } catch (error) {
+          console.log(error)
+        }
+      }
+    }
+
     const getRepairArticleData = async () => {
       try {
         const getRepairArticleResponse = await fetch(
-          `http://10aeat.com/repair/articles/${repairArticleId}`,
+          `http://api.10aeat.com/repair/articles/${repairArticleId}`,
           {
             method: 'GET',
             headers: {
@@ -33,16 +60,19 @@ export default function RepairDetailOrganism({
             },
           },
         )
-        const repairArticleData = await getRepairArticleResponse.json()
-        setArticleData(repairArticleData)
-        console.log(repairArticleData)
+        const getRepairData = await getRepairArticleResponse.json()
+        setArticleData(getRepairData.data)
+        console.log(getRepairData)
+        console.log('상세 데이터: ', articleData)
       } catch (error) {
         console.error(error)
       }
     }
+
+    checkForActiveIssue()
     getRepairArticleData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [repairArticleId])
+  }, [repairArticleId, accessToken, issueId])
 
   const handleConfirm = () => {
     setIsVisible(false)
@@ -50,25 +80,26 @@ export default function RepairDetailOrganism({
 
   return (
     <div className="flex flex-col w-full items-center">
-      {/* 이슈 부분 redDot 어떻게 받아와서 issue해줄지 생각하고 api 연결 코드 쓰기 */}
-      {isVisible && (
+      {issueData && isVisible && (
         <div
           className={`fixed inset-0 z-10 flex items-center justify-center bg-[rgba(0,0,0,0.72)] ${isVisible ? 'flex' : 'hidden'}`}
         >
           <Issue
             issueStyle={IssueStyle.ISSUE_ALERT}
-            title="이슈 사항 제목"
-            content="여기에 내용을 입력하세요."
+            title={issueData?.title}
+            content={issueData?.title}
             onConfirm={handleConfirm}
           />
         </div>
       )}
       <NavBar isTitle={false} isTextChange />
-      <Issue
-        issueStyle={IssueStyle.ISSUE_TOGGLE}
-        title="이슈 사항 제목"
-        content="여기에 내용을 입력하세요."
-      />
+      {issueData && (
+        <Issue
+          issueStyle={IssueStyle.ISSUE_TOGGLE}
+          title={issueData?.title}
+          content={issueData?.content}
+        />
+      )}
       {articleData && (
         <>
           <div className="px-4 justify-center">
@@ -76,20 +107,21 @@ export default function RepairDetailOrganism({
               사안 내용
             </div>
             <AgendaContent
+              articleId={repairArticleId}
               category={articleData.category}
-              progress={articleData.progress}
-              isSave={articleData.isSave}
-              title={articleData.title}
-              content={articleData.content}
-              updatedAt={articleData.updatedAt}
-              managerName={articleData.managerName}
-              managerId={articleData.managerId}
-              createdAt={articleData.createdAt}
-              imageUrls={articleData.imageUrls}
-              startConstruction={articleData.startConstruction}
-              endConstruction={articleData.endConstruction}
               company={articleData.company}
               companyWebsite={articleData.companyWebsite}
+              content={articleData.content}
+              createdAt={articleData.createdAt}
+              imageUrls={articleData.imageUrls}
+              isSave={articleData.isSave}
+              managerId={articleData.managerId}
+              managerName={articleData.managerName}
+              progress={articleData.progress}
+              title={articleData.title}
+              updatedAt={articleData.updatedAt}
+              startConstruction={articleData.startConstruction}
+              endConstruction={articleData.endConstruction}
             />
           </div>
           <div className="px-4 mt-8 mb-[15px]">
@@ -98,7 +130,6 @@ export default function RepairDetailOrganism({
             </div>
             <TrackingProgress repairArticleId={repairArticleId} />
           </div>
-          <ShareBtn />
           <div className="px-4 mt-8">
             <div className="font-bold text-lg font-Pretendard mb-3">댓글</div>
             <NoBox type="댓글" />

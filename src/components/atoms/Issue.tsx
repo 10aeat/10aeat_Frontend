@@ -11,8 +11,8 @@ export enum IssueStyle {
 
 interface Props {
   issueStyle: IssueStyle
-  title: string
-  content: string
+  title?: string
+  content?: string
   onConfirm?: () => void
 }
 
