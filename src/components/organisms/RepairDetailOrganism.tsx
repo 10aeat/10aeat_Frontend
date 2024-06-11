@@ -2,7 +2,6 @@
 
 import AdminCard from '@/app/admin/_components/atoms/AdminCard'
 import { useState, useEffect } from 'react'
-import { useParams } from 'next/navigation'
 import Issue, { IssueStyle } from '../atoms/Issue'
 import NavBar from '../atoms/NavBar'
 import NoBox from '../atoms/NoBox'
@@ -81,27 +80,25 @@ export default function RepairDetailOrganism({
 
   return (
     <div className="flex flex-col w-full items-center">
-      {issueData && (
-        <>
-          {isVisible && (
-            <div
-              className={`fixed inset-0 z-10 flex items-center justify-center bg-[rgba(0,0,0,0.72)] ${isVisible ? 'flex' : 'hidden'}`}
-            >
-              <Issue
-                issueStyle={IssueStyle.ISSUE_ALERT}
-                title={issueData?.title}
-                content={issueData?.title}
-                onConfirm={handleConfirm}
-              />
-            </div>
-          )}
-          <NavBar isTitle={false} isTextChange />
+      {issueData && isVisible && (
+        <div
+          className={`fixed inset-0 z-10 flex items-center justify-center bg-[rgba(0,0,0,0.72)] ${isVisible ? 'flex' : 'hidden'}`}
+        >
           <Issue
-            issueStyle={IssueStyle.ISSUE_TOGGLE}
+            issueStyle={IssueStyle.ISSUE_ALERT}
             title={issueData?.title}
-            content={issueData?.content}
+            content={issueData?.title}
+            onConfirm={handleConfirm}
           />
-        </>
+        </div>
+      )}
+      <NavBar isTitle={false} isTextChange />
+      {issueData && (
+        <Issue
+          issueStyle={IssueStyle.ISSUE_TOGGLE}
+          title={issueData?.title}
+          content={issueData?.content}
+        />
       )}
       {articleData && (
         <>
@@ -110,20 +107,21 @@ export default function RepairDetailOrganism({
               사안 내용
             </div>
             <AgendaContent
+              articleId={repairArticleId}
               category={articleData.category}
-              progress={articleData.progress}
-              isSave={articleData.isSave}
-              title={articleData.title}
-              content={articleData.content}
-              updatedAt={articleData.updatedAt}
-              managerName={articleData.managerName}
-              managerId={articleData.managerId}
-              createdAt={articleData.createdAt}
-              imageUrls={articleData.imageUrls}
-              startConstruction={articleData.startConstruction}
-              endConstruction={articleData.endConstruction}
               company={articleData.company}
               companyWebsite={articleData.companyWebsite}
+              content={articleData.content}
+              createdAt={articleData.createdAt}
+              imageUrls={articleData.imageUrls}
+              isSave={articleData.isSave}
+              managerId={articleData.managerId}
+              managerName={articleData.managerName}
+              progress={articleData.progress}
+              title={articleData.title}
+              updatedAt={articleData.updatedAt}
+              startConstruction={articleData.startConstruction}
+              endConstruction={articleData.endConstruction}
             />
           </div>
           <div className="px-4 mt-8 mb-[15px]">

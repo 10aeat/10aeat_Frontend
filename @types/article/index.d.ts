@@ -23,20 +23,27 @@ interface REPAIR_ARTICLE_LIST {
 }
 
 interface REPAIR_ARTICLE_DETAIL {
+  articleId: string | string[]
   category: string // 보수 종류
   progress: string // 진행 상황
   isSave: boolean // 사용자가 해당 게시글을 저장했는지 여부(별 표시)
   managerId: number
   managerName: string
-  createdAt: string // 게시글 작성일
-  updatedAt: string // 마지막 수정일(게시글과 동일하면 수정 하지 않은 것임)
+  createdAt: number[] // 게시글 작성일
+  updatedAt: number[] // 마지막 수정일(게시글과 동일하면 수정 하지 않은 것임)
   title: string
   content: string
   imageUrls: string[] // 이미지 url
-  startConstruction: string // 공사 시작
-  endConstruction: string // 공사 종료
   company: string
   companyWebsite: string // 담당업체 웹사이트 url
+  startConstruction: number[]
+  endConstruction: number[]
+}
+
+enum Category {
+  INSTALL = 'INSTALL',
+  REPAIR = 'REPAIR',
+  REPLACE = 'REPLACE',
 }
 
 enum Period {

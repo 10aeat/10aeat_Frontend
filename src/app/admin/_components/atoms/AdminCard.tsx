@@ -23,7 +23,7 @@ export default function AdminCard({ managerId }: { managerId: number }) {
         )
 
         const managerInfo = await getManagerInfoResponse.json()
-        setManagerInfoData(managerInfo)
+        setManagerInfoData(managerInfo.data)
         console.log(managerInfo)
       } catch (error) {
         console.log(error)
