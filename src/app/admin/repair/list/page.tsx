@@ -27,7 +27,143 @@ export default function Page() {
     totalPages: 1,
     articles: [],
   })
-
+  const data = [
+    {
+      id: 1,
+      category: 'REPLACE',
+      managerName: '최관리',
+      progress: 'PENDING',
+      title: '새로운 설치 작업',
+      period: '무',
+      commentCount: 0,
+      viewCount: 1,
+      imageUrl:
+        'https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U0CQtsEThpNXCWV~Sm425-ZI4EKxQMF0RLPL4oRKgHsaQ4ApGVE1qG2cBB-DvWEE-2-7Srywz02ZD7dZctAXRclpXmJ0gVKxB6Jf3iJwS1XNLiSlOzvS4RmUfadpNF-NvVMonaYFeearumlpcFXq0BbiywBNCJO94MK3s~eAzxaB~iGSI~LEzycYmY4Pl4xAanryZHTWTR-X0WRRP4ZaWUeQVAbxQZgXr82GozzNzNND7LZ81oQa3EqQg9j3fjphfYb-qO-Cod8RNEbBDXn6IJN3WlmL2UguQzu-uJnf64Fh3GB8QZLW4~UvMV2rBgtaryHA5Z0WaOGU-MGrmddJYA__',
+      // '/public/images/test1.svg',
+      activeIssueId: 1,
+      date: '24.05.20',
+    },
+    {
+      id: 2,
+      category: 'REPLACE',
+      managerName: '최관리',
+      progress: 'INPROGRESS',
+      title: '새로운 설치 작업',
+      period: '무',
+      commentCount: 0,
+      viewCount: 1,
+      imageUrl:
+        'https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U0CQtsEThpNXCWV~Sm425-ZI4EKxQMF0RLPL4oRKgHsaQ4ApGVE1qG2cBB-DvWEE-2-7Srywz02ZD7dZctAXRclpXmJ0gVKxB6Jf3iJwS1XNLiSlOzvS4RmUfadpNF-NvVMonaYFeearumlpcFXq0BbiywBNCJO94MK3s~eAzxaB~iGSI~LEzycYmY4Pl4xAanryZHTWTR-X0WRRP4ZaWUeQVAbxQZgXr82GozzNzNND7LZ81oQa3EqQg9j3fjphfYb-qO-Cod8RNEbBDXn6IJN3WlmL2UguQzu-uJnf64Fh3GB8QZLW4~UvMV2rBgtaryHA5Z0WaOGU-MGrmddJYA__',
+      // '/public/images/test1.svg',
+      activeIssueId: 1,
+      date: '24.05.20',
+    },
+    {
+      id: 3,
+      category: 'REPLACE',
+      managerName: '최관리',
+      progress: 'COMPLETE',
+      title: '새로운 설치 작업',
+      period: '무',
+      commentCount: 0,
+      viewCount: 1,
+      imageUrl:
+        'https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U0CQtsEThpNXCWV~Sm425-ZI4EKxQMF0RLPL4oRKgHsaQ4ApGVE1qG2cBB-DvWEE-2-7Srywz02ZD7dZctAXRclpXmJ0gVKxB6Jf3iJwS1XNLiSlOzvS4RmUfadpNF-NvVMonaYFeearumlpcFXq0BbiywBNCJO94MK3s~eAzxaB~iGSI~LEzycYmY4Pl4xAanryZHTWTR-X0WRRP4ZaWUeQVAbxQZgXr82GozzNzNND7LZ81oQa3EqQg9j3fjphfYb-qO-Cod8RNEbBDXn6IJN3WlmL2UguQzu-uJnf64Fh3GB8QZLW4~UvMV2rBgtaryHA5Z0WaOGU-MGrmddJYA__',
+      // '/public/images/test1.svg',
+      activeIssueId: 1,
+      date: '24.05.20',
+    },
+    {
+      id: 4,
+      category: 'REPAIR',
+      managerName: '최관리',
+      progress: 'PENDING',
+      title: '새로운 설치 작업',
+      period: '무',
+      commentCount: 0,
+      viewCount: 1,
+      imageUrl:
+        'https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U0CQtsEThpNXCWV~Sm425-ZI4EKxQMF0RLPL4oRKgHsaQ4ApGVE1qG2cBB-DvWEE-2-7Srywz02ZD7dZctAXRclpXmJ0gVKxB6Jf3iJwS1XNLiSlOzvS4RmUfadpNF-NvVMonaYFeearumlpcFXq0BbiywBNCJO94MK3s~eAzxaB~iGSI~LEzycYmY4Pl4xAanryZHTWTR-X0WRRP4ZaWUeQVAbxQZgXr82GozzNzNND7LZ81oQa3EqQg9j3fjphfYb-qO-Cod8RNEbBDXn6IJN3WlmL2UguQzu-uJnf64Fh3GB8QZLW4~UvMV2rBgtaryHA5Z0WaOGU-MGrmddJYA__',
+      // '/public/images/test1.svg',
+      activeIssueId: 1,
+      date: '24.05.20',
+    },
+    {
+      id: 5,
+      category: 'REPAIR',
+      managerName: '최관리',
+      progress: 'INPROGRESS',
+      title: '새로운 설치 작업',
+      period: '무',
+      commentCount: 0,
+      viewCount: 1,
+      imageUrl:
+        'https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U0CQtsEThpNXCWV~Sm425-ZI4EKxQMF0RLPL4oRKgHsaQ4ApGVE1qG2cBB-DvWEE-2-7Srywz02ZD7dZctAXRclpXmJ0gVKxB6Jf3iJwS1XNLiSlOzvS4RmUfadpNF-NvVMonaYFeearumlpcFXq0BbiywBNCJO94MK3s~eAzxaB~iGSI~LEzycYmY4Pl4xAanryZHTWTR-X0WRRP4ZaWUeQVAbxQZgXr82GozzNzNND7LZ81oQa3EqQg9j3fjphfYb-qO-Cod8RNEbBDXn6IJN3WlmL2UguQzu-uJnf64Fh3GB8QZLW4~UvMV2rBgtaryHA5Z0WaOGU-MGrmddJYA__',
+      // '/public/images/test1.svg',
+      activeIssueId: 1,
+      date: '24.05.20',
+    },
+    {
+      id: 6,
+      category: 'REPAIR',
+      managerName: '최관리',
+      progress: 'COMPLETE',
+      title: '새로운 설치 작업',
+      period: '무',
+      commentCount: 0,
+      viewCount: 1,
+      imageUrl:
+        'https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U0CQtsEThpNXCWV~Sm425-ZI4EKxQMF0RLPL4oRKgHsaQ4ApGVE1qG2cBB-DvWEE-2-7Srywz02ZD7dZctAXRclpXmJ0gVKxB6Jf3iJwS1XNLiSlOzvS4RmUfadpNF-NvVMonaYFeearumlpcFXq0BbiywBNCJO94MK3s~eAzxaB~iGSI~LEzycYmY4Pl4xAanryZHTWTR-X0WRRP4ZaWUeQVAbxQZgXr82GozzNzNND7LZ81oQa3EqQg9j3fjphfYb-qO-Cod8RNEbBDXn6IJN3WlmL2UguQzu-uJnf64Fh3GB8QZLW4~UvMV2rBgtaryHA5Z0WaOGU-MGrmddJYA__',
+      // '/public/images/test1.svg',
+      activeIssueId: 1,
+      date: '24.05.20',
+    },
+    {
+      id: 7,
+      category: 'INSTALL',
+      managerName: '최관리',
+      progress: 'PENDING',
+      title: '새로운 설치 작업',
+      period: '무',
+      commentCount: 0,
+      viewCount: 1,
+      imageUrl:
+        'https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U0CQtsEThpNXCWV~Sm425-ZI4EKxQMF0RLPL4oRKgHsaQ4ApGVE1qG2cBB-DvWEE-2-7Srywz02ZD7dZctAXRclpXmJ0gVKxB6Jf3iJwS1XNLiSlOzvS4RmUfadpNF-NvVMonaYFeearumlpcFXq0BbiywBNCJO94MK3s~eAzxaB~iGSI~LEzycYmY4Pl4xAanryZHTWTR-X0WRRP4ZaWUeQVAbxQZgXr82GozzNzNND7LZ81oQa3EqQg9j3fjphfYb-qO-Cod8RNEbBDXn6IJN3WlmL2UguQzu-uJnf64Fh3GB8QZLW4~UvMV2rBgtaryHA5Z0WaOGU-MGrmddJYA__',
+      // '/public/images/test1.svg',
+      activeIssueId: 1,
+      date: '24.05.20',
+    },
+    {
+      id: 8,
+      category: 'INSTALL',
+      managerName: '최관리',
+      progress: 'INPROGRESS',
+      title: '새로운 설치 작업',
+      period: '무',
+      commentCount: 0,
+      viewCount: 1,
+      imageUrl:
+        'https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U0CQtsEThpNXCWV~Sm425-ZI4EKxQMF0RLPL4oRKgHsaQ4ApGVE1qG2cBB-DvWEE-2-7Srywz02ZD7dZctAXRclpXmJ0gVKxB6Jf3iJwS1XNLiSlOzvS4RmUfadpNF-NvVMonaYFeearumlpcFXq0BbiywBNCJO94MK3s~eAzxaB~iGSI~LEzycYmY4Pl4xAanryZHTWTR-X0WRRP4ZaWUeQVAbxQZgXr82GozzNzNND7LZ81oQa3EqQg9j3fjphfYb-qO-Cod8RNEbBDXn6IJN3WlmL2UguQzu-uJnf64Fh3GB8QZLW4~UvMV2rBgtaryHA5Z0WaOGU-MGrmddJYA__',
+      // '/public/images/test1.svg',
+      activeIssueId: 1,
+      date: '24.05.20',
+    },
+    {
+      id: 9,
+      category: 'INSTALL',
+      managerName: '최관리',
+      progress: 'COMPLETE',
+      title: '새로운 설치 작업',
+      period: '무',
+      commentCount: 0,
+      viewCount: 1,
+      imageUrl:
+        'https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U0CQtsEThpNXCWV~Sm425-ZI4EKxQMF0RLPL4oRKgHsaQ4ApGVE1qG2cBB-DvWEE-2-7Srywz02ZD7dZctAXRclpXmJ0gVKxB6Jf3iJwS1XNLiSlOzvS4RmUfadpNF-NvVMonaYFeearumlpcFXq0BbiywBNCJO94MK3s~eAzxaB~iGSI~LEzycYmY4Pl4xAanryZHTWTR-X0WRRP4ZaWUeQVAbxQZgXr82GozzNzNND7LZ81oQa3EqQg9j3fjphfYb-qO-Cod8RNEbBDXn6IJN3WlmL2UguQzu-uJnf64Fh3GB8QZLW4~UvMV2rBgtaryHA5Z0WaOGU-MGrmddJYA__',
+      // '/public/images/test1.svg',
+      activeIssueId: 1,
+      date: '24.05.20',
+    },
+  ]
   const [currentPage, setCurrentPage] = useState(0)
   const [articleList, setArticleList] = useState<REPAIR_LIST_ARTICLE[]>([])
 
@@ -43,7 +179,6 @@ export default function Page() {
         })
         if (response) {
           console.log('로그인 성공!')
-          console.log(response.headers.accesstoken)
           setAccessToken(response.headers.accesstoken)
         } else {
           // 오류 처리
@@ -83,30 +218,18 @@ export default function Page() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [accessToken])
 
-  // const handleSearch = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       `http://10aeat.com/repair?keyword=${'11'}&page=${2}`,
-  //       {
-  //         method: 'GET',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           AccessToken: accessToken,
-  //         },
-  //       },
-  //     )
-  //     const data = await response.json()
-  //     setRepairList(data.data)
+  const [category, setCategory] = useState('전체')
+  const [progress, setProgress] = useState('전체')
 
-  //     console.log(data)
-  //     const article = data.data.articles
-
-  //     setArticleList(article)
-  //   } catch (error) {
-  //     console.error(error)
-  //   }
-  // }
-  // // console.log(handleSearch())
+  // 카테고리 버튼 클릭 핸들러
+  const handleCategoryClick = (category: string) => {
+    setCategory(category)
+  }
+  // 상태 버튼 클릭 핸들러
+  const handleStatusClick = (status: string) => {
+    setProgress(status)
+  }
+  console.log(category)
   return (
     <div className="relative w-full bg-white">
       <AdminLogo />
@@ -136,6 +259,8 @@ export default function Page() {
             isDisabled={false}
             size="md"
             placeholder="전체"
+            category={category}
+            onChange={handleCategoryClick}
             options={['전체', '설치', '보수', '교체']}
           />
           <AdminInput />
@@ -148,17 +273,22 @@ export default function Page() {
           </AdminButton>
         </div>
         <div className="relative inline-flex top-[24px] items-start gap-[10px]">
-          <AdminFilterBtn />
+          <AdminFilterBtn progress={progress} setProgress={setProgress} />
         </div>
 
-        <AdminListTable repairList={repairList} articleList={articleList} />
+        <AdminListTable
+          category={category}
+          progress={progress}
+          repairList={repairList}
+          articleList={articleList}
+        />
         <div className="relative flex w-[1000px] justify-end items-center gap-[4px] pb-[100px]">
-          <Pagination
+          {/* <Pagination
             currentPage={0}
             onPageChange={setCurrentPage}
             totalItems={100}
             itemsPerPage={5}
-          />
+          /> */}
         </div>
       </div>
     </div>
