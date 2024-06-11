@@ -6,13 +6,13 @@ import AdminLogo from '@/app/admin/_components/atoms/AdminLogo'
 import AdminManageTable from '@/app/admin/_components//atoms/AdminManageTable'
 import AdminMonthPicker from '@/app/admin/_components/atoms/AdminMonthPicker'
 import AdminYearPicker from '@/app/admin/_components/atoms/AdminYearPicker'
-import SideMenu from '../../sidemenu/page'
+import SideMenu from '@/app/admin/_components/atoms/Sidemenu'
 
 export default function page() {
   return (
     <div className="relative w-full bg-white overflow-y-auto">
       <AdminLogo />
-      <SideMenu />
+      <SideMenu menuIndex={2} />
       <div className="inline-flex flex-col items-start gap-4 absolute top-28 left-64">
         <div className="flex flex-col items-start relative self-stretch w-full flex-[0_0_auto]">
           <div className="font-Pretendard text-[24px] font-bold leading-[32px] capitalize text-gray-900">
@@ -48,7 +48,7 @@ export default function page() {
         {/* 여기 달력 드롭다운 새로 만들기 */}
         <div className=" justify-between relative flex py-[12px] mt-[24px] items-center gap-[695px]">
           <span className="font-Pretendard text-[18px] font-semibold leading-[24px] text-gray-900 whitespace-nowrap">
-            총 <span className="text-[#2463EB]"> 0개</span>의 게시물이
+            총 <span className="text-[#2463EB]"> 2개</span>의 게시물이
             조회되었습니다.
           </span>
           <div className="flex justify-end items-start gap-[4px]">
