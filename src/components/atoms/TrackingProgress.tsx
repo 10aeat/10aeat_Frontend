@@ -44,6 +44,7 @@ export default function TrackingProgress({
     getProgressData()
   }, [repairArticleId])
 
+  console.log(progressData)
   return (
     <Box boxStyle={BoxStyle.BOX_WHITE_CONTENT}>
       <Timeline style={{ padding: 0 }}>

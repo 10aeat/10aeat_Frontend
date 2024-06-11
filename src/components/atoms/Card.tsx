@@ -150,7 +150,11 @@ export default function Card({
 
       case CardStyle.NO_IMG:
         return (
-          <div className="inline-flex flex-col items-start gap-[8px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
+          // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+          <div
+            onClick={onClickFunction}
+            className="inline-flex flex-col items-start gap-[8px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]"
+          >
             <div className="flex flex-wrap w-[343px] h-[124px] items-end gap-[8px_10px] p-[16px] bg-[#ffffff] rounded-[18px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
               <div className="flex w-[311px] items-center gap-[10px] relative">
                 <div className="flex flex-col items-start gap-[5px] relative ">
@@ -235,7 +239,11 @@ export default function Card({
         )
       case CardStyle.ALL_NO:
         return (
-          <div className="inline-flex flex-col items-start gap-[8px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
+          // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+          <div
+            onClick={onClickFunction}
+            className="inline-flex flex-col items-start gap-[8px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]"
+          >
             <div className="flex flex-wrap w-[343px] h-[124px] items-end gap-[8px_10px] p-[16px] bg-[#ffffff] rounded-[18px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
               <div className="inline-flex items-end gap-[8px] relative flex-[0_0_auto]">
                 <div className="flex w-[275px] h-[56px] items-center gap-[8px] relative">
@@ -319,7 +327,11 @@ export default function Card({
         )
       case CardStyle.NO_PERIOD:
         return (
-          <div className="inline-flex flex-col items-start gap-[8px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
+          // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+          <div
+            onClick={onClickFunction}
+            className="inline-flex flex-col items-start gap-[8px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]"
+          >
             <div className="flex flex-wrap w-[343px] h-[124px] items-end gap-[8px_10px] p-[16px] bg-[#ffffff] rounded-[18px] relative shadow-[0_4px_30px_0px_rgba(75,85,9,0.04)]">
               <div className="inline-flex items-end gap-[8px] relative flex-[0_0_auto]">
                 <div className="flex w-[275px] h-[56px] items-center gap-[8px] relative">

@@ -10,6 +10,7 @@ import { useAccessToken } from '@/components/store/AccessTokenStore'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { totalmem } from 'os'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
@@ -38,7 +39,7 @@ export default function Home() {
   })
 
   // 법정관리 월별 요약 조회
-  const [monthlySummary, setMonthlySummary] = useState([])
+  const [monthlySummary, setMonthlySummary] = useState([{ month: 0, total: 0 }])
 
   const handleSelectMonth = (month: number) => {
     setSelectedMonth(month)
