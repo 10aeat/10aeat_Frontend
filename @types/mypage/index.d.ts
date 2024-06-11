@@ -10,3 +10,8 @@ interface BUILDING {
   dong: string
   ho: string
 }
+
+interface ApiResponse {
+  code: number
+  data: Building[]
+}
