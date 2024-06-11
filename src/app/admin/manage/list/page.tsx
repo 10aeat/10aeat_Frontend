@@ -48,7 +48,7 @@ export default function page() {
         {/* 여기 달력 드롭다운 새로 만들기 */}
         <div className=" justify-between relative flex py-[12px] mt-[24px] items-center gap-[695px]">
           <span className="font-Pretendard text-[18px] font-semibold leading-[24px] text-gray-900 whitespace-nowrap">
-            총 <span className="text-[#2463EB]"> 0개</span>의 게시물이
+            총 <span className="text-[#2463EB]"> 2개</span>의 게시물이
             조회되었습니다.
           </span>
           <div className="flex justify-end items-start gap-[4px]">
