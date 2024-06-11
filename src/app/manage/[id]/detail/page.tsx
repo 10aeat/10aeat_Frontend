@@ -62,7 +62,6 @@ export default function ManageDetail() {
     getManageArticleData()
   }, [accessToken, id])
 
-  console.log(manageArticle)
   return (
     <div className="flex flex-col w-full items-center justify-center bg-gray-100">
       <NavBar isTextChange isTitle={false} />

@@ -26,11 +26,9 @@ export default function Page() {
     setAccessToken('')
     setIsModalVisible(false)
 
-    console.log(isModalVisible)
     router.push('/signup')
   }
-  console.log(accessToken)
-  console.log(isModalVisible)
+
   useEffect(() => {
     const getInfoData = async () => {
       try {
@@ -66,8 +64,6 @@ export default function Page() {
     getBuildingData()
   }, [accessToken])
 
-  console.log(info)
-  console.log(buildings)
   return (
     <div className="flex flex-col h-[812px] w-full items-center bg-gray-100 ">
       <div className="absolute top-[40px] w-[375px] inline-flex items-center gap-[16px] pl-[16px]">

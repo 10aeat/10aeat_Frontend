@@ -68,12 +68,10 @@ export default function Page() {
       })
       if (response) {
         console.log('로그인 성공!')
-        console.log(response.headers.accesstoken)
         setAccessToken(response.headers.accesstoken)
         router.push('/main')
       } else {
         // 오류 처리
-        // console.error('로그인 실패:', response.statusText)
         setIsPasswordValid(false)
       }
     } catch (error) {

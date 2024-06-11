@@ -97,7 +97,6 @@ export default function Home() {
     getRepairSummaryData()
   }, [accessToken])
 
-  console.log(repairSummary)
   useEffect(() => {
     const getRepairListData = async () => {
       try {
@@ -180,9 +179,6 @@ export default function Home() {
     }
     return CardStyle.ALL_NO
   }
-
-  // console.log(currentPage)
-  console.log(articleList)
 
   return (
     <div className="flex flex-col w-full items-center bg-gray-100">
