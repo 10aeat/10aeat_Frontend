@@ -59,8 +59,8 @@ export default function ItemUpdate() {
   const fetchRepairArticles = async () => {
     try {
       const response = await fetch(
-        // `http://10aeat.com/repair/articles/progress/${repairArticleId}`,
-        `http://10aeat.com/repair/articles/progress/1`,
+        // `http://api.10aeat.com/repair/articles/progress/${repairArticleId}`,
+        `http://api.10aeat.com/repair/articles/progress/1`,
         {
           method: 'GET',
           headers: {

@@ -241,10 +241,17 @@ export default function Home() {
         </div>
         <ManageStatus manageSummary={manageSummary} />
         <div className="mt-[16px]" />
-        <MonthlyPlan
-          onSelectMonth={handleSelectMonth}
-          monthlySummary={monthlySummary}
-        />
+        <Link
+          type="button"
+          className="block mt-[34px]"
+          // onClick={() => router.push({ pathname: '/repair' })}
+          href="/manage/monthly"
+        >
+          <MonthlyPlan
+            onSelectMonth={handleSelectMonth}
+            monthlySummary={monthlySummary}
+          />
+        </Link>
       </div>
       <BottomNav isHome />
     </div>
