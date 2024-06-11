@@ -11,7 +11,7 @@ export default function BottomNav({ isHome }: Props) {
       <button
         type="button"
         className="flex-1 flex items-center justify-center"
-        onClick={() => router.push('/')}
+        onClick={() => router.push('/main')}
       >
         <div className="relative w-[47px] h-[44px]">
           <Image

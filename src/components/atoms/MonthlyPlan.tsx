@@ -1,11 +1,17 @@
+'use client'
+
 /* eslint-disable react/no-array-index-key */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import SelectMonth from '../molecules/SelectMonth'
 import Button, { ButtonStyle } from './Button'
 
+interface MonthlySummary {
+  month: number
+  total: number
+}
 interface Props {
-  monthlySummary: number[]
+  monthlySummary: MonthlySummary[]
   onSelectMonth: (month: number) => void
 }
 export default function MonthlyPlan({ monthlySummary, onSelectMonth }: Props) {
@@ -16,6 +22,14 @@ export default function MonthlyPlan({ monthlySummary, onSelectMonth }: Props) {
   const [selectedMonth, setSelectedMonth] = useState<number | null>(
     currentMonth,
   )
+  const [selectedMonthTotal, setSelectedMonthTotal] = useState<number>(0)
+
+  useEffect(() => {
+    const selectedMonthSummary = monthlySummary.find(
+      (summary) => summary.month === selectedMonth,
+    )
+    setSelectedMonthTotal(selectedMonthSummary ? selectedMonthSummary.total : 0)
+  }, [selectedMonth, monthlySummary])
 
   const handleMonthClick = (index: number) => {
     const month = index + 1
@@ -27,9 +41,10 @@ export default function MonthlyPlan({ monthlySummary, onSelectMonth }: Props) {
       onSelectMonth(month)
     }
   }
+  console.log(monthlySummary)
 
   const getButtonStyle = (month: number) => {
-    return monthlySummary?.includes(month)
+    return monthlySummary.some((summary) => summary.month === month)
       ? ButtonStyle.MONTHLY
       : ButtonStyle.MONTHLY_NONE
   }
@@ -99,7 +114,7 @@ export default function MonthlyPlan({ monthlySummary, onSelectMonth }: Props) {
             {selectedMonth}월 /
           </div>
           <div className="relative w-fit font-Pretendard font-semibold text-[16px] leading-[24px] text-[#1D4ED8]">
-            2건
+            {selectedMonthTotal}건
           </div>
         </div>
       </div>
