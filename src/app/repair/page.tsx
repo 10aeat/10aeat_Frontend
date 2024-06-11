@@ -97,6 +97,7 @@ export default function Home() {
     getRepairSummaryData()
   }, [accessToken])
 
+  console.log(repairSummary)
   useEffect(() => {
     const getRepairListData = async () => {
       try {
@@ -184,7 +185,7 @@ export default function Home() {
   console.log(articleList)
 
   return (
-    <div className="flex flex-col w-full items-center bg-gray-100 ">
+    <div className="flex flex-col w-full items-center bg-gray-100">
       {/* NavBar */}
       <NavBar isTextChange={false} isTitle>
         건물 유지보수 사안
@@ -216,7 +217,7 @@ export default function Home() {
         />
       </div>
       {/* Card 영역 */}
-      <div className="gap-[12px] top-[28px] relative inline-flex flex-col items-start">
+      <div className="gap-[12px] mt-[28px] relative inline-flex flex-col items-start">
         <div className="relative w-fit mt-[-1.00px] font-Pretendard font-bold text-gray-900 text-[18px] tracking-[0] leading-[24px] whitespace-nowrap">
           어떤 사항을 확인해보시겠어요?
         </div>
@@ -279,7 +280,9 @@ export default function Home() {
               />
             ))
           ) : (
-            <NoData />
+            <div className="w-[343px]">
+              <NoData />
+            </div>
           )}
         </div>
         <div className=" w-full  mt-8 !flex justify-center ">

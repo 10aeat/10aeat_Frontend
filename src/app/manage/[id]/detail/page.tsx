@@ -13,32 +13,7 @@ import { useEffect, useState } from 'react'
 export default function ManageDetail() {
   const { id } = useParams()
   const { accessToken, setAccessToken } = useAccessToken()
-  console.log(id)
-  // const manageArticle = {
-  //   period: 'YEAR',
-  //   peroidCount: 1,
-  //   title: '승강기 자체점검',
-  //   issue: true,
-  //   progress: 'INPROGRESS',
-  //   lagelBasis: '승강기 안전 관리법 제32조', // 법적근거
-  //   target: '총 10대', // 사용내역/검사 대상
-  //   manager: '승강기 점검 업체', // 점검담당
-  //   note: '비고비고',
-  //   manageSchedule: [
-  //     {
-  //       manageScheduleId: 1,
-  //       isComplete: false,
-  //       scheduleStart: '2024-10-08T11:44:30.327959',
-  //       scheduleEnd: '2024-10-10T11:44:30.327959',
-  //     },
-  //     {
-  //       manageScheduleId: 2,
-  //       isComplete: true,
-  //       scheduleStart: '2024-10-08T11:44:30.327959',
-  //       scheduleEnd: '2024-10-10T11:44:30.327959',
-  //     },
-  //   ],
-  // }
+
   const [manageArticle, setManageArticle] = useState<MANAGE_LIST_ARTICLE>({
     period: '',
     periodCount: 0,
@@ -51,6 +26,18 @@ export default function ManageDetail() {
     note: '',
     manageSchedule: [],
   })
+
+  const periodMap: { [key: string]: string } = {
+    WEEK: '주간',
+    MONTH: '월간',
+    HALF_YEAR: '반기',
+    YEAR: '연',
+    TWO_YEAR: '2년',
+    THREE_YEAR: '3년',
+    FOUR_YEAR: '4년',
+    FIVE_YEAR: '5년',
+    ETC: '기타',
+  }
 
   useEffect(() => {
     const getManageArticleData = async () => {
@@ -77,9 +64,9 @@ export default function ManageDetail() {
 
   console.log(manageArticle)
   return (
-    <div className="flex flex-col w-full items-center justify-center">
+    <div className="flex flex-col w-full items-center justify-center bg-gray-100">
       <NavBar isTextChange isTitle={false} />
-      <div className="inline-flex flex-col items-start px-4 w-full mb-[15px]">
+      <div className="inline-flex flex-col items-start px-4 w-[375px] mb-[15px]">
         <div className="justify-center font-bold text-lg font-Pretendard mb-[5px] text-[24px] text-left leading-[32px] capitalize">
           {manageArticle?.title}
         </div>
@@ -90,12 +77,12 @@ export default function ManageDetail() {
               progress={manageArticle?.progress}
             />
             <TagBadge tagBadgeStyle={TagBadgeStyle.DEFAULT_TAG}>
-              연12회
+              {periodMap[manageArticle?.period]} {manageArticle?.periodCount}회
             </TagBadge>
           </div>
         </div>
       </div>
-      <div className="justify-center px-4 mt-8 w-full mb-[15px]">
+      <div className="justify-center px-4 mt-8 w-[375px] mb-[15px]">
         <div className="font-bold text-lg font-Pretendard mb-3">진행 현황</div>
         {/* <TrackingProgress2 totalChecks={10} completedChecks={0} status="대기" /> */}
         <TrackingProgress2
@@ -109,11 +96,11 @@ export default function ManageDetail() {
           status="완료"
         /> */}
       </div>
-      <div className="px-4 mt-8 w-full mb-[15px]">
+      <div className="px-4 mt-8 w-[375px] mb-[15px]">
         <div className="font-bold text-lg font-Pretendard mb-3">상세 내역</div>
         <Details manageSchedule={manageArticle?.manageSchedule} />
       </div>
-      <div className="px-4 mt-8 w-full mb-[15px]">
+      <div className="px-4 mt-8 w-[375px] mb-[15px]">
         <div className="font-bold text-lg font-Pretendard mb-3">법정 계획</div>
         <InspectionPlan
           legalBasis={manageArticle?.legalBasis}
@@ -121,7 +108,7 @@ export default function ManageDetail() {
           manager={manageArticle?.responsibility}
         />
       </div>
-      <div className="px-4 mt-8 w-full mb-[100px]">
+      <div className="px-4 mt-8 w-[375px] mb-[100px]">
         <div className="font-bold text-lg font-Pretendard mb-3">비고</div>
         <Note />
       </div>
