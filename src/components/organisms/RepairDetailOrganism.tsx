@@ -13,8 +13,10 @@ import { useAccessToken } from '../store/AccessTokenStore'
 
 export default function RepairDetailOrganism({
   repairArticleId,
+  issueId,
 }: {
   repairArticleId: string | string[]
+  issueId: string | string[]
 }) {
   const [isVisible, setIsVisible] = useState(false)
   const [articleData, setArticleData] = useState<REPAIR_ARTICLE_DETAIL>()
@@ -26,41 +28,24 @@ export default function RepairDetailOrganism({
 
   useEffect(() => {
     const checkForActiveIssue = async () => {
-      try {
-        const response = await fetch(
-          `http://10aeat.com/articles/repair/issues/${repairArticleId}`,
-          {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              AccessToken: accessToken,
-            },
-          },
-        )
-        const data = await response.json()
-        if (data?.data) {
-          const activeIssue = data.data.find((issue: any) => issue.isActive)
-          console.log('Active issue:', activeIssue)
-
-          if (activeIssue) {
-            setIsVisible(true)
-            const issueResponse = await fetch(
-              `http://10aeat.com/articles/issue/detail/${activeIssue.id}`,
-              {
-                method: 'GET',
-                headers: {
-                  'Content-Type': 'application/json',
-                  AccessToken: accessToken,
-                },
+      if (issueId) {
+        try {
+          const issueResponse = await fetch(
+            `http://10aeat.com/articles/issue/detail/${issueId}`,
+            {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json',
+                AccessToken: accessToken,
               },
-            )
-            const issueDetail = await issueResponse.json()
-            console.log('Issue detail:', issueDetail)
-            setIssueData(issueDetail)
-          }
+            },
+          )
+          const issueDetail = await issueResponse.json()
+          console.log('Issue detail:', issueDetail)
+          setIssueData(issueDetail)
+        } catch (error) {
+          console.log(error)
         }
-      } catch (error) {
-        console.log(error)
       }
     }
 
@@ -88,7 +73,7 @@ export default function RepairDetailOrganism({
     checkForActiveIssue()
     getRepairArticleData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [repairArticleId, accessToken])
+  }, [repairArticleId, accessToken, issueId])
 
   const handleConfirm = () => {
     setIsVisible(false)

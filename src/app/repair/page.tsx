@@ -156,10 +156,9 @@ export default function Home() {
     setSelectedCategory(category)
   }
 
-  const handleCardClick = (articleId: number, redDot: boolean) => {
+  const handleCardClick = (articleId: number, activeIssueId: number | null) => {
     // 해당 카드의 상세 페이지 경로를 생성합니다.
-    const detailPath = `/repair/${articleId}/detail`
-    localStorage.setItem('redDot', redDot.toString())
+    const detailPath = `/repair/${articleId}/detail?activeIssueId=${activeIssueId}`
 
     // 생성한 경로로 페이지를 이동합니다.
     router.push(detailPath)
@@ -278,7 +277,7 @@ export default function Home() {
                 redDot={article.redDot}
                 key={article.id} // 각 카드에 고유한 key를 제공합니다.
                 onClickFunction={() =>
-                  handleCardClick(article.id, article.redDot)
+                  handleCardClick(article.id, article.activeIssueId)
                 }
               />
             ))
