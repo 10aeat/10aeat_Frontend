@@ -10,14 +10,14 @@ interface ModalProps {
   modalStyle: ModalStyle
   onClose?: () => void
   onConfirm?: () => void
-  room: string
+  building: BUILDING | null
 }
 
 export default function Modal({
   modalStyle,
   onClose,
   onConfirm,
-  room,
+  building,
 }: ModalProps) {
   const selectModal = () => {
     switch (modalStyle) {
@@ -37,7 +37,11 @@ export default function Modal({
                 </button>
               </div>
               <div className="flex flex-col justify-center min-h-[120px] px-[24px] pt-[8px] pb-[16px] gap-[8px] text-[18px] leading-[24px]">
-                <div className="font-semibold">'{room}'</div>
+                <div className="font-semibold">
+                  {building
+                    ? `${building.dong}동 ${building.ho}호`
+                    : '선택된 호실'}
+                </div>
                 <div className="font-normal">호실을 삭제할까요?</div>
               </div>
               <div className="flex justify-end px-[24px] pt-[12px] pb-[24px] gap-[12px]">
