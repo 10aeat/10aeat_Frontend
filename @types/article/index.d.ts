@@ -85,6 +85,11 @@ interface MANAGE_ARTICLE_DETAIL {
   ]
 }
 
+interface MANAGE_ARTICLE_MONTHLY_SUMMARY {
+  month: number
+  total: number
+}
+
 interface MANAGE_ARTICLE_MONTHLY_LIST {
   id: number
   period: string

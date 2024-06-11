@@ -5,9 +5,10 @@ import Button, { ButtonStyle } from '../atoms/Button'
 
 interface Props {
   onSelectMonth: (month: number) => void
+  data: MANAGE_ARTICLE_MONTHLY_SUMMARY[] | undefined
 }
 
-export default function SelectMonth({ onSelectMonth }: Props) {
+export default function SelectMonth({ onSelectMonth, data }: Props) {
   const months = Array.from({ length: 12 }, (_, i) => `${i + 1}월`)
   const firstRowMonths = months.slice(0, 6)
   const secondRowMonths = months.slice(6, 12)
@@ -24,6 +25,8 @@ export default function SelectMonth({ onSelectMonth }: Props) {
     }
   }
 
+  const availableMonths = data ? data.map((item) => item.month) : []
+
   return (
     <div className="flex flex-col justify-center">
       <span className="font-Pretendard font-semibold capitalize text-gray-900">
@@ -32,30 +35,46 @@ export default function SelectMonth({ onSelectMonth }: Props) {
 
       <div className="flex flex-col my-2">
         <div className="flex flex-wrap gap-2">
-          {firstRowMonths.map((month, index) => (
-            <Button
-              key={index}
-              buttonStyle={ButtonStyle.MONTHLY}
-              style="flex-1 m-0"
-              isSelect={selectedMonth === index + 1}
-              onClickFunction={() => handleMonthClick(index)}
-            >
-              {month}
-            </Button>
-          ))}
+          {firstRowMonths.map((month, index) => {
+            const monthNumber = index + 1
+            const isAvailable = availableMonths.includes(monthNumber)
+            return (
+              <Button
+                key={index}
+                buttonStyle={
+                  isAvailable ? ButtonStyle.MONTHLY : ButtonStyle.MONTHLY_NONE
+                }
+                style="flex-1 m-0"
+                isSelect={selectedMonth === index + 1}
+                onClickFunction={
+                  isAvailable ? () => handleMonthClick(index) : undefined
+                }
+              >
+                {month}
+              </Button>
+            )
+          })}
         </div>
         <div className="flex flex-wrap mt-2 gap-2">
-          {secondRowMonths.map((month, index) => (
-            <Button
-              key={index}
-              buttonStyle={ButtonStyle.MONTHLY}
-              style="flex-1 m-0"
-              isSelect={selectedMonth === index + 7}
-              onClickFunction={() => handleMonthClick(index + 6)}
-            >
-              {month}
-            </Button>
-          ))}
+          {secondRowMonths.map((month, index) => {
+            const monthNumber = index + 7
+            const isAvailable = availableMonths.includes(monthNumber)
+            return (
+              <Button
+                key={index}
+                buttonStyle={
+                  isAvailable ? ButtonStyle.MONTHLY : ButtonStyle.MONTHLY_NONE
+                }
+                style="flex-1 m-0"
+                isSelect={selectedMonth === index + 7}
+                onClickFunction={
+                  isAvailable ? () => handleMonthClick(index + 6) : undefined
+                }
+              >
+                {month}
+              </Button>
+            )
+          })}
         </div>
       </div>
 
