@@ -65,7 +65,7 @@ export default function Home() {
     const getRepairSummaryData = async () => {
       try {
         const getRepairSummaryResponse = await fetch(
-          'http://10aeat.com/repair/articles/summary',
+          'http://api.10aeat.com/repair/articles/summary',
           {
             method: 'GET',
             headers: {
@@ -83,7 +83,7 @@ export default function Home() {
     const getManageSummaryData = async () => {
       try {
         const getRepairSummaryResponse = await fetch(
-          'http://10aeat.com/manage/articles/summary',
+          'http://api.10aeat.com/manage/articles/summary',
           {
             method: 'GET',
             headers: {
@@ -101,7 +101,7 @@ export default function Home() {
     const getMonthlySummaryData = async () => {
       try {
         const getMonthlySummaryResponse = await fetch(
-          'http://10aeat.com/manage/articles/monthly/summary',
+          'http://api.10aeat.com/manage/articles/monthly/summary',
           {
             method: 'GET',
             headers: {

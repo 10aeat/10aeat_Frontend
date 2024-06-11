@@ -39,7 +39,7 @@ export default function Page() {
   ) => {
     try {
       const response1 = await fetch(
-        `http://10aeat.com/repair?keyword=${query}&page=${page1}`,
+        `http://api.10aeat.com/repair?keyword=${query}&page=${page1}`,
         {
           method: 'GET',
           headers: {
@@ -49,7 +49,7 @@ export default function Page() {
         },
       )
       const response2 = await fetch(
-        `http://10aeat.com/manage?keyword=${query}&page=${page2}`,
+        `http://api.10aeat.com/manage?keyword=${query}&page=${page2}`,
         {
           method: 'GET',
           headers: {

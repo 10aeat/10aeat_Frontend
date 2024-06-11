@@ -81,8 +81,8 @@ export default function ItemUpdate() {
   const fetchRepairIssues = async () => {
     try {
       const response = await fetch(
-        // `http://10aeat.com/issues/check/repair/${repairArticleId}`,
-        `http://10aeat.com/issues/check/repair/1`,
+        // `http://api.10aeat.com/issues/check/repair/${repairArticleId}`,
+        `http://api.10aeat.com/issues/check/repair/1`,
         {
           method: 'POST',
           headers: {

@@ -59,7 +59,7 @@ export default function RepairUpload() {
     }
 
     // try {
-    //   const response = await axios.post('http://10aeat.com/managers/repair/articles', postData, {
+    //   const response = await axios.post('http://api.10aeat.com/managers/repair/articles', postData, {
     //     headers: {
     //       'Content-Type': 'application/json'
     //     }

@@ -32,7 +32,7 @@ export default function Page() {
   useEffect(() => {
     const getInfoData = async () => {
       try {
-        const response = await fetch('http://10aeat.com/my/info', {
+        const response = await fetch('http://api.10aeat.com/my/info', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ export default function Page() {
     }
     const getBuildingData = async () => {
       try {
-        const response = await fetch('http://10aeat.com/my/building/unit', {
+        const response = await fetch('http://api.10aeat.com/my/building/unit', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
