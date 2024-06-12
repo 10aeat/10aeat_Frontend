@@ -104,7 +104,7 @@ export default function ManageMonthly() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center bg-gray-100">
       <NavBar isTitle isTextChange={false}>
         법정 시설물 유지관리 점검 현황
       </NavBar>
