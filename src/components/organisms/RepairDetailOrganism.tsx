@@ -161,15 +161,15 @@ export default function RepairDetailOrganism({
             <TrackingProgress repairArticleId={repairArticleId} />
           </div>
           <div className="px-4 mt-8">
-            <button type="button" onClick={openCommentsModal}>
-              <div className="font-bold text-lg font-Pretendard mb-3">댓글</div>
-              <NoBox type="댓글" />
-            </button>
+            <div className="font-bold text-lg font-Pretendard mb-3">댓글</div>
+            <NoBox type="댓글" />
           </div>
-          <CommentsModal
-            isOpen={isCommentsModalOpen}
-            onClose={closeCommentsModal}
-          />
+          <button type="button" onClick={openCommentsModal} aria-label="modal">
+            <CommentsModal
+              isOpen={isCommentsModalOpen}
+              onClose={closeCommentsModal}
+            />
+          </button>
           <div className="px-4 mt-8 mb-[100px]">
             <div className="font-bold text-lg font-Pretendard mb-3">담당자</div>
             <button type="button" onClick={openProfileModal} aria-label="modal">
