@@ -124,7 +124,9 @@ export default function AdminComments() {
   return (
     <div className="flex flex-col text-[16px] font-normal mb-[120px] leading-[24px] text-gray-900 font-Pretendard">
       <div className="overflow-hidden pl-[40px] pr-[56px] h-[calc(100%-100px)]">
-        <div className="text-[20px] leading-[28px] font-bold"> 댓글 0 </div>
+        <div className="text-[20px] leading-[28px] font-bold">
+          댓글 {comments.length}
+        </div>
         <div className="overflow-y-auto max-h-full scrollbar-hide">
           {comments.length === 0 ? (
             <div className="mt-[40px] text-center">

@@ -49,7 +49,7 @@ export default function RepairUpload() {
       setShowWarning(true)
       setTimeout(() => setShowWarning(false), 2000)
       return
-    }
+    } else router.push('/admin/repair/list')
 
     const postData = {
       category: 'REPAIR',
@@ -182,6 +182,7 @@ export default function RepairUpload() {
             <button
               className="flex p-[14px] rounded-[12px] bg-blue-600 text-[20px] font-semibold leading-[20px] text-white"
               type="submit"
+              onClick={handleSubmit}
             >
               등록하기
             </button>
