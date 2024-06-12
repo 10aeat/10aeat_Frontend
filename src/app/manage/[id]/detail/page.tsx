@@ -85,15 +85,12 @@ export default function ManageDetail() {
         <div className="font-bold text-lg font-Pretendard mb-3">진행 현황</div>
         {/* <TrackingProgress2 totalChecks={10} completedChecks={0} status="대기" /> */}
         <TrackingProgress2
-          totalChecks={2}
-          completedChecks={0}
-          status="진행중"
+          totalChecks={manageArticle?.manageSchedule.length}
+          completedChecks={
+            manageArticle?.manageSchedule.filter((c) => c.isComplete).length
+          }
+          status={manageArticle?.progress}
         />
-        {/* <TrackingProgress2
-          totalChecks={10}
-          completedChecks={10}
-          status="완료"
-        /> */}
       </div>
       <div className="px-4 mt-8 w-[375px] mb-[15px]">
         <div className="font-bold text-lg font-Pretendard mb-3">상세 내역</div>

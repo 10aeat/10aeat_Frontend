@@ -10,7 +10,7 @@ import SideMenu from '@/app/admin/_components/atoms/Sidemenu'
 
 export default function page() {
   return (
-    <div className="relative w-full bg-white overflow-y-auto">
+    <div className="relative w-full bg-white">
       <AdminLogo />
       <SideMenu menuIndex={2} />
       <div className="inline-flex flex-col items-start gap-4 absolute top-28 left-64">
@@ -20,7 +20,6 @@ export default function page() {
           </div>
         </div>
         <p className="self-stretch font-Pretendard text-[14px] font-normal leading-[20px] capitalize text-gray-900">
-          법정 시설물 유지 점검 사항은 오피스너 서비스를 통해 소유자에게
           노출됩니다. <br />
           점검사항을 등록하여 간편하게 유지관리를 할 수 있습니다. 진행현황과
           이슈는 업데이트 버튼을 클릭해 등록할 수 있습니다.
