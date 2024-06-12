@@ -235,23 +235,23 @@ export default function Home() {
       </div>
       <div className="mt-[32px] w-[345px]  h-[140px]">
         <div className="relative mt-[32px]">
-          <div className="absolute  font-Pretendard font-bold text-gray-900 text-[18px] leading-[24px] whitespace-nowrap">
-            2024 법정 시설물 유지관리 점검 현황
-          </div>
+          <Link
+            type="button"
+            className="block mt-[34px]"
+            // onClick={() => router.push({ pathname: '/repair' })}
+            href="/manage/monthly"
+          >
+            <div className="absolute  font-Pretendard font-bold text-gray-900 text-[18px] leading-[24px] whitespace-nowrap">
+              2024 법정 시설물 유지관리 점검 현황
+            </div>
+          </Link>
         </div>
         <ManageStatus manageSummary={manageSummary} />
         <div className="mt-[16px]" />
-        <Link
-          type="button"
-          className="block mt-[34px]"
-          // onClick={() => router.push({ pathname: '/repair' })}
-          href="/manage/monthly"
-        >
-          <MonthlyPlan
-            onSelectMonth={handleSelectMonth}
-            monthlySummary={monthlySummary}
-          />
-        </Link>
+        <MonthlyPlan
+          onSelectMonth={handleSelectMonth}
+          monthlySummary={monthlySummary}
+        />
       </div>
       <BottomNav isHome />
     </div>
