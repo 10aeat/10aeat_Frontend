@@ -47,12 +47,15 @@ export default function TrackingProgress2({
             className={`absolute h-full top-0 left-0 ${progressBarColor} rounded-[100px]`}
             style={{ width: `${progressFilledWidth}px` }}
           >
-            {status === '진행중' && (
+            {status === 'INPROGRESS' && (
               <div
                 className="pt-[16px]"
                 style={{ paddingLeft: `${tooltipPosition}px` }}
               >
-                <Tooltip tooltipStyle={TooltipStyle.COUNT} count={0} />
+                <Tooltip
+                  tooltipStyle={TooltipStyle.COUNT}
+                  count={completedChecks}
+                />
               </div>
             )}
           </div>
