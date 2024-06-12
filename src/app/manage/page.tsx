@@ -117,6 +117,7 @@ export default function ManageList() {
       />
 
       {/* 전체 필터링 */}
+
       <div className="flex items-start gap-[14px] px-4 mb-4">
         <Button
           buttonStyle={ButtonStyle.FILTER}
@@ -131,6 +132,9 @@ export default function ManageList() {
           onClickFunction={() => handleStatusClick('진행중/대기')}
           text="진행중/대기"
           total={getTotalInProgressAndPending()}
+          redDot={
+            articleSummary?.hasIssueId && selectedStatus === '진행중/대기'
+          }
         />
         <Button
           buttonStyle={ButtonStyle.FILTER}
@@ -138,6 +142,7 @@ export default function ManageList() {
           onClickFunction={() => handleStatusClick('완료')}
           text="완료"
           total={articleSummary?.complete || 0}
+          redDot={articleSummary?.hasIssueId && selectedStatus === '완료'}
         />
       </div>
       {articleListCard && articleListCard.length > 0 ? (
