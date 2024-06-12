@@ -129,7 +129,11 @@ export default function Page() {
               <div className="font-Pretendard text-[18px] font-bold text-gray-700 leading-[24px] capitalize">
                 호실 관리
               </div>
-              <div className="flex flex-col items-start gap-[8px]">
+              <button
+                type="button"
+                onClick={() => router.push('/mypage/delete')}
+                className="flex flex-col items-start gap-[8px]"
+              >
                 <div className="flex w-[343px] px-[12px] py-[8px] items-center gap-[8px] rounded-[16px] bg-white">
                   <div className="w-[40px] h-[40px]">
                     <div className="w-[40px] h-[40px] bg-blue-50 rounded-[20px] justify-center text-center items-center">
@@ -155,8 +159,12 @@ export default function Page() {
                     />
                   </div>
                 </div>
-              </div>
-              <div className="flex flex-col items-start gap-[8px]">
+              </button>
+              <button
+                type="button"
+                onClick={() => router.push('/mypage/add')}
+                className="flex flex-col items-start gap-[8px]"
+              >
                 <div className="flex w-[343px] px-[12px] py-[8px] items-center gap-[8px] rounded-[16px] bg-white">
                   <div className="w-[40px] h-[40px]">
                     <div className="w-[40px] h-[40px] bg-blue-50 rounded-[20px] justify-center text-center items-center">
@@ -182,7 +190,7 @@ export default function Page() {
                     />
                   </div>
                 </div>
-              </div>
+              </button>
             </div>
           </div>
           <button

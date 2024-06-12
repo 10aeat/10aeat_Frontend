@@ -54,10 +54,17 @@ export default function MonthlyPlan({ monthlySummary, onSelectMonth }: Props) {
       <div className="inline-flex items-start absolute top-[16px] left-[16px]">
         <div className="flex w-full justify-center">
           <div className="flex flex-col justify-center">
-            <Link type="button" href="/manage/monthly">
+            <Link type="button" href="/manage/monthly" className="flex">
               <span className="font-Pretendard font-semibold capitalize text-gray-900">
                 월별 계획
               </span>
+              <Image
+                src="/icons/arrow_right_small.svg"
+                width={24}
+                height={24}
+                alt="arrow_right_small"
+                className="!relative !w-[24px] !h-[24px]"
+              />
             </Link>
 
             <div className="flex flex-col my-2">

@@ -34,7 +34,7 @@ export default function App() {
   console.log(buildings)
 
   return (
-    <div className="flex flex-col w-[375px] h-[812px] gap-[40px] bg-gray-100 font-Pretendard">
+    <div className="flex flex-col w-full items-center h-[812px] gap-[40px] bg-gray-100 font-Pretendard">
       <NavBar isTextChange={false} isTitle>
         호실 삭제
       </NavBar>

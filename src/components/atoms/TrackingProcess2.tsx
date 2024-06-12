@@ -49,18 +49,17 @@ export default function TrackingProgress2({
             className={`absolute h-full top-0 left-0 ${progressBarColor} rounded-[100px]`}
             style={{ width: `${progressFilledWidth}px` }}
           >
-            {status === 'INPROGRESS' ||
-              (status === 'PENDING' && (
-                <div
-                  className="pt-[16px]"
-                  style={{ paddingLeft: `${tooltipPosition}px` }}
-                >
-                  <Tooltip
-                    tooltipStyle={TooltipStyle.COUNT}
-                    count={completedChecks}
-                  />
-                </div>
-              ))}
+            {status === 'INPROGRESS' && (
+              <div
+                className="pt-[16px]"
+                style={{ paddingLeft: `${tooltipPosition}px` }}
+              >
+                <Tooltip
+                  tooltipStyle={TooltipStyle.COUNT}
+                  count={completedChecks}
+                />
+              </div>
+            )}
           </div>
           <div
             className={`absolute w-[64px] top-[5px] right-[15px] ${totalChecksTextColor} text-right leading-[18px] font-Pretendard font-medium text-[14px]`}
