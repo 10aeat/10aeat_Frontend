@@ -1,9 +1,9 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import BuildingList from './components/BuildingList'
 import { useAccessToken } from '@/components/store/AccessTokenStore'
 import NavBar from '@/components/atoms/NavBar'
+import BuildingList from './components/BuildingList'
 
 export default function App() {
   const [buildings, setBuildings] = useState<BUILDING[]>([])
@@ -12,13 +12,16 @@ export default function App() {
   useEffect(() => {
     const getOfficeData = async () => {
       try {
-        const response = await fetch(`http://10aeat.com/my/building/units`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            AccessToken: accessToken,
+        const response = await fetch(
+          `http://api.10aeat.com/my/building/units`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              AccessToken: accessToken,
+            },
           },
-        })
+        )
         const data = await response.json()
         setBuildings(data.data)
       } catch (error) {

@@ -12,7 +12,7 @@ export default function AdminCard({ managerId }: { managerId: number }) {
     const getManagerInfo = async () => {
       try {
         const getManagerInfoResponse = await fetch(
-          `http://10aeat.com/managers/profile/${managerId}`,
+          `http://api.10aeat.com/managers/profile/${managerId}`,
           {
             method: 'GET',
             headers: {

@@ -51,7 +51,7 @@ export default function Home() {
     const getRepairSummaryData = async () => {
       try {
         const response = await fetch(
-          'http://10aeat.com/repair/articles/summary',
+          'http://api.10aeat.com/repair/articles/summary',
           {
             method: 'GET',
             headers: {
@@ -69,13 +69,16 @@ export default function Home() {
     }
     const getRepairListData = async () => {
       try {
-        const response = await fetch(`http://10aeat.com/repair/articles/list`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            AccessToken: accessToken,
+        const response = await fetch(
+          `http://api.10aeat.com/repair/articles/list`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              AccessToken: accessToken,
+            },
           },
-        })
+        )
 
         const data = await response.json()
         setRepairList(data.data)
@@ -100,7 +103,7 @@ export default function Home() {
   useEffect(() => {
     const getRepairListData = async () => {
       try {
-        let url = `http://10aeat.com/repair/articles/list?page=${currentPage}`
+        let url = `http://api.10aeat.com/repair/articles/list?page=${currentPage}`
 
         // 상태가 '전체'가 아닌 경우에만 상태에 따라 쿼리 파라미터 추가
         if (selectedStatus !== '전체') {

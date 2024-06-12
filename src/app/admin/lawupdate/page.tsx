@@ -81,7 +81,7 @@ export default function ItemUpdate() {
   const fetchManageIssues = async () => {
     try {
       const response = await fetch(
-        // `http://10aeat.com/issues/check/manage/{manageArticleId}`,
+        // `http://api.10aeat.com/issues/check/manage/{manageArticleId}`,
         `http://api.10aeat.com/issues/check/manage/1`,
         {
           method: 'POST',

@@ -173,10 +173,13 @@ export default function Page() {
   useEffect(() => {
     const handleLogin = async () => {
       try {
-        const response = await axios.post('http://10aeat.com/managers/login', {
-          email,
-          password,
-        })
+        const response = await axios.post(
+          'http://api.10aeat.com/managers/login',
+          {
+            email,
+            password,
+          },
+        )
         if (response) {
           console.log('로그인 성공!')
           setAccessToken(response.headers.accesstoken)
@@ -192,7 +195,7 @@ export default function Page() {
     const getRepairListData = async () => {
       try {
         const response = await fetch(
-          `http://10aeat.com/repair/articles/list?size=5`,
+          `http://api.10aeat.com/repair/articles/list?size=5`,
           {
             method: 'GET',
             headers: {
