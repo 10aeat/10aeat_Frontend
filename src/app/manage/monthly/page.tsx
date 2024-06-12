@@ -120,7 +120,7 @@ export default function ManageMonthly() {
       {articleListCard && articleListCard.length > 0 ? (
         <div className="flex flex-col items-center gap-3 min-h-[400px]">
           {articleListCard.map((item) => (
-            <Link href={`${item.id}`} key={item.id}>
+            <Link href={`${item.id}/detail`} key={item.id}>
               <ManageCard
                 id={item.id}
                 period={item.period}
