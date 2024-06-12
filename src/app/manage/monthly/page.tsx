@@ -53,7 +53,7 @@ export default function ManageMonthly() {
 
     const getManageArticlesMonthly = async () => {
       try {
-        let url = `http://api.10aeat.com/manage/articles/monthly/list?page=${currentPage}`
+        let url = `http://api.10aeat.com/manage/articles/monthly/list?page=${currentPage}&`
         const params = []
 
         if (selectedYear !== new Date().getFullYear()) {
