@@ -2,8 +2,9 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import Image from 'next/image'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import chat_line from '../../../public/icons/chat_line.svg'
+import { useAccessToken } from '../store/AccessTokenStore'
 
 export enum CardStyle {
   ALL = 'ALL',
@@ -13,6 +14,7 @@ export enum CardStyle {
 }
 
 interface Props {
+  id: number
   cardStyle: CardStyle
   isSave: boolean
   img_src?: string
@@ -29,6 +31,7 @@ interface Props {
 }
 
 export default function Card({
+  id,
   cardStyle,
   isSave,
   img_src,
@@ -43,6 +46,7 @@ export default function Card({
   onClickFunction,
 }: Props) {
   const selectCard = () => {
+    const { accessToken } = useAccessToken()
     const [saveState, setSaveState] = useState(isSave)
 
     const handleStarClick = (event: React.MouseEvent) => {
@@ -56,6 +60,32 @@ export default function Card({
       ? `~ ${end[0].toString().slice(2, 4)}.${end[1].toString().padStart(2, '0')}.${end[1].toString().padStart(2, '0')}`
       : ''
     const date = `${startData} ${endData}`
+
+    const handleSave = async (event: React.MouseEvent) => {
+      event.stopPropagation()
+
+      try {
+        const method = saveState ? 'DELETE' : 'POST'
+        const response = await fetch(
+          `http://api.10aeat.com/repair/articles/save/${id}`,
+          {
+            method,
+            headers: {
+              AccessToken: accessToken,
+            },
+          },
+        )
+
+        if (response.ok) {
+          setSaveState(!saveState)
+        } else {
+          console.error('Failed to save or delete the article')
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
     switch (cardStyle) {
       case CardStyle.ALL:
         return (
@@ -87,7 +117,7 @@ export default function Card({
                     </div>
                     <Image
                       src={`${saveState ? '/icons/star_fill.svg' : '/icons/star_linear.svg'}`}
-                      onClick={handleStarClick}
+                      onClick={handleSave}
                       width={28}
                       height={28}
                       alt="image"
@@ -177,7 +207,7 @@ export default function Card({
                     </div>
                     <Image
                       src={`${saveState ? '/icons/star_fill.svg' : '/icons/star_linear.svg'}`}
-                      onClick={handleStarClick}
+                      onClick={handleSave}
                       width={28}
                       height={28}
                       alt="image"
@@ -268,7 +298,7 @@ export default function Card({
                 <div className="flex flex-col w-[24px] items-start gap-[8px] relative self-stretch">
                   <Image
                     src={`${saveState ? '/icons/star_fill.svg' : '/icons/star_linear.svg'}`}
-                    onClick={handleStarClick}
+                    onClick={handleSave}
                     width={28}
                     height={28}
                     alt="image"
@@ -360,7 +390,7 @@ export default function Card({
                 <div className="flex flex-col w-[24px] items-start gap-[8px] relative self-stretch">
                   <Image
                     src={`${saveState ? '/icons/star_fill.svg' : '/icons/star_linear.svg'}`}
-                    onClick={handleStarClick}
+                    onClick={handleSave}
                     width={28}
                     height={28}
                     alt="image"
