@@ -24,7 +24,7 @@ export default function ManageMonthly() {
   useEffect(() => {
     const getMonthlySummary = async () => {
       try {
-        let url = `http://api.10aeat.com/manage/articles/monthly/summary`
+        let url = `https://api.10aeat.com/manage/articles/monthly/summary`
         const params = []
 
         if (selectedYear !== new Date().getFullYear()) {
@@ -53,7 +53,7 @@ export default function ManageMonthly() {
 
     const getManageArticlesMonthly = async () => {
       try {
-        let url = `http://api.10aeat.com/manage/articles/monthly/list?page=${currentPage}&`
+        let url = `https://api.10aeat.com/manage/articles/monthly/list?page=${currentPage}&`
         const params = []
 
         if (selectedYear !== new Date().getFullYear()) {

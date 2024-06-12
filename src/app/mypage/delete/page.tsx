@@ -11,9 +11,12 @@ export default function App() {
 
   useEffect(() => {
     const getOfficeData = async () => {
+      if (!accessToken) {
+        return
+      }
       try {
         const response = await fetch(
-          `http://api.10aeat.com/my/building/units`,
+          `https://api.10aeat.com/my/building/units`,
           {
             method: 'GET',
             headers: {

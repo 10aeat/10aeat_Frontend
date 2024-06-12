@@ -23,16 +23,22 @@ export default function ManageList() {
   useEffect(() => {
     const getManageArticlesSummary = async () => {
       try {
-        const response = await fetch(
-          'http://api.10aeat.com/manage/articles/summary',
-          {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              AccessToken: accessToken,
-            },
+        let url = `https://api.10aeat.com/manage/articles/summary`
+        const params = []
+        if (selectedYear !== new Date().getFullYear()) {
+          params.push(`year=${selectedYear}`)
+        }
+        if (params.length > 0) {
+          url += `?${params}`
+        }
+
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            AccessToken: accessToken,
           },
-        )
+        })
         const getSummaryData = await response.json()
         setArticleSummary(getSummaryData.data)
         console.log(articleSummary)
@@ -44,7 +50,7 @@ export default function ManageList() {
 
     const getManageArticlesList = async () => {
       try {
-        let url = `http://api.10aeat.com/manage/articles/list?page=${currentPage}`
+        let url = `https://api.10aeat.com/manage/articles/list?page=${currentPage}`
         const params = []
         if (selectedYear !== new Date().getFullYear()) {
           params.push(`year=${selectedYear}`)
