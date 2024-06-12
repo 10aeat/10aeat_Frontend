@@ -85,8 +85,8 @@ export default function ManageDetail() {
         <div className="font-bold text-lg font-Pretendard mb-3">진행 현황</div>
         {/* <TrackingProgress2 totalChecks={10} completedChecks={0} status="대기" /> */}
         <TrackingProgress2
-          totalChecks={10}
-          completedChecks={3}
+          totalChecks={2}
+          completedChecks={0}
           status="진행중"
         />
         {/* <TrackingProgress2

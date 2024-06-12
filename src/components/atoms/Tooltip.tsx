@@ -62,7 +62,7 @@ export default function Tooltip({ tooltipStyle, count }: Props) {
     switch (tooltipStyle) {
       case TooltipStyle.COUNT:
         return (
-          <div className="inline-flex flex-col items-center">
+          <div className="text-center inline-flex flex-col items-center">
             <Image src="/icons/polygon3.svg" width={8} height={6} alt="tip" />
             <div className="flex-1 h-[24px] min-w-[38px] px-[4px] items-center justify-center gap-[8px] rounded-[4px] bg-gray-600 font-Pretendard text-sm text-white">
               {count}회
