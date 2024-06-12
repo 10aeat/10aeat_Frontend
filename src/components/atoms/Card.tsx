@@ -67,7 +67,7 @@ export default function Card({
       try {
         const method = saveState ? 'DELETE' : 'POST'
         const response = await fetch(
-          `http://api.10aeat.com/repair/articles/save/${id}`,
+          `https://api.10aeat.com/repair/articles/save/${id}`,
           {
             method,
             headers: {

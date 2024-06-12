@@ -23,7 +23,7 @@ export default function ManageList() {
   useEffect(() => {
     const getManageArticlesSummary = async () => {
       try {
-        let url = `http://api.10aeat.com/manage/articles/summary`
+        let url = `https://api.10aeat.com/manage/articles/summary`
         const params = []
         if (selectedYear !== new Date().getFullYear()) {
           params.push(`year=${selectedYear}`)
@@ -50,7 +50,7 @@ export default function ManageList() {
 
     const getManageArticlesList = async () => {
       try {
-        let url = `http://api.10aeat.com/manage/articles/list?page=${currentPage}`
+        let url = `https://api.10aeat.com/manage/articles/list?page=${currentPage}`
         const params = []
         if (selectedYear !== new Date().getFullYear()) {
           params.push(`year=${selectedYear}`)

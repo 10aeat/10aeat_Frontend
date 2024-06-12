@@ -59,8 +59,8 @@ export default function ItemUpdate() {
   const fetchRepairArticles = async () => {
     try {
       const response = await fetch(
-        // `http://api.10aeat.com/repair/articles/progress/${repairArticleId}`,
-        `http://api.10aeat.com/repair/articles/progress/1`,
+        // `https://api.10aeat.com/repair/articles/progress/${repairArticleId}`,
+        `https://api.10aeat.com/repair/articles/progress/1`,
         {
           method: 'GET',
           headers: {
@@ -81,8 +81,8 @@ export default function ItemUpdate() {
   const fetchRepairIssues = async () => {
     try {
       const response = await fetch(
-        // `http://api.10aeat.com/issues/check/repair/${repairArticleId}`,
-        `http://api.10aeat.com/issues/check/repair/1`,
+        // `https://api.10aeat.com/issues/check/repair/${repairArticleId}`,
+        `https://api.10aeat.com/issues/check/repair/1`,
         {
           method: 'POST',
           headers: {

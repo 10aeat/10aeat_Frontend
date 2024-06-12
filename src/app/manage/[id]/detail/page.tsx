@@ -43,7 +43,7 @@ export default function ManageDetail() {
     const getManageArticleData = async () => {
       try {
         const getManageArticleResponse = await fetch(
-          `http://api.10aeat.com/manage/articles/${id}`,
+          `https://api.10aeat.com/manage/articles/${id}`,
           {
             method: 'GET',
             headers: {

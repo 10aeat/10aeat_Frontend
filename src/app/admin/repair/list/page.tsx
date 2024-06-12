@@ -174,7 +174,7 @@ export default function Page() {
     const handleLogin = async () => {
       try {
         const response = await axios.post(
-          'http://api.10aeat.com/managers/login',
+          'https://api.10aeat.com/managers/login',
           {
             email,
             password,
@@ -195,7 +195,7 @@ export default function Page() {
     const getRepairListData = async () => {
       try {
         const response = await fetch(
-          `http://api.10aeat.com/repair/articles/list?size=5`,
+          `https://api.10aeat.com/repair/articles/list?size=5`,
           {
             method: 'GET',
             headers: {

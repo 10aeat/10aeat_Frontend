@@ -44,7 +44,7 @@ export default function AgendaContent({
     try {
       const method = stausIsSave ? 'DELETE' : 'POST'
       const response = await fetch(
-        `http://api.10aeat.com/repair/articles/save/${articleId}`,
+        `https://api.10aeat.com/repair/articles/save/${articleId}`,
         {
           method,
           headers: {

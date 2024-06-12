@@ -36,7 +36,7 @@ export default function RepairDetailOrganism({
       if (issueId) {
         try {
           const issueResponse = await fetch(
-            `http://api.10aeat.com/articles/issue/detail/${issueId}`,
+            `https://api.10aeat.com/articles/issue/detail/${issueId}`,
             {
               method: 'GET',
               headers: {
@@ -57,7 +57,7 @@ export default function RepairDetailOrganism({
     const getRepairArticleData = async () => {
       try {
         const getRepairArticleResponse = await fetch(
-          `http://api.10aeat.com/repair/articles/${repairArticleId}`,
+          `https://api.10aeat.com/repair/articles/${repairArticleId}`,
           {
             method: 'GET',
             headers: {
@@ -83,7 +83,7 @@ export default function RepairDetailOrganism({
   const handleConfirm = async () => {
     try {
       const response = await fetch(
-        `http://api.10aeat.com/articles/issue/check/${issueId}`,
+        `https://api.10aeat.com/articles/issue/check/${issueId}`,
         {
           method: 'DELETE',
           headers: {

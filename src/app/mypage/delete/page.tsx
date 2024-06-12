@@ -16,7 +16,7 @@ export default function App() {
       }
       try {
         const response = await fetch(
-          `http://api.10aeat.com/my/building/units`,
+          `https://api.10aeat.com/my/building/units`,
           {
             method: 'GET',
             headers: {

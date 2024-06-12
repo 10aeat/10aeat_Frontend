@@ -16,7 +16,7 @@ export default function AddOffice() {
     const getBuildingData = async () => {
       try {
         const response = await fetch(
-          `http://api.10aeat.com/my/building/units`,
+          `https://api.10aeat.com/my/building/units`,
           {
             method: 'GET',
             headers: {
@@ -51,7 +51,7 @@ export default function AddOffice() {
     }
 
     try {
-      const response = await fetch(`http://api.10aeat.com/my/building/units`, {
+      const response = await fetch(`https://api.10aeat.com/my/building/units`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

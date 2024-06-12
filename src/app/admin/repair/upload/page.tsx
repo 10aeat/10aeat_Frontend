@@ -49,7 +49,8 @@ export default function RepairUpload() {
       setShowWarning(true)
       setTimeout(() => setShowWarning(false), 2000)
       return
-    } else router.push('/admin/repair/list')
+    }
+    router.push('/admin/repair/list')
 
     const postData = {
       category: 'REPAIR',
@@ -64,7 +65,7 @@ export default function RepairUpload() {
     }
 
     // try {
-    //   const response = await axios.post('http://api.10aeat.com/managers/repair/articles', postData, {
+    //   const response = await axios.post('https://api.10aeat.com/managers/repair/articles', postData, {
     //     headers: {
     //       'Content-Type': 'application/json'
     //     }
