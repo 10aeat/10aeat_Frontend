@@ -114,7 +114,7 @@ export default function CommentsComponent({ isOpen, onClose }: ModalProps) {
 
   return (
     <div
-      className={`${isOpen ? 'translate-y-[0px]' : 'translate-y-full'} fixed transition-transform z-10 duration-500 top-0 justify-center w-[375px] h-[736px] pt-[27.85px] shrink-0 rounded-t-[24px] bg-white font-Pretendard`}
+      className={`${isOpen ? 'translate-y-[0px]' : 'translate-y-[120%]'} fixed transition-transform z-10 duration-500 top-0 justify-center w-[375px] h-[736px] pt-[27.85px] shrink-0 rounded-t-[24px] bg-white font-Pretendard`}
       onClick={(e) => e.stopPropagation()}
     >
       <div className="inline-flex items-start gap-[264px] w-[375px] h-[24px] px-[20px] shrink-0 bg-white">

@@ -2,6 +2,8 @@
 
 import AdminCard from '@/app/admin/_components/atoms/AdminCard'
 import { useState, useEffect } from 'react'
+import CommentsModal from '@/components/CommentsModal'
+import ProfileModal from '@/components/ProfileModal'
 import Issue, { IssueStyle } from '../atoms/Issue'
 import NavBar from '../atoms/NavBar'
 import NoBox from '../atoms/NoBox'
@@ -25,6 +27,8 @@ export default function RepairDetailOrganism({
     title: string
     content: string
   } | null>(null)
+  const [isCommentsModalOpen, setIsCommentsModalOpen] = useState(false)
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false)
   const { accessToken } = useAccessToken()
 
   useEffect(() => {
@@ -98,6 +102,12 @@ export default function RepairDetailOrganism({
     }
   }
 
+  const openCommentsModal = () => setIsCommentsModalOpen(true)
+  const closeCommentsModal = () => setIsCommentsModalOpen(false)
+
+  const openProfileModal = () => setIsProfileModalOpen(true)
+  const closeProfileModal = () => setIsProfileModalOpen(false)
+
   return (
     <div className="flex flex-col w-full items-center">
       {/* {issueData && isVisible && (
@@ -151,13 +161,25 @@ export default function RepairDetailOrganism({
             <TrackingProgress repairArticleId={repairArticleId} />
           </div>
           <div className="px-4 mt-8">
-            <div className=" font-bold text-lg font-Pretendard mb-3">댓글</div>
-            <NoBox type="댓글" />
+            <button type="button" onClick={openCommentsModal}>
+              <div className="font-bold text-lg font-Pretendard mb-3">댓글</div>
+              <NoBox type="댓글" />
+            </button>
           </div>
+          <CommentsModal
+            isOpen={isCommentsModalOpen}
+            onClose={closeCommentsModal}
+          />
           <div className="px-4 mt-8 mb-[100px]">
             <div className="font-bold text-lg font-Pretendard mb-3">담당자</div>
-            <AdminCard managerId={articleData.managerId} />
+            <button type="button" onClick={openProfileModal} aria-label="modal">
+              <AdminCard managerId={articleData.managerId} />
+            </button>
           </div>
+          <ProfileModal
+            isOpen={isProfileModalOpen}
+            onClose={closeProfileModal}
+          />
         </>
       )}
     </div>
