@@ -54,7 +54,7 @@ export default function ManageList() {
           params.push(`complete=${progress}`)
         }
         if (params.length > 0) {
-          url += `${params.join('&')}`
+          url += `&${params.join('&')}`
         }
 
         const manageArticleResponse = await fetch(url, {
@@ -133,7 +133,9 @@ export default function ManageList() {
           text="진행중/대기"
           total={getTotalInProgressAndPending()}
           redDot={
-            articleSummary?.hasIssueId && selectedStatus === '진행중/대기'
+            articleSummary?.hasIssue &&
+            articleSummary.hasIssue.length > 0 &&
+            selectedStatus === '진행중/대기'
           }
         />
         <Button
@@ -142,7 +144,11 @@ export default function ManageList() {
           onClickFunction={() => handleStatusClick('완료')}
           text="완료"
           total={articleSummary?.complete || 0}
-          redDot={articleSummary?.hasIssueId && selectedStatus === '완료'}
+          redDot={
+            articleSummary?.hasIssue &&
+            articleSummary.hasIssue.length > 0 &&
+            selectedStatus === '완료'
+          }
         />
       </div>
       {articleListCard && articleListCard.length > 0 ? (
