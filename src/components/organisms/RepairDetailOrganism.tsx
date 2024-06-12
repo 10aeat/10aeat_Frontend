@@ -2,14 +2,14 @@
 
 import AdminCard from '@/app/admin/_components/atoms/AdminCard'
 import { useState, useEffect } from 'react'
+import CommentsModal from '@/components/CommentsModal'
+import ProfileModal from '@/components/ProfileModal'
 import Issue, { IssueStyle } from '../atoms/Issue'
 import NavBar from '../atoms/NavBar'
 import NoBox from '../atoms/NoBox'
 import ShareBtn from '../atoms/ShareBtn'
 import TrackingProgress from '../atoms/TrackingProgress'
 import AgendaContent from '../molecules/AgendaContent'
-import CommentsModal from '@/components/CommentsModal'
-import ProfileModal from '@/components/ProfileModal'
 import { useAccessToken } from '../store/AccessTokenStore'
 
 export default function RepairDetailOrganism({
@@ -161,10 +161,10 @@ export default function RepairDetailOrganism({
             <TrackingProgress repairArticleId={repairArticleId} />
           </div>
           <div className="px-4 mt-8">
-            <div onClick={openCommentsModal}>
+            <button type="button" onClick={openCommentsModal}>
               <div className="font-bold text-lg font-Pretendard mb-3">댓글</div>
               <NoBox type="댓글" />
-            </div>
+            </button>
           </div>
           <CommentsModal
             isOpen={isCommentsModalOpen}
@@ -172,7 +172,7 @@ export default function RepairDetailOrganism({
           />
           <div className="px-4 mt-8 mb-[100px]">
             <div className="font-bold text-lg font-Pretendard mb-3">담당자</div>
-            <button onClick={openProfileModal}>
+            <button type="button" onClick={openProfileModal} aria-label="modal">
               <AdminCard managerId={articleData.managerId} />
             </button>
           </div>
