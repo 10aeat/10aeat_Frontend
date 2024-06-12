@@ -33,7 +33,7 @@ export default function BuildingList({ buildings }: BuildingListProps) {
 
   return (
     <div className="flex flex-col gap-[32px] mx-auto text-gray-600 text-[18px] font-semibold leading-[24px] font-Pretendard">
-      {buildings?.[0]?.officeName}
+      {/* {buildings[0].officeName} */}
       <div className="flex flex-col items-center gap-[16px]">
         {buildings &&
           buildings.map((building) => (

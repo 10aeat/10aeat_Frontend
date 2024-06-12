@@ -47,13 +47,16 @@ export default function Page() {
     }
     const getBuildingData = async () => {
       try {
-        const response = await fetch('https://api.10aeat.com/my/building/unit', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            AccessToken: accessToken,
+        const response = await fetch(
+          'https://api.10aeat.com/my/building/unit',
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              AccessToken: accessToken,
+            },
           },
-        })
+        )
         const data = await response.json()
         setBuildings(data.data)
       } catch (error) {
