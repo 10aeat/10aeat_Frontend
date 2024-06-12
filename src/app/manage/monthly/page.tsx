@@ -104,7 +104,7 @@ export default function ManageMonthly() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-100 mt-4">
+    <div className="flex flex-col items-center justify-center bg-gray-100">
       <NavBar isTitle isTextChange={false}>
         법정 시설물 유지관리 점검 현황
       </NavBar>
@@ -118,7 +118,7 @@ export default function ManageMonthly() {
       <SelectMonth onSelectMonth={handleSelectMonth} data={articleSummary} />
 
       {articleListCard && articleListCard.length > 0 ? (
-        <div className="flex flex-col items-center gap-3 min-h-[400px]">
+        <div className="flex flex-col items-center gap-3 min-h-[400px] mt-4">
           {articleListCard.map((item) => (
             <Link href={`/manage/${item.id}/detail`} key={item.id}>
               <ManageCard
