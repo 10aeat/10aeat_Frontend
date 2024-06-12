@@ -27,10 +27,10 @@ export default function Details({
         )
       : null
     return {
-      startDate: `${startDate.getFullYear()}-${(startDate.getMonth() + 1).toString().padStart(2, '0')}-${startDate.getDate().toString().padStart(2, '0')}`,
+      startDate: `${startDate.getFullYear()}-${startDate.getMonth().toString().padStart(2, '0')}-${startDate.getDate().toString().padStart(2, '0')}`,
       isChecked: schedule.isComplete,
       endDate: endDate
-        ? `${endDate.getFullYear()}-${(endDate.getMonth() + 1).toString().padStart(2, '0')}-${endDate.getDate().toString().padStart(2, '0')}`
+        ? `${endDate.getFullYear()}-${endDate.getMonth().toString().padStart(2, '0')}-${endDate.getDate().toString().padStart(2, '0')}`
         : null,
     }
   })
