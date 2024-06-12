@@ -151,7 +151,7 @@ export default function RepairDetailOrganism({
             <TrackingProgress repairArticleId={repairArticleId} />
           </div>
           <div className="px-4 mt-8">
-            <div className="font-bold text-lg font-Pretendard mb-3">댓글</div>
+            <div className=" font-bold text-lg font-Pretendard mb-3">댓글</div>
             <NoBox type="댓글" />
           </div>
           <div className="px-4 mt-8 mb-[100px]">

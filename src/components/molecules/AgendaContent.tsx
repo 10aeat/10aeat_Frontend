@@ -92,18 +92,18 @@ export default function AgendaContent({
             {managerName}
           </div>
         </div>
-        <div className="flex items-center gap-x-2">
+        {/* <div className="flex items-center gap-x-2">
           <Image
             src="/icons/calendar_minimal.svg"
             alt="calendar"
             width={20}
             height={20}
           />
-          <span className="font-bold mt-[2px]">진행기간</span>
+          <span className="font-bold mt-[2px] whitespace-nowrap">진행기간</span>
           <span className="mt-[2px]">
             {formattedStartCon}&nbsp;-&nbsp;{formattedEndCon}
           </span>
-        </div>
+        </div> */}
         <div className="capitlaize leading-6">{content}</div>
       </div>
     </Box>
