@@ -8,7 +8,7 @@ import './TextEditor.css'
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
 
 interface TextEditorProps {
-  placeholder: string
+  placeholder: any
   value: string
   onChange: (value: string) => void
 }
