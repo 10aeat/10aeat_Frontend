@@ -9,7 +9,7 @@ export default function RepairDetail() {
 
   const issueId = searchParams.get('activeIssueId') // 쿼리 파라미터에서 'activeIssueId'를 가져옴
   return (
-    <main className="flex flex-col items-center justify-center">
+    <main className="flex flex-col items-center justify-center bg-gray-100">
       <RepairDetailOrganism repairArticleId={id} issueId={issueId} />
     </main>
   )
