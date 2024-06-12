@@ -109,10 +109,7 @@ export default function AgendaContent({
           {content}
           <div className="flex flex-wrap gap-4 mt-4 relative ">
             {imageUrls.map((url, index) => (
-              <div
-                key={url}
-                className="w-full sm:w-1/2 lg:w-1/3 aspect-[5/3] overflow-hidden"
-              >
+              <div key={url} className="w-full aspect-[5/3] overflow-hidden">
                 <Image
                   src={url}
                   alt={`img-${index}`}
