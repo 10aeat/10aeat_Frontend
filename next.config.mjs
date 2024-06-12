@@ -13,7 +13,10 @@ const nextConfig = {
     return config
   },
   images: {
-    domains: ['s3-alpha-sig.figma.com'],
+    domains: [
+      's3-alpha-sig.figma.com',
+      '10aeat.s3.ap-northeast-2.amazonaws.com',
+    ],
   },
 }
 

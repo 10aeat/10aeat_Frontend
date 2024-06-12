@@ -17,6 +17,7 @@ export default function AgendaContent({
   isSave,
   title,
   content,
+  imageUrls,
   createdAt,
   updatedAt,
   managerName,
@@ -104,7 +105,25 @@ export default function AgendaContent({
             {formattedStartCon}&nbsp;-&nbsp;{formattedEndCon}
           </span>
         </div> */}
-        <div className="capitlaize leading-6">{content}</div>
+        <div className="capitalize leading-6">
+          {content}
+          <div className="flex flex-wrap gap-4 mt-4 relative ">
+            {imageUrls.map((url, index) => (
+              <div
+                key={url}
+                className="w-full sm:w-1/2 lg:w-1/3 aspect-[5/3] overflow-hidden"
+              >
+                <Image
+                  src={url}
+                  alt={`img-${index}`}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-lg"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </Box>
   )
