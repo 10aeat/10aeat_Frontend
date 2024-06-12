@@ -24,24 +24,24 @@ interface profileData {
 export default function ProfileModal({ isOpen, onClose }: ModalProps) {
   const [profileData, setProfileData] = useState<profileData | null>(null)
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text).then(
-      () => {
-        alert('클립보드에 복사되었습니다.')
-      },
-      (err) => {
-        console.error('Failed to copy: ', err)
-      },
-    )
-  }
+  // const copyToClipboard = (text: string) => {
+  //   navigator.clipboard.writeText(text).then(
+  //     () => {
+  //       alert('클립보드에 복사되었습니다.')
+  //     },
+  //     (err) => {
+  //       console.error('Failed to copy: ', err)
+  //     },
+  //   )
+  // }
 
-  if (!profileData) {
-    return null
-  }
+  // if (!profileData) {
+  //   return null
+  // }
 
   return (
     <div
-      className={`${isOpen ? 'translate-y-[150px]' : 'translate-y-full'} fixed z-10 transition-transform duration-500 top-0 justify-center w-[375px] h-[736px] pt-[24px] shrink-0 rounded-t-[24px] bg-white font-Pretendard`}
+      className={`${isOpen ? 'translate-y-[100px]' : 'translate-y-[120%]'} fixed z-10 transition-transform duration-500 top-0 justify-center w-[375px] h-[736px] pt-[24px] shrink-0 rounded-t-[24px] bg-white font-Pretendard`}
       onClick={(e) => e.stopPropagation()}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -85,7 +85,7 @@ export default function ProfileModal({ isOpen, onClose }: ModalProps) {
           <button
             type="button"
             className="text-[14px] font-normal text-[#216FD6]"
-            onClick={() => copyToClipboard(profileData?.email)}
+            // onClick={() => copyToClipboard(profileData?.email)}
           >
             복사
           </button>
@@ -96,7 +96,7 @@ export default function ProfileModal({ isOpen, onClose }: ModalProps) {
           <button
             type="button"
             className="text-[14px] font-normal text-[#216FD6]"
-            onClick={() => copyToClipboard(profileData?.phoneNumber)}
+            // onClick={() => copyToClipboard(profileData?.phoneNumber)}
           >
             복사
           </button>
@@ -106,16 +106,16 @@ export default function ProfileModal({ isOpen, onClose }: ModalProps) {
         <button
           type="button"
           className="flex items-center justify-center gap-[4px] w-[166px] h-[52px] rounded-[16px] shrink-0 bg-white border border-blue-500 text-blue-700"
-          onClick={() => copyToClipboard(profileData?.email)}
+          // onClick={() => copyToClipboard(profileData?.email)}
         >
           <IconMessages color="#1D4ED8" width="20" height="20" />
           메일보내기
         </button>
-        <button
-          type="button"
-          className="flex items-center justify-center gap-[4px] w-[166px] h-[52px] rounded-[16px] shrink-0 bg-blue-700 text-white"
-        >
-          <a href={`tel:${profileData?.phoneNumber}`}>
+        <button type="button">
+          <a
+            href={`tel:${profileData?.phoneNumber}`}
+            className="flex items-center justify-center gap-[4px] w-[166px] h-[52px] rounded-[16px] shrink-0 bg-blue-700 text-white"
+          >
             <IconPhone color="#FFFFFF" width="20" height="20" />
             전화걸기
           </a>

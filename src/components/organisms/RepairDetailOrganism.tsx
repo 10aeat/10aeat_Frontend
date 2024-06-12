@@ -8,6 +8,8 @@ import NoBox from '../atoms/NoBox'
 import ShareBtn from '../atoms/ShareBtn'
 import TrackingProgress from '../atoms/TrackingProgress'
 import AgendaContent from '../molecules/AgendaContent'
+import CommentsModal from '@/components/CommentsModal'
+import ProfileModal from '@/components/ProfileModal'
 import { useAccessToken } from '../store/AccessTokenStore'
 
 export default function RepairDetailOrganism({
@@ -23,6 +25,8 @@ export default function RepairDetailOrganism({
     title: string
     content: string
   } | null>(null)
+  const [isCommentsModalOpen, setIsCommentsModalOpen] = useState(false)
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false)
   const { accessToken } = useAccessToken()
 
   useEffect(() => {
@@ -78,6 +82,12 @@ export default function RepairDetailOrganism({
     setIsVisible(false)
   }
 
+  const openCommentsModal = () => setIsCommentsModalOpen(true)
+  const closeCommentsModal = () => setIsCommentsModalOpen(false)
+
+  const openProfileModal = () => setIsProfileModalOpen(true)
+  const closeProfileModal = () => setIsProfileModalOpen(false)
+
   return (
     <div className="flex flex-col w-full items-center">
       {issueData && isVisible && (
@@ -131,13 +141,25 @@ export default function RepairDetailOrganism({
             <TrackingProgress repairArticleId={repairArticleId} />
           </div>
           <div className="px-4 mt-8">
-            <div className="font-bold text-lg font-Pretendard mb-3">댓글</div>
-            <NoBox type="댓글" />
+            <div onClick={openCommentsModal}>
+              <div className="font-bold text-lg font-Pretendard mb-3">댓글</div>
+              <NoBox type="댓글" />
+            </div>
           </div>
+          <CommentsModal
+            isOpen={isCommentsModalOpen}
+            onClose={closeCommentsModal}
+          />
           <div className="px-4 mt-8 mb-[100px]">
             <div className="font-bold text-lg font-Pretendard mb-3">담당자</div>
-            <AdminCard managerId={articleData.managerId} />
+            <button onClick={openProfileModal}>
+              <AdminCard managerId={articleData.managerId} />
+            </button>
           </div>
+          <ProfileModal
+            isOpen={isProfileModalOpen}
+            onClose={closeProfileModal}
+          />
         </>
       )}
     </div>
