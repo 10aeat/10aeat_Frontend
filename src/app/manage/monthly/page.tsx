@@ -13,9 +13,12 @@ import { useEffect, useState } from 'react'
 export default function ManageMonthly() {
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear())
   const [selectedMonth, setSelectedMonth] = useState<number | null>(null)
-  const [articleList, setArticleList] = useState<MANAGE_ARTICLE_LIST[]>()
+  const [articleList, setArticleList] = useState<MANAGE_LIST>()
+  const [articleListCard, setArticleListCard] =
+    useState<MANAGE_ARTICLE_LIST_CARD[]>()
   const [articleSummary, setArticleSummary] =
     useState<MANAGE_ARTICLE_MONTHLY_SUMMARY[]>()
+  const [currentPage, setCurrentPage] = useState(0)
   const { accessToken } = useAccessToken()
 
   useEffect(() => {
@@ -50,7 +53,7 @@ export default function ManageMonthly() {
 
     const getManageArticlesMonthly = async () => {
       try {
-        let url = `http://api.10aeat.com/manage/articles/monthly/list`
+        let url = `http://api.10aeat.com/manage/articles/monthly/list?page=${currentPage}`
         const params = []
 
         if (selectedYear !== new Date().getFullYear()) {
@@ -60,7 +63,7 @@ export default function ManageMonthly() {
           params.push(`month=${selectedMonth}`)
         }
         if (params.length > 0) {
-          url += `?${params.join('&')}`
+          url += `${params.join('&')}`
         }
 
         const manageArticleResponse = await fetch(url, {
@@ -75,7 +78,7 @@ export default function ManageMonthly() {
         }
         const manageArticlesList = await manageArticleResponse.json()
         setArticleList(manageArticlesList.data)
-        console.log(manageArticlesList)
+        setArticleListCard(manageArticlesList.data.articles)
       } catch (error) {
         console.log(error)
       }
@@ -83,17 +86,20 @@ export default function ManageMonthly() {
     getMonthlySummary()
     getManageArticlesMonthly()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedYear, selectedMonth, accessToken])
+  }, [selectedYear, selectedMonth, accessToken, currentPage])
 
   const handlePreviousYear = () => {
+    setCurrentPage(0)
     setSelectedYear((prevYear) => prevYear - 1)
   }
 
   const handleNextYear = () => {
+    setCurrentPage(0)
     setSelectedYear((prevYear) => prevYear + 1)
   }
 
   const handleSelectMonth = (month: number) => {
+    setCurrentPage(0)
     setSelectedMonth(month)
   }
 
@@ -111,9 +117,9 @@ export default function ManageMonthly() {
 
       <SelectMonth onSelectMonth={handleSelectMonth} data={articleSummary} />
 
-      {articleList && articleList.length > 0 ? (
+      {articleListCard && articleListCard.length > 0 ? (
         <div className="flex flex-col items-center gap-3 min-h-[400px]">
-          {articleList.map((item) => (
+          {articleListCard.map((item) => (
             <Link href={`${item.id}`} key={item.id}>
               <ManageCard
                 id={item.id}
@@ -131,13 +137,12 @@ export default function ManageMonthly() {
         <NoData />
       )}
       {articleList && (
-        // <Pagination
-        //   totalItems={articleList.length}
-        //   itemsPerPage={0}
-        //   currentPage={0}
-        //   onPageChange={}
-        // />
-        <div>hi</div>
+        <Pagination
+          totalItems={articleList.totalElements}
+          itemsPerPage={articleList.pageSize}
+          currentPage={currentPage + 1}
+          onPageChange={setCurrentPage}
+        />
       )}
     </div>
   )

@@ -22,7 +22,7 @@ export default function ManageCard({
   allSchedule,
   completedSchedule,
   issueId,
-}: MANAGE_ARTICLE_LIST) {
+}: MANAGE_ARTICLE_LIST_CARD) {
   const periodText = (period: Period, count: number): string => {
     const baseText = periodLabels[period] || '기간 정보 없음'
     return period === 'ETC' ? baseText : `${baseText} ${count}회`
