@@ -26,7 +26,7 @@ export default function SideMenu({ menuIndex }: Props) {
   }
 
   return (
-    <div className="flex flex-col w-[232px] h-screen items-center font-Pretendard bg-gray-50">
+    <div className="relative flex flex-col w-[232px] h-auto items-center font-Pretendard bg-gray-50">
       <div className="flex w-[100%] py-[12px] pl-[20px] pr-[24px] text-[18px] justify-between leading-[24px] font-bold items-center gap-[8px] text-gray-800 bg-white">
         <div className="flex w-[24px] h-[24px] p-[4px] items-center rounded-[4px] bg-blue-50">
           <Image
