@@ -3,7 +3,7 @@ interface ARTICLE_SUMMARY {
   complete: number
   inprogress: number
   pending: number
-  hasIssueId: number[] | undefined // 이슈는 진행중/대기 사항에만 있을 수 있음
+  hasIssue: number[] | undefined // 이슈는 진행중/대기 사항에만 있을 수 있음
 }
 
 interface REPAIR_ARTICLE_LIST {
@@ -155,7 +155,7 @@ interface MANAGE_SUMMARY {
   complete: number
   inprogress: number
   pending: number
-  hasIssueId: number[]
+  hasIssue: number[]
 }
 
 interface MANAGE_LIST_ARTICLE {
