@@ -183,7 +183,7 @@ export default function Home() {
     return CardStyle.ALL_NO
   }
   return (
-    <div className="flex flex-col w-full items-center bg-gray-100">
+    <div className="flex flex-col w-full min-h-[812px] items-center bg-gray-100">
       {/* NavBar */}
       <NavBar isTextChange={false} isTitle>
         건물 유지보수 사안
