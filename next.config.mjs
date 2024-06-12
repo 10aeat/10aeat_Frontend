@@ -16,6 +16,7 @@ const nextConfig = {
     domains: [
       's3-alpha-sig.figma.com',
       '10aeat.s3.ap-northeast-2.amazonaws.com',
+      'example.com',
     ],
   },
 }

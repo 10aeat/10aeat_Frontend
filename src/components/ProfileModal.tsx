@@ -41,7 +41,7 @@ export default function ProfileModal({ isOpen, onClose }: ModalProps) {
 
   return (
     <div
-      className={`${isOpen ? 'translate-y-[100px]' : 'translate-y-[120%]'} fixed z-10 transition-transform duration-500 top-0 justify-center w-[375px] h-[736px] pt-[24px] shrink-0 rounded-t-[24px] bg-white font-Pretendard`}
+      className={`${isOpen ? 'translate-y-[150px]' : 'translate-y-[120%]'} fixed z-10 transition-transform duration-500 top-0 justify-center w-[375px] h-[736px] pt-[24px] shrink-0 rounded-t-[24px] bg-white font-Pretendard`}
       onClick={(e) => e.stopPropagation()}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {

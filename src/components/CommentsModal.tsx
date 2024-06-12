@@ -114,7 +114,7 @@ export default function CommentsComponent({ isOpen, onClose }: ModalProps) {
 
   return (
     <div
-      className={`${isOpen ? 'translate-y-[0px]' : 'translate-y-[120%]'} fixed transition-transform z-10 duration-500 top-0 justify-center w-[375px] h-[736px] pt-[27.85px] shrink-0 rounded-t-[24px] bg-white font-Pretendard`}
+      className={`${isOpen ? 'translate-y-[0px]' : 'translate-y-[120%]'} fixed transition-transform z-10 duration-500 top-0 justify-center w-[375px] h-screen pt-[27.85px] shrink-0 rounded-t-[24px] bg-white font-Pretendard`}
       onClick={(e) => e.stopPropagation()}
     >
       <div className="inline-flex items-start gap-[264px] w-[375px] h-[24px] px-[20px] shrink-0 bg-white">
@@ -126,7 +126,6 @@ export default function CommentsComponent({ isOpen, onClose }: ModalProps) {
         </button>
       </div>
       <div className="h-[17.03px] border-b border-gray-300" />
-
       <div className="overflow-hidden h-[calc(100%-100px)]">
         <div className="overflow-y-auto max-h-full scrollbar-hide">
           {comments.length === 0 ? (
@@ -166,7 +165,7 @@ export default function CommentsComponent({ isOpen, onClose }: ModalProps) {
                   </button>
 
                   {showReplyInput === comment.parentCommentId && (
-                    <div className="flex items-center fixed bottom-0 z-10 w-[375px] h-[50px] ml-[-20px] shrink-0 border-t bg-white border-gray-300">
+                    <div className="flex items-center fixed bottom-0 z-10 w-[375px] h-[50px] ml-[-20px] mb-[30px] shrink-0 border-t bg-white border-gray-300">
                       <input
                         className="w-[291px] h-[36px] my-[7px] ml-[20px] mr-[12px] shrink-0 rounded-[8px] pl-[14px] bg-gray-100 outline-none"
                         type="text"
@@ -254,7 +253,7 @@ export default function CommentsComponent({ isOpen, onClose }: ModalProps) {
         </div>
       </div>
 
-      <div className="flex items-center fixed bottom-0 w-[375px] h-[50px] shrink-0 border-t bg-white border-gray-300">
+      <div className="flex items-center fixed bottom-0 w-[375px] h-[50px] mb-[30px] shrink-0 border-t bg-white border-gray-300">
         <input
           className="w-[291px] h-[36px] my-[7px] ml-[20px] mr-[12px] shrink-0 rounded-[8px] pl-[14px] bg-gray-100 outline-none"
           type="text"
