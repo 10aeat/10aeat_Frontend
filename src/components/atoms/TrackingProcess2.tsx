@@ -8,8 +8,8 @@ interface Props {
 }
 
 export default function TrackingProgress2({
-  totalChecks = 12,
-  completedChecks = 4,
+  totalChecks = 2,
+  completedChecks = 0,
   status,
 }: Props) {
   const progressPercentage = (completedChecks / totalChecks) * 100
@@ -52,7 +52,7 @@ export default function TrackingProgress2({
                 className="pt-[16px]"
                 style={{ paddingLeft: `${tooltipPosition}px` }}
               >
-                <Tooltip tooltipStyle={TooltipStyle.COUNT} count={10} />
+                <Tooltip tooltipStyle={TooltipStyle.COUNT} count={0} />
               </div>
             )}
           </div>
