@@ -12,6 +12,7 @@ import {
 } from '@mui/lab'
 import Box, { BoxStyle } from './Box'
 import { useAccessToken } from '../store/AccessTokenStore'
+import NoBox from './NoBox'
 
 export default function TrackingProgress({
   repairArticleId,
@@ -45,6 +46,11 @@ export default function TrackingProgress({
   }, [repairArticleId])
 
   console.log(progressData)
+
+  if (!progressData || progressData.length === 0) {
+    return <NoBox type="진행 내용" />
+  }
+
   return (
     <Box boxStyle={BoxStyle.BOX_WHITE_CONTENT}>
       <Timeline style={{ padding: 0 }}>

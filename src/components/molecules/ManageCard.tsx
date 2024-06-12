@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Box, { BoxStyle } from '../atoms/Box'
 import ProgressBar from '../atoms/ProgressBar'
 import TagBadge, { TagBadgeStyle } from '../atoms/TagBadge'
@@ -34,11 +35,19 @@ export default function ManageCard({
       style="flex-col gap-y-[30px] justify-end"
       issueId={issueId}
     >
-      <div className="flex w-full gap-x-2 justify-start items-center">
-        <TagBadge tagBadgeStyle={TagBadgeStyle.DEFAULT_TAG}>
-          {periodText(period, periodCount)}
-        </TagBadge>
-        <span className="text-gray-900 text-lg font-bold">{title}</span>
+      <div className="flex w-full justify-between items-center">
+        <div className="flex gap-x-2 items-center">
+          <TagBadge tagBadgeStyle={TagBadgeStyle.DEFAULT_TAG}>
+            {periodText(period, periodCount)}
+          </TagBadge>
+          <span className="text-gray-900 text-lg font-bold">{title}</span>
+        </div>
+        <Image
+          src="/icons/arrow_right_large.svg"
+          alt="arrrow"
+          width={24}
+          height={24}
+        />
       </div>
       <ProgressBar min={completedSchedule} max={allSchedule} />
     </Box>
