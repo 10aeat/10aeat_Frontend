@@ -14,7 +14,7 @@ export enum CardStyle {
 }
 
 interface Props {
-  id: number
+  id?: number
   cardStyle: CardStyle
   isSave: boolean
   img_src?: string

@@ -22,11 +22,11 @@ export default function NoBox({ type }: Props) {
                   alt="chat_line"
                   className="!relative w-[20px] h-[20px]"
                 />
-                <div className="relative w-fit mt-[-1.00px] font-Pretendard font-bold text-gray-900 text-[18px] text-center tracking-[0] leading-[24px] whitespace-nowrap">
+                <div className="fontchange relative w-fit mt-[-1.00px] font-Pretendard font-bold text-gray-900 text-[18px] text-center tracking-[0] leading-[24px] whitespace-nowrap">
                   아직 댓글이 없습니다
                 </div>
               </div>
-              <p className="relative w-fit font-Pretendard font-normal text-gray-500 text-[14px] tracking-[-0.28px] leading-[20px] whitespace-nowrap">
+              <p className="fontchange relative w-fit font-Pretendard font-normal text-gray-500 text-[14px] tracking-[-0.28px] leading-[20px] whitespace-nowrap">
                 이 카드를 눌러 댓글을 남겨보세요!
               </p>
             </>

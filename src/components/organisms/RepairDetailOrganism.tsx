@@ -17,10 +17,12 @@ export default function RepairDetailOrganism({
   issueId,
 }: {
   repairArticleId: string | string[]
-  issueId: string | string[]
+  issueId: string | null
 }) {
-  const [isVisible, setIsVisible] = useState(false)
-  const [articleData, setArticleData] = useState<REPAIR_ARTICLE_DETAIL>()
+  const [isVisible, setIsVisible] = useState(!!issueId)
+  const [articleData, setArticleData] = useState<REPAIR_ARTICLE_DETAIL | null>(
+    null,
+  )
   const [issueData, setIssueData] = useState<{
     title: string
     content: string
@@ -45,7 +47,7 @@ export default function RepairDetailOrganism({
           )
           const issueDetail = await issueResponse.json()
           console.log('Issue detail:', issueDetail)
-          setIssueData(issueDetail)
+          setIssueData(issueDetail.data)
         } catch (error) {
           console.log(error)
         }
@@ -78,8 +80,26 @@ export default function RepairDetailOrganism({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [repairArticleId, accessToken, issueId])
 
-  const handleConfirm = () => {
-    setIsVisible(false)
+  const handleConfirm = async () => {
+    try {
+      const response = await fetch(
+        `http://api.10aeat.com/articles/issue/check/${issueId}`,
+        {
+          method: 'DELETE',
+          headers: {
+            AccessToken: accessToken,
+          },
+        },
+      )
+
+      if (response.ok) {
+        setIsVisible(false)
+      } else {
+        console.error('Failed to delete the issue')
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const openCommentsModal = () => setIsCommentsModalOpen(true)
@@ -90,9 +110,9 @@ export default function RepairDetailOrganism({
 
   return (
     <div className="flex flex-col w-full items-center">
-      {issueData && isVisible && (
+      {/* {issueData && isVisible && (
         <div
-          className={`fixed inset-0 z-10 flex items-center justify-center bg-[rgba(0,0,0,0.72)] ${isVisible ? 'flex' : 'hidden'}`}
+          className={`fixed inset-0 z-100 flex items-center justify-center bg-[rgba(0,0,0,0.72)] ${isVisible ? 'flex' : 'hidden'}`}
         >
           <Issue
             issueStyle={IssueStyle.ISSUE_ALERT}
@@ -101,7 +121,7 @@ export default function RepairDetailOrganism({
             onConfirm={handleConfirm}
           />
         </div>
-      )}
+      )} */}
       <NavBar isTitle={false} isTextChange />
       {issueData && (
         <Issue

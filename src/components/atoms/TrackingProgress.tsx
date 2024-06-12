@@ -83,21 +83,19 @@ export default function TrackingProgress({
                   flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  height: index === progressData.length - 1 ? '25px' : '',
                 }}
               >
                 <TimelineDot
-                  className={
-                    item.inProgress
-                      ? 'bg-blue-500 animation-pulse'
-                      : 'bg-gray-500'
-                  }
                   style={{
-                    width: item.inProgress
-                      ? '10px !important'
-                      : '8px !important',
-                    height: item.inProgress
-                      ? '10px !important'
-                      : '8px !important',
+                    backgroundColor: item.inProgress
+                      ? 'rgb(59 130 246)'
+                      : 'rgb(107 114 128)',
+                    width: 10,
+                    height: 10,
+                    animation: item.inProgress
+                      ? 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                      : '',
                     margin: '7px 0px',
                     justifyContent: 'center',
                     padding: 0,
