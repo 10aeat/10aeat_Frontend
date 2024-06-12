@@ -3,7 +3,7 @@
 /* eslint-disable react/no-array-index-key */
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import SelectMonth from '../molecules/SelectMonth'
+import Link from 'next/link'
 import Button, { ButtonStyle } from './Button'
 
 interface MonthlySummary {
@@ -54,9 +54,11 @@ export default function MonthlyPlan({ monthlySummary, onSelectMonth }: Props) {
       <div className="inline-flex items-start absolute top-[16px] left-[16px]">
         <div className="flex w-full justify-center">
           <div className="flex flex-col justify-center">
-            <span className="font-Pretendard font-semibold capitalize text-gray-900">
-              월별 계획
-            </span>
+            <Link type="button" href="/manage/monthly">
+              <span className="font-Pretendard font-semibold capitalize text-gray-900">
+                월별 계획
+              </span>
+            </Link>
 
             <div className="flex flex-col my-2">
               <div className="flex flex-wrap gap-2">
