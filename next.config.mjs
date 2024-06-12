@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   webpack: (config, { dev }) => {
     config.module.rules.push({
@@ -10,6 +11,9 @@ const nextConfig = {
       config.devtool = 'eval-source-map'
     }
     return config
+  },
+  images: {
+    domains: ['s3-alpha-sig.figma.com'],
   },
 }
 

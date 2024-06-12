@@ -43,7 +43,7 @@ export default function ManageDetail() {
     const getManageArticleData = async () => {
       try {
         const getManageArticleResponse = await fetch(
-          `http://10aeat.com/manage/articles/${id}`,
+          `http://api.10aeat.com/manage/articles/${id}`,
           {
             method: 'GET',
             headers: {
@@ -62,7 +62,6 @@ export default function ManageDetail() {
     getManageArticleData()
   }, [accessToken, id])
 
-  console.log(manageArticle)
   return (
     <div className="flex flex-col w-full items-center justify-center bg-gray-100">
       <NavBar isTextChange isTitle={false} />

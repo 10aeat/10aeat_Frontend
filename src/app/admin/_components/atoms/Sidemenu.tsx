@@ -5,9 +5,13 @@ import { useState } from 'react'
 import ClipboardIcon from '@/components/icons/clipboard_check.svg'
 import { useRouter } from 'next/navigation'
 
-export default function SideMenu() {
+interface Props {
+  menuIndex: number
+}
+
+export default function SideMenu({ menuIndex }: Props) {
   const [isOpen, setIsOpen] = useState<Boolean>(true)
-  const [selectMenu, setSelectMenu] = useState<number | null>(1)
+  const [selectMenu, setSelectMenu] = useState<number | null>(menuIndex)
 
   const router = useRouter()
 
@@ -18,7 +22,7 @@ export default function SideMenu() {
   const handleSelectMenu = (menuIndex: number) => {
     setSelectMenu(menuIndex)
     if (menuIndex === 1) router.push('/admin/repair/list')
-    else router.push('/admin/lawupdate')
+    else router.push('/admin/manage/list')
   }
 
   return (

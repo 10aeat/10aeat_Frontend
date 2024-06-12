@@ -16,6 +16,7 @@ interface Props {
   placeholder?: string
   size: string
   options?: Array<string>
+  category?: string
   onChange?: (selected: string) => void
 }
 
@@ -24,6 +25,7 @@ export default function Dropdown({
   size,
   placeholder = '선택',
   options = ['선택 1', '선택 2', '선택 3'],
+  category,
   onChange,
 }: Props) {
   const [open, setOpen] = useState(false)

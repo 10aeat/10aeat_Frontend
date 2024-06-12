@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TableDropdown from '@/components/atoms/TableDropdown'
 import Image from 'next/image'
 import AdminButton, { ButtonStyle } from './AdminButton'
@@ -8,27 +8,188 @@ import AdminButton, { ButtonStyle } from './AdminButton'
 interface Props {
   repairList: REPAIR_LIST
   articleList: REPAIR_LIST_ARTICLE[]
+  category?: string
+  progress?: string
 }
 
-export default function AdminListTable({ repairList, articleList }: Props) {
+export default function AdminListTable({
+  repairList,
+  articleList,
+  category,
+  progress,
+}: Props) {
   const [selectAll, setSelectAll] = useState<boolean>(false)
   const [selectedItems, setSelectedItems] = useState<number[]>([])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const categoryMap: { [key: string]: string } = {
     INSTALL: '설치',
     REPAIR: '보수',
     REPLACE: '교체',
   }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const statusMap: { [key: string]: string } = {
     PENDING: '대기',
     INPROGRESS: '진행중',
     COMPLETE: '완료',
   }
-  console.log(articleList)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const data = [
+    {
+      id: 1,
+      category: 'REPLACE',
+      managerName: '최관리',
+      progress: 'PENDING',
+      title: '새로운 설치 작업',
+      period: '무',
+      commentCount: 0,
+      viewCount: 1,
+      imageUrl:
+        'https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U0CQtsEThpNXCWV~Sm425-ZI4EKxQMF0RLPL4oRKgHsaQ4ApGVE1qG2cBB-DvWEE-2-7Srywz02ZD7dZctAXRclpXmJ0gVKxB6Jf3iJwS1XNLiSlOzvS4RmUfadpNF-NvVMonaYFeearumlpcFXq0BbiywBNCJO94MK3s~eAzxaB~iGSI~LEzycYmY4Pl4xAanryZHTWTR-X0WRRP4ZaWUeQVAbxQZgXr82GozzNzNND7LZ81oQa3EqQg9j3fjphfYb-qO-Cod8RNEbBDXn6IJN3WlmL2UguQzu-uJnf64Fh3GB8QZLW4~UvMV2rBgtaryHA5Z0WaOGU-MGrmddJYA__',
+      // '/public/images/test1.svg',
+      activeIssueId: 1,
+      date: '24.05.20',
+    },
+    {
+      id: 2,
+      category: 'REPLACE',
+      managerName: '최관리',
+      progress: 'INPROGRESS',
+      title: '새로운 설치 작업',
+      period: '무',
+      commentCount: 0,
+      viewCount: 1,
+      imageUrl:
+        'https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U0CQtsEThpNXCWV~Sm425-ZI4EKxQMF0RLPL4oRKgHsaQ4ApGVE1qG2cBB-DvWEE-2-7Srywz02ZD7dZctAXRclpXmJ0gVKxB6Jf3iJwS1XNLiSlOzvS4RmUfadpNF-NvVMonaYFeearumlpcFXq0BbiywBNCJO94MK3s~eAzxaB~iGSI~LEzycYmY4Pl4xAanryZHTWTR-X0WRRP4ZaWUeQVAbxQZgXr82GozzNzNND7LZ81oQa3EqQg9j3fjphfYb-qO-Cod8RNEbBDXn6IJN3WlmL2UguQzu-uJnf64Fh3GB8QZLW4~UvMV2rBgtaryHA5Z0WaOGU-MGrmddJYA__',
+      // '/public/images/test1.svg',
+      activeIssueId: 1,
+      date: '24.05.20',
+    },
+    {
+      id: 3,
+      category: 'REPLACE',
+      managerName: '최관리',
+      progress: 'COMPLETE',
+      title: '새로운 설치 작업',
+      period: '무',
+      commentCount: 0,
+      viewCount: 1,
+      imageUrl:
+        'https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U0CQtsEThpNXCWV~Sm425-ZI4EKxQMF0RLPL4oRKgHsaQ4ApGVE1qG2cBB-DvWEE-2-7Srywz02ZD7dZctAXRclpXmJ0gVKxB6Jf3iJwS1XNLiSlOzvS4RmUfadpNF-NvVMonaYFeearumlpcFXq0BbiywBNCJO94MK3s~eAzxaB~iGSI~LEzycYmY4Pl4xAanryZHTWTR-X0WRRP4ZaWUeQVAbxQZgXr82GozzNzNND7LZ81oQa3EqQg9j3fjphfYb-qO-Cod8RNEbBDXn6IJN3WlmL2UguQzu-uJnf64Fh3GB8QZLW4~UvMV2rBgtaryHA5Z0WaOGU-MGrmddJYA__',
+      // '/public/images/test1.svg',
+      activeIssueId: 1,
+      date: '24.05.20',
+    },
+    {
+      id: 4,
+      category: 'REPAIR',
+      managerName: '최관리',
+      progress: 'PENDING',
+      title: '새로운 설치 작업',
+      period: '무',
+      commentCount: 0,
+      viewCount: 1,
+      imageUrl:
+        'https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U0CQtsEThpNXCWV~Sm425-ZI4EKxQMF0RLPL4oRKgHsaQ4ApGVE1qG2cBB-DvWEE-2-7Srywz02ZD7dZctAXRclpXmJ0gVKxB6Jf3iJwS1XNLiSlOzvS4RmUfadpNF-NvVMonaYFeearumlpcFXq0BbiywBNCJO94MK3s~eAzxaB~iGSI~LEzycYmY4Pl4xAanryZHTWTR-X0WRRP4ZaWUeQVAbxQZgXr82GozzNzNND7LZ81oQa3EqQg9j3fjphfYb-qO-Cod8RNEbBDXn6IJN3WlmL2UguQzu-uJnf64Fh3GB8QZLW4~UvMV2rBgtaryHA5Z0WaOGU-MGrmddJYA__',
+      // '/public/images/test1.svg',
+      activeIssueId: 1,
+      date: '24.05.20',
+    },
+    {
+      id: 5,
+      category: 'REPAIR',
+      managerName: '최관리',
+      progress: 'INPROGRESS',
+      title: '새로운 설치 작업',
+      period: '무',
+      commentCount: 0,
+      viewCount: 1,
+      imageUrl:
+        'https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U0CQtsEThpNXCWV~Sm425-ZI4EKxQMF0RLPL4oRKgHsaQ4ApGVE1qG2cBB-DvWEE-2-7Srywz02ZD7dZctAXRclpXmJ0gVKxB6Jf3iJwS1XNLiSlOzvS4RmUfadpNF-NvVMonaYFeearumlpcFXq0BbiywBNCJO94MK3s~eAzxaB~iGSI~LEzycYmY4Pl4xAanryZHTWTR-X0WRRP4ZaWUeQVAbxQZgXr82GozzNzNND7LZ81oQa3EqQg9j3fjphfYb-qO-Cod8RNEbBDXn6IJN3WlmL2UguQzu-uJnf64Fh3GB8QZLW4~UvMV2rBgtaryHA5Z0WaOGU-MGrmddJYA__',
+      // '/public/images/test1.svg',
+      activeIssueId: 1,
+      date: '24.05.20',
+    },
+    {
+      id: 6,
+      category: 'REPAIR',
+      managerName: '최관리',
+      progress: 'COMPLETE',
+      title: '새로운 설치 작업',
+      period: '무',
+      commentCount: 0,
+      viewCount: 1,
+      imageUrl:
+        'https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U0CQtsEThpNXCWV~Sm425-ZI4EKxQMF0RLPL4oRKgHsaQ4ApGVE1qG2cBB-DvWEE-2-7Srywz02ZD7dZctAXRclpXmJ0gVKxB6Jf3iJwS1XNLiSlOzvS4RmUfadpNF-NvVMonaYFeearumlpcFXq0BbiywBNCJO94MK3s~eAzxaB~iGSI~LEzycYmY4Pl4xAanryZHTWTR-X0WRRP4ZaWUeQVAbxQZgXr82GozzNzNND7LZ81oQa3EqQg9j3fjphfYb-qO-Cod8RNEbBDXn6IJN3WlmL2UguQzu-uJnf64Fh3GB8QZLW4~UvMV2rBgtaryHA5Z0WaOGU-MGrmddJYA__',
+      // '/public/images/test1.svg',
+      activeIssueId: 1,
+      date: '24.05.20',
+    },
+    {
+      id: 7,
+      category: 'INSTALL',
+      managerName: '최관리',
+      progress: 'PENDING',
+      title: '새로운 설치 작업',
+      period: '무',
+      commentCount: 0,
+      viewCount: 1,
+      imageUrl:
+        'https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U0CQtsEThpNXCWV~Sm425-ZI4EKxQMF0RLPL4oRKgHsaQ4ApGVE1qG2cBB-DvWEE-2-7Srywz02ZD7dZctAXRclpXmJ0gVKxB6Jf3iJwS1XNLiSlOzvS4RmUfadpNF-NvVMonaYFeearumlpcFXq0BbiywBNCJO94MK3s~eAzxaB~iGSI~LEzycYmY4Pl4xAanryZHTWTR-X0WRRP4ZaWUeQVAbxQZgXr82GozzNzNND7LZ81oQa3EqQg9j3fjphfYb-qO-Cod8RNEbBDXn6IJN3WlmL2UguQzu-uJnf64Fh3GB8QZLW4~UvMV2rBgtaryHA5Z0WaOGU-MGrmddJYA__',
+      // '/public/images/test1.svg',
+      activeIssueId: 1,
+      date: '24.05.20',
+    },
+    {
+      id: 8,
+      category: 'INSTALL',
+      managerName: '최관리',
+      progress: 'INPROGRESS',
+      title: '새로운 설치 작업',
+      period: '무',
+      commentCount: 0,
+      viewCount: 1,
+      imageUrl:
+        'https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U0CQtsEThpNXCWV~Sm425-ZI4EKxQMF0RLPL4oRKgHsaQ4ApGVE1qG2cBB-DvWEE-2-7Srywz02ZD7dZctAXRclpXmJ0gVKxB6Jf3iJwS1XNLiSlOzvS4RmUfadpNF-NvVMonaYFeearumlpcFXq0BbiywBNCJO94MK3s~eAzxaB~iGSI~LEzycYmY4Pl4xAanryZHTWTR-X0WRRP4ZaWUeQVAbxQZgXr82GozzNzNND7LZ81oQa3EqQg9j3fjphfYb-qO-Cod8RNEbBDXn6IJN3WlmL2UguQzu-uJnf64Fh3GB8QZLW4~UvMV2rBgtaryHA5Z0WaOGU-MGrmddJYA__',
+      // '/public/images/test1.svg',
+      activeIssueId: 1,
+      date: '24.05.20',
+    },
+    {
+      id: 9,
+      category: 'INSTALL',
+      managerName: '최관리',
+      progress: 'COMPLETE',
+      title: '새로운 설치 작업',
+      period: '무',
+      commentCount: 0,
+      viewCount: 1,
+      imageUrl:
+        'https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U0CQtsEThpNXCWV~Sm425-ZI4EKxQMF0RLPL4oRKgHsaQ4ApGVE1qG2cBB-DvWEE-2-7Srywz02ZD7dZctAXRclpXmJ0gVKxB6Jf3iJwS1XNLiSlOzvS4RmUfadpNF-NvVMonaYFeearumlpcFXq0BbiywBNCJO94MK3s~eAzxaB~iGSI~LEzycYmY4Pl4xAanryZHTWTR-X0WRRP4ZaWUeQVAbxQZgXr82GozzNzNND7LZ81oQa3EqQg9j3fjphfYb-qO-Cod8RNEbBDXn6IJN3WlmL2UguQzu-uJnf64Fh3GB8QZLW4~UvMV2rBgtaryHA5Z0WaOGU-MGrmddJYA__',
+      // '/public/images/test1.svg',
+      activeIssueId: 1,
+      date: '24.05.20',
+    },
+  ]
+
+  const [exampleData, setExampleData] = useState(data)
+
+  useEffect(() => {
+    const filterd = data.filter((c) => {
+      const isCategoryMatch =
+        category === '전체' || categoryMap[c.category] === category
+      const isProgressMatch =
+        progress === '전체' || statusMap[c.progress] === progress
+      return isCategoryMatch && isProgressMatch
+    })
+    setExampleData(filterd)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [category, progress])
+
   const handleSelectAllChange = () => {
     if (selectAll) {
       setSelectedItems([])
     } else {
-      setSelectedItems(articleList?.map((item) => item.id))
+      setSelectedItems(data?.map((item) => item.id))
     }
     setSelectAll(!selectAll)
   }
@@ -42,13 +203,13 @@ export default function AdminListTable({ repairList, articleList }: Props) {
   }
 
   const isAllSelected =
-    selectedItems.length === articleList.length && articleList.length > 0
+    selectedItems.length === data.length && articleList.length > 0
   return (
     <>
       <div className="w-[1000px] justify-between relative flex py-[12px] mt-[24px] items-center gap-[695px]">
         <span className="font-Pretendard text-[18px] font-semibold leading-[24px] text-gray-900 whitespace-nowrap">
-          총{' '}
-          <span className="text-[#2463EB]">{repairList?.totalElements}개</span>
+          총 <span className="text-[#2463EB]">{exampleData.length}개</span>
+          {/* <span className="text-[#2463EB]">{repairList?.totalElements}개</span> */}
           의 게시물이 조회되었습니다.
         </span>
         <div className="flex ml-[-10px] justify-end items-start gap-[4px] whitespace-nowrap">
@@ -124,7 +285,7 @@ export default function AdminListTable({ repairList, articleList }: Props) {
             </tr>
           </thead>
           <tbody className="bg-white w-[1000px]">
-            {articleList?.map((item) => (
+            {exampleData?.map((item) => (
               <tr
                 key={item.id}
                 className="flex w-[1000px] h-[104px] border-b-[1px] border-solid border-gray-300"
@@ -147,8 +308,8 @@ export default function AdminListTable({ repairList, articleList }: Props) {
                 <td className="flex max-w-[375px] px-[28px] py-[12px] justify-center items-center gap-[12px]">
                   <div className="flex justify-center items-center gap-[12px] flex-[1_0_0%]">
                     <Image
-                      // src={item.imageUrl}
-                      src=""
+                      src={item.imageUrl}
+                      // src=""
                       width={48}
                       height={48}
                       alt="image"
@@ -195,14 +356,14 @@ export default function AdminListTable({ repairList, articleList }: Props) {
                     업데이트
                   </AdminButton>
                 </td>
-                <td className="flex px-[24px] py-[12px] justify-center items-center gap-[12px] self-stretch">
-                  <div className="flex w-[42px] h-[24px] flex-col justify-center text-center font-Pretendard text-gray-900 text-[16px] font-medium leading-[24px] capitalize">
-                    {/* {item.period} */}
+                <td className="flex min-w-[88px] px-[24px] py-[12px] justify-center items-center gap-[12px] self-stretch">
+                  <div className="pl-[20px] flex w-[42px] h-[24px] flex-col justify-center text-center font-Pretendard text-gray-900 text-[16px] font-medium leading-[24px] capitalize">
+                    {item.period}
                   </div>
                 </td>
                 <td className="flex min-w-[88px] px-[12px] py-[12px] justify-center whitespace-nowrap items-center gap-[12px] self-stretch">
                   <div className="flex w-[42px] h-[24px] flex-col justify-center text-center font-Pretendard text-gray-900 text-[16px] font-medium leading-[24px] capitalize">
-                    {/* {item.date} */}
+                    {item.date}
                   </div>
                 </td>
                 <td className="flex min-w-[88px] pl-[36px] py-[12px] justify-center whitespace-nowrap items-center gap-[12px] self-stretch">

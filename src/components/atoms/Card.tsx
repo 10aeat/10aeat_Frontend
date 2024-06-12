@@ -44,7 +44,11 @@ export default function Card({
 }: Props) {
   const selectCard = () => {
     const [saveState, setSaveState] = useState(isSave)
-    console.log(start)
+
+    const handleStarClick = (event: React.MouseEvent) => {
+      event.stopPropagation()
+      setSaveState(!saveState)
+    }
     const startData = start
       ? `${start[0].toString().slice(2, 4)}.${start[1].toString().padStart(2, '0')}.${start[1].toString().padStart(2, '0')}`
       : ''
@@ -83,7 +87,7 @@ export default function Card({
                     </div>
                     <Image
                       src={`${saveState ? '/icons/star_fill.svg' : '/icons/star_linear.svg'}`}
-                      onClick={() => setSaveState(!saveState)}
+                      onClick={handleStarClick}
                       width={28}
                       height={28}
                       alt="image"
@@ -173,7 +177,7 @@ export default function Card({
                     </div>
                     <Image
                       src={`${saveState ? '/icons/star_fill.svg' : '/icons/star_linear.svg'}`}
-                      onClick={() => setSaveState(!saveState)}
+                      onClick={handleStarClick}
                       width={28}
                       height={28}
                       alt="image"
@@ -264,7 +268,7 @@ export default function Card({
                 <div className="flex flex-col w-[24px] items-start gap-[8px] relative self-stretch">
                   <Image
                     src={`${saveState ? '/icons/star_fill.svg' : '/icons/star_linear.svg'}`}
-                    onClick={() => setSaveState(!saveState)}
+                    onClick={handleStarClick}
                     width={28}
                     height={28}
                     alt="image"
@@ -356,7 +360,7 @@ export default function Card({
                 <div className="flex flex-col w-[24px] items-start gap-[8px] relative self-stretch">
                   <Image
                     src={`${saveState ? '/icons/star_fill.svg' : '/icons/star_linear.svg'}`}
-                    onClick={() => setSaveState(!saveState)}
+                    onClick={handleStarClick}
                     width={28}
                     height={28}
                     alt="image"

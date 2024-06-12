@@ -15,13 +15,16 @@ export default function AddOffice() {
   useEffect(() => {
     const getBuildingData = async () => {
       try {
-        const response = await fetch(`http://10aeat.com/my/building/units`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            AccessToken: accessToken,
+        const response = await fetch(
+          `http://api.10aeat.com/my/building/units`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              AccessToken: accessToken,
+            },
           },
-        })
+        )
         const data = await response.json()
         setBuildings(data.data)
       } catch (error) {
@@ -39,7 +42,7 @@ export default function AddOffice() {
       (maxId, building) => Math.max(maxId, building.buildingInfoId),
       0,
     )
-    //새로운 building 정보
+    // 새로운 building 정보
     const newBuilding = {
       buildingInfoId: maxBuildingInfoId + 1,
       officeName: '미왕 빌딩',
@@ -48,7 +51,7 @@ export default function AddOffice() {
     }
 
     try {
-      const response = await fetch(`http://10aeat.com/my/building/units`, {
+      const response = await fetch(`http://api.10aeat.com/my/building/units`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

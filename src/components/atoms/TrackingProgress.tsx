@@ -25,7 +25,7 @@ export default function TrackingProgress({
     const getProgressData = async () => {
       try {
         const getProgressResponse = await fetch(
-          `http://10aeat.com/repair/articles/progress/${repairArticleId}`,
+          `http://api.10aeat.com/repair/articles/progress/${repairArticleId}`,
           {
             method: 'GET',
             headers: {

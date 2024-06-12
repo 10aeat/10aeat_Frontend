@@ -62,18 +62,16 @@ export default function Page() {
   // 로그인 버튼 클릭 핸들러
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://10aeat.com/members/login', {
+      const response = await axios.post('http://api.10aeat.com/members/login', {
         email,
         password,
       })
       if (response) {
         console.log('로그인 성공!')
-        console.log(response.headers.accesstoken)
         setAccessToken(response.headers.accesstoken)
         router.push('/main')
       } else {
         // 오류 처리
-        // console.error('로그인 실패:', response.statusText)
         setIsPasswordValid(false)
       }
     } catch (error) {
