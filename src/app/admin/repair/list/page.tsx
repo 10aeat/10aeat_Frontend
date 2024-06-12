@@ -31,17 +31,17 @@ export default function Page() {
     {
       id: 1,
       category: 'REPLACE',
-      managerName: '최관리',
+      managerName: '김주은',
       progress: 'PENDING',
-      title: '새로운 설치 작업',
+      title: '2층 우수관 하자발생 조치',
       period: '무',
       commentCount: 0,
-      viewCount: 1,
+      viewCount: 12,
       imageUrl:
         'https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U0CQtsEThpNXCWV~Sm425-ZI4EKxQMF0RLPL4oRKgHsaQ4ApGVE1qG2cBB-DvWEE-2-7Srywz02ZD7dZctAXRclpXmJ0gVKxB6Jf3iJwS1XNLiSlOzvS4RmUfadpNF-NvVMonaYFeearumlpcFXq0BbiywBNCJO94MK3s~eAzxaB~iGSI~LEzycYmY4Pl4xAanryZHTWTR-X0WRRP4ZaWUeQVAbxQZgXr82GozzNzNND7LZ81oQa3EqQg9j3fjphfYb-qO-Cod8RNEbBDXn6IJN3WlmL2UguQzu-uJnf64Fh3GB8QZLW4~UvMV2rBgtaryHA5Z0WaOGU-MGrmddJYA__',
       // '/public/images/test1.svg',
       activeIssueId: 1,
-      date: '24.05.20',
+      date: '24.04.30',
     },
     {
       id: 2,

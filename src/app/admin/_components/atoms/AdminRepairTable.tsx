@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import TableDropdown from '@/components/atoms/TableDropdown'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import AdminButton, { ButtonStyle } from './AdminButton'
 
 interface Props {
@@ -36,24 +37,24 @@ export default function AdminListTable({
   const data = [
     {
       id: 1,
-      category: 'REPLACE',
-      managerName: '최관리',
-      progress: 'PENDING',
-      title: '새로운 설치 작업',
+      category: 'REPAIR',
+      managerName: '김주은',
+      progress: 'INPROGRESS',
+      title: '2층 우수관 하자발생 조치',
       period: '무',
       commentCount: 0,
-      viewCount: 1,
+      viewCount: 12,
       imageUrl:
         'https://s3-alpha-sig.figma.com/img/1ca6/0f1b/9e8fbefccad6e39d044cbb5cf9c713aa?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U0CQtsEThpNXCWV~Sm425-ZI4EKxQMF0RLPL4oRKgHsaQ4ApGVE1qG2cBB-DvWEE-2-7Srywz02ZD7dZctAXRclpXmJ0gVKxB6Jf3iJwS1XNLiSlOzvS4RmUfadpNF-NvVMonaYFeearumlpcFXq0BbiywBNCJO94MK3s~eAzxaB~iGSI~LEzycYmY4Pl4xAanryZHTWTR-X0WRRP4ZaWUeQVAbxQZgXr82GozzNzNND7LZ81oQa3EqQg9j3fjphfYb-qO-Cod8RNEbBDXn6IJN3WlmL2UguQzu-uJnf64Fh3GB8QZLW4~UvMV2rBgtaryHA5Z0WaOGU-MGrmddJYA__',
       // '/public/images/test1.svg',
       activeIssueId: 1,
-      date: '24.05.20',
+      date: '24.04.30',
     },
     {
       id: 2,
       category: 'REPLACE',
       managerName: '최관리',
-      progress: 'INPROGRESS',
+      progress: 'PENDING',
       title: '새로운 설치 작업',
       period: '무',
       commentCount: 0,
@@ -81,7 +82,7 @@ export default function AdminListTable({
     },
     {
       id: 4,
-      category: 'REPAIR',
+      category: 'REPLACE',
       managerName: '최관리',
       progress: 'PENDING',
       title: '새로운 설치 작업',
@@ -172,7 +173,7 @@ export default function AdminListTable({
   ]
 
   const [exampleData, setExampleData] = useState(data)
-
+  const router = useRouter()
   useEffect(() => {
     const filterd = data.filter((c) => {
       const isCategoryMatch =
@@ -305,7 +306,10 @@ export default function AdminListTable({
                     {categoryMap[item.category]}
                   </div>
                 </td>
-                <td className="flex max-w-[375px] px-[28px] py-[12px] justify-center items-center gap-[12px]">
+                <td
+                  onClick={() => router.push('/admin/repair/post')}
+                  className="flex max-w-[375px] px-[28px] py-[12px] justify-center items-center gap-[12px]"
+                >
                   <div className="flex justify-center items-center gap-[12px] flex-[1_0_0%]">
                     <Image
                       src={item.imageUrl}
