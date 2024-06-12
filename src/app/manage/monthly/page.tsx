@@ -118,7 +118,7 @@ export default function ManageMonthly() {
       <SelectMonth onSelectMonth={handleSelectMonth} data={articleSummary} />
 
       {articleListCard && articleListCard.length > 0 ? (
-        <div className="flex flex-col items-center gap-3 min-h-[400px]">
+        <div className="flex flex-col items-center gap-3 min-h-[400px] mt-4">
           {articleListCard.map((item) => (
             <Link href={`/manage/${item.id}/detail`} key={item.id}>
               <ManageCard
