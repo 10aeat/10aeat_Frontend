@@ -15,3 +15,14 @@ interface ApiResponse {
   code: number
   data: Building[]
 }
+
+interface POST {
+  category: string
+  progress: string
+  title: string
+  content: string
+  constructionStart: array
+  constructionEnd: array
+  repairCompany: string
+  repairCompanyWebsite: string
+}

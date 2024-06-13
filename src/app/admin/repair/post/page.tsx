@@ -1,16 +1,70 @@
 'use client'
 
+import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import PenIcon from '@/components/icons/pen_with_line.svg'
 import TagBadge, { TagBadgeStyle } from '@/components/atoms/TagBadge'
 import AdminComments from '@/components/atoms/AdminComments'
+import { useAccessToken } from '@/components/store/AccessTokenStore'
 import AdminLogo from '../../_components/atoms/AdminLogo'
 import SideMenu from '../../_components/atoms/Sidemenu'
 import AdminButton, { ButtonStyle } from '../../_components/atoms/AdminButton'
 
 export default function RepairPost() {
+  const { accessToken, setAccessToken } = useAccessToken()
   const router = useRouter()
+  const [posts, setPosts] = useState<POST[]>([])
+  const email = 'master@officener.com'
+  const password = 'adminPassword'
+
+  useEffect(() => {
+    const handleLogin = async () => {
+      try {
+        const response = await axios.post(
+          'https://api.10aeat.com/managers/login',
+          {
+            email,
+            password,
+          },
+        )
+        if (response) {
+          console.log('로그인 성공!')
+          setAccessToken(response.headers.accesstoken)
+        } else {
+          // 오류 처리
+          console.error('로그인 실패:', response)
+        }
+      } catch (error) {
+        // 네트워크 오류 등을 처리합니다.
+        console.error('네트워크 오류:', error)
+      }
+    }
+    const getPostData = async () => {
+      try {
+        const response = await fetch(
+          `https://api.10aeat.com/repair/articles/list?size=5`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              AccessToken: accessToken,
+            },
+          },
+        )
+        const data = await response.json()
+        setPosts(data.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    handleLogin()
+    getPostData()
+  }, [accessToken])
+
+  console.log(posts)
+
   return (
     <div className="relative w-full bg-white">
       <AdminLogo />
