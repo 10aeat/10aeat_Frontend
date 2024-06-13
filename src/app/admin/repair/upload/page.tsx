@@ -6,11 +6,12 @@ import Dropdown from '@/components/atoms/Dropdown'
 import TextArea from '@/components/atoms/TextArea'
 import TextEditor from '@/components/atoms/TextEditor'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import DatePicker1 from '@/components/atoms/DatePicker'
 import DangerIcon from '@/components/icons/danger.svg'
 import CloseIcon from '@/components/icons/close.svg'
 import CalendarSelect from '@/components/atoms/CalendarSelect'
+import { useAccessToken } from '@/components/store/AccessTokenStore'
 import AdminLogo from '../../_components/atoms/AdminLogo'
 import SideMenu from '../../_components/atoms/Sidemenu'
 
@@ -25,7 +26,9 @@ export default function RepairUpload() {
   const [constructionEnd, setConstructionEnd] = useState(null)
   const [images, setImages] = useState<string[]>([])
   const [showWarning, setShowWarning] = useState(false)
+  const [posts, setPosts] = useState<POST[]>([])
   const router = useRouter()
+  const { accessToken } = useAccessToken()
 
   // const handleTitleChange = (value: string) => setTitle(value)
   // const handleContentChange = (value: string) => setContent(value)
@@ -36,6 +39,30 @@ export default function RepairUpload() {
   //   setConstructionStart(date)
   // const handleConstructionEndChange = (date: any) => setConstructionEnd(date)
   // const handleImagesChange = (value: string[]) => setImages(value)
+
+  useEffect(() => {
+    const getPostData = async () => {
+      try {
+        const response = await fetch(
+          `https://api.10aeat.com/repair/articles/list?progress=PENDING&page=0&size=5`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              AccessToken: accessToken,
+            },
+          },
+        )
+        const data = await response.json()
+        setPosts(data.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    getPostData()
+  }, [accessToken])
+
+  console.log(posts)
 
   const handleSubmit = async () => {
     if (
@@ -79,6 +106,43 @@ export default function RepairUpload() {
     //   console.error('Error creating post:', error);
     // }
   }
+
+  // const addBuilding = async () => {
+  //   // buildingInfoId중 가장 높은 값 검색
+  //   const maxBuildingInfoId = buildings.reduce(
+  //     (maxId, building) => Math.max(maxId, building.buildingInfoId),
+  //     0,
+  //   )
+  //   // 새로운 building 정보
+  //   const newBuilding = {
+  //     buildingInfoId: maxBuildingInfoId + 1,
+  //     officeName: '미왕 빌딩',
+  //     dong,
+  //     ho,
+  //   }
+
+  //   try {
+  //     const response = await fetch(`https://api.10aeat.com/my/building/units`, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         AccessToken: accessToken,
+  //       },
+  //       body: JSON.stringify({ dong, ho }),
+  //     })
+
+  //     if (response.ok) {
+  //       setBuildings([...buildings, newBuilding])
+  //       setDong('')
+  //       setHo('')
+  //       console.log(buildings)
+  //     } else {
+  //       console.error('Failed to add building')
+  //     }
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
 
   return (
     <div className="relative w-full bg-white">

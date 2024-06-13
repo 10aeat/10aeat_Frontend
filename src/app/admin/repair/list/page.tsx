@@ -17,8 +17,8 @@ import SideMenu from '@/app/admin/_components/atoms/Sidemenu'
 export default function Page() {
   const { accessToken, setAccessToken } = useAccessToken()
 
-  const email = 'admin@google.com'
-  const password = 'adminpassword'
+  const email = 'master@officener.com'
+  const password = 'adminPassword'
 
   const [repairList, setRepairList] = useState<REPAIR_LIST>({
     pageSize: 5,
