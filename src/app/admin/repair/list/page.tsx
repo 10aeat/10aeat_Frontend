@@ -236,62 +236,64 @@ export default function Page() {
   return (
     <div className="relative w-full bg-white">
       <AdminLogo />
-      <SideMenu menuIndex={1} />
-      <div className="inline-flex flex-col items-start gap-4 absolute top-28 left-64">
-        <div className="flex flex-col items-start relative self-stretch w-full flex-[0_0_auto]">
-          <div className="font-Pretendard text-[24px] font-bold leading-[32px] capitalize text-gray-900">
-            유지보수 관리
+      <div className="flex">
+        <SideMenu menuIndex={1} />
+        <div className="inline-flex flex-col items-start gap-4 top-28 left-64">
+          <div className="mt-[32px] flex flex-col items-start relative self-stretch w-full flex-[0_0_auto]">
+            <div className="font-Pretendard text-[24px] font-bold leading-[32px] capitalize text-gray-900">
+              유지보수 관리
+            </div>
           </div>
-        </div>
-        <p className="self-stretch font-Pretendard text-[14px] font-normal leading-[20px] capitalize text-gray-900">
-          건물 유지보수 사안은 오피스너 서비스를 통해 소유자에게 노출됩니다.
-          <br />
-          공사, 투표 등 기간이 정해져 있는 사안을 다룬다면 일정유무를 선택해
-          등록 하실 수 있으며, 진행현황과 이슈는 업데이트 버튼을 클릭해 등록할
-          수 있습니다.
-        </p>
-        <AdminButton buttonSize="md" buttonStyle={ButtonStyle.PRIMARY}>
-          건물 유지보수 사안 등록
-        </AdminButton>
-        <div className="w-full h-[1px] bg-gray-400" />
-        <div className="relative top-[12px] font-Pretendard text-[18px] font-semibold leading-[24px] capitalize text-gray-900">
-          검색
-        </div>
-        <div className="relative flex top-[16px] gap-[12px] ">
-          <Dropdown
-            isDisabled={false}
-            size="md"
-            placeholder="전체"
-            category={category}
-            onChange={handleCategoryClick}
-            options={['전체', '설치', '보수', '교체']}
-          />
-          <AdminInput />
-          <AdminButton
-            buttonSize="sm"
-            buttonStyle={ButtonStyle.SECONDARY_GRAY}
-            // onClickFunction={handleSearch}
-          >
-            <span className="text-gray-600 px-[4px]">검색</span>
+          <p className="self-stretch font-Pretendard text-[14px] font-normal leading-[20px] capitalize text-gray-900">
+            건물 유지보수 사안은 오피스너 서비스를 통해 소유자에게 노출됩니다.
+            <br />
+            공사, 투표 등 기간이 정해져 있는 사안을 다룬다면 일정유무를 선택해
+            등록 하실 수 있으며, 진행현황과 이슈는 업데이트 버튼을 클릭해 등록할
+            수 있습니다.
+          </p>
+          <AdminButton buttonSize="md" buttonStyle={ButtonStyle.PRIMARY}>
+            건물 유지보수 사안 등록
           </AdminButton>
-        </div>
-        <div className="relative inline-flex top-[24px] items-start gap-[10px]">
-          <AdminFilterBtn progress={progress} setProgress={setProgress} />
-        </div>
+          <div className="w-full h-[1px] bg-gray-400" />
+          <div className="relative top-[12px] font-Pretendard text-[18px] font-semibold leading-[24px] capitalize text-gray-900">
+            검색
+          </div>
+          <div className="relative flex top-[16px] gap-[12px] ">
+            <Dropdown
+              isDisabled={false}
+              size="md"
+              placeholder="전체"
+              category={category}
+              onChange={handleCategoryClick}
+              options={['전체', '설치', '보수', '교체']}
+            />
+            <AdminInput />
+            <AdminButton
+              buttonSize="sm"
+              buttonStyle={ButtonStyle.SECONDARY_GRAY}
+              // onClickFunction={handleSearch}
+            >
+              <span className="text-gray-600 px-[4px]">검색</span>
+            </AdminButton>
+          </div>
+          <div className="relative inline-flex top-[24px] items-start gap-[10px]">
+            <AdminFilterBtn progress={progress} setProgress={setProgress} />
+          </div>
 
-        <AdminListTable
-          category={category}
-          progress={progress}
-          repairList={repairList}
-          articleList={articleList}
-        />
-        <div className="relative flex w-[1000px] justify-end items-center gap-[4px] pb-[100px]">
-          {/* <Pagination
+          <AdminListTable
+            category={category}
+            progress={progress}
+            repairList={repairList}
+            articleList={articleList}
+          />
+          <div className="relative flex w-[1000px] justify-end items-center gap-[4px] pb-[100px]">
+            {/* <Pagination
             currentPage={0}
             onPageChange={setCurrentPage}
             totalItems={100}
             itemsPerPage={5}
           /> */}
+          </div>
         </div>
       </div>
     </div>
